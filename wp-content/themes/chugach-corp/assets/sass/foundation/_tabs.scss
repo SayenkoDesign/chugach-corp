@@ -1,0 +1,19 @@
+// Tabs
+
+.tabs {
+    margin: 0;
+    border: none;    
+}
+
+.tabs-title>a:focus, 
+.tabs-title>a[aria-selected=true] {
+    
+}
+
+.tabs-panel {
+    display: none;
+}
+
+.tabs-panel[aria-hidden=false] {
+    display: block;
+}

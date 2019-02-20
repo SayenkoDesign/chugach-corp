@@ -1,0 +1,50 @@
+{
+  "name": "_s",
+  "version": "1.0.0",
+  "description": "A theme boilerplate based on Underscores from Automattic.",
+  "main": "Gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "*",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "*",
+    "css-mqpacker": "^6.0.2",
+    "del": "^3.0.0",
+    "foundation-sites": "6.3.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "*",
+    "gulp-babel": "^7.0.1",
+    "gulp-cached": "*",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-filter": "*",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-notify": "*",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.3.0",
+    "gulp-rename": "*",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "*",
+    "gulp-sort": "^1.1.1",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-wp-pot": "^1.1.1",
+    "gulp-zip": "*",
+    "motion-ui": "*",
+    "postcss-focus": "*",
+    "slick-carousel": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamcanadian1973/_s.git"
+  },
+  "keywords": [
+    "theme"
+  ],
+  "author": "Kyle Rumble",
+  "license": "GPL-3.0"
+}

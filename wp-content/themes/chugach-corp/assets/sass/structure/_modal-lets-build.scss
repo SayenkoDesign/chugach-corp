@@ -1,0 +1,86 @@
+// Modal
+
+.modal-lets-build {
+    
+    .wrap {
+        background-color: $light-gray;
+    }
+    
+    .modal-title {
+        padding: rem-calc(30px);
+    }
+    
+    .modal-body {
+        padding: rem-calc(10px 30px);
+    }
+    
+    @include breakpoint(large) {
+        
+        .modal-title {
+             padding: rem-calc(30px 46px);  
+        }
+        
+        .modal-body {
+            padding-left: 46px;   
+        }
+    }
+    
+    .modal-description {
+        padding: rem-calc(0 30px);
+    }
+        
+    .modal-title {
+        background-color: $blue;
+        h2 {
+            color: $white;
+            letter-spacing: 0.5px;
+			margin-bottom: 0;
+		}
+		
+	}
+    
+    .gform_wrapper li.gfield.gfield_error, 
+    .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+        background-color: transparent!important;
+        margin-bottom: 6px!important;
+        border: none!important;
+        padding-bottom: 6px;
+        padding-top: 8px;
+    }
+    
+    .gform_wrapper div.validation_error {
+        color: #ffdddd!important;
+        border: none!important;
+        margin-bottom: 0!important;
+        padding: rem-calc(10 0 0)!important;
+    }
+    
+    .gform_wrapper .field_description_below .gfield_description {
+        padding-top: 4px!important;
+    }
+    
+    .gform_wrapper .validation_message {
+        color: #ffdddd!important;
+    }
+    
+    .gform_footer {
+        text-align: center;
+        
+        .button {
+            background-color: transparent;
+            border: 2px solid $blue; 
+            color: $blue;
+            box-shadow: none!important;
+            width: rem-calc(185)!important;
+            
+            &:focus,
+            &:active,
+            &:hover{
+                background-color: $blue;
+                color: $white;
+            }    
+        }
+    }
+	
+
+}

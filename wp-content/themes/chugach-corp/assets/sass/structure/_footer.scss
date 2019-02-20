@@ -1,0 +1,148 @@
+//
+// Footer
+// --------------------------------------------------
+
+
+.site-footer {
+    
+    background-color: $light-gray;
+    
+    .edge {
+        position: relative;
+        z-index: 3;
+        line-height: 0;
+        transform: translateY(-50%);
+        
+        img {
+            display: block;
+            width: 100%; 
+        }
+    }
+    
+    .wrap {
+        position: relative;
+        z-index: 2;
+        padding-top: rem-calc(50);
+        
+    }
+    
+    
+    .widget {
+        text-align: center;   
+    }
+    
+    @include breakpoint(medium) {
+        .widget {
+            text-align: left;   
+        }
+    }
+
+}
+
+
+.footer-widgets {
+    
+    position: relative;
+    margin-bottom: rem-calc(10);
+    
+    @include breakpoint(xlarge) {
+        margin-bottom: 0; 
+    }
+    
+    .widget-title {
+        color: $blue;
+        margin-bottom: rem-calc(10);   
+    }
+    
+    .widget_text {
+        @include breakpoint(xlarge) {
+            padding-top: rem-calc(60);
+        }
+        
+        h3 {
+           margin-bottom: rem-calc(30);  
+           line-height: 1.36;
+        }
+        
+        margin-bottom: rem-calc(50);
+    }
+
+    
+    .menu {
+        @include list-reset;
+        
+        @include breakpoint(medium) {
+            column-count: 2;  
+        }
+        
+        li {
+            display: block; 
+            
+            
+            a {
+                color: #4A4A4A;
+                padding: rem-calc(5 0); 
+                font-size: rem-calc(16);  
+                margin-bottom: rem-calc(8); 
+                
+                &:hover {
+                    color: rgba( $dark-gray, .8);   
+                }
+            }
+        }
+    }
+    
+    
+    .widget_media_image {
+        img {
+            display: block;
+            margin: 0 auto;   
+        }
+    }
+    
+    @include breakpoint(medium) {
+        
+        .column:last-child {
+            text-align: right;
+        }
+    
+        .be-social-widget {
+            display: inline-block;
+            
+            .widget-title {
+                text-align: right;   
+            }
+        }
+    }
+}
+
+
+.footer-copyright {
+    
+    padding-bottom: rem-calc(20);
+    text-align: center;
+    
+        
+    p {
+        color: #4A4A4A;
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 8px; 
+        
+        b {
+            font-weight: normal;
+            
+            @include breakpoint(small only) {
+                display: none;
+            }
+        }
+        
+        a {
+            color: $blue;
+            text-decoration: underline;
+        }
+
+    }
+   
+      
+}

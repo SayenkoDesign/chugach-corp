@@ -1,0 +1,185 @@
+//
+// Gravity Forms
+//  --------------------------------------------------
+
+
+// Theme Specific
+
+body .gform_wrapper {
+	margin-top: 4px!important;	
+	
+	ul {
+		li {
+			list-style-type: none;	
+		}
+	}
+		
+	ul.gform_fields li.gfield.gfield_error+li.gfield.gfield_error {
+		margin-top: 16px!important;
+	}
+	
+	
+	li.gfield.gfield_error.gfield_contains_required div.ginput_container,
+	li.gfield.gfield_error.gfield_contains_required label.gfield_label {
+		margin-top: 12px!important;
+	}
+	
+	
+	input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select, 
+    textarea {
+		color: #4A4A4A!important;
+        font-size: rem-calc(13);
+ 		outline: none;	
+		background-color: $white;
+        border: 1px solid #979797;
+  	}
+	
+	input[type="text"],
+    input[type="tel"],
+    input[type="email"], {
+ 		padding: rem-calc(8 15)!important;
+		margin-top: 0!important;	
+	}
+	
+	
+	select {
+ 		padding: rem-calc(8 15)!important;
+	}
+	
+	textarea {
+		margin-top: 8px;	
+		padding: rem-calc(12 15)!important;
+	}
+	
+	select {
+		-webkit-appearance: none;
+		-webkit-border-radius: 0px;
+		background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>");
+		background-position: 100% 50%;
+		background-repeat: no-repeat;	
+ 		
+ 	}
+    
+    ::placeholder {
+        color: #4A4A4A;
+        font-size: rem-calc(13);
+    }
+	
+	.validation_error {
+
+	}
+    
+    @media only screen and (min-width: 641px) {
+        .top_label li.gfield.gf_left_half, .top_label li.gfield.gf_right_half {
+            max-width: 50%!important;
+            padding-right: 22px!important;
+        }
+        
+        ul.gform_fields li.gfield {
+            padding-right: 22px!important;
+        }
+        
+        .gform_validation_error .top_label li.gfield.gfield_error.gf_left_half,
+        .gform_validation_error .top_label li.gfield.gfield_error.gf_right_half {
+            max-width: 50%!important;
+        }
+    }
+
+	.gform_footer {
+        
+        padding-top: rem-calc(4);
+		
+		input {
+            font-size: rem-calc(13)!important;
+            @include button;
+            display: block;
+            max-width: none;
+            min-height: 39px;
+            
+            @include breakpoint(medium) {
+                display: inline-block;
+                max-width: none;
+            }         
+		}
+	}
+
+
+}
+
+
+
+.gform_wrapper .validation_error {
+    display: none!important;   
+}
+
+body .gform_wrapper img.gform_ajax_spinner {
+    display: none !important;
+}
+
+.gform_wrapper li.gfield_error input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), .gform_wrapper li.gfield_error textarea {
+    background-color: rgba(255,223,224,.25)!important;
+}
+
+.gform_wrapper li.gfield_error ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    //color: #ff006e!important;
+}
+
+.gform_wrapper li.gfield_error :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    //color: #ff006e!important;
+}
+
+.gform_wrapper li.gfield_error ::-ms-input-placeholder { /* Microsoft Edge */
+    //color: #ff006e!important;
+}
+
+
+.gform_wrapper li.gfield.gfield_error, 
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.gform_wrapper .gfield_error input[type=email], 
+.gform_wrapper .gfield_error input[type=number], 
+.gform_wrapper .gfield_error input[type=password], 
+.gform_wrapper .gfield_error input[type=tel], 
+.gform_wrapper .gfield_error input[type=text], 
+.gform_wrapper .gfield_error input[type=url], 
+.gform_wrapper .gfield_error select, 
+.gform_wrapper .gfield_error textarea, 
+.gform_wrapper .gfield_error.field_sublabel_above .ginput_complex input[type=text] {
+    margin-bottom: 0!important;
+}
+
+.gform_wrapper .validation_message { 
+    background-color: transparent!important;
+}
+
+.gform_wrapper li.gfield_error input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), 
+.gform_wrapper li.gfield_error textarea {
+    border: none!important;
+}
+
+
+.gform_wrapper li.gfield.gfield_error, .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+    background-color: transparent!important;
+    margin-bottom: 6px!important;
+    border: none!important;
+}
+
+.privacy .gfield_checkbox {
+    
+    input {
+        margin-top: 3px!important;   
+        vertical-align: top!important;
+    }
+    label {
+        font-size: rem-calc(13)!important;
+        a {
+            text-decoration: underline;   
+        }
+    }
+}

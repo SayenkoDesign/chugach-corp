@@ -1,0 +1,151 @@
+//  Settings (includes overrides for sass/foundation/settings.scss)
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Global
+//   2. Breakpoints
+//   3. The Grid
+//   4. Base Typography
+//   5. Off Canvas Menu
+
+
+@import '../../../node_modules/foundation-sites/scss/util/util';
+
+// 1. Global
+// ---------
+
+$global-font-size: 100%;
+$global-width: rem-calc(1200);
+$global-lineheight: 1.75;
+
+$black: #000;
+$white: #ffffff;
+
+$blue: #065D7F;
+
+$orange: #F9B02D;
+$pink: #ED4399;
+$green: #59A441;
+
+
+$primary: $blue;
+$secondary: $pink;
+
+$light-gray: #EFF3F1;
+$gray: #4A4A4A;
+$dark-gray: #252B33;
+
+
+
+$border-color: #eceaeb;
+
+$shnobel: 'Shnobel', sans-serif;
+$open-sans: 'Open Sans', sans-serif; 
+
+$transition: none;
+
+$body-background: $light-gray;
+$body-font-color: #4A4A4A;
+$body-font-family: $open-sans;
+
+
+$global-margin: 22px;
+$global-padding: 10px;
+$global-weight-normal: normal;
+$global-weight-bold: 700;
+$global-radius: 0;
+$global-text-direction: ltr;
+
+
+// 2. Breakpoints
+// --------------
+
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 980px,
+  xlarge: 1024px,
+  xxlarge: 1200px,
+  xxxlarge: 1440px
+);
+// must match $breakpoints
+$breakpoint-classes: (small medium large xlarge xxlarge xxxlarge);
+
+
+// 3. The Grid
+// -----------
+
+$grid-row-width: $global-width;
+$grid-column-count: 12; // usually 12
+$grid-column-gutter: (
+  small: 30px,
+  medium: 20px,
+  large: 20px
+);
+$grid-column-align-edge: true;
+$block-grid-max: 8;
+
+
+// 4. Base Typography
+// ---------
+
+$header-font-family: $shnobel;
+$header-font-weight: 400;
+$header-font-style: normal;
+
+/// Styles for headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading styles.
+/// @type Map
+$header-styles: (
+  small: (
+    'h1': ('font-size': 40, 'line-height': 62/50),
+    'h2': ('font-size': 32, 'line-height': 50/40),
+    'h3': ('font-size': 26, 'line-height': 40/30),
+    'h4': ('font-size': 22, 'line-height': 35/24),
+    'h5': ('font-size': 18, 'line-height': 26/18),
+    'h6': ('font-size': 16, 'line-height': 26/16),
+  ),
+  large: (
+    'h1': ('font-size': 50 ),
+    'h2': ('font-size': 40 ),
+    'h3': ('font-size': 30 ),
+    'h4': ('font-size': 24 ),
+    'h5': ('font-size': 21 ),
+    'h6': ('font-size': 16 ),
+  ),
+) !default;
+
+// get value example: map-deep-get($header-styles, large, h3, font-size)
+
+$header-color: $primary;
+$header-lineheight: 1.4;
+$header-margin-bottom: 30px;
+$small-font-size: 14px;
+$header-small-font-color: $dark-gray;
+
+$paragraph-font-family: $open-sans;
+$paragraph-font-style: normal;
+$paragraph-font-weight: normal;
+$paragraph-font-size: 16px;
+$paragraph-line-height: 1.75;
+$paragraph-font-color: #454C54;
+$paragraph-margin-bottom: 22px;
+
+$anchor-color: $primary;
+$anchor-color-hover: scale-color($primary, $lightness: -20%);
+
+
+$accordion-item-background-hover: #fff;
+$accordion-content-background: #eff3f2;
+$accordion-content-border: 1px solid #f1f1f1;
+
+$tab-background: #ffffff;
+$tab-content-background: transparent;
+$tab-background-active: #ffffff;
+$tab-item-font-size: 16px;
+$tab-item-padding: 20px;
+$tab-content-padding: 20px;
+
+$box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1); 
+
+$hr-border: 1px solid $border-color;

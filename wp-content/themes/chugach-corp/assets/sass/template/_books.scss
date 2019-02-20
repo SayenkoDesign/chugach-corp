@@ -1,0 +1,311 @@
+// Archive Projects
+
+
+.post-type-archive-book {
+    
+    .site-content {
+        background-color: #f9f9f9;  
+        padding-bottom: rem-calc(45); 
+    }
+    
+    .section-hero {
+        
+        .inner {
+            overflow: hidden;
+            position: relative;
+            height: 280px;
+            
+            @include breakpoint(xxlarge) {
+                padding-bottom: 20%; 
+            }
+        }
+     
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 120%;
+                position: absolute;
+                z-index: 2;
+                left: 0;
+                top: -5%;
+                background-image: url(assets/images/books/road-icon.svg); 
+                background-size: contain;  
+                background-position: 55% top;
+                background-repeat: no-repeat;
+            }
+            
+            .row {
+                padding: 0;   
+            }
+        }
+        
+        .wrap {
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(90deg, rgba(#065D7F, .8) 0%, rgba(#ED4399, .8) 40%,  rgba(#F9B02D, .8) 60%, rgba(#ED4399, .8) 100%);          
+            
+            .align-middle  {
+                height: 100%;
+                padding: 0; 
+                position: relative;
+                z-index: 4;
+            }
+            
+            h1,
+            h3 {
+                color: #fff;   
+            }
+            
+            h1 {
+                text-align: center;   
+            }
+            
+            h3 {
+                margin-bottom: rem-calc(10);
+                
+                @include breakpoint(large) {
+                    margin-bottom: 0;   
+                }
+            }
+            
+            @include breakpoint(large) {
+                .shrink {
+                   flex: 0 0 auto!important;   
+                }
+                
+                .align-middle .row .column:last-child {
+                    margin-left: auto;   
+                }
+            }
+        }
+        
+    }
+
+    .grid {
+        margin-top: rem-calc(40);   
+    }
+    
+}
+
+
+.post-type-archive-book,
+.single-family .wish-list-books {
+    
+    .grid .column-block {
+        margin-bottom: rem-calc(30);   
+    }
+    
+    article {
+        background-color: #fff;
+        box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1);
+        position: relative;
+        padding-bottom: rem-calc(30);
+        
+        @include breakpoint(small only) {
+            max-width: rem-calc(280);
+            margin: 0 auto;
+        }
+
+        .thumbnail {
+            display: block;
+            min-height: 290px;
+            display: flex;
+            align-items: center;
+            background-color: $light-gray;
+            
+            
+            img {
+                margin: 0 auto;
+            }
+        }
+        
+        .panel {
+            border-radius: 0 0 8px 8px;  
+            padding: rem-calc(15); 
+        }
+        
+        h3 {
+            color: #4A4A4A;
+            font-family: $open-sans;
+            font-size: rem-calc(16);
+            line-height: 1.75;
+            text-transform: none;
+            margin-bottom: rem-calc(5);
+        }
+        p {
+            color: #979797;
+            font-size: rem-calc(16);
+            line-height: 1.375;   
+        }
+        
+        .price {
+            padding: rem-calc(0 15 15);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%; 
+            
+            p {
+                color: #979797;
+                line-height: 1.375;   
+            }
+        }
+    }
+}
+
+
+.post-type-archive-book {
+    
+    .facetwp-custom-filters {
+        background-color: $orange;
+        
+        
+        .edge {
+            position: relative;
+            z-index: 3;
+            line-height: 0;
+            
+            &.top {
+                transform: translateY(-50%); 
+            }
+            
+            &.bottom {
+                transform: translateY(50%);    
+            }
+        }
+    }
+    
+    .facetwp-facet {
+        margin: 0;   
+    }
+    
+    .facetwp-counter {
+        display: none;   
+    }
+        
+    .filters {
+        
+        padding: rem-calc(10 0);   
+        
+        @include breakpoint(large) {
+            padding: 0;   
+        }
+        
+        margin-bottom: 0;
+        
+        @include breakpoint(large) {
+            text-align: center;
+            .show-for-large {
+                > * {
+                    display: inline-block;  
+                }
+            }
+        }
+        
+        button {
+            cursor: pointer; 
+            min-width: 100px!important;  
+            margin-bottom: 0;
+        }
+        
+        .hide-for-large > button {
+            @include button-defaults();
+            background-color: transparent;
+            border: 3px solid #FFFFFF;
+            border-radius: 23px;
+            box-shadow: $box-shadow;
+            padding: rem-calc(9 15)!important;
+            color: #fff;
+               
+        }
+    }
+        
+    .filters button,
+    .facetwp-radio, {
+                        
+        @include breakpoint(large) {
+            @include button-defaults();
+            border: 3px solid #FFFFFF;
+            border-radius: 23px;
+            box-shadow: $box-shadow;
+            color: #fff;
+            padding: rem-calc(9 15)!important;
+            margin: rem-calc(0 10);
+            
+            &:hover {
+                background-color: #fff;
+                color: $orange;   
+            }
+        }
+    }
+    
+    .facetwp-type-radio {        
+        .facetwp-radio {
+            background-image: none;
+            
+            &.checked {
+                background-color: #fff;
+                color: $orange;
+            }
+        }
+    }
+    
+}
+
+
+.post-type-archive-book,
+.single-family .wish-list-books {
+    
+    article {
+        cursor: pointer;   
+    }
+    
+    .thumbnail {
+        overflow: hidden;   
+        position: relative;
+    }
+    
+    .description {
+        background: $dark-gray;
+        color: #fff;
+        padding: rem-calc(15);
+        position: relative;
+        transform: translateY(50%);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease;
+        font-size: rem-calc(14);
+        opacity: 0;
+        
+        &:after {
+            content: '';
+            width: 26px;
+            height: 26px;
+            background: $dark-gray;
+            bottom: -13px;
+            left: calc(50% - 13px);
+            transform: rotate(45deg);
+            position: absolute;
+            pointer-events: none;	
+        } 
+         
+    }
+    
+    article:hover .description {
+        transform: translateY(0%);
+        margin-bottom: 26px;
+        opacity: 1;
+    }    
+}
+
+.single-family .wish-list-books .description {
+    display: none;
+}

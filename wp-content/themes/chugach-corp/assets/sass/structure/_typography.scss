@@ -1,0 +1,76 @@
+// Typography
+
+/* Typography resets */
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; 
+}
+
+body {
+	font-family: $paragraph-font-family;
+	font-style: $paragraph-font-style;
+	font-weight: $paragraph-font-weight;
+	font-size: $paragraph-font-size;  
+	color: $paragraph-font-color;
+	//-webkit-font-smoothing: antialiased;
+}
+
+a {
+	text-decoration: none;
+}
+
+strong {
+	font-weight: 700;	
+}
+		
+/* Headings
+--------------------------------------------- */	
+		
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $blue;
+    font-family: $header-font-family;	
+    text-transform: uppercase;
+}
+
+h1 {
+    text-transform: uppercase;   
+}
+
+h2, 
+h3 {
+    text-transform: uppercase;
+}
+
+p, li {
+    line-height: $paragraph-line-height;
+    
+}
+
+p, ul {
+    margin-bottom: $paragraph-margin-bottom;	
+}
+
+p:last-child {
+    //margin-bottom: 0;   
+}
+
+ul:not([class]),
+ol:not([class]) {
+    width: auto; 
+    overflow: hidden;
+    margin: rem-calc(0 0 $global-margin 0);
+    
+    li {
+        margin-left: rem-calc(20);    
+    }
+    
+}
+
+ol:not([class]) {
+    list-style: decimal;
+}

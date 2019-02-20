@@ -1,0 +1,344 @@
+// Archive
+
+.facetwp-filters {
+    
+    background-color: $white;
+    box-shadow: 1px 1px 6px 0 #979797;
+    margin: 0 0 $global-margin;
+    padding: $global-margin $global-margin $global-margin*1.5;
+    text-align: center;
+    
+    @include breakpoint(large) {
+        padding: $global-margin $global-margin 0;   
+    }
+        
+    .wrap {   
+    
+        @include breakpoint(large) {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;   
+        }
+    
+        > * {
+            flex-grow: 1; 
+            display: block;
+            margin-bottom: 0!important; 
+             
+            padding: rem-calc($global-padding);
+            
+            @include breakpoint(large) {
+                display: inline-block;
+                margin-bottom: $global-margin!important; 
+            }
+        }
+    }
+    
+    > span {
+        color: $dark-gray;
+        margin: 0 5px 0 0;
+        position: relative;
+        line-height: 2.25;
+        
+        @include breakpoint(large) {
+            text-align: right;  
+            flex: 0 0 auto!important;
+            max-width: 100%; 
+        }
+    }
+    
+    .facetwp-facet,
+    .facetwp-sort {
+ 
+    }
+    
+    select {
+        outline: none;
+        color: #979797;
+        background-color: #fff;
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px;
+        background-image: url("data:image/svg+xml;utf8,<svg width='16' height='9' viewBox='0 0 16 9' xmlns='http://www.w3.org/2000/svg'><title>Fill 4</title><path d='M.758.75C.588.91.5 1.13.5 1.343c0 .212.09.433.258.594l6.617 6.316c.17.16.392.246.624.246.23 0 .453-.085.622-.246l6.617-6.316c.347-.33.347-.858 0-1.19-.348-.33-.9-.33-1.247 0L8 6.47 2.004.75C1.658.427 1.097.427.758.75z' fill='#969696' fill-rule='evenodd'/></svg>");
+        background-position: 96% 50%;
+        background-repeat: no-repeat;
+        padding: rem-calc(8 30 8 10);	
+        font-size: rem-calc(14);
+        border: 1px solid #979797;
+        height: rem-calc(36);        
+    }
+    
+    .reset {
+        flex: 0 0 auto;
+        max-width: 100%;   
+    }
+    
+    button {
+        padding: rem-calc(8 30);
+        @include button;
+        padding: rem-calc(8 3);
+        cursor: pointer;
+    }
+}
+
+
+
+
+.facetwp-pager .facetwp-page {
+    padding: 0;
+    
+    &.active {
+        font-weight: 400;   
+    }
+}
+
+.posts-pagination,
+.facetwp-pager {
+    @include clearfix;
+    
+    $nav-arrow-width: 25px;
+    $nav-arrow-height: 43px;
+    
+    @mixin nav-arrow( $color: '#eaeaea', $width: 25, $height: 43 ) {
+        $color: str-replace($color, '#', '');
+        $width: strip-unit($width);
+        $height: strip-unit($height);
+        background-image: url("data:image/svg+xml,%3Csvg width='#{$width}' height='#{$height}' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.777 42.26c.505.484 1.196.74 1.86.74.664 0 1.354-.256 1.858-.74L24.23 23.29c.504-.484.77-1.122.77-1.787 0-.663-.266-1.301-.77-1.787L4.495.747a2.687 2.687 0 0 0-3.718 0 2.443 2.443 0 0 0 0 3.574l17.875 17.182L.777 38.686c-1.009.996-1.009 2.604 0 3.574z' fill='%23#{$color}' fill-rule='evenodd'/%3E%3C/svg%3E ");
+    }
+    
+    .nav-links {
+        @include list-reset;
+        display: flex;
+        justify-content: center;
+        margin: rem-calc(45 0);
+        position: relative;
+        
+        a span {
+            @include screen-reader-text;   
+        }
+        
+        .number {
+            margin-top: rem-calc(-5);
+            a,
+            > span {
+                display: inline-block;
+                //font-family: $header-font-family;
+                font-size: rem-calc(16);
+                line-height: 1.75;
+                color: $gray;
+                margin: rem-calc(0 10 0);
+                
+                @include breakpoint(large) {
+                    margin: rem-calc(0 20 0);
+                }
+                
+                &:after {
+                    content: '';
+                    display: none;
+                    width: 100%;
+                    height: 2px;
+                    background: transparent;   
+                } 
+            }
+        }
+        
+        .active a,
+        .number span.current {
+            color: $pink;
+            
+            &:after {
+                //background: $dark-gray;   
+            }
+        }
+        
+        &:not(.active) a:hover {
+            color: $pink;
+        }
+                  
+        .nav-previous,
+        .nav-next {
+            
+            a {
+                display: block;
+                width: rem-calc( $nav-arrow-width );
+                height: rem-calc( $nav-arrow-height );  
+                            
+                &:before,
+                &:after {
+                    display: block;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    height: $nav-arrow-height; 
+                    background-size: auto $nav-arrow-height;
+                    
+                }
+                
+                &.disable {
+                    cursor: default; 
+                    opacity: 0;  
+                }
+            }
+        }
+                        
+        .nav-previous {
+            margin-right: auto;
+            padding-right: rem-calc(20);
+            
+            @include breakpoint(medium) {
+                left: 0; 
+            }
+            
+            a {
+                &:before {
+                    content: '';
+                    @include nav-arrow;
+                    transform: rotate(180deg);
+                    
+                }
+                
+                &:not(.disable):hover:before {
+                    @include nav-arrow('#ED4399');
+                }   
+            }
+            
+        }
+        
+        .nav-next {
+            margin-left: auto;
+            padding-left: rem-calc(20);
+            
+            @include breakpoint(medium) {
+                right: 0; 
+            }
+            
+            a {
+                &:before {
+                    content: '';
+                    @include nav-arrow;
+                }
+                
+                 &:not(.disable):hover:before {
+                    @include nav-arrow('#ED4399');
+                }   
+            }
+        }
+        
+    }
+    
+}
+
+
+.filters {
+    
+    button {
+        &:focus {
+          outline: none;
+        }   
+    }
+
+    .dropdown-pane {
+        position: absolute;
+        z-index: 10;
+        display: block;
+        width: 280px;
+        visibility: hidden;
+        background-color: #fff;
+        box-shadow: $box-shadow;
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(10);
+        
+        &.is-open {
+            visibility: visible;
+        }
+        
+        &.center {
+            left: 50%!important;
+            transform: translateX(-50%)!important; 
+        }
+    }
+    
+    @include breakpoint(medium down) {
+        margin-bottom: rem-calc(40);
+    }
+
+}
+
+.filter-button-group {
+        
+    @include breakpoint(medium down) {
+        
+        ul {
+            @include list-reset;   
+            padding: rem-calc(5 0);
+        }
+        
+        li {
+            display: block; 
+            padding: rem-calc(5 0);  
+        }
+        
+        button {
+            width: 100%;  
+            
+            &.active {
+                color: $green;   
+            }
+        }
+    }
+    
+    @include breakpoint(large) {
+        text-align: center; 
+        overflow: hidden;
+        
+        ul {
+           margin: 0 -18px 50px;
+           visibility: hidden;
+           
+           li {
+                display: inline-block;
+                padding: 0 18px;   
+           }
+           
+           > * { 
+                visibility: visible; 
+           }
+           
+           > li button:after { 
+                content: '';
+                display: block;
+                width: 0;
+                background: $green;
+                height: 2px;
+                position: relative;
+                margin-top: rem-calc(2);
+           }
+           
+           > li button:not(.active):after { 
+                transition: width .3s; 
+           }
+                  
+           &:hover > li button:after { 
+                width: 0; 
+           }
+           
+           > li button:not(.active):hover,
+           > li button.active { 
+                &:after {
+                    width: 100%;
+                }
+           }
+        }
+        
+        button {
+            
+            color: #454C54;
+            font-family: $header-font-family;
+            font-size: rem-calc(18);
+            letter-spacing: 0.7px;
+            line-height: 1.444444444;
+            text-transform: uppercase;
+            cursor: pointer;
+            
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+
+.is-dropdown-submenu {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    min-width: 200px;
+    background: #fff;
+}
+
+.is-dropdown-submenu.js-dropdown-active {
+    display: block;
+}
+
+@include breakpoint(medium) {    
+    .is-dropdown-submenu-parent {
+        position: relative;   
+    }
+    .dropdown.menu .is-dropdown-submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}

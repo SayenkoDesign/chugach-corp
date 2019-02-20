@@ -1,0 +1,49 @@
+html, body {
+	height: 100%;
+    
+    .site-content {
+        background: #fff;  
+    }
+      
+}
+
+#wpadminbar {
+    z-index: 999999;   
+}
+
+.page-error-404 {
+    .section-default {
+        padding-top: rem-calc(45);   
+    }
+}
+
+.no-results {
+    padding-top: rem-calc(45);   
+    text-align: center;   
+}
+
+.page-template-default {
+ 
+    .section-hero {
+        background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
+        text-align: center;  
+        
+        .wrap {
+            padding-top: rem-calc(10);   
+        }
+        
+        .edge {
+            line-height: 1;
+            
+            img {
+                display: block;   
+            }
+        }
+    }
+    
+    .section.default,
+    .section-default {
+        padding: rem-calc(45 0 75);   
+    }
+    
+}

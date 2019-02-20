@@ -1,0 +1,255 @@
+@mixin button-defaults() {
+    background-color: transparent;
+    display: inline-block;
+    margin: 0 auto;    
+    text-align: center;
+    transition: none;
+    text-transform: uppercase;
+    text-decoration: none!important;
+	font-family: $open-sans;
+	font-size: 11px;
+    line-height: 20px;
+    font-weight: 700;
+	text-align: center;
+    min-width: 114px;
+    max-width: 280px;
+    
+    &:hover {
+        background-color: transparent;   
+    }
+  
+    &.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+    
+    svg {
+       position: absolute;
+       left: 10px;
+       top: 50%;
+       transform: translateY(-50%);
+    } 
+    
+}
+
+
+@mixin button {
+    @include button-defaults;
+    background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
+    padding: 3px!important;
+    border-radius: 23px;  
+    display: inline-block;  
+    min-width: 116px;  
+    transition: none;
+    
+    color: $white;
+    
+    &:visited {
+        color: $white;
+    }
+    
+    &:focus,
+    &:active,
+    &:hover {
+        color: $pink;
+        
+        span {
+            background: $white;   
+            
+        }
+    }  
+    
+    span {
+        display: block;
+        border-radius: 23px;
+        text-align: center;
+        padding: rem-calc(5 15);
+    }
+    
+    &.large {
+        
+        min-width: 166px;
+        
+        span {
+            padding: rem-calc(9 15)!important;   
+        }
+    }
+    
+    &.xlarge {
+        
+        min-width: 240px;
+        
+        span {
+            padding: rem-calc(15 15)!important;   
+        }
+    }
+   
+}
+
+@mixin button-reverse {
+
+    color: $pink;
+    
+    &:visited {
+        color: $pink;
+    } 
+    
+    &:focus,
+    &:active,
+    &:hover {
+        color: $white;
+        
+        span {
+            background: transparent;   
+            
+        }
+    }  
+                
+    span {
+        background: #fff;
+        border-radius: 23px;
+    }    
+}
+
+@mixin button-white {
+    @include button-defaults;
+    border-radius: 23px;  
+    display: inline-block;  
+    min-width: 116px;  
+    transition: none;
+    border: 3px solid #fff;
+    background: transparent;  
+    color: $white;
+    
+    
+    span {
+        background: transparent;   
+    }
+    
+    
+    &:visited {
+        color: $white;
+    } 
+    
+    &:focus,
+    &:active,
+    &:hover {
+        color: $white;
+        background: $white;
+        border: none;
+        
+        span {
+            background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);   
+        }
+    }  
+   
+}
+
+
+a.button {
+    @include button;
+    
+    &.reverse {
+        @include button-reverse;   
+    }
+    
+    &.white {
+        @include button-white;  
+        
+        &.large {
+        
+            min-width: 166px;
+            
+            span {
+                padding: rem-calc(9 15)!important;   
+            }
+            
+            &:hover {
+                span {
+                    padding: rem-calc(12 15)!important;   
+                }
+            }
+        }
+        
+        &.xlarge {
+            
+            min-width: 240px;
+            
+            span {
+                padding: rem-calc(15 15)!important;   
+            }
+            
+            &:hover {
+                span {
+                    padding: rem-calc(18 15)!important;   
+                }
+            }
+        }
+    }
+    
+    
+}
+
+form .button {
+    @include button;
+    @include button-reverse; 
+}
+
+
+.site-main {
+ 
+    .button {
+        min-width: 166px;   
+    }
+    
+}
+
+.button-group {
+    
+    margin: 0 -10px;
+ 
+    a {
+        margin: 0 auto 20px;   
+    }
+    
+    @include breakpoint(medium) {
+        a {
+            margin: 0 10px $global-margin;   
+        }
+    }
+    
+}
+
+button.read-more {
+    
+	color: $blue;
+    cursor: pointer;
+	font-size: rem-calc(14);
+	line-height: 1.357142857;
+    text-transform: capitalize;
+    position: relative;
+    padding-left: 12px;
+    
+    &:before {
+        content: '+';
+        font-size: rem-calc(12);
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    &:after {
+        content: '';
+        display: block;
+        width: 46px;
+        height: 3px;
+        background-color: $orange;
+        margin-top: 7px;  
+    }
+    
+    &[aria-expanded='true'] {
+        &:before {
+            content: '-';
+        }
+    }
+}

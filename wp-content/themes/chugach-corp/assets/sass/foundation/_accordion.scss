@@ -1,0 +1,45 @@
+// Default Accordion styles
+
+.accordion {
+	margin: 0 auto;
+ }
+
+.accordion-item {
+	
+	list-style-type: none;
+	
+	.accordion-title {
+		display: block;
+		position: relative;
+        padding-left: rem-calc(26); 
+        padding-bottom: rem-calc(5);
+        
+        &:before {
+            color: $dark-gray;
+            line-height: 1;
+            margin-top: -4.5px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            content: "+";   
+        }
+        
+        h4 {
+            margin-bottom: 0;   
+        }
+	}
+}
+
+
+.accordion-item.is-active {
+    .accordion-title:before {
+        content: '-';
+    }
+}
+
+
+.accordion-content {
+    display: none;
+    padding: rem-calc(10 0 10 30);
+}

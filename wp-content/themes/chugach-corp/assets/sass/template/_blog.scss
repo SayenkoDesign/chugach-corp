@@ -1,0 +1,115 @@
+/* CSS Document */
+
+.blog {
+    
+    .page-title {
+        text-align: center;
+        padding: rem-calc(45 0 45);   
+        margin: 0;
+    }
+    
+    .site-content {
+        background-color: #f9f9f9; 
+        padding-bottom: rem-calc(45);   
+    }
+       
+ 
+    .post-hero {
+        display: block;
+        background: $gray;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;        
+        padding-top: 99%;  
+        
+        &:hover {
+            opacity: .8;   
+        }
+     }
+     
+    @include breakpoint(large) {
+        .large-6 .post-hero {
+            padding-top: 65%;
+        }
+    }
+    
+    .large-12 article .row {
+        margin-left: 0;
+        margin-right: 0;  
+
+    }
+    
+    .large-12 article .row  .column:first-child {
+            padding: 0;   
+    }
+    
+    article {
+        
+        background-color: #fff;
+        
+        box-shadow: $box-shadow;
+        height: 100%;
+                
+        header {
+            padding: 15px 20px 40px;   
+        }
+        
+        header.large-6  {
+            
+            @include breakpoint(large) {
+                padding: 40px 42px;
+            }
+        }
+        
+        .posted-on {
+            color: #4A4A4A;
+            display: block;
+            font-family: $open-sans;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            line-height: 1.666666667;
+            margin-bottom: 25px;
+        }
+        
+        h3 {
+            
+            margin-bottom: 20%;
+                        
+            a {
+                color: $blue;
+                
+                &:hover {
+                    color: $dark-gray;   
+                }
+            }
+        }
+        
+        .read-more {
+            margin-top: rem-calc(30);
+        }
+        
+        .more {
+            color: #4A4A4A;
+            font-size: rem-calc(20);
+            line-height: 1.45;
+            padding-bottom: rem-calc(8);
+            border-bottom: 3px solid #F9B02D;
+        }
+    }
+    
+}
+
+
+.posts-pagination,
+.facetwp-pager {
+    .nav-previous,
+    .nav-next {
+        
+        @include breakpoint(medium) {
+            position: absolute; 
+            top: 50%;
+            transform: translateY(-50%); 
+        }   
+    }
+}

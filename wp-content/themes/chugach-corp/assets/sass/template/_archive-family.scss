@@ -1,0 +1,140 @@
+// Families Archive
+
+
+.post-type-archive-family {
+ 
+    .section-hero {
+        background: linear-gradient(270deg, #ED4399 0%, #065D7F 100%); 
+        text-align: center;  
+        
+        .wrap {
+            padding-top: rem-calc(10);   
+        }
+        
+        .edge {
+            line-height: 1;
+            
+            img {
+                display: block;   
+            }
+        }
+    }
+    
+    
+    .content-area {
+        padding: rem-calc(10 0 0 0);  
+        
+        .share-heading {
+            margin-bottom: rem-calc(15);   
+        }
+        
+        .share-icons {
+            margin-bottom: rem-calc(15);   
+        }
+        
+        .no-results {
+            margin-top: rem-calc(30);
+            text-align: center;   
+        }
+    }
+        
+}
+
+
+.post-type-archive-family,
+.section-families {
+    .grid {
+        
+        padding: rem-calc(75 0);
+     
+        article {
+            margin-bottom: rem-calc(75);
+            
+            .panel {
+                display: block;
+                background: #fff;
+                box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1);
+                border-radius: 0 0 8px 8px;   
+                border-top: 7px solid #d7d7d7;
+                
+                &:hover {
+                    box-shadow: 0 11px 12px 0 rgba(0,0,0,0.2);
+                }
+                
+                @include breakpoint(small only) {
+                    max-width: rem-calc(280);
+                    margin: 0 auto;
+                }
+            }
+            
+            .details {
+                padding: rem-calc(10 15 15 15);
+                
+                @include breakpoint(large) {
+                    padding: rem-calc(10 30 15 30);
+                }
+                
+                text-align: center;
+                
+                h3 {
+                    text-transform: uppercase; 
+                }
+                
+                p {
+                    color: #4A4A4A; 
+                    font-size: rem-calc(14); 
+                    line-height: 1.785714286; 
+                    margin-bottom: 0;
+                }
+            }
+            
+            .thumbnail {
+                width: 105px;
+                height: 105px;
+                margin: 0 auto;
+                border-radius: 50%;
+                background-size: cover;
+                background-position: center top;
+                margin-top: -50px;
+            }
+            
+            .progress {
+                background-color: #ebebeb;
+                margin-bottom: rem-calc(10);
+                
+                span {
+                    background-color: $blue;
+                    display: block;
+                    height: 8px;
+                }
+            }
+            
+            .still-needed {
+                padding: rem-calc(10 10 15 10);
+                
+                @include breakpoint(large) {
+                    padding: rem-calc(10 20 15 20);
+                }
+                
+                p {
+                   margin-bottom: 0; 
+                   color: #4A4A4A;  
+                   line-height: 1.5625; 
+                   text-align: center;
+                }
+                
+            }
+
+        }
+        
+    }
+}
+
+.section-families {
+    .grid {
+        
+        padding: rem-calc(75 0 0);
+        
+    }
+    
+}

@@ -1,0 +1,395 @@
+//
+// Front Page
+//
+
+.home {
+    
+    .section-hero {
+        
+        .inner {
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            
+            @include breakpoint(xxlarge) {
+                height: 600px;
+                padding-bottom: 30%; 
+            }
+        }
+        
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: transparent;
+                background: linear-gradient(270deg, rgba(#ED4399,.8) 0%, rgba(#F9B02D, .9) 100%);
+            }
+        }
+        
+        .row {
+            height: 100%;
+            padding: 45px 0;   
+        }
+        
+        .hero-caption {
+            position: relative;
+            z-index: 3;             
+            
+            text-align: center;
+            
+            h1,
+            > * {
+                color: #fff; 
+            }
+            
+            p {
+                font-family: $shnobel;
+                font-size: 30px;      
+                text-transform: uppercase; 
+                margin: rem-calc(5 0 0);       
+                
+                > * {
+                    display: inline-block;   
+                    vertical-align: middle;
+                }
+                
+                button {
+                    cursor: pointer;
+                    
+                    &:hover svg {
+                        opacity: .9;
+                    }
+                }
+                
+                span {
+                    padding-left: 10px;
+                    position: relative;
+                    top: -5px;   
+                }
+            }
+
+        }
+        
+        .shape {
+            position: relative;
+            z-index: 1;
+            line-height: 0;
+            bottom: 5%;
+            
+            svg,
+            img {
+                display: block;
+                position: absolute;
+                bottom: -2px;   
+            }
+        }
+        
+    }
+    
+    
+    
+    .site-content {
+        padding-bottom: 0;   
+    }
+    
+}
+
+.section-numbers {
+            
+    .wrap {
+        padding-top: rem-calc(45);
+    }
+    
+    .row-2 {
+        max-width: 980px;
+        margin: 45px auto 15px;   
+    }
+    
+    @include breakpoint(large) {
+        .shrink {
+            flex: 0 0 auto!important;
+        }
+    }
+    
+    .grid {
+        padding-top: rem-calc(25);
+        
+        .row {
+            @include breakpoint(small only ) {
+                justify-content: center;   
+            }
+        }
+    }
+    
+    .grid-item {
+        
+        @include breakpoint(small only ) {
+            text-align: center;   
+        }
+                
+        h4 {                        
+            .count {
+                font-size: rem-calc(66);                   
+            }
+            
+            div {
+                display: inline-block;    
+            }
+            
+            span {
+                display: inline; 
+                margin-right: rem-calc(10);
+            }
+            
+            .description {
+                
+            }
+        }
+        
+        p {
+            letter-spacing: 0.7px;
+            font-size: rem-calc(18);
+            line-height: 1.44;
+        }
+    }
+}
+
+.section-donate {
+    
+    background-image: url(assets/images/home/donate-background.png);
+    background-size: cover;
+    background-position: center;
+    padding: rem-calc(80 0);
+    
+    @include breakpoint(medium down) {
+        text-align: center;
+    }
+    
+    @include breakpoint(large) {
+        
+        padding: rem-calc(40 0);
+        
+        .shrink {
+            flex: 0 0 auto!important;
+        }
+        
+        h2,
+        p {
+            margin-bottom: 0;   
+        }
+        
+        .element-button {
+            padding-left: rem-calc(15);   
+        }
+
+    } 
+    
+    h2 {
+        color: #fff;
+        margin-bottom: $paragraph-margin-bottom;   
+    }
+}
+
+.section-how {
+    
+    padding-top: rem-calc(30);
+    
+    .section-title {
+        text-align: center;
+        
+        h2 {
+            font-size: rem-calc(map-deep-get($header-styles, small, h3, font-size)); 
+            
+            @include breakpoint(large) {
+                font-size: rem-calc(map-deep-get($header-styles, large, h3, font-size)); 
+            }
+            
+            display: inline-block;
+            
+            padding-left: 73px;
+            position: relative;
+            min-height: 63px;
+            padding-top: 15px;
+            
+            &:before {
+                content: '';
+                display: block;
+                width: 63px;
+                height: 63px;
+                background-image: url(assets/images/home/play-icon-pink.svg);   
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+ 
+    .grid {
+        margin-top: rem-calc(45);
+        
+        @include breakpoint(large) {
+            position: relative;
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 118px;
+                transform: translateX(-50%);
+                width: 60%;
+                background-image: linear-gradient(to right, $pink 50%, transparent 50%);
+                background-size: 36px 100%; 
+                height: 4px;
+            }
+            
+            .chevron {
+                position: absolute;
+                top: calc(118px - 17.5px);
+                
+                &.left {
+                    left: calc(33% - 19.5px);  
+                }
+                
+                &.right {
+                    left: calc(66.6666667% - 19.5px); 
+                }
+            }
+        }
+    }
+    
+    .grid-item {
+        max-width: 320px;
+        margin: 0 auto;
+        text-align: center;
+        
+        p.description {
+            font-size: rem-calc(16);
+            color: #4A4A4A;   
+        }
+        
+        .link {
+            position: relative;
+            font-size: 21px;
+            line-height: 1.380952381;
+            
+            &:after {
+                content: '';
+                display: block;
+                width: 38px;
+                height: 6px;
+                background-image: url(assets/images/home/orange-bottom-line.svg);
+                background-size: 38px 6px;
+                background-position: center bottom;
+                margin: 0 auto;
+            }
+        }
+    }
+    
+    .thumbnail {
+        display: block;
+        height: 236px;
+        width: 236px;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        border-radius: 50%;
+        margin-bottom: rem-calc(40);
+        
+        &:before {
+            content: '';
+            background-image: url(assets/images/home/how-it-works-circle-torn-edge.svg);
+            width: 252px;
+            height: 253px;
+            position: absolute;
+            top: -14px;
+            left: -6px; 
+            z-index: 3;  
+        }
+        
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            background-color: rgba( #000, .4);  
+        }
+        
+        .icon {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+           width: 80%;
+           height: auto;  
+           z-index: 4; 
+        }
+    }
+    
+}
+
+.section-families {
+    position: relative;
+    
+    &:before {
+        content: '';
+        background-image: url(assets/images/home/books-on-shelf-icon.svg);
+        background-size: contain;
+        background-position: center top;   
+        background-repeat: no-repeat;
+        display: block;
+        width: 100%;
+        max-width: 290px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        @include breakpoint(medium) {
+            max-width: 340px;
+        }
+    }
+    
+    header {
+        
+        padding: rem-calc(80 0 0);
+        position: relative;
+        z-index: 2;
+
+        .icon {
+            margin-right: 10px; 
+            position: relative;
+            top: -15px;
+        }
+        
+        h2 {
+            line-height: 1;
+            margin-bottom: 0;   
+        }
+    }
+    
+    .row {
+        position: relative;
+        z-index: 2;   
+    }
+    
+    .grid article {
+        margin-bottom: rem-calc($global-margin)!important;   
+    }
+    
+}

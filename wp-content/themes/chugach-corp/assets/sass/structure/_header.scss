@@ -1,0 +1,166 @@
+/*
+Header
+---------------------------------------------- */
+
+// Fix for sticky header
+.logged-in .site-header.fixed {
+    //top: 46px;
+
+    @include breakpoint(xlarge) {
+        top: 32px;
+    }      
+ }
+ 
+
+.site-header {
+        
+    @include breakpoint(xlarge) {
+                        
+        &.fixed {
+            position: fixed!important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 99;
+            .wrap {
+                position: relative;                
+                @include breakpoint(xlarge) {                
+                    background: linear-gradient(270deg, rgba(#ED4399,.8) 0%, rgba(#F9B02D, .9) 100%);
+                    background: $white;
+                    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
+                } 
+                
+            }
+            
+            .nav-primary {
+                padding: 0!important;
+                .menu .menu-item:not(.button) a {
+                    color: $dark-gray!important;
+                    
+                    &:after {
+                        background-color: $dark-gray;   
+                    }
+                }
+
+            }
+            
+            .site-title img {
+                max-height: none; 
+                //transition: all .1s ease .1s;
+            }
+            
+            
+            &.shrink {
+                
+                .site-title {
+                    img {
+                       transform-origin: center top;
+                       transform: scale(.7);
+                       width: auto;   
+                    }
+                }
+            }
+            
+            &.nav-up {
+                transform: translateY(-400%);   
+            }
+            
+            &.nav-down {
+                transform: translateY(0);  
+                transition: transform .1s ease 0s; 
+            }
+                
+        }
+        
+        
+    
+    }
+}
+
+
+.site-header {
+    
+    width: 100%;
+    z-index: 99;
+    position: relative;
+    
+    @include breakpoint(xlarge) {
+        .fixed-menu & {
+            position: absolute;
+        }
+    }
+                
+    .wrap {
+        
+        background-color: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
+        
+        @include breakpoint(xlarge) {
+            
+            .fixed-menu & {
+                background-color: transparent; 
+                box-shadow: none;
+            }
+        }
+        
+        .site-branding {
+            text-align: left;              
+            @include breakpoint(xlarge) {
+                text-align: left; 
+                min-height: 10px;
+                width: 200px; 
+                margin: 0;
+            }
+        }
+     
+        .site-title {
+                        
+            padding: rem-calc(10 0);
+            display: inline-block;
+            
+            vertical-align: middle;
+            max-width: 90%;
+            
+            @include breakpoint(xlarge) {
+                max-width: none;
+                position: absolute;
+                top: 0;
+                padding: 0;
+                z-index: 12;
+            }
+                                    
+            a {
+                display: inline-block;
+                
+                @include breakpoint(xlarge) {
+                    img {
+                        background: #fff;
+                        padding: 10px;
+                        box-shadow: 0 0 6px 0 #000;  
+                        max-width: 160px; 
+                    }   
+                }
+            }
+            
+        }
+
+    }
+
+    
+    .menu-toggle {
+        position: absolute;
+        top: 20px;
+        right: rem-calc(map-get($grid-column-gutter, small) );  
+        z-index: 999;
+        
+        @include breakpoint(large) {
+            right: rem-calc(map-get($grid-column-gutter, large) );  
+        }
+    }
+    
+    .shrink {
+        flex: 0 0 auto!important;   
+    }
+                
+}
