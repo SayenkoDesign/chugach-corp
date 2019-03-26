@@ -22,35 +22,37 @@ $global-lineheight: 1.75;
 $black: #000;
 $white: #ffffff;
 
-$blue: #065D7F;
+$lime: #64A70B;
+$green: #046A38;
 
-$orange: #F9B02D;
-$pink: #ED4399;
-$green: #59A441;
+$blue: #4298B5;
 
+$gold: #FFA300;
 
-$primary: $blue;
-$secondary: $pink;
+$red: #BF0D3E;
 
 $light-gray: #EFF3F1;
 $gray: #4A4A4A;
 $dark-gray: #252B33;
 
 
+$primary: $blue;
+$secondary: $green;
 
 $border-color: #eceaeb;
 
-$shnobel: 'Shnobel', sans-serif;
-$open-sans: 'Open Sans', sans-serif; 
+$roboto: 'Roboto', sans-serif;
+$georgia: Georgia,Times,Times New Roman,serif; 
+$lato: 'Lato', sans-serif;
 
 $transition: none;
 
-$body-background: $light-gray;
+$body-background: #ffffff;
 $body-font-color: #4A4A4A;
-$body-font-family: $open-sans;
+$body-font-family: $lato;
 
 
-$global-margin: 22px;
+$global-margin: 24px;
 $global-padding: 10px;
 $global-weight-normal: normal;
 $global-weight-bold: 700;
@@ -90,7 +92,7 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ---------
 
-$header-font-family: $shnobel;
+$header-font-family: $georgia;
 $header-font-weight: 400;
 $header-font-style: normal;
 
@@ -98,41 +100,41 @@ $header-font-style: normal;
 /// @type Map
 $header-styles: (
   small: (
-    'h1': ('font-size': 40, 'line-height': 62/50),
-    'h2': ('font-size': 32, 'line-height': 50/40),
-    'h3': ('font-size': 26, 'line-height': 40/30),
-    'h4': ('font-size': 22, 'line-height': 35/24),
-    'h5': ('font-size': 18, 'line-height': 26/18),
-    'h6': ('font-size': 16, 'line-height': 26/16),
+    'h1': ('font-size': 40, 'line-height': 58/50),
+    'h2': ('font-size': 30, 'line-height': 35/30),
+    'h3': ('font-size': 22, 'line-height': 32/22),
+    'h4': ('font-size': 18, 'line-height': 26/18),
+    'h5': ('font-size': 17, 'line-height': 24/17),
+    'h6': ('font-size': 15, 'line-height': 24/15),
   ),
   large: (
     'h1': ('font-size': 50 ),
-    'h2': ('font-size': 40 ),
-    'h3': ('font-size': 30 ),
-    'h4': ('font-size': 24 ),
-    'h5': ('font-size': 21 ),
-    'h6': ('font-size': 16 ),
+    'h2': ('font-size': 30 ),
+    'h3': ('font-size': 22 ),
+    'h4': ('font-size': 18 ),
+    'h5': ('font-size': 17 ),
+    'h6': ('font-size': 15 ),
   ),
 ) !default;
 
 // get value example: map-deep-get($header-styles, large, h3, font-size)
 
-$header-color: $primary;
+$header-color: $dark-gray;
 $header-lineheight: 1.4;
 $header-margin-bottom: 30px;
 $small-font-size: 14px;
 $header-small-font-color: $dark-gray;
 
-$paragraph-font-family: $open-sans;
+$paragraph-font-family: $lato;
 $paragraph-font-style: normal;
 $paragraph-font-weight: normal;
 $paragraph-font-size: 16px;
-$paragraph-line-height: 1.75;
-$paragraph-font-color: #454C54;
-$paragraph-margin-bottom: 22px;
+$paragraph-line-height: 1.5;
+$paragraph-font-color: $gray;
+$paragraph-margin-bottom: 24px;
 
-$anchor-color: $primary;
-$anchor-color-hover: scale-color($primary, $lightness: -20%);
+$anchor-color: $lime;
+$anchor-color-hover: $green;
 
 
 $accordion-item-background-hover: #fff;

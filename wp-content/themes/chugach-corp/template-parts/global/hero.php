@@ -36,33 +36,59 @@ if( ! class_exists( 'Hero_Section' ) ) {
                      $this->get_name() . '-hero'
                 ]
             );
-        }
-        
-        
-        /**
-         * After section rendering.
-         *
-         * Used to add stuff after the section element.
-         *
-         * @since 1.0.0
-         * @access public
-         */
-        public function after_render() {
-                    
-            $shape = sprintf( '<div class="edge"><img src="%spage/hero-bottom.png" /></edge>', trailingslashit( THEME_IMG ) );
+            
+            $background_image       = $this->get_fields( 'background_image' );
+            $background_position_x  = strtolower(  $this->get_fields( 'background_position_x' ) );
+            $background_position_y  = strtolower( $this->get_fields( 'background_position_y' ) );
+            $background_overlay     = $this->get_fields( 'background_overlay' );
+            
+            if( ! empty( $background_image ) ) {
+                $background_image = _s_get_acf_image( $background_image, 'hero', true );
                 
-            return sprintf( '</div></div></div></div>%s</%s>', $shape , esc_html( $this->get_html_tag() ) );
-        }      
+                $this->add_render_attribute( 'wrapper', 'class', 'has-background' );
+                $this->add_render_attribute( 'background', 'class', 'background-image' );
+                $this->add_render_attribute( 'background', 'style', sprintf( 'background-image: url(%s);', $background_image ) );
+                $this->add_render_attribute( 'background', 'style', sprintf( 'background-position: %s %s;', 
+                                                                          $background_position_x, $background_position_y ) );
+                
+                if( true == $background_overlay ) {
+                     $this->add_render_attribute( 'background', 'class', 'background-overlay' ); 
+                }
+                                                                          
+            }             
+        } 
+        
+        
+        public function after_render() {
+            
+            $shape = '';
+            
+            if( ! empty( $this->get_fields( 'background_image' ) ) ) {
+                $shape = sprintf( '<div class="shape"><img src="%sglobal/hero-bottom.png" /></div>', trailingslashit( THEME_IMG ) ); 
+            }
+            return sprintf( '</div></div></div>%s</%s>', $shape, esc_html( $this->get_html_tag() ) );
+        }
+           
         
         // Add content
         public function render() {
-            
-            $fields = $this->get_fields(); 
+                        
+            $data_attributes =  ['data-aos' => 'fade-up', 'data-aos-delay' => 200 ];
             
             $heading        = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : get_the_title();
-            $heading        = _s_format_string( $heading, 'h1' );
+            $heading        = _s_format_string( $heading, 'h1', $data_attributes );
+            
+            $data_attributes = ['data-aos' => 'zoom-in', 'data-aos-delay' => 600 ];
+            $subheading = empty( $this->get_fields( 'subheading' ) ) ? '' : _s_format_string( $this->get_fields( 'subheading' ), 'h2', $data_attributes );
+            
+            $data_attributes = ['data-aos' => 'zoom-in', 'data-aos-delay' => 1000 ];
+            $description = empty( $this->get_fields( 'description' ) ) ? '' : _s_format_string( $this->get_fields( 'description' ), 'p', $data_attributes );
 
-            return sprintf( '<div class="row"><div class="column">%s</div></div>', $heading );
+            return sprintf( '<div class="row align-middle"><div class="column"><div class="hero-content">%s%s%s</div></div></div>', 
+                            $heading,
+                            $subheading,
+                            $description
+                         );
         }
     }
 }

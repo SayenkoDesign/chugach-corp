@@ -35,6 +35,7 @@
         } else {
             // Scroll Up
             if((delta+navbarHeight) + st + $(window).height() < $(document).height()) {
+                
                 $('.site-header').removeClass('nav-up').addClass('nav-down');
             }
         }

@@ -1,0 +1,40 @@
+.reveal-overlay {
+    
+}
+
+#modal-search.reveal {
+    
+    .row {        
+        .columns {
+            text-align: right;
+        }
+    }
+    
+    .close-button {
+        position: relative;
+		top: inherit!important; 
+		right: inherit!important;   
+    }
+    
+    .search-form {
+        text-align: center;
+        
+        .search-field {
+            padding: 20px 10px;
+            border: none;
+            border-radius: 0;
+            background-color: #FFFFFF;
+            width: 100%;
+            
+            @include breakpoint(large) {
+                
+                padding: 30px 40px;
+                font-size: 26px; 
+                
+                &::placeholder {
+                    font-size: 26px;   
+                }
+            }
+        }
+    }
+}

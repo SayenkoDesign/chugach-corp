@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Element_Section extends Element_Base {
 
 	
-    static public $count;
+    static public $count = 0;
     
     /**
 	 * Get section name.
@@ -42,9 +42,7 @@ class Element_Section extends Element_Base {
 	 * @return array Default data.
 	 */
 	protected function get_default_data() {
-		
-        self::$count ++;
-        
+		        
         $default_data = parent::get_default_data();
         
         return [
@@ -111,11 +109,13 @@ class Element_Section extends Element_Base {
 			]
 		);
         
-        $this->add_render_attribute(
-			'wrapper', 'id', [
-				'section-' . $id
-			]
-		);
+        if( empty( $this->add_render_attribute( 'id' ) ) ) {
+            $this->add_render_attribute(
+                'wrapper', 'id', [
+                    'section-' . $id
+                ]
+            );   
+        }
         
         
         // Process settings
@@ -177,5 +177,9 @@ class Element_Section extends Element_Base {
 
 		return $html_tag;
 	}
+        
+    function __destruct() {
+        self::$count ++;
+    }
     
 }

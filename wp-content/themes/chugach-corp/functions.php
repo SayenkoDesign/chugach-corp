@@ -32,6 +32,10 @@ if ( ! function_exists( '_s_setup' ) ) :
  		
 		define( 'THEME_NAME', sanitize_title( wp_get_theme() ) );
 		define( 'THEME_VERSION', '1.0' );	
+        
+        define( 'CHUGACH_COMMUNITY_BLOG_URL', trailingslashit( 'https://community.chugach.com' ) );	
+        define( 'CHUGACH_COMMUNITY_BLOG_SHARE_STORY', sprintf( '%s#share-story', CHUGACH_COMMUNITY_BLOG_URL ) );	
+        define( 'BlOG_VIDEO_CAT', 9 );	
 		
     	define( 'GOOGLE_API_KEY', '' );	
         
@@ -68,6 +72,8 @@ if ( ! function_exists( '_s_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary Menu', '_s' ),
+            'secondary' => esc_html__( 'Secondary Menu', '_s' ),
+            'mobile-cta' => esc_html__( 'Mobile CTA', '_s' ),
             'footer' => esc_html__( 'Footer Menu', '_s' )
 		) );
 
@@ -118,6 +124,7 @@ function _s_widgets_init() {
 	$sidebars = array(
  		'footer-1'          => esc_html__( 'Footer 1', '_s' ),
         'footer-2'          => esc_html__( 'Footer 2', '_s' ),
+        'footer-3'          => esc_html__( 'Footer 3', '_s' ),
 	);  
 
 	// Loop through each sidebar and register.
@@ -145,7 +152,7 @@ add_action( 'login_enqueue_scripts', '_s_login_stylesheet' );
 
 // changing the login logo
 function _s_login_logo() {
-	$logo = sprintf('%slogo@2x.png', trailingslashit( THEME_IMG ) );
+	$logo = sprintf('%sheader/logo.svg', trailingslashit( THEME_IMG ) );
 	printf( '<style type="text/css">h1 a { background-image:url(%s)!important; }</style>', $logo );
 }
 add_action('login_head', '_s_login_logo');

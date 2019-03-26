@@ -11,44 +11,9 @@ input[type="search"] {
 	 @include box-sizing(border-box);
 }
 
-
-/*
-.site-main {
-
-	ul, ol, p {
-		margin-bottom: $paragraph-margin-bottom;
-	}
-	
-	ul, ol {
-			
-		li {			
-			list-style-position: outside;
-			
-			ul {
-				margin-bottom: 0;	
-			}
-		}
-	}
-	
-	ul:not([class]),
-	ol:not([class]) {
-		list-style-position: outside;
-		margin-left: 30px;
-		
-		li {
-			padding: 0 0 5px 0;
-		}
-	}	
-	
-	ol li {
-		list-style-type: decimal;
-	}
-
-	
-	li, p {
-		line-height: $paragraph-line-height;  
-	}
-	
+[aria-hidden="true"] button,
+button[aria-hidden="true"] {
+    &:focus {
+        outline: none;   
+    }
 }
-
-*/

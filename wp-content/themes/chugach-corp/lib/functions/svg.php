@@ -4,7 +4,17 @@ function get_svg( $type = '' ) {
 	
 	$svgs = array(  
     
-        'play-white' => '<?xml version="1.0" encoding="utf-8"?><svg height="63" viewBox="0 0 63 63" width="63" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#fff" stroke-width="3" transform="translate(2 2)"><circle cx="29.5" cy="29.5" r="29.5"/><path d="m48.354102 30-28.854102 14.427051v-28.854102z" stroke-linecap="square" stroke-linejoin="round"/></g></svg>',        
+    'hero-bottom' => '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="128">
+  <path d="M1441 128.043v-.021h-.055c.019.006.037.014.055.021z"/>
+  <path fill="#FFF" d="M505.316 69.838C423.074 77.531 254.635 85.154 0 92.711v35.311h1440.945c-82.925-33.224-189.941-59.059-321.051-77.506C923.188 22.84 628.68 58.299 505.316 69.838z"/>
+  <path fill="#D7D5D5" d="M1440 128.043c-82.933-33.234-189.968-59.076-321.105-77.527C922.188 22.84 627.68 58.299 504.316 69.838 422.074 77.531 253.635 85.154-1 92.711V75.809c154.096 5.293 254.165 6.469 300.207 3.525 235.334-10.887 341.722-32.459 377.398-38.701C895.762 3.377 1119.095.746 1191 .746c92.023 0 175.023 4.143 249 12.43v114.867z"/>
+</svg>',
+    
+        'play-white' => '<?xml version="1.0" encoding="utf-8"?><svg height="63" viewBox="0 0 63 63" width="63" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#fff" stroke-width="3" transform="translate(2 2)"><circle cx="29.5" cy="29.5" r="29.5"/><path d="m48.354102 30-28.854102 14.427051v-28.854102z" stroke-linecap="square" stroke-linejoin="round"/></g></svg>',   
+        
+        'play-hero' => '<?xml version="1.0" encoding="utf-8"?><svg height="103" viewBox="0 0 103 103" width="103" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform="translate(9 9)"><circle cx="43" cy="43" fill="#ffa300" r="35"/><circle cx="43" cy="43" opacity=".6" r="39" stroke="#fff" stroke-width="8"/><circle cx="42.5" cy="42.5" opacity=".3" r="47" stroke="#fff" stroke-width="9"/><path d="m61 42-28 14v-28z" fill="#fff"/></g></svg>',   
+        
+        'play-video' => '<?xml version="1.0" encoding="utf-8"?><svg height="103" viewBox="0 0 103 103" width="103" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform="translate(9 9)"><circle cx="43" cy="43" fill="#ffa300" r="35"/><circle cx="43" cy="43" opacity=".6" r="39" stroke="#fff" stroke-width="8"/><circle cx="42.5" cy="42.5" opacity=".3" r="47" stroke="#fff" stroke-width="9"/><path d="m61 42-28 14v-28z" fill="#fff"/></g></svg>',     
                                                     
         'arrow-left' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 22"><g fill="none" fill-rule="evenodd"><path class="arrow" 
         fill="#007ABE" d="M13 0a1 1 0 0 0-2 0L0 10a1 1 0 0 0 0 2l11 10h2v-2L3 11l10-9V0z"/><path class="line" stroke="#007ABE" stroke-linecap="square" stroke-width="3" d="M3 11h26"/></g></svg>',
@@ -12,9 +22,28 @@ function get_svg( $type = '' ) {
         'arrow-right' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 22"><g fill="none" fill-rule="evenodd"><path class="arrow" 
         fill="#007ABE" d="M18 22a1 1 0 0 0 2 0l11-10a1 1 0 0 0 0-2L20 0h-2v2l10 9-10 9v2z"/><path class="line" stroke="#007ABE" stroke-linecap="square" stroke-width="3" d="M28 11H2"/></g></svg>',
         
+        'arrow-down' => '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 61 61">
+  <defs>
+    <circle id="b" cx="24.5" cy="24.5" r="24.5"/>
+    <filter id="a" width="138.8%" height="138.8%" x="-17.3%" y="-17.3%">
+      <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.592 0 0 0 0 0.592 0 0 0 0 0.592 0 0 0 1 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(5 5)">
+    <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+    <use fill="#fff" xlink:href="#b"/>
+    <path fill="#424242" d="M13.879 19.904a1.426 1.426 0 0 0 0 1.933L23.584 32.1c.248.263.574.401.914.401.34 0 .666-.138.915-.4l9.705-10.263c.51-.538.51-1.394 0-1.933a1.236 1.236 0 0 0-1.829 0L24.5 29.2l-8.792-9.295a1.259 1.259 0 0 0-1.828 0z"/>
+  </g>
+</svg>',
+        
         'chevron' => '<svg width="22" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M.379.404a1.426 1.426 0 0 0 0 1.933L10.084 12.6c.248.263.574.401.914.401.34 0 .666-.138.915-.4l9.705-10.263c.51-.538.51-1.394 0-1.933a1.236 1.236 0 0 0-1.829 0L11 9.7 2.206.404a1.259 1.259 0 0 0-1.828 0z" fill="#D7D5D5" fill-rule="evenodd"/></svg>',
         
         'chevron-pink' => '<svg width="37" height="37" xmlns="http://www.w3.org/2000/svg"><g transform="rotate(-90 18.5 18.5)" fill="none" fill-rule="evenodd"><circle stroke="#ED4399" stroke-width="3" fill="#FFF" cx="18.048" cy="18.048" r="16.548"/><path d="M10.224 14.662a1.05 1.05 0 0 0 0 1.425l7.149 7.559a.921.921 0 0 0 .674.295c.25 0 .49-.102.673-.295l7.15-7.56a1.041 1.041 0 0 0 0-1.424.91.91 0 0 0-1.348 0l-6.475 6.847-6.476-6.847a.927.927 0 0 0-1.347 0z" fill="#ED4399"/></g></svg>',
+        
+        
+        'home-sections-line' => '<svg height="12" viewBox="0 0 551 12" width="551" xmlns="http://www.w3.org/2000/svg"><path d="m3 840h10.729518l12.217063-8 12.7257075 8h511.5230235" fill="none" stroke="#64a70b" stroke-linecap="square" stroke-width="3" transform="translate(-1 -830)"/></svg>',
    
         // social icons https://codepen.io/ruandre/pen/howFi
 	

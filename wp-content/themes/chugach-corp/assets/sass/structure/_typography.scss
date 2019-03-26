@@ -32,18 +32,46 @@ h3,
 h4,
 h5,
 h6 {
-	color: $blue;
-    font-family: $header-font-family;	
-    text-transform: uppercase;
+   color: $header-color;
+   
+    a {
+        color: $gray;
+        display: inline-block;
+        
+        &:hover {
+            color: $dark-gray;   
+        }
+    }
 }
 
 h1 {
-    text-transform: uppercase;   
+    font-family: $roboto;   
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
 }
 
-h2, 
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family: $header-font-family; 
+}
+
+h2 {
+    margin-bottom: rem-calc(20);
+}
+
 h3 {
-    text-transform: uppercase;
+    font-style: italic;
+}
+
+h4 {
+    letter-spacing: 0.7px;   
+}
+
+h5 {
+    // staff bios #979797   
 }
 
 p, li {

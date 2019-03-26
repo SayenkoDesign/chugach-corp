@@ -1,0 +1,61 @@
+// Scroll Reveal
+
+html.sr .load-hidden {
+    visibility: hidden;
+}
+
+// Global
+
+html.sr .section-footer-cta {
+    
+    visibility: hidden;
+    
+    h3,
+    .shrink {
+        visibility: hidden;   
+    }
+}
+
+html.sr .home {
+ 
+    .section-hero {
+      
+        h1,
+        h3,
+        button,
+        .photos,
+        .scroll-next {
+            visibility: hidden;
+        }
+    }
+    
+    .section-what {
+      
+        h2,
+        h3,
+        p {
+            visibility: hidden;
+        }
+    }
+    
+    
+    .section-mission {
+        
+        visibility: hidden;
+        
+        h1,
+        h2,
+        h3,
+        .mission-content__image,
+        .divider,
+        .links,
+        .mission-content__navigation.show-for-large {
+            visibility: hidden;
+        }
+    }
+    
+    
+}
+
+
+

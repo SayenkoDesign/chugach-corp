@@ -6,6 +6,11 @@
 .site-footer {
     
     background-color: $light-gray;
+    /*
+    background-image: url(assets/images/footer/map-contour-lines.png);
+    background-size: 1440px 327px;
+    background-position: left top;
+    */
     
     .edge {
         position: relative;
@@ -43,37 +48,51 @@
 .footer-widgets {
     
     position: relative;
-    margin-bottom: rem-calc(10);
+    margin-bottom: rem-calc(15);
     
-    @include breakpoint(xlarge) {
-        margin-bottom: 0; 
+    .column:first-child {
+        > * {
+            max-width: 190px;
+            margin: 0 auto; 
+            
+            @include breakpoint(medium) {
+                margin: 0;
+            }
+        }
     }
     
     .widget-title {
-        color: $blue;
-        margin-bottom: rem-calc(10);   
-    }
-    
-    .widget_text {
-        @include breakpoint(xlarge) {
-            padding-top: rem-calc(60);
-        }
+        margin-bottom: rem-calc(12);   
+        padding-bottom: rem-calc(7);
+        position: relative;
+        color: #666666;
+        letter-spacing: 0.66px;  
+        font-style: normal; 
+        line-height: 2;
+        border-bottom: 1px solid #dbd9d9;
+        display: inline-block;
+        min-width: 200px;
         
-        h3 {
-           margin-bottom: rem-calc(30);  
-           line-height: 1.36;
+        @include breakpoint(large) {
+            display: block;
+            border: none;
+            
+            &:after {
+                content: '';
+                width: 100%;
+                background-color: #dbd9d9;
+                height: 1px;
+                display: block;
+                
+                @include breakpoint(large) {
+                    width: calc(100% + #{rem-calc(map-get($grid-column-gutter, large))} );
+                }
+            }
         }
-        
-        margin-bottom: rem-calc(50);
     }
-
-    
+        
     .menu {
-        @include list-reset;
-        
-        @include breakpoint(medium) {
-            column-count: 2;  
-        }
+        flex-direction: column;
         
         li {
             display: block; 
@@ -82,7 +101,8 @@
             a {
                 color: #4A4A4A;
                 padding: rem-calc(5 0); 
-                font-size: rem-calc(16);  
+                font-size: rem-calc(17);  
+                line-height: 1.823529412;
                 margin-bottom: rem-calc(8); 
                 
                 &:hover {
@@ -96,24 +116,15 @@
     .widget_media_image {
         img {
             display: block;
-            margin: 0 auto;   
+            margin: 0 auto rem-calc(15);   
         }
     }
     
-    @include breakpoint(medium) {
-        
-        .column:last-child {
-            text-align: right;
-        }
-    
-        .be-social-widget {
-            display: inline-block;
-            
-            .widget-title {
-                text-align: right;   
-            }
-        }
+    .social-icons {
+        display: flex;
+        justify-content: center;  
     }
+    
 }
 
 

@@ -22,12 +22,14 @@
     
     include_once( 'includes/table-class.php' );
     
+    include_once( 'includes/theme-functions/meta.php' );
+    
     // Terms - has filter for post_type
-    include_once( 'includes/theme-functions/terms.php' );
-
+    include_once( 'includes/theme-functions/terms.php' );    
     include_once( 'includes/theme-functions/shortcodes.php' );
     include_once( 'includes/theme-functions/html.php' );
     include_once( 'includes/theme-functions/array.php' );
+    include_once( 'includes/theme-functions/attributes.php' );
 
 /****************************************
 	Functions
@@ -53,10 +55,6 @@
     
 	include_once( 'functions/gravity-forms.php' );
     
-    include_once( 'functions/gravity-forms-user-activation.php' );
-
-	include_once( 'functions/books.php' );
-    
     include_once( 'functions/blog.php' );
     
     include_once( 'functions/addtoany.php' );
@@ -64,19 +62,17 @@
     include_once( 'functions/facetwp.php' );
     
     include_once( 'functions/redirects.php' );
+
+    include_once( 'functions/rest.php' );
     
-    include_once( 'functions/members.php' );
-    
-    include_once( 'functions/user-profile.php' );
-    
-    include_once( 'functions/family.php' );
+    include_once( 'functions/aos.php' );
     
 /****************************************
 	include_onces (Foundation)
 *****************************************/
 
 include_once( 'foundation/class-foundation.php' );
-include_once( 'foundation/class-foundation-tabs.php' );
+include_once( 'foundation/class-foundation-accordion.php' );
 
 /****************************************
 	Page Builder
@@ -88,9 +84,8 @@ include_once( 'foundation/class-foundation-tabs.php' );
 	Post Types
 *****************************************/
     
-    include_once( 'post-types/cpt-book.php' );
-    include_once( 'post-types/cpt-family.php' );
-    include_once( 'post-types/cpt-people.php' );    
+    include_once( 'post-types/cpt-people.php' );  
+    include_once( 'post-types/cpt-history.php' ); 
     
 /****************************************
 	Widgets

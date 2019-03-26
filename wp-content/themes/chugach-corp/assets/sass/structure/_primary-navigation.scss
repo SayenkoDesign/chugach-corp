@@ -3,14 +3,14 @@
 .nav-primary {
 	display: none;
     width: 100%;
-    background-color: $primary;
+    background-color: $green;
     
     @include breakpoint(large down) {
         padding: 0;
     }
     
     .menu > .menu-item > a {
-        text-transform: uppercase;   
+        //text-transform: uppercase;   
     }
 
     .menu-item {  
@@ -41,7 +41,7 @@
     
         a {
             color: $white;
-            font-family: $open-sans;
+            font-family: $lato;
             font-size: rem-calc(16);
             font-weight: 400;
             margin: 0;
@@ -54,10 +54,11 @@
     }
     
     .sub-menu {
-        background-color: scale-color($primary, $lightness: 20%);
+        @include list-reset;
+        background-color: $lime;
         
         ul {
-            margin: 0!important;   
+            @include list-reset;   
         }
         
         li img {
@@ -96,7 +97,7 @@
 		@include list-reset;
 		background: transparent;
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-end;
         
         
 		.menu-item {
@@ -123,7 +124,7 @@
 
 		// First level
 		> li.menu-item {
- 			padding: rem-calc(8 10);
+ 			padding: rem-calc(8 30);
  			text-align: left;
             position: relative;
             
@@ -133,24 +134,6 @@
                 line-height: 1.75;
                 padding: 0!important;                
  			}
-
-			&:not(.button) a {
-                &:after {
-                    content: '';
-                    display: block;
-                    
-                    height: rem-calc(2);
-                    background-color: $dark-gray;   
-                    
-                    transform: scaleX(0);  
-                    transition: transform 250ms ease-in-out;
-                    
-                    /*
-                    from left: transform-origin:100% 50%;
-                    from right  transform-origin:  0% 50%;
-                    */
-                }
-            }
             
             &.current-menu-item,
 			&.current_page_parent,
@@ -160,11 +143,7 @@
 
 				> a {
 					background: transparent;
-                    color: $dark-gray;
-                    
-                    &:after {
-                        transform: scaleX(1);    
-                    }
+                    color: $lime;
  				}
                 
 			}
@@ -175,87 +154,14 @@
                 
 				> a {
 					background: transparent;
-                    color: $dark-gray; 
-                    
-                    
-                    &:after {
-                        transform: scaleX(1);  
-                    }
+                    color: $lime; 
 				}
 
 			}
             
             a:focus {
-                color: $dark-gray; 
-            }
-            
-            &.button {
-                padding: rem-calc(6 0 3 0)!important;
-                
-                a {
-                    &:after {
-                        display: none;   
-                    }
-                }
-            
-            }
-            
-            &.login,
-            &.logout {
-                a {
-                    @include button;
-                    @include button-reverse;    
-                }
-            }
-            
-            
-            &.donate,
-            &.my-account {
-                a {
-                    @include button;   
-                }
-            }
-            
-            &.donate {
-                a {                    
-                    &:before,
-                    &:after {
-                        content: '';
-                        display: block;
-                        width: 20px;
-                        height: 17px;
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        left: 20.5px;   
-                    }
-                    
-                    &:before {
-                        background-image: url(assets/images/icons/heart.svg);
-                    }
-                    
-                    &:after {
-                        background-image: url(assets/images/icons/heart-pink.svg);
-                        opacity: 0;
-                    }
-                    
-                    &:hover {
-                        &:before {
-                            opacity: 0;
-                        }
-                        
-                        &:after {
-                            opacity: 1;
-                        }
-                    }
-                    
-                    span {
-                        padding-left: 25px;   
-                        padding-right: 5px;
-                    }
-                }
-            }
-			
+                color: $lime; 
+            }            
  		}
                 
         
@@ -264,15 +170,13 @@
             position: absolute;
             top: 100%;
             left: auto;
-            margin-left: 5px;
+            margin-left: -15px;
             min-width: 190px;
             transform: translateY(-400%);
             padding: rem-calc(10 0);
             opacity: 0;
             z-index: -2;
             background-color: $white;
-            //transition-delay: .25s; 
-            //transition: opacity .25s ease 0s; // , transform .75s ease 0s
             box-shadow: 1px 1px 6px 0 #979797;
             
             .menu-item {
@@ -290,19 +194,8 @@
                     
                     color: $dark-gray;
                     
-                    &:after {
-                        content: '';
-                        display: block;
-                        width: rem-calc(18);
-                        height: rem-calc(2);
-                        background-color: $green;  
-                        transition: width .3s; 
-                    }
-                    
-                    &:focus {
-                        &:after {
-                            width: 100%;   
-                        }
+                    &:hover {
+                        color: $lime;   
                     }
 				}
                 
@@ -405,16 +298,19 @@
 	}
 }
 
-.nav-primary .menu .mobile-link {
+.menu .mobile-link {
     
 	@include breakpoint(xlarge) {
 		display: none!important;
 	}
 }
 
-.nav-primary .menu .cta {
-    background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
-    text-align: center;
+
+.secondary-menu-button {
+    width: 34px;
+    span {
+        display: block;
+        font-size: 12px;  
+        margin-top: 5px; 
+    }
 }
-
-

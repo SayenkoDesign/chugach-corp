@@ -94,7 +94,7 @@
                 display: inline-block;
                 a {
                     @include button;
-                    @include button-reverse;
+                    @include button-secondary;
                     min-width: 160px;
                 }
             }

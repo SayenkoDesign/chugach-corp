@@ -1,7 +1,8 @@
 // A11Y Toggle
 
-.entry-content [aria-hidden='true'],
-.entry-content [data-a11y-toggle]:not([aria-controls]) {
+.entry-content div[aria-hidden='true'],
+.entry-content a[data-a11y-toggle]:not([aria-controls]),
+.entry-content button[data-a11y-toggle]:not([aria-controls]) {
   display: none;
 }
 

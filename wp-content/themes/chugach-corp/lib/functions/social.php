@@ -12,8 +12,8 @@ function _s_get_social_icons( $profiles = array(), $post_id = 'options' ) {
         // defaults
         $profiles = array( 
               'linkedin' => get_field( 'linkedin', $post_id ),
-              'facebook' => get_field( 'facebook', $post_id ),
               'youtube' => get_field( 'youtube', $post_id ),
+              'facebook' => get_field( 'facebook', $post_id ),
               'instagram' => get_field( 'instagram', $post_id ),
               'pinterest' => get_field( 'pinterest', $post_id ),
               'twitter' => get_field( 'twitter', $post_id )

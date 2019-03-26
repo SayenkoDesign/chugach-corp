@@ -1,0 +1,58 @@
+// Gravity Forms Reset
+
+body .gform_wrapper .field_sublabel_hidden_label .ginput_complex.ginput_container input[type=text], 
+.gform_wrapper .field_sublabel_hidden_label .ginput_complex.ginput_container select {
+    margin-bottom: 0!important;
+}
+
+body .gform_wrapper li.hidden_label input {
+    margin-top: 0!important;
+}
+
+body .gform_wrapper .field_sublabel_hidden_label div.ginput_container,
+body .gform_wrapper .hidden_label div.ginput_container {
+    margin-top: 0!important;
+}
+
+body .gform_wrapper ul li.field_description_below div.ginput_container_checkbox, 
+body .gform_wrapper ul li.field_description_below div.ginput_container_radio {
+    margin-top: 0!important;
+}
+
+body .gform_wrapper .gfield_label {
+    font-weight: normal;   
+}
+
+body .gform_wrapper .gfield_checkbox li input, 
+body .gform_wrapper .gfield_checkbox li input[type=checkbox], 
+body .gform_wrapper .gfield_radio li input[type=radio],
+body .gform_wrapper.gf_browser_chrome .gfield_checkbox li input, 
+body .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox], 
+body .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio] {
+    margin-top: 0;
+    margin-right: rem-calc(5);
+}
+
+
+body .gchoice_select_all, 
+body .gform_wrapper ul.gfield_checkbox li input[type=checkbox]:checked+label, 
+body .gform_wrapper ul.gfield_radio li input[type=radio]:checked+label {
+    font-weight: normal!important;
+}
+
+
+@media only screen and (max-width: 641px) {
+    body .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=image]):not([type=file]) {
+        line-height: inherit!important;
+        min-height: 0!important;
+    }
+}
+
+
+.gform_wrapper .gform_footer {
+    padding: 0 0 10px!important;
+    
+    .button {
+        cursor: pointer;   
+    }
+}

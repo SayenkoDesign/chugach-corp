@@ -4,7 +4,6 @@
 // fix reveal overflow, we don't want it hidden
  body.is-reveal-open {
     //position: fixed; 
-    overflow-y: scroll!important;
 }
 
 .reveal:focus{

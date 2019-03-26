@@ -1,0 +1,193 @@
+// Stories
+
+.section-stories {
+    
+    margin-bottom: rem-calc(55);
+    
+    header { 
+    
+        position: relative;
+        padding-left: rem-calc(60);
+        margin-bottom: rem-calc(15);
+        
+        &:before {
+            content: '';
+            background-image: url(assets/images/stories/icon.png);
+            background-size: contain;
+            width: 46px;
+            height: 44px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    
+        h3 {
+            color: $gray;
+            margin-top: rem-calc(5);
+            margin-bottom: rem-calc($global-margin); 
+        }
+    }
+    
+    @include breakpoint(large) {
+        header {
+            display: flex;
+            flex-wrap: wrap;   
+            
+            h3 {
+                margin-left: rem-calc(20);   
+            }
+        }
+    }
+    
+    .posts-container {
+        
+        > * {
+            margin-bottom: rem-calc($global-margin);   
+        }
+    }
+    
+    .slick-arrows {
+        
+        @include breakpoint(large) {
+            margin-bottom: 0;      
+        }
+        
+    }
+    
+    article {
+        position: relative;
+        
+        > a {
+            display: block;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            line-height: 1;
+            padding-top: calc(55% - 5px);
+            
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: linear-gradient(90deg, rgba(#64A70B, .8) 0%, rgba(#4298B5, .8) 100%);   
+            }
+            
+            > * {
+                z-index: 2;   
+            }
+        }
+        
+        &:hover {
+            > a:after {
+                background: linear-gradient(90deg, rgba(#64A70B, .9) 0%, rgba(#4298B5, .9) 100%); 
+            }
+        }
+        
+        .post-title {
+            position: absolute;  
+            bottom: 0;
+            left: 0; 
+            color: #fff;
+            font-family: $lato;
+            line-height: 1.2;
+            font-style: normal;
+        }
+    }
+
+    .featured-post {
+        
+        article {
+            
+            box-shadow: $box-shadow;
+            
+            a {
+                padding-top: 55%;
+            }
+            
+            .featured {
+                display: inline-block;
+                position: absolute;
+                top: 12px;
+                right: 0;
+                color: #fff;
+                
+                span {
+                   display: block;
+                   padding: 5px 10px 5px 5px;
+                   position: relative; 
+                   background-color: $red;
+                   
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        width: 20px;
+                        height: 100%;
+                        top: 0;
+                        left: -10px;
+                        background: $red;
+                        transform-origin: bottom left;
+                        transform: skew(-12deg,0deg);   
+                        z-index: -1;
+                    }
+                }
+            }
+            
+            .post-title {
+                margin: 0; 
+                padding: rem-calc(50 15 15);    
+            }
+            
+            @include breakpoint(large) {
+                margin-bottom: 20px; 
+                
+                .post-title {
+                    padding: rem-calc(25); 
+                }
+            }
+            
+            
+        }
+                
+    }
+    
+    .posts {
+        article {
+            box-shadow: $box-shadow;
+                        
+            .post-title {
+                padding: rem-calc(15);   
+            }
+        }
+        
+        .post article {
+            margin-bottom: 20px;   
+        }
+    }
+    
+    ul {
+            
+        @include list-reset;
+        display: flex;
+        
+        li {
+            
+            margin: 0;
+            padding: 0;
+            
+            &:first-child {
+                margin-right: rem-calc(40);   
+            }
+            
+            a {
+                font-size: rem-calc(18);
+                @include fancy-link();
+            }
+        }
+    }
+    
+}

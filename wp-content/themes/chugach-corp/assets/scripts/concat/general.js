@@ -4,7 +4,16 @@
 
 	// Load Foundation
 	$(document).foundation();
+    
+    $('body').addClass('document-ready');
    
+    $('.scroll-next').on('click',function(e){
+        
+        $.smoothScroll({
+            offset: -100,
+            scrollTarget: $('main section:first-child'),
+        });
+    });
     
     // Toggle menu
     

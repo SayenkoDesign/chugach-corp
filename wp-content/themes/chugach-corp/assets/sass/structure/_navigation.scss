@@ -5,12 +5,38 @@
 // Default menu (active after a fresh WordPress install)
 .menu {
 	@include list-reset;
-
-	ul {
-		@include list-reset;
-	}
+        
+    @include breakpoint(large) {
+        display: flex;
+    }
+    
+    li {
+        
+    }
 
 } // .menu
+
+
+.js-superfish {
+    
+    .menu-item > a:focus ~ ul.sub-menu,
+    .menu-item.focus > ul.sub-menu,
+    .menu-item:hover > ul.sub-menu {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none;
+    }
+    
+    
+    .menu-item:focus {
+        position: static;
+    }
+    
+    .menu-item > a:focus + ul.sub-menu,
+    .menu-item.sfHover > ul.sub-menu {
+        opacity: 1;
+    }   
+}
 
 
 .no-touchevents a[href^="tel:"]:not(.button) {
@@ -38,3 +64,12 @@
 		text-align: right;
 	} // &.nav-next
 } // .comment-navigation, .posts-navigation, .post-navigation
+
+
+.fancy-link {
+    @include fancy-link;   
+}
+
+button {
+    cursor: pointer;   
+}

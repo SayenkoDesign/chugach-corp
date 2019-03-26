@@ -1,0 +1,164 @@
+// Leadership Page
+
+.template-leadership {
+    
+    .section-hero {
+             
+        .hero-content {
+            
+            h1 {
+                position: relative;
+                
+                &:after {
+                    @include two-lines-horizontal;
+                    display: block;
+                    margin: 0 auto;   
+                }
+            }
+        }
+                
+    }
+    
+    
+    .section-leadership {
+        
+        padding-top: rem-calc(45);
+        
+        header {
+            text-align: center;
+            margin-bottom: rem-calc(30);
+                        
+            h2 {
+                position: relative;   
+                               
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 70px;
+                    background: $lime;
+                    height: 3px;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);  
+                    margin-top: rem-calc(15);
+ 
+                }
+            }
+        }
+        
+        .grid {
+            @include breakpoint(small only) {
+               justify-content: center;
+            }
+        }
+        
+        .details {
+            position: relative;
+            
+            h4 {
+                color: #4A4A4A;
+                font-size: rem-calc(18);
+                line-height: 1.444444444;
+                font-family: $lato;
+            }
+            
+            p {
+                color: #979797;   
+                font-size: rem-calc(15);
+                line-height: 1.333333333;
+            }
+            
+            .more {
+                .no-touchevents & {
+                    display: none;   
+                }
+            }
+            
+            .linkedin {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                width: 20px;
+                height: 20px;
+                color: #2d71a2;
+            }
+        }
+        
+        
+        .shrink {
+            flex: 0 0 auto!important;
+        }
+        
+        .column__expander > div {
+            position: relative;
+            z-index: 2;   
+        }
+        
+        .entry-content {
+            
+            padding: rem-calc(40 0 40) calc(100% / 12);
+            
+            > h3 {
+                font-style: normal;   
+                margin-bottom: rem-calc(10);
+                border-left: 2px solid $lime;
+                
+            }
+            
+            .position {
+                color: #979797;
+                font-size: rem-calc(15);
+                line-height: 1.333333333;   
+            }
+            
+            h3,
+            .position,
+            .accordion {
+                padding-left: rem-calc(10);
+            }
+            
+        }
+        
+        @include breakpoint(large) {
+            .photo {
+                padding: rem-calc(25 45 0 0);
+                
+                img {
+                    transform: translateY(15px);  
+                    box-shadow: $box-shadow; 
+                }   
+            }
+        }
+        
+        .accordion-title {
+            padding-bottom: rem-calc(15);
+            h4 {
+                font-family: $lato;
+                font-size: rem-calc(18);
+                color: $gray;   
+            }
+        }
+        
+        .accordion-item .accordion-title:before {
+            margin-top: -9.5px;
+        }
+        
+        .accordion-content {
+            padding-top: 0;
+            
+            > p:first-child,
+            ul.links {
+                //margin-top: -9px;   
+            }
+            
+            ul {
+                @include bullets($lime);   
+            }
+            
+            > *:last-child {
+                margin-bottom: 0;   
+            }
+        }
+    }
+    
+}

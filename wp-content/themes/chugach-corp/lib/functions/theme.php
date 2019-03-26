@@ -1,28 +1,10 @@
 <?php
-function content_span_inside_h2($content) 
-{
-  	$a = array('<h2>','</h2>');
-	$b = array('<h2><span>','</span></h2>');
-	$content = str_replace( $a, $b, $content );
-  	return $content;
-}
-add_filter( 'the_content', 'content_span_inside_h2' );
-
-
-function acf_span_inside_h2( $value, $post_id, $field ) {
-	
-    $a = array('<h2>','</h2>');
-	$b = array('<h2><span>','</span></h2>');
-	$value = str_replace( $a, $b, $value );	
-	// return
-	return $value;
-}
-add_filter('acf/format_value/type=wysiwyg', 'acf_span_inside_h2', 10, 3);
 
 
 // Add modals to footer
 function _s_footer() {
     _s_get_template_part( 'template-parts/modal', 'video' );   
+    _s_get_template_part( 'template-parts/modal', 'search' );  
 }
 add_action( 'wp_footer', '_s_footer' );
 
@@ -37,36 +19,44 @@ function tiny_mce_remove_unused_formats($init) {
 
 add_filter('tiny_mce_before_init', 'tiny_mce_remove_unused_formats' );
 
-
-
-// Enable the Styles dropdown menu item
-// Callback function to insert 'styleselect' into the $buttons array
-function my_mce_buttons_2( $buttons ) {
-    array_unshift( $buttons, 'styleselect' );
-    return $buttons;
+// Exclude page templates from being used more than once.
+function _s_remove_page_template( $pages_templates ) {
+    
+    // List of templates that can be used more than once
+    $excludes = [ 'page-templates/page-builder.php', 'page-templates/redirect.php' ];
+    
+    
+    // Don't touch anyhting below
+    
+    
+    global $post;
+    
+    // Bail if not a page edit screen
+    if( 'page' != get_post_type( $post ) ) {
+        return $pages_templates;
+    }
+    
+    // Get list of templates
+    $templates = get_meta_values( '_wp_page_template', 'page' ); 
+    
+    // Bail if no templates set
+    if( empty( $templates ) ) {
+        return $pages_templates;
+    }
+            
+    if( ! empty( $excludes ) ) {
+        foreach( $excludes as $exclude ) {
+            unset( $templates[$exclude] );
+        }
+    }
+    
+    foreach( $templates as $template ) {
+        if( $template != get_page_template_slug( $post->ID ) ) {
+            unset( $pages_templates[$template] );
+        }
+    }
+           
+    return $pages_templates;
 }
 
-add_filter('mce_buttons_2', 'my_mce_buttons_2');
-
-
-// Add the Button CSS to the Dropdown Menu
-// Callback function to filter the MCE settings
-function my_mce_before_init_insert_formats( $init_array ) {
-
-    // Define the style_formats array
-    $style_formats = array(
-    
-    // Each array child is a format with it's own settings
-    array(
-        'title' => 'Button',
-        'selector' => 'a',
-        'classes' => 'button',
-        )
-    );
-    
-    // Insert the array, JSON ENCODED, into 'style_formats'
-    $init_array['style_formats'] = json_encode( $style_formats );
-    return $init_array;
-}
-
-add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
+add_filter( 'theme_page_templates', '_s_remove_page_template', 20 );

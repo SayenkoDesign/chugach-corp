@@ -23,35 +23,112 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2B70AA">
 <meta name="msapplication-TileColor" content="#2B70AA">
 <meta name="theme-color" content="#ffffff">
-
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
+    <?php
+    $search_button = sprintf('<button class="search-button" data-open="modal-search"><img src="%sheader/search-mobile.svg" class="" /><span class="screen-reader-text">Search</span></button>', trailingslashit( THEME_IMG ) );
+    ?>
+
+    <div class="off-canvas-wrapper">
+    <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-content-scroll="false" aria-hidden="true">
+        <button class="close-button" aria-label="Close menu" type="button" data-close></button>
+        <?php
+        echo $search_button;
+        ?>
+        <nav>
+        <?php
+        
+        $args = array(
+            'theme_location' => 'secondary',
+            'menu' => 'Secondary Menu',
+            'container' => '',
+            'container_class' => '',
+            'container_id' => '',
+            'menu_id'        => 'secondary-menu',
+            'menu_class'     => 'menu js-superfish',
+            'before' => '',
+            'after' => '',
+            'link_before' => '',
+            'link_after' => '',
+            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+         );
+        wp_nav_menu($args);
+        ?>
+        </nav>
+            
+    </div>  
 
     <ul class="skip-link screen-reader-text">
         <li><a href="#content" class="screen-reader-shortcut"><?php esc_html_e( 'Skip to content', '_s' ); ?></a></li>
         <li><a href="#footer" class="screen-reader-shortcut"><?php esc_html_e( 'Skip to footer', '_s' ); ?></a></li>
     </ul>
     
-    <div class="sticky-header">   
+    <div class="header-before show-for-xlarge">
+        <div class="row">
+            <div class="column">
+                <?php
+                echo _s_get_social_icons();
+                ?>
+            </div>
+            <div class="column shrink">
+                <nav class="nav-secondary">
+                <?php
+                function add_search_button( $items, $args ) {
+                    if ( 'secondary' === $args->theme_location ) {
+                            $button = sprintf('<button class="search-button" data-open="modal-search"><img src="%sheader/search.svg" class="" /><span class="screen-reader-text">Search</span></button>', trailingslashit( THEME_IMG ) );
+                            $items .= sprintf( '<li class="menu-item">%s</li>', $button );
+                    }
+                    return $items;
+                }
+                add_filter( 'wp_nav_menu_items', 'add_search_button', 10, 2 );
+                
+                $args = array(
+                    'theme_location' => 'secondary',
+                    'menu' => 'Secondary Menu',
+                    'container' => '',
+                    'container_class' => '',
+                    'container_id' => '',
+                    'menu_id'        => 'secondary-menu',
+                    'menu_class'     => 'menu',
+                    'before' => '',
+                    'after' => '',
+                    'link_before' => '',
+                    'link_after' => '',
+                    'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+                 );
+                wp_nav_menu($args);
+                remove_filter( 'wp_nav_menu_items', 'add_search_button', 10, 2 );
+                ?>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
+    <div class="sticky-header">
         <header id="masthead" class="site-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
             <div class="wrap">
                         
                 <div class="row xlarge-unstack">
                     
+                    <?php
+                    printf('<button class="search-button search-button-mobile hide-for-xlarge" data-open="modal-search"><img src="%sheader/search-mobile.svg" class="" /><span class="screen-reader-text">Search</span></button>', trailingslashit( THEME_IMG ) );
+                    ?>
                           
                     <div class="columns site-branding shrink">
                         <div class="site-title">
                         <?php
                         $site_url = home_url();
-                        $logo = sprintf('<img src="%slogo.png" alt="site logo" class="show-for-xlarge" />', trailingslashit( THEME_IMG ) );    
-                        $logo_mobile = sprintf('<img src="%slogo-mobile.svg" alt="site logo" class="hide-for-xlarge" />', trailingslashit( THEME_IMG ) );                  
+                        $logo_mobile = sprintf('<img src="%sheader/logo-mobile.png" alt="site logo" class="hide-for-xlarge" />', trailingslashit( THEME_IMG ) );  
+                        $logo = sprintf('<img src="%sheader/logo.svg" alt="site logo" class="show-for-xlarge" />', trailingslashit( THEME_IMG ) );    
                         printf('<a href="%s" title="%s">%s%s</a>',
                                 $site_url, 
                                 get_bloginfo( 'name' ), 
-                                $logo, 
-                                $logo_mobile );
+                                $logo_mobile,
+                                $logo );
                         ?>
                         </div>
                     </div><!-- .site-branding -->
@@ -59,6 +136,20 @@
                     <nav id="site-navigation" class="nav-primary column" role="navigation" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement">            
                         
                         <?php
+                        
+                            $args = array(
+                                'theme_location' => 'mobile-cta',
+                                'container' => '',
+                                'container_class' => '',
+                                'container_id' => '',
+                                'menu_class'     => 'menu menu-cta hide-for-xlarge',
+                                'before' => '',
+                                'after' => '',
+                                'link_before' => '',
+                                'link_after' => '',
+                                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+                             );
+                            wp_nav_menu($args);
                             
                             // Desktop Menu
                             $args = array(
@@ -67,7 +158,7 @@
                                 'container' => '',
                                 'container_class' => '',
                                 'container_id' => '',
-                                'menu_id'        => 'primary-menu',
+                                'menu_id'        => 'primary-menu js-superfish',
                                 'menu_class'     => 'menu',
                                 'before' => '',
                                 'after' => '',
@@ -80,9 +171,10 @@
                         
                     </nav>
                                         
-                    <?php
-                    // Add login and donate?
-                    ?>
+                    <button type="button" class="secondary-menu-button" data-toggle="offCanvas" aria-hidden="true">
+                        <?php printf( '<img src="%smenu-icon.svg" />', trailingslashit( THEME_IMG ) );?>
+                        <span>Menu</span>
+                    </button>
                                         
                 </div>
     
@@ -92,7 +184,9 @@
              
         </header><!-- #masthead -->
     </div>
+    
+    <div class="off-canvas-content" data-off-canvas-content>
 
-<div id="page" class="site-container">
-
-	<div id="content" class="site-content">
+    <div id="page" class="site-container">
+        
+        <div id="content" class="site-content">

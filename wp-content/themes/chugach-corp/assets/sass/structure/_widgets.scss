@@ -62,7 +62,42 @@
 
 .social-icons {
     
-    $social-icon-size: 45;
+    $social-icon-size: 34;
+    
+    @include list-reset;
+    display: flex;
+        
+    li {
+       margin: 0!important;
+       line-height: 1;
+    }
+    
+    a {
+        transition: $transition;
+        width: #{$social-icon-size}px;
+        height: #{$social-icon-size}px;
+        display: block;
+        position: relative;
+        color: $lime;
+        
+        &:hover {
+            color: $blue;
+        }
+    }
+    
+    svg {
+        height: 60%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);  
+    }    
+   
+}
+
+.section-form .social-icons,
+footer .social-icons {
+    $social-icon-size: 32;
     
     ul {
         @include list-reset;
@@ -91,12 +126,12 @@
         height: #{$social-icon-size}px;
         display: block;
         border-radius: 50%;
+        border: 2px solid $green;
         position: relative;
-        background-color: $blue;
-        color: $white;
+        color: $green;
         
         &:hover {
-            background-color: $pink;
+            background-color: $green;
             color: $white;
         }
     }
@@ -108,10 +143,7 @@
         left: 50%;
         transform: translate(-50%,-50%);  
     }    
-   
 }
-
-
 
 
 .share-icons {
@@ -141,7 +173,7 @@
             color: #fff;
 
             &:hover {
-                background-color: $pink;  
+                background-color: $gold;  
                
             }
 		}

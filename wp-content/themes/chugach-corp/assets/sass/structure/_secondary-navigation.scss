@@ -1,0 +1,66 @@
+// Secondary Navigation
+
+.nav-secondary {
+    
+    li {
+        transform: skew(-12deg); 
+        line-height: 1;
+        margin-left: -1px;
+        
+        &:first-child {
+            background-color: $gold;
+            
+            &:hover {
+                background-color: scale-color($gold, $lightness: -10%);
+            }
+        }
+        
+        &:nth-child(2) {
+            background-color: $lime;
+            
+            &:hover {
+                background-color: scale-color($lime, $lightness: -10%);
+            }
+        }
+        
+        &:nth-child(3) {
+            background-color: $green;
+            
+            &:hover {
+                background-color: scale-color($green, $lightness: -10%);
+            }
+        }
+        
+        &:nth-child(4) {
+            background-color: $red;
+            
+            &:hover {
+                background-color: scale-color($red, $lightness: -10%);
+            }
+        }
+        
+        &:last-child {
+            background-color: $blue;            
+            &:hover {
+                background-color: scale-color($blue, $lightness: -10%);
+            }
+        }
+        
+        a, button {
+            display: inline-flex;
+            transform: skew(12deg); 
+            color: #fff; 
+            font-size: rem-calc(17);
+            line-height: 1.235294118;
+            padding: rem-calc(6 16);
+        }
+        
+        button {
+            padding: rem-calc(6 10); 
+            border: none;
+            outline: none;
+            position: relative;
+            cursor: pointer;
+        }
+    }
+}

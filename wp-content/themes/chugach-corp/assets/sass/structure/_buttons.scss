@@ -4,18 +4,22 @@
     margin: 0 auto;    
     text-align: center;
     transition: none;
+    padding: rem-calc(15 8);
     text-transform: uppercase;
     text-decoration: none!important;
-	font-family: $open-sans;
-	font-size: 11px;
-    line-height: 20px;
-    font-weight: 700;
+	font-family: $lato;
+	font-size: rem-calc(13);
+    line-height: 1.538461538;
+    font-weight: 400;
 	text-align: center;
-    min-width: 114px;
+    min-width: 220px;
     max-width: 280px;
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+    color: #fff;
     
     &:hover {
-        background-color: transparent;   
+        color: #fff;
     }
   
     &.disabled {
@@ -33,176 +37,31 @@
 }
 
 
-@mixin button {
-    @include button-defaults;
-    background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
-    padding: 3px!important;
-    border-radius: 23px;  
-    display: inline-block;  
-    min-width: 116px;  
-    transition: none;
+@mixin button-primary {
+    background-color: $gold;
     
-    color: $white;
-    
-    &:visited {
-        color: $white;
-    }
-    
-    &:focus,
-    &:active,
     &:hover {
-        color: $pink;
-        
-        span {
-            background: $white;   
-            
-        }
-    }  
-    
-    span {
-        display: block;
-        border-radius: 23px;
-        text-align: center;
-        padding: rem-calc(5 15);
+        background-color: scale-color($gold, $lightness: -20%);   
     }
-    
-    &.large {
-        
-        min-width: 166px;
-        
-        span {
-            padding: rem-calc(9 15)!important;   
-        }
-    }
-    
-    &.xlarge {
-        
-        min-width: 240px;
-        
-        span {
-            padding: rem-calc(15 15)!important;   
-        }
-    }
-   
 }
 
-@mixin button-reverse {
-
-    color: $pink;
+@mixin button-secondary {
+    background-color: $blue;
     
-    &:visited {
-        color: $pink;
-    } 
-    
-    &:focus,
-    &:active,
     &:hover {
-        color: $white;
-        
-        span {
-            background: transparent;   
-            
-        }
-    }  
-                
-    span {
-        background: #fff;
-        border-radius: 23px;
-    }    
-}
-
-@mixin button-white {
-    @include button-defaults;
-    border-radius: 23px;  
-    display: inline-block;  
-    min-width: 116px;  
-    transition: none;
-    border: 3px solid #fff;
-    background: transparent;  
-    color: $white;
-    
-    
-    span {
-        background: transparent;   
+        background-color: scale-color($blue, $lightness: -20%);
     }
-    
-    
-    &:visited {
-        color: $white;
-    } 
-    
-    &:focus,
-    &:active,
-    &:hover {
-        color: $white;
-        background: $white;
-        border: none;
-        
-        span {
-            background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);   
-        }
-    }  
-   
 }
 
-
-a.button {
-    @include button;
+.button {
+    @include button-defaults();
+    @include button-primary;
     
-    &.reverse {
-        @include button-reverse;   
+    &.blue {
+        @include button-secondary;
     }
-    
-    &.white {
-        @include button-white;  
-        
-        &.large {
-        
-            min-width: 166px;
-            
-            span {
-                padding: rem-calc(9 15)!important;   
-            }
-            
-            &:hover {
-                span {
-                    padding: rem-calc(12 15)!important;   
-                }
-            }
-        }
-        
-        &.xlarge {
-            
-            min-width: 240px;
-            
-            span {
-                padding: rem-calc(15 15)!important;   
-            }
-            
-            &:hover {
-                span {
-                    padding: rem-calc(18 15)!important;   
-                }
-            }
-        }
-    }
-    
-    
 }
 
-form .button {
-    @include button;
-    @include button-reverse; 
-}
-
-
-.site-main {
- 
-    .button {
-        min-width: 166px;   
-    }
-    
-}
 
 .button-group {
     
@@ -218,38 +77,4 @@ form .button {
         }
     }
     
-}
-
-button.read-more {
-    
-	color: $blue;
-    cursor: pointer;
-	font-size: rem-calc(14);
-	line-height: 1.357142857;
-    text-transform: capitalize;
-    position: relative;
-    padding-left: 12px;
-    
-    &:before {
-        content: '+';
-        font-size: rem-calc(12);
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    &:after {
-        content: '';
-        display: block;
-        width: 46px;
-        height: 3px;
-        background-color: $orange;
-        margin-top: 7px;  
-    }
-    
-    &[aria-expanded='true'] {
-        &:before {
-            content: '-';
-        }
-    }
 }

@@ -7,6 +7,8 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
         public function __construct() {
             parent::__construct();
             
+            $this->set_settings( 'delay', parent::$count * 400 ); 
+            
             $show_footer_cta = false;
             
             // default to TRUE for the blog
@@ -43,6 +45,14 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
                 ]
             ); 
             
+            $this->add_render_attribute(
+                'wrapper', [
+                'data-aos' => 'fade-in', 
+                'data-aos-anchor-placement' => 'center-bottom',
+                //'data-aos-anchor' => '#site-footer'
+             ]
+            ); 
+            
             $background_image       = $this->get_fields( 'background_image' );
             $background_position_x  = strtolower( $this->get_fields( 'background_position_x' ) );
             $background_position_y  = strtolower( $this->get_fields( 'background_position_y' ) );
@@ -76,40 +86,40 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
                          
             // Heading
             $header = new Element_Header( [ 'fields' => $fields ] ); // set fields from Constructor
-            $header->set_settings( ['heading_size' => 'h1', 'subheading_size' => 'h2'] );
+            $header->set_settings( ['heading_size' => 'h3'] );
+            $header->add_render_attribute(
+                'wrapper', [
+                'data-aos' => 'fade-up', 
+                'data-aos-delay' => 800,
+                'data-aos-anchor' => '.section-footer-cta'
+             ]
+            ); 
             $header = $header->get_element();
-            if( ! empty( $header ) ) {
-                $html .= sprintf( '<div class="column">%s</div>', $header );
-            }
             
             // Button
-            $button = new Element_Button( [ 'fields' => $fields ]  ); // set fields from Constructor
-            $button->add_render_attribute( 'anchor', 'class', [ 'button', 'white', 'large' ] );             
-            $button = $button->get_element();
-            if( ! empty( $button ) ) {
-                $html .= sprintf( '<div class="column shrink">%s</div>', $button );
+            $buttons = $this->get_fields( 'buttons' );
+            $html = '';
+            if( ! empty( $buttons ) ) {
+                foreach( $buttons as $key => $button ) {
+                    $button = new Element_Button( [ 'fields' => $button ]  ); // set fields from Constructor
+                    $button->set_settings( ['raw' => true] );
+                    $button->add_render_attribute( 'anchor', 'class', [ 'button', 'gold', 'large' ] );    
+                    $column_data_attributes = get_data_attributes( [
+                        'data-aos' => 0 == $key % 2 ? 'fade-right' : 'fade-left', 
+                        'data-aos-delay' => 1200,
+                        'data-aos-anchor' => '.section-footer-cta'  
+                     ] );
+                    $html .= sprintf( '<div class="column column-block shrink" %s>%s</div>', $column_data_attributes, $button->get_element() );
+                }
+                
+                if( ! empty( $html ) ) {
+                    $html = sprintf( '<div class="row unstack-medium align-middle align-center">%s</div>', $html );
+                }
             }
             
-            $html = sprintf( '<div class="row large-unstack align-middle">%s</div>', $html );
             
-            $html = new Element_HTML( [ 'fields' => ['html' => $html] ] ); // set fields from Constructor
-            $column->add_child( $html ); 
-            
-            $column->add_render_attribute( 'wrapper', 'class', ['small-order-1 medium-order-2 cta-content' ] );
-            $row->add_child( $column );
-            
-            
-            // Photo
-            $photo = new Element_Photo( [ 'fields' => $fields ]  );
-            // Make sure we have a photo?         
-            if( ! empty( $photo->get_element() ) ) {
-                $column = new Element_Column(); 
-                $column->add_render_attribute( 'wrapper', 'class', ['small-order-2 medium-order-1 shrink' ] );
-                $column->add_child( $photo );
-                $row->add_child( $column );
-            }     
-            
-            $this->add_child( $row );         
+            return sprintf( '<div class="row align-center"><div class="column large-9">%s%s</div></div>', $header, $html );
+               
         }
         
     }

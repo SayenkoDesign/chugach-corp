@@ -1,77 +1,25 @@
 // Footer CTA
 
 .section-footer-cta {
-    background-color: #fff;
-    padding-top: 20px;
+    background-color: #ffffff;
+    background-image: url(assets/images/footer-cta/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
     
-    .background-image {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        position: relative;
+    .wrap {
+        padding: rem-calc(75 0);   
         
-        &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(270deg, rgba(#ED4399,.8) 0%, rgba(#F9B02D, .9) 100%); 
-        }
-    }
-        
-    .wrap {    
-        text-align: center;
-        position: relative;
-        z-index: 2;
-        
-        header {
-            @include breakpoint(medium down) {
-                margin-bottom: rem-calc(15);   
-                padding-top: rem-calc(30);
-            }
-        }
-            
-        h1,
-        h2,
-        h3,
-        p {
+        h3 {
             color: #fff;
-            text-align: center;
-        }
-        
-        h1,
-        h2,
-        p {
-            margin-bottom: 0;
-        }
-        
-        .button {
+            font-family: $lato;
+            font-style: normal;
+            font-size: rem-calc(24);
+            text-align: center;   
         }
     }
     
-    @include breakpoint(large) {
-        .shrink {
-            flex: 0 0 auto!important;
-        }
+    header {
+        margin-bottom: rem-calc(25)   
     }
-
-
-    .element-photo {
-        
-        
-        @include breakpoint(medium) {
-            margin-bottom: auto;
-        }
-        
-        @include breakpoint(large) {            
-            img {
-                max-width: 420px;  
-            }
-        }
-        
-    }
-
 }

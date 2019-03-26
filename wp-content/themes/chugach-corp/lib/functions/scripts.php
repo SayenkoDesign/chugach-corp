@@ -33,6 +33,9 @@ function _s_register_scripts() {
         ),
     ) );
     
+    
+    // wp_register_script( 'aos-config', trailingslashit( THEME_JS ) . 'aos-config.js', false, '', true );
+    wp_register_script( 'scrollreveal-config', trailingslashit( THEME_JS ) . 'scrollreveal-config.js', false, '', true );    
 }
 
 
@@ -47,4 +50,6 @@ function _s_load_scripts() {
 		if( is_front_page() ) {
  			wp_enqueue_script( 'front-page');
 		}
+        
+        wp_enqueue_script( 'scrollreveal-config' );
 }

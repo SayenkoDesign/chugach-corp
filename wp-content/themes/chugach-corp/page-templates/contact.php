@@ -10,57 +10,30 @@ get_header(); ?>
 _s_get_template_part( 'template-parts/global', 'hero' );
 ?>
 
-<div class="row align-center">
 
-    <div class="large-9 columns">
-    <div id="primary" class="content-area">
-    
-        <main id="main" class="site-main" role="main">
-        <?php
-        // Default
-        section_default();
-        function section_default() {
-                    
-            global $post;
-            
-            $attr = array( 'class' => 'section-default' );
-            
-            $args = array(
-                'html5'   => '<section %s>',
-                'context' => 'section',
-                'attr' => $attr,
-            );
-            
-            _s_markup( $args );
-            
-            _s_structural_wrap( 'open' );
-            
-            print( '<div class="column row">' );
-            
-            while ( have_posts() ) :
-    
-                the_post();
-                            
-                echo '<div class="entry-content">';
-                
-                the_content();
-                
-                echo '</div>';
-                    
-            endwhile;
-            
-            print( '</div>' );
-            
-            _s_structural_wrap( 'close' );
-            echo '</section>';
-        }
-        ?>
-        </main>
-    
-    
-    </div>
+<div id="primary" class="content-area">
 
-    </div>
+    <main id="main" class="site-main" role="main">
+    <?php
+    $form = _s_get_template_part( 'template-parts/contact', 'form', [], true );
+    $map = _s_get_template_part( 'template-parts/contact', 'map', [], true );
+    $directory = _s_get_template_part( 'template-parts/contact', 'directory', [], true );
+    $businesses = _s_get_template_part( 'template-parts/contact', 'businesses', [], true );
+    
+    printf( '<div class="row"><div class="column">%s</div><div class="column">%s</div></div>',
+            $form,
+            $map
+          );
+    
+    printf( '<div class="row"><div class="column">%s</div><div class="column">%s</div></div>',
+            $directory,
+            $businesses
+          );
+    ?>
+    </main>
+
+
 </div>
+
 <?php
 get_footer();

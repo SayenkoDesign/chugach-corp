@@ -71,3 +71,28 @@
 }
 
 
+.menu-cta {
+    display: flex;
+    
+    li {
+        flex: 0 0 50%;
+        text-align: center;  
+        border-top: none!important;
+        
+        &:first-child {
+            background-color: $lime;  
+        }
+        
+        &:last-child {
+            background-color: $blue;  
+        } 
+        
+        a {
+            padding-right: 25px!important;    
+        }
+
+    }
+    
+        
+    
+}

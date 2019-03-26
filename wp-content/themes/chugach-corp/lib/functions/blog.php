@@ -1,5 +1,12 @@
 <?php
 
+function media_contact_url( $topic = 'media' ) {
+
+    $contact = trailingslashit( get_permalink( 368 ) );
+    $topic = 'media';
+    return sprintf( '%s?topic=%s', $contact, $topic );    
+}
+
 // Remove tags
 
 // Remove tags support from posts
@@ -8,7 +15,12 @@ function _s_unregister_post_tags() {
 }
 add_action('init', '_s_unregister_post_tags');
 
-add_filter( 'the_category', function( $the_list ) {    
+add_filter( 'the_category', function( $the_list ) {  
+
+    if( is_admin() ) {
+        return $the_list;
+    }
+  
     $dom = new DOMDocument();
     $dom->loadHTML( $the_list );
     foreach( $dom->getElementsByTagName('a') as $a ) {

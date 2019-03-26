@@ -110,6 +110,14 @@ class Element_Button extends Element_Base {
         if( empty( $title ) ) {
             return;
         }
+        
+        // RAW output
+        if( true === $this->get_settings( 'raw' ) ) {
+            return sprintf( '<a %s><span>%s</span></a>', 
+                             $this->get_render_attribute_string( 'anchor' ), 
+                             $title
+                          );
+        }
                                     
         return sprintf( '<div %s><p><a %s><span>%s</span></a></p></div>', 
                         $this->get_render_attribute_string( 'wrapper' ), 

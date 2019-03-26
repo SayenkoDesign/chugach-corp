@@ -1,25 +1,64 @@
 /* CSS Document */
 
 .template-contact {
-    .section-hero {
-        background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
-        text-align: center;  
-        
-        .wrap {
-            padding-top: rem-calc(10);   
-        }
-        
-        .edge {
-            line-height: 1;
-            
-            img {
-                display: block;   
+    
+    @include breakpoint(large) {
+        .row .shrink {
+            flex: 0 0 auto!important;
+            max-width: 100%!important;
+        }   
+    }
+    
+    .site-main {
+             
+    }
+    
+    .section-form {
+        @include breakpoint(large) {
+            .entry-content {
+                padding: rem-calc(0 map-get($grid-column-gutter, large)*2);     
             }
         }
     }
     
-    .section.default,
-    .section-default {
-        padding: rem-calc(45 0 75);   
-    }    
+    .section-map {
+        
+        @include breakpoint(large) {
+            .map-container {
+                position: relative;
+                height: 500px;
+                
+                .wpgmza_map {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    
+                    iframe {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    
+    .section-directory,
+    .section-businesses {
+        @include breakpoint(large) {
+            margin-top: rem-calc(45);
+        }
+    }
+    
+    .section-directory {
+        @include breakpoint(large) {
+            .entry-content {
+                padding-left: rem-calc(map-get($grid-column-gutter, large)*2);     
+            }
+        }
+    
+    }
+    
+    
 }

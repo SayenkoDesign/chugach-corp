@@ -30,7 +30,7 @@ $loop = new WP_Query( $args );
 if ( $loop->have_posts() ) : 
 	while ( $loop->have_posts() ) : $loop->the_post(); 
 	
-		get_template_part( 'template-parts/hero' );
+		_s_get_template_part( 'template-parts/blog', 'hero' );
          
 	endwhile;
 endif;
@@ -45,59 +45,44 @@ wp_reset_postdata();
 
     <div id="primary" class="content-area">
     
-        <main id="main" class="site-main" role="main">
-        
-            <header>
-                <?php
-                if( is_category() ) {
-                    $page_title = single_cat_title( '', false );
-                }
-                else {
-                    $page_title = get_the_title( get_option( 'page_for_posts' ) );
-                }
-                
-                printf( '<h1 class="page-title">%s</h1>', $page_title );
-                ?>
-                
-            </header>
-            
-            <?php 
-            if( ! is_category() && function_exists( 'facetwp_display' ) ) {
-                
-                $reset = "<div class=\"reset\"><button class=\"button blue\" onclick=\"FWP.reset()\"><span>Reset</span></button></div>";
-                
-                printf( '<div class="facetwp-filters"><div class="wrap"><span>%s</span>%s%s%s</div></div>', 
-                'Filter By:',
-                facetwp_display( 'facet', 'categories' ),
-                facetwp_display( 'sort' ),
-                $reset
-                );
-            }
-            ?>
-
+        <?php
+        if( ! is_paged() ) {
+            _s_get_template_part( 'template-parts/blog', 'videos' );
+        }
+        ?>
+    
+        <main id="main" class="site-main" role="main">            
+                        
             <?php
              
             if ( have_posts() ) : ?>
+            
+                <header>
+                <?php
+                $heading = 'News';
+                
+                if( is_category() ) {
+                    $heading = single_cat_title( '', false );
+                }
+                
+                if( ! is_paged() ) {
+                    printf( '<h2>%s</h2>', $heading );
+                }
+                ?>
+                
+                </header>
                 
                <?php
                
-               echo '<div class="row facetwp-template" data-equalizer data-equalize-on="large" data-equalize-by-row="true" id="posts-grid">';
+               echo '<div class="row small-up-1 medium-up-2 large-up-3 xlarge-up-4 grid" data-equalizer data-equalize-on="large" data-equalize-by-row="true">';
                                
                 while ( have_posts() ) :
     
                     the_post();
+                                       
+                    printf( '<div class="%s">', 'column column-block' );
                     
-                    global $wp_query;
-                    $post_count = $wp_query->current_post + 1;
-                                        
-                    $full_width = ( $post_count % 5 == 1 ) ? true : false;
-                                        
-                    $columns = $full_width ? 'small-12 medium-6 large-12' : 'small-12 medium-6 large-3';
-                    
-                    printf( '<div class="column column-block %s">', $columns );
-                    
-                    _s_get_template_part( 'template-parts', 'content-post-column', 
-                                          array( 'post_count' => $post_count, 'full_width' => $full_width ) );
+                    _s_get_template_part( 'template-parts', 'content-post-column' );
                     
                     echo '</div>';
     
@@ -105,20 +90,24 @@ wp_reset_postdata();
                 
                 echo '</div>';
                 
-                if( function_exists( 'facetwp_display' ) ) {
-                    echo facetwp_display( 'pager' );
-                }
-                else {
-                    echo _s_paginate_links();
-                }
+                
+                echo _s_paginate_links();
                                 
             else :
     
                 get_template_part( 'template-parts/content', 'none' );
     
             endif; ?>
-    
+                            
         </main>
+        
+        <?php
+        if( ! is_paged() ) {
+            _s_get_template_part( 'template-parts/blog', 'stories' );
+        }
+        
+        _s_get_template_part( 'template-parts/blog', 'media-contact' );
+        ?>
     
     </div>
 

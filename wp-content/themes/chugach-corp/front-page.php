@@ -8,7 +8,7 @@
 
 add_filter( 'body_class', function( $classes ) {
     unset( $classes[array_search('page-template-default', $classes )] );
-    $classes[] = 'fixed-menu';
+    // $classes[] = '';
     return $classes;
 }, 99 );
 
@@ -23,13 +23,10 @@ _s_get_template_part( 'template-parts/home', 'hero' );
 	<main id="main" class="site-main" role="main">
      
 	<?php
-     _s_get_template_part( 'template-parts/home', 'numbers' );
+    
+     _s_get_template_part( 'template-parts/home', 'what' );
      
-     _s_get_template_part( 'template-parts/home', 'donate' );
-     
-     _s_get_template_part( 'template-parts/home', 'how' );
-          
-     _s_get_template_part( 'template-parts/home', 'families' );
+     _s_get_template_part( 'template-parts/home', 'mission' );
     
    	?>
         

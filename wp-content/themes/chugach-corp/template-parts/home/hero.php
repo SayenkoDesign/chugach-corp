@@ -29,27 +29,70 @@ if( ! class_exists( 'Hero_Section' ) ) {
                      $this->get_name() . '-hero' . '-' . $this->get_id(),
                 ]
             ); 
-            
+                        
+        }  
+        
+        
+        public function before_render() {
+         
+            $background_video       = $this->get_fields( 'background_video' );
             $background_image       = $this->get_fields( 'background_image' );
             $background_position_x  = $this->get_fields( 'background_position_x' );
             $background_position_y  = strtolower( $this->get_fields( 'background_position_y' ) );
             $background_overlay     = strtolower( $this->get_fields( 'background_overlay' ) );
             
-            if( ! empty( $background_image ) ) {
+            if( ! wp_is_mobile() && ! empty( $background_video ) ) {
+                
+                $this->add_render_attribute( 'background', 'class', 'background-video' );
+                
+                $args = [ 'autoplay' => 'true', 'muted' => 'true', 'loop' => 'true' ];
+                                                                
+                $source = sprintf( '<source src="%s" type="video/%s">', $background_video,  pathinfo( $background_video, PATHINFO_EXTENSION ) );
+                                                
+                if( ! empty( $background_image ) ) {
+                    $background_image = _s_get_acf_image( $background_image, 'hero', true );
+                    $args['poster'] = $background_image;
+                    $args['preload'] = 'none';
+                    $background_image = _s_get_acf_image( $background_image, 'hero', true );
+                    $this->add_render_attribute( 'wrapper', 'class', 'has-background' );
+                    $this->add_render_attribute( 'background', 'class', 'background-image' );
+                    $this->add_render_attribute( 'background', 'style', sprintf( 'background-image: url(%s);', $background_image ) );
+                    $this->add_render_attribute( 'background', 'style', sprintf( 'background-position: %s %s;', 
+                                                                              $background_position_x, $background_position_y ) );
+                                                                              
+                }
+                
+                $attributes = _parse_data_attribute( $args );
+              
+                $video = sprintf( '<video %s>%s</video>', $attributes, $source );
+                
+            } else if( ! empty( $background_image ) ) {
                 $background_image = _s_get_acf_image( $background_image, 'hero', true );
                 
+                $this->add_render_attribute( 'wrapper', 'class', 'has-background' );
                 $this->add_render_attribute( 'background', 'class', 'background-image' );
                 $this->add_render_attribute( 'background', 'style', sprintf( 'background-image: url(%s);', $background_image ) );
                 $this->add_render_attribute( 'background', 'style', sprintf( 'background-position: %s %s;', 
                                                                           $background_position_x, $background_position_y ) );
-                
-                if( true == $background_overlay ) {
-                     $this->add_render_attribute( 'background', 'class', 'background-overlay' ); 
-                }
                                                                           
-            }             
+            } 
             
-        }  
+            
+            $this->add_render_attribute( 'inner', 'class', 'inner' );
+            $this->add_render_attribute( 'container', 'class', 'container' );
+            $this->add_render_attribute( 'wrap', 'class', 'wrap' );
+            
+            return sprintf( '<%s %s><div %s><div %s>%s</div><div %s><div %s>', 
+                            esc_html( $this->get_html_tag() ), 
+                            $this->get_render_attribute_string( 'wrapper' ), 
+                            $this->get_render_attribute_string( 'inner' ), 
+                            $this->get_render_attribute_string( 'background' ),
+                            $video,
+                            $this->get_render_attribute_string( 'container' ), 
+                            $this->get_render_attribute_string( 'wrap' )
+                            );
+            
+        }
         
             
         /**
@@ -61,10 +104,27 @@ if( ! class_exists( 'Hero_Section' ) ) {
          * @access public
          */
         public function after_render() {
+            
+            $data_attributes = get_data_attributes( ['data-aos' => 'zoom-in', 'data-aos-delay' => 1800 ] );
+            $scroll = sprintf( '<span class="scroll-next" %s>%s</span>', $data_attributes, get_svg( 'arrow-down' ) );
                     
-            $shape = sprintf( '<div class="shape"><img src="%shome/hero-bottom.png" /></div>', trailingslashit( THEME_IMG ) );
+            $shape = sprintf( '%s<div class="shape"><img src="%sglobal/hero-bottom.png" /></div>', $scroll, trailingslashit( THEME_IMG ) );
+            
+            $photos = $this->get_fields( 'photos' );
+            $gallery = '';
+            if( ! empty( $photos ) ) {
+                foreach( $photos as $key => $photo ) {
+                    $gallery .= sprintf( '<div class="photo-%s" style="background-image: url(%s)"></div>', 
+                                          $key, _s_get_acf_image( $photo['ID'], 'thumbnail', true ) );
+                }
                 
-            return sprintf( '</div></div></div></div>%s</%s>', $shape , esc_html( $this->get_html_tag() ) );
+                if( ! empty( $gallery ) ) {
+                    $data_attributes = get_data_attributes( ['data-aos' => 'zoom-in', 'data-aos-delay' => 1400 ] );
+                    $gallery = sprintf( '<div class="column row row-2 show-for-xxlarge"><div class="photos" %s>%s</div></div>', $data_attributes, $gallery );
+                }
+            }
+                
+            return sprintf( '</div>%s</div></div>%s%s</%s>', $scroll, $shape , $gallery, esc_html( $this->get_html_tag() ) );
         }
        
         
@@ -73,9 +133,11 @@ if( ! class_exists( 'Hero_Section' ) ) {
             
             $fields = $this->get_fields();
             
-            $heading = empty( $fields['heading'] ) ? '' : _s_format_string( $fields['heading'], 'h1' );
+            $data_attributes =  ['data-aos' => 'fade-up', 'data-aos-delay' => 200 ];
+            $heading = empty( $fields['heading'] ) ? '' : _s_format_string( $fields['heading'], 'h1', $data_attributes );
             
-            $subheading = empty( $fields['subheading'] ) ? '' : _s_format_string( $fields['subheading'], 'h2' );
+            $data_attributes = ['data-aos' => 'zoom-in', 'data-aos-delay' => 600 ];
+            $subheading = empty( $fields['subheading'] ) ? '' : _s_format_string( $fields['subheading'], 'h3', $data_attributes );
              
             $video = empty( $fields['video'] ) ? '' : $fields['video']; 
                                                
@@ -83,16 +145,23 @@ if( ! class_exists( 'Hero_Section' ) ) {
                 return;     
             }
             
-            if( !empty( $video ) ) {
-                $video_url = youtube_embed( $video );
-                $video_description = 'How It Works';
-                $content = sprintf( '<div class="entry-content"><p><button class="play-video" data-open="modal-video" data-src="%s">%s</button><span>%s</span></p></div>', $video_url, get_svg( 'play-white' ), $video_description );
-            }
+            $classes = '';
             
-            $html = sprintf( '<div class="hero-caption"><header>%s</header>%s%s</div>', $heading, $subheading, $content );
+            if( !empty( $video ) ) {
+                $video_url = _s_get_video_embed( $video );
+                $classes = ' has-video';
+                $data_attributes = get_data_attributes( ['data-aos' => 'zoom-in', 'data-aos-delay' => 1000 ] );
+                $video = sprintf( '<div class="hero-buttons"><button class="play-video" data-open="modal-video" data-src="%s" %s>%s<span class="screen-reader-text">Watch Video</span></button></div>', 
+                                $video_url, 
+                                $data_attributes,
+                                get_svg( 'play-hero' ) 
+                        );
+            }
+                                    
+            $html = sprintf( '<div class="hero-content%s"><header>%s%s</header>%s</div>', $classes, $heading, $subheading, $video );
                                                                         
             $row = new Element_Row(); 
-            $row->add_render_attribute( 'wrapper', 'class', 'align-middle' );
+            $row->add_render_attribute( 'wrapper', 'class', '' );
             
             $column = new Element_Column(); 
 

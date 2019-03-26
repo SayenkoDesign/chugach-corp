@@ -11,6 +11,11 @@ Header
     }      
  }
  
+ @include breakpoint(xlarge) {
+    .sticky-header {
+        height: 70px;   
+    }
+ }
 
 .site-header {
         
@@ -34,7 +39,6 @@ Header
             }
             
             .nav-primary {
-                padding: 0!important;
                 .menu .menu-item:not(.button) a {
                     color: $dark-gray!important;
                     
@@ -55,7 +59,7 @@ Header
                 
                 .site-title {
                     img {
-                       transform-origin: center top;
+                       transform-origin: center center;
                        transform: scale(.7);
                        width: auto;   
                     }
@@ -105,42 +109,67 @@ Header
         }
         
         .site-branding {
-            text-align: left;              
-            @include breakpoint(xlarge) {
-                text-align: left; 
-                min-height: 10px;
-                width: 200px; 
-                margin: 0;
+            
+        }
+        
+        .search-button-mobile {
+            position: absolute;
+            top: calc(44px - 15px); 
+            left: rem-calc(map-get($grid-column-gutter, small)/2 );  
+            z-index: 999;
+            
+            @include breakpoint(large) {
+                left: rem-calc(map-get($grid-column-gutter, large)/2 );  
+            }
+            
+            img {
+                height: 30px;   
+                width: auto;
             }
         }
      
         .site-title {
-                        
-            padding: rem-calc(10 0);
-            display: inline-block;
             
-            vertical-align: middle;
-            max-width: 90%;
+            padding: rem-calc(25 50);
+            text-align: center;
             
             @include breakpoint(xlarge) {
-                max-width: none;
-                position: absolute;
-                top: 0;
-                padding: 0;
-                z-index: 12;
+                background-color: $lime;
+                display: flex;
+                height: 100%;
+                align-items: center;
+                position: relative;
+                text-align: left;
+                height: 70px;
+                padding: rem-calc(0 25 0 0);
+                
+                &:before {
+                   content: '';
+                   width: 50vw;
+                   right: 100%; 
+                   position: absolute;
+                   height: 100%;
+                   background: $lime;
+                }
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background: $lime;
+                    transform-origin: bottom left;
+                    transform: skew(-12deg, 0deg);   
+                }
             }
                                     
             a {
                 display: inline-block;
-                
-                @include breakpoint(xlarge) {
-                    img {
-                        background: #fff;
-                        padding: 10px;
-                        box-shadow: 0 0 6px 0 #000;  
-                        max-width: 160px; 
-                    }   
-                }
+                position: relative;
+                z-index: 2;
             }
             
         }
@@ -150,17 +179,23 @@ Header
     
     .menu-toggle {
         position: absolute;
-        top: 20px;
-        right: rem-calc(map-get($grid-column-gutter, small) );  
+        top: calc(44px - 17px);
+        right: rem-calc(map-get($grid-column-gutter, small)/2 );  
         z-index: 999;
         
         @include breakpoint(large) {
-            right: rem-calc(map-get($grid-column-gutter, large) );  
+            right: rem-calc(map-get($grid-column-gutter, large)/2 );  
         }
     }
     
     .shrink {
-        flex: 0 0 auto!important;   
+        @include breakpoint(xlarge) {
+            flex: 0 0 auto!important;     
+        }
+    }
+    
+    &:not(.fixed) .secondary-menu-button {
+        display: none;   
     }
                 
 }

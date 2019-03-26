@@ -1,6 +1,6 @@
 //process.env.DISABLE_NOTIFIER = true; // Uncomment to disable all Gulp notifications.
 
-var proxy = 'https://dreamreachers.vanwp.ca';
+var proxy = 'https://chugach-corp.vanwp.ca';
 
 // Require our dependencies.
 var args         = require('yargs').argv,
@@ -175,7 +175,7 @@ gulp.task('foundation', function () {
 
 		//paths.foundation + 'foundation.tooltip.js',
 
-		//paths.foundation + 'foundation.offcanvas.js',
+		paths.foundation + 'foundation.offcanvas.js',
 
 		paths.foundation + 'foundation.toggler.js',
 

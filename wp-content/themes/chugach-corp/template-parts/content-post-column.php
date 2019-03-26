@@ -7,13 +7,11 @@
  * @package _s
  */
 
-$even = ( $post_count % 2 == 0 ) ? true : false;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 	<?php     
-           
     $post_image = get_the_post_thumbnail_url( get_the_ID(), 'large' );
     if( !empty( $post_image ) ) {
         $post_image = sprintf( 'background-image: url(%s);', $post_image );
@@ -21,32 +19,13 @@ $even = ( $post_count % 2 == 0 ) ? true : false;
     
     $post_date = _s_get_posted_on( 'M d, Y' );
        
-    $post_title = sprintf( '<h2><a href="%s">%s</a></h2>', get_permalink(), get_the_title() );
-    
-    $even = ( $post_count % 2 == 0 ) ? true : false;
-    
-    $read_more = '';
-    
-    if( $full_width ) {
-        echo '<div class="row">';
+    $post_title = sprintf( '<h3><a href="%s">%s</a></h3>', get_permalink(), get_the_title() );
+    $read_more = sprintf( '<p class="read-more"><a href="%s" class="more fancy-link">%s</a></p>', get_permalink(), __( 'read more', '_s' ) ) ;
         
-        $read_more = sprintf( '<p class="read-more show-for-large"><a href="%s" class="more link orange">%s</a></p>', get_permalink(), __( 'Read More', '_s' ) ) ;
-    }
-    
-    $column = $full_width ? ' small-12 large-6 column' : '';
-    
-    $post_hero_class = $full_width && $even ? ' small-order-1 large-order-2' : ' small-order-1 large-order-1';
-    
-    $header_class    = $full_width  && $even ? ' small-order-1 large-order-1' : ' small-order-1 large-order-2';
-    
-    printf( '<div class="%s%s"><a href="%s" class="post-hero" style="%s"></a></div>', $column, $post_hero_class, get_permalink(), $post_image );
+    printf( '<a href="%s" class="post-hero" style="%s"></a>', get_permalink(), $post_image );
                 	
-    printf( '<header class="entry-header%s%s">%s%s%s</header>', $column, $header_class, $post_date, $post_title, $read_more );
-        
-    if( $full_width ) {
-                
-        echo '</div>';
-    }
+    printf( '<header class="entry-header">%s%s%s</header>', $post_date, $post_title, $read_more );
+
     ?>
     
 </article><!-- #post-## -->
