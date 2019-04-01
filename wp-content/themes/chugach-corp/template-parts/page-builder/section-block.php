@@ -74,13 +74,13 @@ if( ! class_exists( 'Services_Block_Section' ) ) {
         public function render() {
             
             $fields = $this->get_fields();
-                                    
+                                                
             // Set column order            
             if( 'right' == $this->get_fields( 'photo_alignment' ) ) {
-                $column_classes = [ 'small-order-1 large-order-1', 'small-order-2 large-order-2' ];
+                $column_classes = [ 'small-order-1 large-order-2', 'small-order-1 large-order-1' ];
             }
             else {
-                $column_classes = [ 'small-order-1 large-order-2', 'small-order-2 large-order-1' ];
+                $column_classes = [ 'small-order-1 large-order-1', 'small-order-2 large-order-2' ];
             }
                         
             
@@ -119,9 +119,10 @@ if( ! class_exists( 'Services_Block_Section' ) ) {
             
             // Button
             $button_args = $this->get_fields( 'button' );
+            $button_style = ! empty( $button_args['style'] )  ? strtolower( $button_args['style'] ) : 'button';
 
             $button = new Element_Button( [ 'fields' => $fields ]  ); // set fields from Constructor
-            $button->add_render_attribute( 'anchor', 'class', 'button cta' ); 
+            $button->add_render_attribute( 'anchor', 'class', $button_style ); 
             $column->add_child( $button );
             
             $this->add_child( $row ); 

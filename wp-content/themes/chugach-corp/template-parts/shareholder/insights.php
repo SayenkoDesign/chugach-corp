@@ -75,7 +75,7 @@ if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
                 $photos = sprintf( '<div class="small-12 large-6 small-order-2 large-order-1 column">%s</div>', $photos );
             }
             
-            return sprintf( '<div class="row align-middle">%s
+            return sprintf( '<div class="row">%s
                             <div class="small-12%s column"><div class="entry-content">%s%s</div></div></div>', 
                             $photos,
                             $classes,
@@ -92,7 +92,7 @@ if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
                 return false;
             }
             
-            $photo_classes = [ 'width-60', 'width-40', 'width-40', 'width-60' ];
+            $photo_classes = [ 'width-40', 'width-60', 'width-60', 'width-40' ];
             
             $videos = $this->get_fields( 'videos' );
             $icon = get_svg( 'play-video' );
@@ -118,10 +118,8 @@ if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
                 }
                 $items .= sprintf( '<div class="%s"><div class="background"%s>%s</div></div>', $photo_classes[$key], $style, $video );
             }
-            
-            $data_attributes =  get_data_attributes( ['data-aos' => 'fade-right', 'data-aos-delay' => 1600 ] );   
-            
-            return sprintf( '<div class="photo-grid clearfix" %s>%s</div>', $data_attributes, $items );   
+                        
+            return sprintf( '<div class="photo-grid-wrapper"><div class="photo-grid clear">%s</div></div>', $items );   
         }
         
     }

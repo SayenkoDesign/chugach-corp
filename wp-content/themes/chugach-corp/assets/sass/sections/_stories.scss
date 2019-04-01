@@ -190,4 +190,14 @@
         }
     }
     
+    
+    .slick-arrows {
+        display: flex;
+        margin-bottom: $global-margin;
+        
+        > *:first-child {
+            margin-right: rem-calc(36);   
+        }
+    }
+    
 }

@@ -3,20 +3,29 @@
 .template-page-builder {
     
     .section-hero {
-        background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
+        background: $blue;
         text-align: center;  
         
         .wrap {
-            padding-top: rem-calc(10);   
-        }
-        
-        .edge {
-            line-height: 1;
             
-            img {
-                display: block;   
+            padding: 0;
+            
+            .row {
+                position: relative;
+                
+                @include breakpoint(xxxlarge) {
+                    &:before {
+                        @include three-lines-gray;
+                        position: absolute;
+                        top: -15px;
+                        //left: rem-calc(map-get($grid-column-gutter, large)/2); 
+                        left: -60px;
+                        z-index: 4;  
+                    }                
+                } 
             }
-        }
+              
+        }        
     }
     
     

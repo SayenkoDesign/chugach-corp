@@ -1,0 +1,14 @@
+// Global
+
+html, body {
+	height: 100%;      
+}
+
+#wpadminbar {
+    z-index: 999999;   
+}
+
+.no-results {
+    padding-top: rem-calc(45);   
+    text-align: center;   
+}

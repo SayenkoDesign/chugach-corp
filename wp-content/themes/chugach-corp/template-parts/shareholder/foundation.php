@@ -1,13 +1,13 @@
 <?php
-// Shareholder - Services
+// Shareholder - Foundation
 
-if( ! class_exists( 'Shareholder_Services_Section' ) ) {
-    class Shareholder_Services_Section extends Element_Section {
+if( ! class_exists( 'Shareholder_Foundation_Section' ) ) {
+    class Shareholder_Foundation_Section extends Element_Section {
                 
         public function __construct() {
             parent::__construct();
                                     
-            $fields = get_field( 'services' );
+            $fields = get_field( 'foundation' );
             $this->set_fields( $fields );
                         
             // Render the section
@@ -25,22 +25,15 @@ if( ! class_exists( 'Shareholder_Services_Section' ) ) {
                 
             $this->add_render_attribute(
                 'wrapper', 'class', [
-                     $this->get_name() . '-services'
+                     $this->get_name() . '-foundation'
                 ]
             ); 
             
             
             $this->add_render_attribute(
                 'wrapper', 'id', [
-                     $this->get_name() . '-services'
+                     $this->get_name() . '-foundation'
                 ]
-            ); 
-            
-            $this->add_render_attribute(
-                'wrapper', [
-                'data-aos' => 'fade-in',
-                'data-aos-anchor-placement' => 'bottom-bottom'
-             ]
             ); 
                         
         } 
@@ -50,55 +43,56 @@ if( ! class_exists( 'Shareholder_Services_Section' ) ) {
         
         // Add content
         public function render() {
-            
-            /*
-            heading
-            editor
-            buttons
-            photo
-            video
-            */
-            
-            
-            $left = '';
+
+            $content = '';
             
             // Add heading
-            $heading_data_attributes = [
-                'data-aos' => 'fade-right', 
-                'data-aos-delay' => 800
-             ];
             $heading = $this->get_fields( 'heading' );
-            $heading = _s_format_string( $heading, 'h2', $heading_data_attributes );
-            $left .= $heading;
-
-            // Add Editor
-            $editor_data_attributes = get_data_attributes( [
-                'data-aos' => 'fade-up', 
-                'data-aos-delay' => 1200
-             ] );
-            $editor = sprintf( '<div class="entry-content" %s>%s</div>', $editor_data_attributes, $this->get_fields( 'editor' ) );
-            $left .= $editor;
-
+            $heading = _s_format_string( $heading, 'h2' );
+           
             $buttons = $this->get_fields( 'buttons' );
+            
+            
             if( ! empty( $buttons ) ) {
                 $button_columns = '';
                 foreach( $buttons as $key => $button ) {
                     $button = new Element_Button( [ 'fields' => $button ]  ); // set fields from Constructor
                     $button->set_settings( ['raw' => true] );
                     $button->add_render_attribute( 'anchor', 'class', [ 'button', 0 == $key ? 'gold' : 'blue', 'large' ] );    
-                    $column_data_attributes = get_data_attributes( [
-                        'data-aos' => 0 == $key % 2 ? 'fade-right' : 'fade-left', 
-                        'data-aos-delay' => 1600  
-                     ] );
-                    $button_columns .= sprintf( '<div class="column column-block shrink" %s>%s</div>', $column_data_attributes, $button->get_element() );
+                    $button_columns .= sprintf( '<div class="column column-block shrink">%s</div>', $button->get_element() );
                 }
                 
                 if( ! empty( $button_columns ) ) {
-                    $left .= sprintf( '<div class="row unstack-medium">%s</div>', $button_columns );
+                    $buttons = sprintf( '<div class="row unstack-medium align-center">%s</div>', $button_columns );
                 }
             }
             
-            $right = '';
+            $content .= sprintf( '<div class="row column text-center"><header>%s</header>%s</div>', $heading, $buttons );
+            
+            
+            // Years
+            $years = $this->get_fields( 'years' );
+            if( ! empty( $years['number'] ) && ! empty( $years['label'] ) ) {
+                $years = sprintf( '<div class="years"><span class="number">%s</span><span class="label">%s</span></div>',
+                                  $years['number'],
+                                  $years['label']
+                                );
+            }
+            
+            // Scholarships
+            $scholarships = $this->get_fields( 'scholarships' );
+            if( ! empty( $scholarships['number'] ) && ! empty( $scholarships['label'] ) ) {
+                $scholarships = sprintf( '<div class="scholarships"><span class="number">%s</span><span class="label">%s</span></div>',
+                                  $scholarships['number'],
+                                  $scholarships['label']
+                                );
+            }
+            
+            $numbers = sprintf( '<div class="numbers">%s%s</div>', $years, $scholarships );
+            
+            // Add Description
+            $description = sprintf( '%s<div class="entry-content">%s</div>', $numbers, $this->get_fields( 'description' ) );
+                        
             $video = $this->get_fields( 'video' );
             $icon = get_svg( 'play-video' );
             $play = '';
@@ -107,21 +101,23 @@ if( ! class_exists( 'Shareholder_Services_Section' ) ) {
                 $play = sprintf( '<button class="play-video" data-open="modal-video" data-src="%s" tabindex="-1">%s</button>', $video, $icon );
             }
             
-            $photo = $this->get_fields( 'photo' );
-            $photo = _s_get_acf_image( $photo, 'large' );
-            $photo_data_attributes = get_data_attributes( [
-                'data-aos' => 'fade-left', 
-                'data-aos-delay' => 2000
-             ] );
-            $right .= sprintf( '<div class="photo" %s>%s%s</div>', $photo_data_attributes, $photo, $play );
+            $photo = $this->get_fields( 'image' );
+            if( ! empty( $photo ) ) {
+                $photo = _s_get_acf_image( $photo, 'large' );
+                $photo = sprintf( '<div class="photo">%s%s</div>', $photo, $play );
+            }
+            
+            $content = sprintf( '%s<div class="row large-unstack align-bottom"><div class="column">%s</div><div class="column">%s</div>',
+                                $content,
+                                $description,
+                                $photo
+                            
+                             );
 
-            return sprintf( '<div class="row"><div class="small-12 large-5 column">%s</div><div class="small-12 large-7 column">%s</div>', 
-                             $left,
-                             $right
-                          );
+            return $content;
         }
         
     }
 }
    
-new Shareholder_Services_Section;
+new Shareholder_Foundation_Section;

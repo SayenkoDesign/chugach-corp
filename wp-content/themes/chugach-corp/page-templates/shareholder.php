@@ -22,7 +22,8 @@ _s_get_template_part( 'template-parts/global', 'hero' );
         _s_get_template_part( 'template-parts/shareholder', 'services' );
         _s_get_template_part( 'template-parts/shareholder', 'development' );
         _s_get_template_part( 'template-parts/shareholder', 'insights' );
-        
+        _s_get_template_part( 'template-parts/shareholder', 'foundation' );
+        _s_get_template_part( 'template-parts/shareholder', 'questions' );
         _s_get_template_part( 'template-parts/blog', 'stories' );
 	?>
 	</main>

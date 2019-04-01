@@ -59,7 +59,7 @@ Header
                 
                 .site-title {
                     img {
-                       transform-origin: center center;
+                       transform-origin: center left;
                        transform: scale(.7);
                        width: auto;   
                     }
@@ -146,6 +146,7 @@ Header
                 &:before {
                    content: '';
                    width: 50vw;
+                   top: 0;
                    right: 100%; 
                    position: absolute;
                    height: 100%;

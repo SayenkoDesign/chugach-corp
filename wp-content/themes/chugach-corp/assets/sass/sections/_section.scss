@@ -4,27 +4,36 @@ section {
     
     background-size: cover;
     background-repeat: no-repeat;
-        
-    &.background-dark {
-        background: $light-gray; 
-        padding: 45px 0;
-    }
     
-    &.section-curved {
-        &.background-dark {
-            background-color: transparent;
-            margin-top: 0;
-            padding: 0;
-            
-            .wrap {
-                background-color: $light-gray; 
-                padding: 45px 0;  
-            }
-        }
+    .photo img {
+        box-shadow: $box-shadow;   
     }
         
-    header {
+    .photo,
+    .photo-grid .background {
+        position: relative;
         
+        .play-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);      
+            }
+            
+            &:hover {
+                svg {
+                    opacity: .9   
+                }
+            }
+           
+        }
     }
     
 }

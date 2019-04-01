@@ -37,7 +37,7 @@ if( ! class_exists( 'About_Vision_Section' ) ) {
         // Add content
         public function render() {
             
-            $heading = _s_format_string( $this->get_fields( 'heading' ), 'h2' );
+            $heading = _s_format_string( $this->get_fields( 'heading' ), 'h3' );
             $description = $this->get_fields( 'description' );
             
             $photo = $this->get_fields( 'photo' );
@@ -54,8 +54,8 @@ if( ! class_exists( 'About_Vision_Section' ) ) {
             
             
             
-            return sprintf( '<div class="row"><div class="column small-12 large-4">%s%s</div>
-                            <div class="column small-12 large-8">%s</div></div>', $heading, $description, $photo );
+            return sprintf( '<div class="row"><div class="column column-block small-12 large-5">%s%s</div>
+                            <div class="column column-block small-12 large-7">%s</div></div>', $heading, $description, $photo );
             
         }
         

@@ -1,33 +1,321 @@
 // Who We Are
 
 .template-who-we-are {
- 
+
+    
+    .section-mission {
+        position: relative;
+        z-index: 2;
+        
+        .wrap {
+            @include breakpoint(large) {
+                max-width: $global-width;
+                margin: 0 auto;
+                padding-left: rem-calc(112);
+            }   
+        }
+     
+        header {
+            @include heading-with-icon($lime);
+            
+            @include breakpoint(large) {
+                padding-right: rem-calc(40);   
+            }
+            
+            h2 {
+                top: -10px;   
+            }
+        }
+        
+        .large-unstack {
+            @include breakpoint(large) {
+                .column:last-child {
+                    max-width: 50%;   
+                }
+            }
+        }
+        
+    }
+    
+    
+    .section-vision {
+        
+        padding: rem-calc(25 0 15);
+        
+        .wrap {
+            @include breakpoint(large) {
+                max-width: $global-width;
+                margin: 0 auto;
+                padding-left: rem-calc(112);
+            }   
+        }
+        
+        h3 {
+            font-style: normal;
+            margin-bottom: rem-calc(18);   
+        }
+        
+        .photo {
+            @include photo;
+        }
+        
+        @include breakpoint(large) {
+            .row .column:first-child {
+                padding-right: rem-calc(30);   
+            }
+        }
+        
+    }
  
     .section-core-behaviors {
+        position: relative;
+        padding: rem-calc(75 0 175);
+        
+        .wrap {
+            position: relative;   
+            max-width: $global-width;
+            margin: 0 auto;            
+        }
+        
+        &:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(270deg, rgba(#64A70B, .7) 0%, rgba(#046A38, .7) 100%);
+        }
+        
+        .wrap {
+            position: relative;
+            z-index: 2;   
+        }
+        
+        &.slider-show {
+            @include breakpoint(large) {
+                .grid {
+                    opacity: 0;
+                    visibility: hidden;   
+                }
+                
+                .slider {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            
+                .close-slider {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+        
+        .large-unstack {
+            position: relative;
+            margin-bottom: rem-calc(75);
+            
+            @include breakpoint(large) {
+                padding: rem-calc(0 112);                
+            }
+                        
+            header {
+                @include heading-with-icon();
+               
+                @include breakpoint(large) {
+                    padding-right: rem-calc(40);   
+                }
+               
+               h2 {
+                    top: 24px;   
+               }
+            }
+            
+            h2,
+            h3 {
+                color: #fff;   
+            }
+        }
         
         
-        .grid-hide {
+        .slick-arrows {
+            display: none;
+            @include breakpoint(large) {
+                display: block;
+                
+                .slick-next,
+                .slick-prev {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);  
+                }
+                
+                .slick-prev {
+                    
+                    left: rem-calc(15);
+                    
+                    @include breakpoint($global-width + 60) {
+                        left: -112px!important;
+                    }
+                    
+                    &:before {
+                        content: '';
+                        @include slick-arrow( #fff );
+                    }
+                    
+                    &:hover:before {
+                        @include slick-arrow( #fff );
+                    }   
+                }
+                
+                .slick-next {
+                    
+                    right: rem-calc(15);
+                    
+                    @include breakpoint($global-width + 60) {
+                        right: -112px!important;
+                    }
+                    
+                    &:before {
+                        content: '';
+                        @include slick-arrow( #fff, right );
+                    }
+                    
+                    &:hover:before {
+                        @include slick-arrow( #fff, right );
+                    }   
+                }
+            }
+        }
+        
+        
+        .slick-dots {
+            
+            li {
+                
+                button {
+                    
+                    &:before {
+                        background-color: transparent;
+                        border-radius: 50%;
+                        border: 2px solid #fff;
+                        color: transparent;
+                    }
+                }
+                &.slick-active button:before {
+                    color: transparent;
+                    background-color: #fff;
+                    
+                }
+            }
+        }
+
+        
+        .close-slider {
+            display: none;
             opacity: 0;
-            visibility: hidden;
+            visibility: hidden; 
+            transition: all .2s ease-in-out;
+        
+            @include breakpoint(large) {
+                display: block;
+            }  
+            
+            position: absolute;
+            top: 0;
+            right: 15px;
+            cursor: pointer;
+            z-index: 2; 
+            width: 35px;
+            height: 35px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35'%3E%3Cpath fill='%23FFFFFF' fill-rule='evenodd' stroke='%23FFFFFF' d='M20.39 17.498L33.38 4.506c.825-.825.825-2.064 0-2.89-.826-.821-2.06-.821-2.886 0L17.498 14.613 4.506 1.616c-.825-.821-2.064-.821-2.89 0-.821.826-.821 2.065 0 2.89l12.997 12.992L1.616 30.495c-.821.826-.821 2.06 0 2.886.826.825 2.065.825 2.89 0L17.498 20.39l12.997 12.992c.826.825 2.06.825 2.886 0 .825-.826.825-2.06 0-2.886L20.39 17.498z'/%3E%3C/svg%3E");
+            
+            
+            
+        }
+        
+        .grid {
+            position: relative;
+            z-index: 2;
+            display: none;
+            transition: all .2s ease-in-out;
+            
+            @include breakpoint(large) {
+                display: block;
+            }
+            
+            .grid-item {
+                cursor: pointer;
+                transition: all .2s ease-in-out;
+                
+                h4 {
+                    color: #fff;
+                    text-align: center;   
+                }
+                
+                .icon {
+                    width: 100%;
+                    height: 108px;  
+                    position: relative; 
+                }
+                
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    width: auto;
+                    max-height: 108px;   
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                
+                &:hover {
+                    transform: scale(1.1);   
+                }
+            }
         }
         
         .slider {
-            opacity: 0;
-            visibility: hidden;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 100%;
-            margin-left: -100%;
-            float: left;
             
-            &.slider-show {
-                opacity: 1;
-                visibility: visible;
+            @include breakpoint(large) {
+                opacity: 0;
+                visibility: hidden;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 100%;
+                margin-left: -100%;
+                float: left;
+                transition: all .2s ease-in-out;
+            }
+            
+            .slide-content {
+                margin: 0 auto;
+                max-width: rem-calc(600);   
+                
+                text-align: center;
+                
+                > * {
+                    color: #fff;   
+                }
+                
+                img {
+                    display: block;
+                    margin: 0 auto rem-calc(10);   
+                }
             }
         }       
         
+    }
+    
+    
+    .section-footer-cta {
+        margin-top: rem-calc(-50);
+        position: relative;
+        z-index: 2;
     }
     
 }

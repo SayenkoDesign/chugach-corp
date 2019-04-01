@@ -5,29 +5,18 @@
     .section-services {
         
         margin-bottom: rem-calc(55);
+        
+        ul {
+            @include bullets();   
+        }
      
         .photo {
-            position: relative;
-            
-            button {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                
-                svg {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-                }
-            }
-            
-            &:hover {
-                img {
-                    opacity: .9;   
-                }
+            @include photo;
+        }
+        
+        @include breakpoint(large) {
+            .row .column:first-child {
+                padding-right: rem-calc(15);   
             }
         }
         
@@ -35,9 +24,13 @@
     
     
     .section-development {
+        
+        margin: rem-calc(75 0 0 0);
+        
      
         .background-image {
             position: relative;
+            padding-bottom: rem-calc(40);
             
             &:after {
                 content: '';
@@ -50,11 +43,218 @@
             }
         }
         
+        header,
         .entry-content {
             position: relative;
             z-index: 3;   
         }
         
+        header {
+            border-radius: 1px;
+            background-color: #FFFFFF;
+            box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.13);
+            max-width: rem-calc(560);
+            margin: 0 auto;
+            padding: rem-calc(35 35 60 35);
+            border-top: 4px solid $blue;
+            margin-top: rem-calc(-35);
+            text-align: center;
+            
+            h3 {
+                font-family: $lato;
+                font-style: normal;   
+            }
+        }
+        
+        .entry-content {
+            max-width: rem-calc(580);
+            margin: 0 auto;
+            color: #fff;
+            text-align: center;
+            
+            button:hover {
+                opacity: .9;   
+            }
+        }
+        
+    }
+    
+    
+    .section-insights {
+        
+        padding: rem-calc(45 0); 
+        
+        .photo-grid-wrapper {
+            padding: rem-calc(15);
+            position: relative;
+            
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                z-index: -1;
+                height: 127px;
+                width: 196px;
+                position: absolute;
+            } 
+            
+            &:before {
+                background-color: $red;
+                top: 0;
+                left: 0;
+            }
+            
+            &:after {
+                background-color: $green;
+                right: 30px;
+                bottom: 0;
+                width: 244px;
+            }    
+        }
+
+        .photo-grid {  
+            padding-left: 30px;
+            margin: 0 -6px;          
+
+            > div {
+                float: left;
+                padding: 0 6px;
+                margin-bottom: 12px;
+                                
+                .background {
+                    background-size: cover;
+                    background-position: center;
+                    width: 100%;
+                    height: 252px;
+                    box-shadow: $box-shadow;
+                }
+                
+                &:first-child,
+                &:nth-child(2) {
+                    position: relative;
+                    left: -30px;   
+                }
+            }
+            
+            .width-60 {
+                width: 60%;   
+            }
+            
+            .width-40 {
+                width: 40%;
+            }
+        }
+        
+        
+        h2 {
+            @include heading-border-bottom($lime);   
+        }
+    }
+    
+    
+    .section-foundation {
+     
+        h2 {
+             @include heading-border-bottom($lime, center);    
+        }
+        
+        header ~ .row {
+            margin-bottom: rem-calc(30);   
+        }
+        
+        
+        .numbers {
+            text-align: center;
+            position: relative;
+            margin-bottom: -90px;
+            
+            > div {
+                display: inline-block;
+                width: 174px;
+                height: 174px;
+                border-radius: 100%;  
+                border: 6px solid #fff; 
+                
+                > span {
+                    display: block;   
+                    color: #fff;
+                    text-align: center;
+                    
+                    &:first-child {
+                        margin-top: 36px;   
+                    }
+                }
+                
+                .number {
+                    font-size: rem-calc(50);
+                    line-height: 1.16;
+                    letter-spacing: 1.1px;
+                    font-family: $roboto;
+                    font-weight: 900;
+                }
+                
+                .label {
+                    font-size: rem-calc(15);
+                    line-height: 1.6;
+                    font-style: italic;
+                    font-family: georgia;  
+                }
+            }
+            
+            .years {
+                background-color: $gold;   
+            }
+            
+            .scholarships {
+                background-color: $green; 
+                position: relative;
+                z-index: 2;
+                margin-left: -20px;
+            }
+        }
+        
+        .entry-content {
+            border-radius: 2px;
+            background-color: $blue;
+            text-align: center;
+            color: #fff;
+            padding: rem-calc(110 30 40);   
+            
+            @include breakpoint(large) {
+                padding: rem-calc(110 60 40);   
+            }
+        }
+        
+        .align-bottom {
+            position: relative;
+            padding-bottom: rem-calc(60);
+            
+            @include breakpoint(large) {
+                padding-left: rem-calc(30);
+                padding-right: rem-calc(30);
+            }
+            
+            &:before {
+                content: '';
+                display: block;
+                border-radius: 2px;
+                background-color: #ECECEC;
+                width: 44%;
+                height: 88%;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: -1;
+            }   
+        }
+        
+    }
+    
+    
+    .section-questions {
+        padding: rem-calc(75 0);
+        text-align: center;   
     }
     
 }

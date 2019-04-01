@@ -1,0 +1,8 @@
+// Grid 
+
+// fix broken shrink class
+@include breakpoint(large) {
+    .shrink {
+        flex: 0 0 auto!important;
+    }   
+}

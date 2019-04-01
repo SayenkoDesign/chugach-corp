@@ -48,23 +48,16 @@ if( ! class_exists( 'About_Mission_Section' ) ) {
             
             $fields = $this->get_fields();  
                                                                 
-            $header = '';
-            $heading = $this->get_fields( 'heading' );
-            $subheading = $this->get_fields( 'subheading' );
-            if( ! empty( $subheading ) ) {                
-                
-                $subheading = sprintf( '<div class="column column-block subheading"><div class="entry-content">%s</div></div>', 
-                                        $subheading );
-            }
+            $icon = sprintf( '<span class="icon"><img src="%swho-we-are/icons/megaphone.svg" /></span>', trailingslashit( THEME_IMG ) );     
+            $heading    = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : 'Our Mission';
+            $heading    = sprintf( '<header>%s%s</header>', 
+                                       $icon,
+                                       _s_format_string( $heading, 'h2' ) );
             
-            $icon = sprintf( '<span class="icon"><img src="%swho-we-are/icons/megaphone.svg" /></span>', trailingslashit( THEME_IMG ) );            
+            $subheading = empty( $this->get_fields( 'subheading' ) ) ? '' : sprintf( '%s', _s_format_string( $this->get_fields( 'subheading' ), 'h3' ) );
             
-            if( ! empty( $heading ) ) {
-                $heading = sprintf( '<h2>%s</h2>', $heading );
-                $header = sprintf( '<div class="column column-block"><header>%s%s</header></div>', $icon, $heading  );
-                return  sprintf( '<div class="header"><div class="row medium-unstack align-middle">%s%s</div></div>',
-                                  $header, $subheading );
-            }
+            return sprintf( '<div class="row large-unstack"><div class="column column-block shrink">%s</div><div class="column column-block">%s</div></div>', 
+                                $heading, $subheading );
             
         }
         

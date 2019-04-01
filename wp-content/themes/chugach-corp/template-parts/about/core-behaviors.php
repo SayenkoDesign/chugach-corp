@@ -28,19 +28,54 @@ if( ! class_exists( 'About_Core_Behaviors_Section' ) ) {
                      $this->get_name() . '-core-behaviors'
                 ]
             );
-                        
+            
+            $this->add_render_attribute(
+                'wrapper', 'id', [
+                     $this->get_name() . '-core-behaviors'
+                ]
+            );
+            
+            $this->add_render_attribute(
+                'wrapper', 'data-toggler', '.slider-show' );
+                                    
             $background_image       = $this->get_fields( 'background_image' );
             $background_position_x  = strtolower( $this->get_fields( 'background_position_x' ) );
             $background_position_y  = strtolower( $this->get_fields( 'background_position_y' ) );
             
             if( ! empty( $background_image ) ) {
                 $background_image = _s_get_acf_image( $background_image, 'hero', true );
+                $this->add_render_attribute( 'wrapper', 'class', 'backgorund-image' );
                 $this->add_render_attribute( 'wrapper', 'style', sprintf( 'background-image: url(%s);', $background_image ) );
                 $this->add_render_attribute( 'wrapper', 'style', sprintf( 'background-position: %s %s;', 
                                                                           $background_position_x, $background_position_y ) );
             } 
             
-        }       
+        } 
+        
+        
+        public function before_render() {            
+            
+            $this->add_render_attribute( 'wrap', 'class', 'wrap' );
+            
+            return sprintf( '<%s %s><div %s>', 
+                            esc_html( $this->get_html_tag() ), 
+                            $this->get_render_attribute_string( 'wrapper' ), 
+                            $this->get_render_attribute_string( 'wrap' )
+                            );
+        }
+    
+        /**
+         * After section rendering.
+         *
+         * Used to add stuff after the section element.
+         *
+         * @since 1.0.0
+         * @access public
+         */
+        public function after_render() {
+            return sprintf( '</div></%s>', esc_html( $this->get_html_tag() ) );
+        }
+              
         
         // Add content
         public function render() {
@@ -50,26 +85,22 @@ if( ! class_exists( 'About_Core_Behaviors_Section' ) ) {
             $row = new Element_Row(); 
                                         
             // Header
-            $header = new Element_Header( [ 'fields' => $fields ] );
-            $column = new Element_Column(); 
-            $column->add_render_attribute( 'wrapper', 'class', 'text-center' );
-            $column->add_child( $header );
+            $icon       = sprintf( '<span class="icon"><img src="%swho-we-are/icons/core-behaviors.svg" /></span>', trailingslashit( THEME_IMG ) );  
+            $heading    = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : 'Core Behaviors';
+            $heading    = sprintf( '<header>%s%s</header>', 
+                                       $icon,
+                                       _s_format_string( $heading, 'h2' ) );
             
-            $row->add_child( $column );
-            $this->add_child( $row );
+            $subheading = empty( $this->get_fields( 'subheading' ) ) ? '' : sprintf( '%s', _s_format_string( $this->get_fields( 'subheading' ), 'h3' ) );
             
-            $row = new Element_Row(); 
-            $row->add_render_attribute( 'wrapper', 'class', 'large-collapse' );
+            $button = '<button class="close-slider" data-toggle="section-core-behaviors"><span class="screen-reader-text">close</span></button>';
             
-            $html = $this->grid();
+            $content = sprintf( '<div class="row large-unstack"><div class="column column-block shrink">%s</div><div class="column column-block">%s</div>%s</div>', 
+                                $heading, $subheading, $button );
+            
+            $grid = $this->grid();
                         
-            $html = new Element_Html( [ 'fields' => [ 'html' => $html ] ] ); // set fields from Constructor
-            $column = new Element_Column(); 
-            $column->add_child( $html );
-                        
-            $row->add_child( $column );
-            
-            $this->add_child( $row );
+            return $content . $grid;
                                          
             
         }
@@ -91,12 +122,12 @@ if( ! class_exists( 'About_Core_Behaviors_Section' ) ) {
                     $icon = sprintf( '<div class="icon">%s</div>', _s_get_acf_image( $icon, 'icon-large' ) );
                     $heading = _s_format_string( $row['heading'], 'h4' ); 
                    
-                    $grid_items .= sprintf( '<div class="column column-block"><div class="grid-item" data-toggle="grid slider">%s%s</div></div>', 
+                    $grid_items .= sprintf( '<div class="column column-block"><div class="grid-item" data-toggle="section-core-behaviors">%s%s</div></div>', 
                                      $icon, $heading );
                 }
             }
             
-            return sprintf( '%s<div class="grid" id="grid" data-toggler=".grid-hide"><div class="row small-up-2 medium-up-2 large-up-4 align-center">%s</div></div>', 
+            return sprintf( '<div class="clearfix">%s<div class="grid" id="grid"><div class="row small-up-2 medium-up-3 large-up-5 align-center">%s</div></div></div>', 
                             $this->slick_slider(),
                             $grid_items
                           );   
@@ -117,12 +148,12 @@ if( ! class_exists( 'About_Core_Behaviors_Section' ) ) {
                     $heading = _s_format_string( $row['heading'], 'h4' ); 
                     $description = $row['description'];   
                    
-                    $grid_items .= sprintf( '<div>%s%s%s</div>', 
+                    $grid_items .= sprintf( '<div><div class="slide-content">%s%s%s</div></div>', 
                                      $icon, $heading, $description );
                 }
             }
             
-            return sprintf( '<div class="slider" id="slider" data-toggler=".slider-show"><button class="close-slider" data-toggle="slider grid">&times;</button><div class="slick">%s</div></div>', $grid_items );  
+            return sprintf( '<div class="slider" id="slider"><div class="slick">%s</div></div>', $grid_items );  
         }
         
     }
