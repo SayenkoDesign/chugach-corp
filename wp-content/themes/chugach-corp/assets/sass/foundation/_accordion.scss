@@ -11,18 +11,17 @@
 	.accordion-title {
 		display: block;
 		position: relative;
-        padding-left: rem-calc(26); 
-        padding-bottom: rem-calc(5);
+        padding: rem-calc(16 40 16 26); 
         
         &:before {
-            color: $dark-gray;
+            color: $green;
             line-height: 1;
-            margin-top: -4.5px;
             position: absolute;
             top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            content: "+";   
+            right: 0;
+            transform: translate(-100%,-50%);
+            content: "\002B";
+            font-size: rem-calc(20);
         }
         
         h4 {
@@ -34,12 +33,16 @@
 
 .accordion-item.is-active {
     .accordion-title:before {
-        content: '-';
+        content: "\2212";
     }
 }
 
 
 .accordion-content {
     display: none;
-    padding: rem-calc(10 0 10 30);
+    padding: rem-calc(32 26);
+    
+    *:last-of-type {
+        margin-bottom: 0;   
+    }
 }

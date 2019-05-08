@@ -5,7 +5,8 @@ if( ! class_exists( 'Contact_Directory_Section' ) ) {
         public function __construct() {
             parent::__construct();
             
-            $fields = get_field( 'directory' );
+            $fields['heading'] = get_field( 'directory_heading' );
+            $fields['directory'] = get_field( 'directory' );
             $this->set_fields( $fields );
                                     
             // Render the section
@@ -44,7 +45,7 @@ if( ! class_exists( 'Contact_Directory_Section' ) ) {
         // Add content
         public function render() {
                                                                             
-            $rows = $this->get_fields();
+            $rows = $this->get_fields( 'directory' );
             if( empty( $rows ) ) {
                 return false;
             }
@@ -55,7 +56,10 @@ if( ! class_exists( 'Contact_Directory_Section' ) ) {
                 $accordion->add_item( $row['heading'], $row['content'], 0 == $key ? true : false );
             }
             
-            return sprintf( '<div class="entry-content"><h2>Directory</h2>%s</div>', $accordion->get_accordion() );
+            $heading = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ): 'Directory';
+            $heading = _s_format_string( $heading, 'h2' ); 
+            
+            return sprintf( '%s<div class="entry-content">%s</div>', $heading, $accordion->get_accordion() );
         }
         
     }

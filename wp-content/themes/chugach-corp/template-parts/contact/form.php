@@ -49,15 +49,18 @@ if( ! class_exists( 'Contact_Form_Section' ) ) {
             $heading = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ): 'General Inquiries';
             $heading = _s_format_string( $heading, 'h2' ); 
             
+            $text = $this->get_fields( 'text' );
+            
             $form_id = $this->get_fields( 'form_id' ); 
             $form = GFAPI::get_form( $form_id );
             if( false !== $form ) {
                $form = do_shortcode( sprintf( '[gravityform id="%s" title="false" description="false" ajax="false"]', $form_id ) );
             }
             
-            return sprintf( '<div class="entry-content"><div class="row large-unstack"><div class="column">%s</div><div class="column shrink">%s</div></div>%s</div>', 
+            return sprintf( '<div class="entry-content"><div class="row large-unstack"><div class="column">%s</div><div class="column shrink">%s</div></div>%s%s</div>', 
                             $heading,
                             _s_get_social_icons(),
+                            $text,
                             $form   
                           );
         }

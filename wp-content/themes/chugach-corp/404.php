@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <?php
-get_template_part( 'template-parts/section', 'hero' );
+get_template_part( 'template-parts/global', 'hero' );
 ?>
 
 <div id="primary" class="content-area">

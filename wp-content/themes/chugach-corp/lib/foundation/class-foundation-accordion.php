@@ -12,7 +12,7 @@ class Foundation_Accordion extends Foundation {
         
         $defaults = array(
             'class' => 'accordion',
-            'data' => array( 'data-accordion' => 'true',  'data-multi-expand' => 'true', 'data-allow-all-closed' => 'true' )            
+            'data' => array( 'data-accordion' => 'true',  'data-multi-expand' => 'false', 'data-allow-all-closed' => 'true' )            
         );
 
         $args = wp_parse_args( $settings, $defaults );

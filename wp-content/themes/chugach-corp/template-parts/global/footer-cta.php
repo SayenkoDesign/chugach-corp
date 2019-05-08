@@ -104,12 +104,8 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
                     $button = new Element_Button( [ 'fields' => $button ]  ); // set fields from Constructor
                     $button->set_settings( ['raw' => true] );
                     $button->add_render_attribute( 'anchor', 'class', [ 'button', 'gold', 'large' ] );    
-                    $column_data_attributes = get_data_attributes( [
-                        'data-aos' => 0 == $key % 2 ? 'fade-right' : 'fade-left', 
-                        'data-aos-delay' => 1200,
-                        'data-aos-anchor' => '.section-footer-cta'  
-                     ] );
-                    $html .= sprintf( '<div class="column column-block shrink" %s>%s</div>', $column_data_attributes, $button->get_element() );
+                    
+                    $html .= sprintf( '<div class="column column-block shrink">%s</div>', $button->get_element() );
                 }
                 
                 if( ! empty( $html ) ) {

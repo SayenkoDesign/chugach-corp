@@ -4,8 +4,8 @@ if( ! class_exists( 'Contact_Businesses_Section' ) ) {
         
         public function __construct() {
             parent::__construct();
-            
-            $fields = get_field( 'logos' );
+            $fields['heading'] = get_field( 'business_heading' );
+            $fields['logos'] = get_field( 'logos' );
             $this->set_fields( $fields );
                                     
             // Render the section
@@ -44,7 +44,7 @@ if( ! class_exists( 'Contact_Businesses_Section' ) ) {
         // Add content
         public function render() {
                                                                             
-            $rows = $this->get_fields();
+            $rows = $this->get_fields( 'logos' );
             if( empty( $rows ) ) {
                 return false;
             }
@@ -63,16 +63,17 @@ if( ! class_exists( 'Contact_Businesses_Section' ) ) {
                     $anchor = sprintf( ' href="%s"', $url );
                 }
                 
-                $columns .= sprintf( '<div class="column column-block"><div class="logo"><%1$s%2$s>%3$s</%1$s></div></div>', 
+                $columns .= sprintf( '<div class="column"><div class="logo"><%1$s%2$s>%3$s</%1$s></div></div>', 
                                 $tag, 
                                 $anchor, 
                                 $image
                 );
             }
             
-            $heading = sprintf( '<h2>Businesses</h2>', 'Businesses'  );
+            $heading = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ): 'Our Businesses';
+            $heading = _s_format_string( $heading, 'h2' ); 
             
-            return sprintf( '%s<div class="row small-up-2 medium-up-3">%s</div>', 
+            return sprintf( '%s<div class="row collapse small-up-2 medium-up-3">%s</div>', 
                                 $heading, 
                                 $columns
                                );
