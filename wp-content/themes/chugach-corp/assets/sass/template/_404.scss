@@ -1,5 +1,21 @@
 // 404 Page
 
 .error404 {
-	
+	.site-content {
+        padding-bottom: rem-calc(75);   
+        
+        .entry-content {
+            padding-bottom: rem-calc(45);   
+        }
+        
+        .search-form {
+            text-align: center;
+            
+            .search-field {
+                padding: 10px 15px;
+                font-size: rem-calc(18);
+            }   
+        }
+    }
+    
 }

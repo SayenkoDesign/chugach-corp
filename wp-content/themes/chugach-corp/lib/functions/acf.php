@@ -47,6 +47,16 @@ if( function_exists('acf_add_options_sub_page') ) {
 	));
     
     acf_add_options_sub_page(array(
+		'page_title' 	=> '404 Page',
+		'menu_title' 	=> '404 Page',
+        'menu_slug' 	=> 'theme-settings-404',
+        'parent' 		=> 'theme-settings',
+		'capability' => 'edit_posts',
+ 		'redirect' 	=> false,
+        'autoload' => true,
+	));
+    
+    acf_add_options_sub_page(array(
 		'page_title' 	=> 'Stories',
 		'menu_title' 	=> 'Stories',
         'menu_slug' 	=> 'theme-settings-stories',

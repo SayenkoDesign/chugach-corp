@@ -49,7 +49,7 @@
             'container_class' => '',
             'container_id' => '',
             'menu_id'        => 'secondary-menu',
-            'menu_class'     => 'menu js-superfish',
+            'menu_class'     => 'menu',
             'before' => '',
             'after' => '',
             'link_before' => '',
@@ -79,7 +79,7 @@
                 <?php
                 function add_search_button( $items, $args ) {
                     if ( 'secondary' === $args->theme_location ) {
-                            $button = sprintf('<button class="search-button" data-open="modal-search"><img src="%sheader/search.svg" class="" /><span class="screen-reader-text">Search</span></button>', trailingslashit( THEME_IMG ) );
+                            $button = sprintf('<button class="search-button" data-open="modal-search"><span><img src="%sheader/search.svg" class="" /></span><span class="screen-reader-text">Search</span></button>', trailingslashit( THEME_IMG ) );
                             $items .= sprintf( '<li class="menu-item">%s</li>', $button );
                     }
                     return $items;
@@ -158,8 +158,8 @@
                                 'container' => '',
                                 'container_class' => '',
                                 'container_id' => '',
-                                'menu_id'        => 'primary-menu js-superfish',
-                                'menu_class'     => 'menu',
+                                'menu_id'        => 'primary-menu',
+                                'menu_class'     => 'menu js-superfish',
                                 'before' => '',
                                 'after' => '',
                                 'link_before' => '',

@@ -2,7 +2,7 @@
 
 add_filter('nav_menu_item_args', function ($args, $item, $depth) {
     $classes = $item->classes;
-    if ( in_array('button', $classes ) ) {
+    if ( in_array('button', $classes ) || $args->theme_location == 'secondary' ) {
         $args->link_before = '<span>';
         $args->link_after  = '</span>';
     }

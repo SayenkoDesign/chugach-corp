@@ -30,8 +30,8 @@
         .menu {
             flex-direction: column;    
             
-            li {
-                &:first-child {
+            > li {
+                &:first-child > a {
                     background-color: $gold;
                     
                     &:hover {
@@ -39,7 +39,7 @@
                     }
                 }
                 
-                &:nth-child(2) {
+                &:nth-child(2) > a {
                     background-color: $lime;
                     
                     &:hover {
@@ -47,7 +47,7 @@
                     }
                 }
                 
-                &:nth-child(3) {
+                &:nth-child(3) > a {
                     background-color: $green;
                     
                     &:hover {
@@ -55,7 +55,7 @@
                     }
                 }
                 
-                &:nth-child(4) {
+                &:nth-child(4) > a {
                     background-color: $red;
                     
                     &:hover {
@@ -63,7 +63,7 @@
                     }
                 }
                 
-                &:last-child {
+                &:last-child > a {
                     background-color: $blue;            
                     &:hover {
                         background-color: scale-color($blue, $lightness: -10%);
@@ -77,6 +77,14 @@
                     line-height: 1.235294118;
                     padding: rem-calc(6 16);
                 }   
+            }
+            
+            li ul {
+                @include list-reset;
+                
+                a {
+                    color: $dark-gray;   
+                }
             }
         }
     }

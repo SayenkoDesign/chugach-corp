@@ -2,12 +2,12 @@
 
 .nav-secondary {
     
-    li {
-        transform: skew(-12deg); 
+    > ul > .menu-item {
+        
         line-height: 1;
         margin-left: -1px;
-        
-        &:first-child {
+                
+        &:first-child a {
             background-color: $gold;
             
             &:hover {
@@ -15,7 +15,7 @@
             }
         }
         
-        &:nth-child(2) {
+        &:nth-child(2) a {
             background-color: $lime;
             
             &:hover {
@@ -23,7 +23,7 @@
             }
         }
         
-        &:nth-child(3) {
+        &:nth-child(3) a {
             background-color: $green;
             
             &:hover {
@@ -31,7 +31,7 @@
             }
         }
         
-        &:nth-child(4) {
+        &:nth-child(4) a {
             background-color: $red;
             
             &:hover {
@@ -39,20 +39,24 @@
             }
         }
         
-        &:last-child {
+        &:last-child > * {
             background-color: $blue;            
             &:hover {
                 background-color: scale-color($blue, $lightness: -10%);
             }
         }
         
-        a, button {
+        > a, > button {
             display: inline-flex;
-            transform: skew(12deg); 
+            transform: skew(-12deg); 
             color: #fff; 
             font-size: rem-calc(17);
             line-height: 1.235294118;
             padding: rem-calc(6 16);
+            
+            span {
+                transform: skew(12deg); 
+            }
         }
         
         button {
@@ -61,6 +65,56 @@
             outline: none;
             position: relative;
             cursor: pointer;
+            line-height: 1;
+        }
+    }
+    
+    @include breakpoint(large) {
+        .menu-item .sub-menu {
+            @include list-reset;
+            position: absolute;
+            top: 100%;
+            left: auto;
+            margin-left: -15px;
+            min-width: 190px;
+            transform: translateY(-400%);
+            padding: rem-calc(10 0);
+            opacity: 0;
+            z-index: -2;
+            background-color: $white;
+            box-shadow: 1px 1px 6px 0 #979797;
+            
+            .menu-item {
+				border: none;
+				display: block;
+				padding: rem-calc(5 15);
+                margin: 0;
+
+				> a {
+                    background: transparent;
+					position: relative;
+                    padding: 0;
+                    font-size: rem-calc(15);
+                    display: inline-block;
+                    
+                    color: $dark-gray;
+                    
+                    &:hover {
+                        background: transparent;
+                        color: $lime;   
+                    }
+				}
+
+			}
+            
+        }
+        
+        //.menu-item > a:focus ~ ul.sub-menu,
+        .menu-item.focus > ul.sub-menu,
+        .menu-item:hover > ul.sub-menu {
+            opacity: 1;
+            transform: translateY(0);
+            transition: none;
         }
     }
 }

@@ -34,7 +34,9 @@
 /****************************************
 	Functions
 *****************************************/
-
+    
+    include_once( 'functions/404.php' );
+    
     include_once( 'functions/svg.php' );
 
 	include_once( 'functions/theme.php' );
