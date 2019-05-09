@@ -69,6 +69,8 @@
     
     include_once( 'functions/aos.php' );
     
+    include_once( 'functions/queries.php' );
+    
 /****************************************
 	include_onces (Foundation)
 *****************************************/

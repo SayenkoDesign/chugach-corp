@@ -8,7 +8,8 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
         public function __construct() {
             parent::__construct();
             
-            $fields = get_field( 'stories', get_option('page_for_posts') );
+            $post_id = is_home() ? get_option('page_for_posts') : '';
+            $fields = get_field( 'stories', $post_id );
             $this->set_fields( $fields );
             
             $this->api = new Chugach_Rest_API_Posts;

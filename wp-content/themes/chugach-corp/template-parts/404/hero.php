@@ -44,7 +44,6 @@ if( ! class_exists( 'Hero_Section' ) ) {
             
             if( ! empty( $background_image ) ) {
                 $background_image = _s_get_acf_image( $background_image, 'hero', true );
-                
                 $this->add_render_attribute( 'wrapper', 'class', 'has-background' );
                 $this->add_render_attribute( 'background', 'class', 'background-image' );
                 $this->add_render_attribute( 'background', 'style', sprintf( 'background-image: url(%s);', $background_image ) );

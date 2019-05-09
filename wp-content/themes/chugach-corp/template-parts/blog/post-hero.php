@@ -41,7 +41,7 @@ if( ! class_exists( 'Hero_Post' ) ) {
             
             if( ! empty( $background_image ) ) {
                 $background_image = _s_get_acf_image( $background_image, 'hero', true );
-                
+                $this->add_render_attribute( 'wrapper', 'class', 'has-background' );
                 $this->add_render_attribute( 'background', 'class', 'background-image' );
                 $this->add_render_attribute( 'background', 'style', sprintf( 'background-image: url(%s);', $background_image ) );
                 $this->add_render_attribute( 'background', 'style', sprintf( 'background-position: %s %s;', 
@@ -66,7 +66,7 @@ if( ! class_exists( 'Hero_Post' ) ) {
          */
         public function after_render() {
                     
-            $shape = sprintf( '<div class="shape"><img src="%sabout/hero-bottom.png" /></div>', trailingslashit( THEME_IMG ) );
+            $shape = sprintf( '<div class="shape"><img src="%sglobal/hero-bottom.png" /></div>', trailingslashit( THEME_IMG ) );
                 
             return sprintf( '</div></div></div></div>%s</%s>', $shape , esc_html( $this->get_html_tag() ) );
         }
@@ -79,14 +79,8 @@ if( ! class_exists( 'Hero_Post' ) ) {
             $heading        = _s_format_string( $heading, 'h1' );
             
             $post_date = _s_get_posted_on( 'M d, Y' );
-                                    
-            $post_author = _s_get_post_author();
             
-            if( ! empty( $post_author ) ) {
-                $this->add_render_attribute( 'wrapper', 'class', 'has-post-author' );   
-            }
-            
-            return sprintf( '<div class="row align-middle"><div class="column"><div class="caption">%s%s%s</div></div></div>', 
+            return sprintf( '<div class="row align-middle"><div class="column"><div class="hero-content">%s%s%s</div></div></div>', 
                            get_the_category_list( '' ), 
                            $heading, 
                            $post_date );

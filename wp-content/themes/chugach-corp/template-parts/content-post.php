@@ -7,16 +7,9 @@
  * @package _s
  */
 ?>
-
-<?php
-$post_author = _s_get_post_author();
-$post_author_class = $post_author ? 'has-post-author' : '';
-?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class( $post_author_class ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 	<?php
-    echo $post_author;
     
     
     $intro = get_field( 'introduction' );

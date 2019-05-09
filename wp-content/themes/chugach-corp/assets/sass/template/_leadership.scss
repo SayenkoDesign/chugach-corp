@@ -12,7 +12,7 @@
                 &:after {
                     @include two-lines-horizontal;
                     display: block;
-                    margin: 0 auto;   
+                    margin: rem-calc(12) auto 0;   
                 }
             }
         }

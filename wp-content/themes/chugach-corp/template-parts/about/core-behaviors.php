@@ -44,7 +44,7 @@ if( ! class_exists( 'About_Core_Behaviors_Section' ) ) {
             
             if( ! empty( $background_image ) ) {
                 $background_image = _s_get_acf_image( $background_image, 'hero', true );
-                $this->add_render_attribute( 'wrapper', 'class', 'backgorund-image' );
+                $this->add_render_attribute( 'wrapper', 'class', 'background-image' );
                 $this->add_render_attribute( 'wrapper', 'style', sprintf( 'background-image: url(%s);', $background_image ) );
                 $this->add_render_attribute( 'wrapper', 'style', sprintf( 'background-position: %s %s;', 
                                                                           $background_position_x, $background_position_y ) );

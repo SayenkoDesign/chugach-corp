@@ -3,8 +3,8 @@
 .page-template-shareholder {
  
     .section-services {
-        
-        margin-bottom: rem-calc(55);
+        padding-top: rem-calc(45);
+        margin-top: rem-calc(-45);
         
         ul {
             @include bullets();   
@@ -25,7 +25,7 @@
     
     .section-development {
         
-        margin: rem-calc(75 0 0 0);
+        padding: rem-calc(75 0 0 0);
         
      
         .background-image {
@@ -153,6 +153,8 @@
     
     
     .section-foundation {
+        
+        padding-top: rem-calc(45);
      
         h2 {
              @include heading-border-bottom($lime, center);    

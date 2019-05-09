@@ -126,32 +126,17 @@ function _s_get_the_post_navigation( $args = array() ) {
 
 
 
-function _s_blog_pre_get_posts($query) {
+function _s_remove_videos_from_blog_index($query) {
 						
-    if ( $query->is_main_query() && ( $query->is_home() || $query->is_category() || $query->is_tag() ) ) {
+    if ( $query->is_main_query() && $query->is_home() ) {
                                                                 
-        // Order By
-        $query->set( 'orderby', 'meta_value_num, date' );
-        $query->set( 'order', 'ASC' );
-        $query->set( 'meta_key', 'event_start_date' );
-        
-        // Only show future concerts
-        $meta_query = array(
-            array(
-                'key' => 'event_end_date',
-                'value' => date_i18n('Ymd'),
-                'compare' => '>='
-            )
-        );
-        
-        $query->set( 'meta_query', $meta_query );
-    
+        $query->set( 'cat', '-9' );    
     }
         
     return $query;
 }
 
-//add_action( 'pre_get_posts','_s_blog_pre_get_posts' );
+add_action( 'pre_get_posts','_s_remove_videos_from_blog_index' );
 
 
 function _s_blog_template_redirect( $template ) {

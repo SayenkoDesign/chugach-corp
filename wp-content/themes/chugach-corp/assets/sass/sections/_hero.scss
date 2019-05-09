@@ -21,6 +21,11 @@
         }
     }
     
+    .hero-content {
+        padding: rem-calc(30 0);
+        text-align: center;        
+    }
+    
     &.has-background {
         background-color: transparent; 
         
@@ -33,18 +38,27 @@
             min-height: 40vw;    
             
         }
+        
+        .hero-content {
+            @include breakpoint(large) {
+                margin: 0 auto;
+                max-width: rem-calc(680);
+            }
+            
+            h1 {
+                position: relative;
+                
+                &:after {
+                    @include two-lines-horizontal;
+                    display: block;
+                    margin: rem-calc(12) auto 0;   
+                }
+            }   
+        }
+        
         .shape {
             display: block; 
         }
-    }
-    
-    .hero-content {
-        padding: rem-calc(30 0);
-        text-align: center;        
-    }
-    
-    &.has-background .hero-content {
-        padding: 0; 
     }
     
     .wrap {
@@ -67,7 +81,7 @@
     
     .document-ready & {
     
-        &.has-background .wrap .row {
+        .wrap .row {
                         
             position: relative;
             
@@ -75,7 +89,22 @@
                 &:before {
                     @include three-lines;
                     position: absolute;
-                    top: 0;
+                    top: -15px;
+                    left: -60px;
+                    z-index: 4;  
+                }            
+               
+            }
+
+        }
+        
+        
+        &.has-background .wrap .row {
+                        
+            position: relative;
+            
+            @include breakpoint(large) {   
+                &:before {
                     left: rem-calc(map-get($grid-column-gutter, large)/2); 
                     z-index: 4;  
                 }            
