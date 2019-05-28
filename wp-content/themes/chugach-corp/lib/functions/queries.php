@@ -24,7 +24,6 @@ function _s_get_related_posts_query_args( $post_id = false, $related_count = 12,
 		)
 	);
     
-    $args = wp_parse_args( $args, $default_args );
+    return wp_parse_args( $args, $default_args );
 
-	return new WP_Query( $args );
 }

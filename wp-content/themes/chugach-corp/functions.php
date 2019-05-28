@@ -38,9 +38,7 @@ if ( ! function_exists( '_s_setup' ) ) :
         define( 'BlOG_VIDEO_CAT', 9 );	
 		
     	define( 'GOOGLE_API_KEY', '' );	
-        
-        define ( 'DISALLOW_FILE_EDIT', true );
-        
+                
 		/**
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.

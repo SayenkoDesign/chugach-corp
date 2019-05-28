@@ -1,5 +1,4 @@
 <?php
-
 get_header(); ?>
 
 <?php
@@ -22,6 +21,10 @@ _s_get_template_part( 'template-parts/blog', 'post-hero' );
                         
                 endwhile;
                                 
+               
+               _s_get_template_part( 'template-parts/blog', 'related-posts' );
+
+               
                ?>
         
             </main>
@@ -29,6 +32,10 @@ _s_get_template_part( 'template-parts/blog', 'post-hero' );
         </div>
     
     </div>
+    
+    <?php
+    _s_get_template_part( 'template-parts/blog', 'share-story' );
+    ?>
     
 </div>
 
