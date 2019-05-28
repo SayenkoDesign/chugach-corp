@@ -1,7 +1,13 @@
 <?php
-if( false == WP_DEBUG ) {
-    //add_filter('acf/settings/show_admin', '__return_false');   
+function acf_hide_menu_item() {
+    $current_user = wp_get_current_user();
+
+    if( is_admin() && strpos( $current_user->user_email, 'sayenkodesign') === false ) {
+        add_filter('acf/settings/show_admin', '__return_false');
+    }
 }
+
+add_action('init', 'acf_hide_menu_item');
 
 
 
