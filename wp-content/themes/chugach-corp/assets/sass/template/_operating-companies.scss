@@ -1,0 +1,357 @@
+// Operating Companies
+
+
+.template-portfolio-operating-companies {
+     
+    .section-hero {
+        .background-image:after {
+           background: linear-gradient(270deg, rgba(#64A70B, .8) 0%, rgba(#FFA300, .8) 100%);
+        }
+        
+        .hero-content h3 {
+	        color: #FFFFFF;
+        }
+    }
+    
+    .portfolio-pagination {
+        
+        padding-top: rem-calc(25);
+        padding-bottom: rem-calc(75);
+        
+        @include breakpoint(xxxlarge) {
+            padding-top: 0;
+        }
+        
+        .portfolio-menu {
+                        
+            div a {
+                display: inline-block;
+                position: relative;
+                min-height: 28px;
+                
+                color: #979797;
+                
+                &:hover {
+                    color: $lime;   
+                }
+                
+                &:before,
+                &:after {
+                   position: absolute;
+                   top: 50%;
+                   transform: translateY(-50%);
+                }
+            }
+            
+            div:first-child {
+                a {                    
+                    padding-left: rem-calc(35);                    
+                    &:before {
+                        @include link-arrow( #d7d5d6 );
+                        left: 0;
+                    }
+                    
+                    &:hover:before {
+                        @include link-arrow( $lime );
+                    }
+                }
+            }
+            
+            div:last-child {
+                text-align: right;
+                a {
+                    padding-right: rem-calc(35);      
+                    &:before {
+                        @include link-arrow( #d7d5d6, right );
+                        right: 0;
+                    }
+                    
+                    &:hover:before {
+                        @include link-arrow( $lime, right );
+                    }
+                }
+            }
+        }
+    }
+    
+    .section-introduction {
+        .wrap {
+            max-width: rem-calc($global-width * (8/12));
+            margin: 0 auto rem-calc(25);      
+        }
+        
+        @include breakpoint(medium) {
+            .icon {
+                display: inline-block;
+                margin-right: rem-calc(40);  
+                @include heading-border-bottom($lime, center ); 
+            }
+        }
+    }
+ 
+    .section-businesses {
+        
+        .wrap {
+            max-width: rem-calc($global-width * (6/12));
+            margin: 0 auto rem-calc(75);   
+        }
+        
+        
+        header {
+            background-color: $blue;
+            max-width: rem-calc(460);
+            margin: 0 auto;
+            box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+            position: relative;
+            padding: rem-calc(30);
+            margin-bottom: rem-calc(75);
+            text-align: center;
+            
+            @include breakpoint(large) {
+                padding: rem-calc(60);
+            }
+            
+            &:before,
+            &:after {
+                display: block;
+                height: 125px;	
+                width: 195px;  
+                position: absolute;
+                z-index: -1; 
+            }
+            
+            &:before {
+                content: '';
+                top: 0;
+                left: 0;
+                margin: rem-calc(-15 0 0 -15); 
+                background: $red; 
+            }
+            
+            &:after {
+                content: '';
+                bottom: 0;
+                right: 0;
+                margin: rem-calc(0 -15 -15 0); 
+                background: $green;
+            }
+            
+
+            h2,
+            p {
+                color: #fff;  
+            }
+            
+            p {                
+                &:last-of-type {
+                    margin-bottom: 0;   
+                }
+            }
+        }
+        
+        
+        .grid {
+            
+            max-width: rem-calc(220);            
+            margin: 0 auto rem-calc(45);
+            
+            @include breakpoint(670) {
+                max-width: none;
+            }
+            
+            border-top: 1px solid #ECECEC;
+            border-left: 1px solid #ECECEC;
+
+            article {
+                border-right: 1px solid #ECECEC;
+                border-bottom: 1px solid #ECECEC;     
+            }
+            
+            .details {
+                margin-top: 45px;
+                margin-bottom: 45px;
+                opacity: 1;
+                  
+                margin-right: -50vw;
+                margin-left: -50vw;
+                position: relative;
+                width: 100vw;
+                
+                margin-left: calc(50% - 50vw);
+                margin-right: calc(50% - 50vw);   
+            }
+            
+            .column {
+                            
+              &__inner {
+                width: 100%;
+                position: relative;
+                
+                .open {
+                    cursor: pointer;       
+                }
+                
+                .thumbnail {
+                    height: 120px;
+                    padding: rem-calc(0 35);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;  
+                    transition: all 0.5s ease;   
+                    cursor: pointer; 
+                    
+                    img {
+                        filter: grayscale(100%);
+                    }
+                    
+                    &:hover img {
+                        filter: grayscale(0%);
+                    }
+                }
+                                
+              }
+              
+              
+              &.is-expanded {
+                .thumbnail img {
+                    filter: grayscale(0%)!important;   
+                }
+              }
+              
+            
+              //Expander
+              &__expander {
+                //transition: all 0.2s ease-in-out;
+                margin: 0 auto;
+                max-width: rem-calc($global-width);
+                position: relative;
+                z-index: 2;
+                
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: -100vw;
+                    width: 200vw;
+                    height: 100%;
+                    background-color: $light-gray;   
+                }
+                
+                
+                .close {
+                    position: absolute;
+                    top: 30px;
+                    right: 15px;
+                    cursor: pointer;
+                    z-index: 2; 
+                    width: 35px;
+                    height: 35px;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35'%3E%3Cpath fill='%23046A38' fill-rule='evenodd' stroke='%23ECECEC' d='M20.39 17.498L33.38 4.506c.825-.825.825-2.064 0-2.89-.826-.821-2.06-.821-2.886 0L17.498 14.613 4.506 1.616c-.825-.821-2.064-.821-2.89 0-.821.826-.821 2.065 0 2.89l12.997 12.992L1.616 30.495c-.821.826-.821 2.06 0 2.886.826.825 2.065.825 2.89 0L17.498 20.39l12.997 12.992c.826.825 2.06.825 2.886 0 .825-.826.825-2.06 0-2.886L20.39 17.498z'/%3E%3C/svg%3E");
+                }
+                
+                > div {
+                    margin: 0 auto;
+                    padding-right: rem-calc(75); 
+                    position: relative;
+                    z-index: 2;  
+                }
+                
+              }
+            
+              &.is-collapsed {
+                
+                .column__inner {
+                  &:after {
+                    content: "";
+                    opacity: 0;
+                  }
+                }
+                .column__expander {
+                  max-height: 0;
+                  min-height: 0;
+                  overflow: hidden;
+                  margin-top: 0;
+                  opacity: 0;
+                }
+              }
+            
+              &.is-expanded {
+            
+                .column__inner {
+        
+                  &:after{
+                    content: "";
+                    opacity: 1;
+                    display: block;
+                    height: 0;
+                    width: 0;
+                    position: absolute;
+                    bottom: -45px;
+                    left: calc(50% - 30px);
+                    border-left: 30px solid transparent;
+                    border-right: 30px solid transparent;
+                    border-bottom: 30px solid $light-gray;
+                  }
+                  
+                }
+            
+              }
+              
+              &.is-inactive .panel {
+                opacity: .8;
+              }
+            }
+            
+            
+            .entry-content {
+            
+                padding: rem-calc(40 0 40 40);
+                
+                header  {
+                    
+                    margin-botom: rem-calc(40);
+                    
+                    h3 {
+                        font-style: normal;   
+                        margin-bottom: 0;
+                        position: relative;
+                        
+                        &:before {
+                            content: '';
+                            left: rem-calc(-10);
+                            height: 100%;
+                            width: 2px;
+                            background-color: $lime;   
+                            position: absolute;
+                            top: 0;
+                        }
+                    }
+                    
+                    h4 {
+                        color: #979797;
+                        font-family: $lato;
+                        font-size: rem-calc(15);
+                        line-height: 1.333333333;
+                        margin-top: rem-calc(10);
+                    }
+                    
+                }
+                                
+            }
+            
+            @include breakpoint(large) {
+                .photo {
+                    padding: rem-calc(25 45 0 0);
+                    
+                    img {
+                        transform: translateY(15px);  
+                        box-shadow: $box-shadow; 
+                    }   
+                }
+            }
+            
+              
+        }   
+    }
+    
+}
+

@@ -1,0 +1,265 @@
+// Regions
+
+.page-template-regions {
+ 
+    &.logged-in #map-box {
+        //cursor: url('assets/images/map-cursor.ico'), default;
+    }
+    
+    .mouse-xy {
+        background-color: #E2E4E6;
+        padding: rem-calc(30 0);   
+    }
+    
+    #map-box {
+        text-align: center;
+        
+        .map-wrapper {
+            display: inline-block;
+            position: relative;
+            margin: 0 auto; 
+        }
+        
+        .locations {
+            opacity: 0;   
+        }
+        
+        img {
+            display: block;
+            margin: 0 auto;   
+        }
+        
+        .marker {
+            position: absolute;
+            width: calc(19/1180 * 100%);
+            height: auto;
+            margin-left: calc(-9.5/1180 * 100%);
+            margin-top: calc(-14/845.95 * 100%);
+            //transform: translate(-50%,-50%);
+            cursor: pointer;
+            
+            img {
+                width: 100%;
+                transition-duration: 0.3s;
+                transition-timing-function: ease-out;   
+            }
+            
+            &:hover img,
+            &.hover img {
+               transform: translateY(-8px);   
+            }
+        }
+        
+    }
+    
+    .map-key {
+        display: block;
+        
+                
+        @include breakpoint(xxlarge) {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+        }
+        
+        .wrap {
+            position: relative;
+            
+            @include breakpoint(xlarge down) {
+                
+                padding: rem-calc(25);
+                background-color: rgba(66,152,181,0.8);
+                overflow: hidden;
+                border-radius: 4px;
+                background-image: url(assets/images/regions/map-key-background.jpg); 
+                background-size: cover;
+                backgorund-position: center;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    background-color: rgba(66,152,181,0.8);
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }      
+            }
+            
+            @include breakpoint(xxlarge) {
+                padding: rem-calc(50 50 50 0);
+                background: transparent;
+                background-image: none;
+                
+                &:before {
+                    content: '';
+                    position: absolute;
+                    background-image: url(assets/images/regions/map-key-background.jpg); 
+                    background-size: cover;
+                    backgorund-position: center;
+                    top: 50%;
+                    left: 0;
+                    transform: translate(-50%, -50%) scale(2);
+                    width: 100%;
+                    padding-top: 100%;
+                    border-radius: 100%;
+                }   
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    background-color: rgba(66,152,181,0.8);
+                    top: 50%;
+                    left: 0;
+                    transform: translate(-50%, -50%) scale(2);
+                    width: 100%;
+                    padding-top: 100%;
+                    border-radius: 100%;
+                }   
+            }
+        }
+        
+        @include breakpoint(xlarge down) {
+            text-align: center;        
+        }
+
+        ul {
+            position: relative;
+            z-index: 2;
+            @include list-reset;
+            
+            @include breakpoint(medium down) {
+                column-count: 2;
+            }            
+            
+            @include breakpoint(xlarge only) {
+                column-count: 3;
+            }
+            
+            li {
+                padding: rem-calc(0 40 12 0);
+                
+                @include breakpoint(xlarge down) {
+                    margin-left: 0;
+                    text-align: left;
+                }
+                    
+                button {
+                    display: inline-block;
+                    min-height: rem-calc(29);
+                    padding-left: rem-calc(30);
+                    position: relative;
+                    color: #fff;
+                      
+                      &:before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 19px;
+                        height: 28px;
+                        background-image: url(assets/images/regions/marker.svg);   
+                    } 
+                }
+                
+                
+            }
+        }
+        
+    }
+    
+    .section-default {
+        background: linear-gradient(180deg, #FFFFFF 0%, #E2E4E6 100%);
+        padding-bottom: rem-calc(40);
+        
+        @include breakpoint(xxlarge) {
+            padding: 0;   
+        }
+        
+        .entry-content {
+            
+            .icon {
+                display: block;
+                margin-bottom: rem-calc(40);   
+            }
+            
+            text-align: center;
+            
+            @include breakpoint(680) {
+                max-width: rem-calc(680);
+                margin: 0 auto;
+            }
+        }
+    }
+    
+    .section-regions-map {
+        padding-bottom: rem-calc(75);
+        position: relative;
+        margin-top: -5px;
+    }
+    
+}
+
+// Reveal
+#regions {
+    background: $green; 
+    
+    .container {
+        padding: rem-calc(map-get($grid-column-gutter, small)*2);  
+        padding-top: rem-calc(40);  
+        
+        * {
+            color: #fff;   
+        }
+        
+        header {
+            margin-bottom: rem-calc($global-margin);   
+        }
+        
+        h2 {
+            font-family: $roboto;   
+            text-transform: uppercase;
+            margin-bottom: 0;  
+            font-size: rem-calc(36);
+            line-height: 48/36; 
+        }
+                
+        h3 {
+          font-family: $lato;  
+          font-style: normal;
+          font-size: rem-calc(16);
+          margin-top: rem-calc(5);
+          margin-bottom: 0;
+        }
+        
+        img {
+            margin-bottom: rem-calc($global-margin);   
+        }
+    }
+    
+    @include breakpoint(980) {
+        padding: 0;
+        top: 0!important;
+        left: auto!important;
+        right: 0;
+        max-width: rem-calc(500);
+        margin-right: 0;
+        margin-left: auto;
+        height: 100vh;
+        
+        .container {
+            padding: rem-calc(map-get($grid-column-gutter, small));  
+            padding-top: rem-calc(150);    
+        }
+        
+        .close-button {
+            position: absolute;
+            top: rem-calc(10)!important; 
+            left: rem-calc(map-get($grid-column-gutter, small)); 
+            font-size: 70px;
+            outline: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}

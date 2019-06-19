@@ -76,13 +76,13 @@ if( ! class_exists( 'Hero_Section' ) ) {
             $heading        = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : get_the_title();
             $heading        = _s_format_string( $heading, 'h1' );
             
-            $subheading = empty( $this->get_fields( 'subheading' ) ) ? '' : _s_format_string( $this->get_fields( 'subheading' ), 'h2' );
+            $subheading     = '<h3>Portfolio</h3>';
             
             $description = empty( $this->get_fields( 'description' ) ) ? '' : _s_format_string( $this->get_fields( 'description' ), 'p' );
 
             return sprintf( '<div class="row align-middle"><div class="column"><div class="hero-content">%s%s%s</div></div></div>', 
-                            $heading,
                             $subheading,
+                            $heading,
                             $description
                          );
         }

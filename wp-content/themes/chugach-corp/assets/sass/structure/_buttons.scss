@@ -34,10 +34,16 @@
        transform: translateY(-50%);
     } 
     
+    &.small {
+        padding: rem-calc(5 6);
+        min-width: 160px;
+    }
+    
 }
 
 
 @mixin button-primary {
+    @include button-defaults();
     background-color: $gold;
     
     &:hover {
@@ -46,10 +52,24 @@
 }
 
 @mixin button-secondary {
+    @include button-defaults();
     background-color: $blue;
     
     &:hover {
         background-color: scale-color($blue, $lightness: -20%);
+    }
+}
+
+@mixin button-white {
+    @include button-defaults();
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    
+    &:hover {
+        background-color: #fff;
+        border: 2px solid #fff;
+        color: $dark-gray;
     }
 }
 
@@ -59,6 +79,10 @@
     
     &.blue {
         @include button-secondary;
+    }
+    
+    &.white {
+        @include button-white;
     }
 }
 

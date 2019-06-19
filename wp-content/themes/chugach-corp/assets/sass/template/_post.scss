@@ -7,6 +7,19 @@
     }
     
     .section-hero {
+        
+        .button {
+            position: absolute;
+            top: rem-calc(map-get($grid-column-gutter, large)*2); 
+            left: rem-calc(map-get($grid-column-gutter, large)*2); 
+            
+            @include breakpoint(large) {
+                top: rem-calc(map-get($grid-column-gutter, large)*2); 
+                left: rem-calc(map-get($grid-column-gutter, large)*4); 
+            }
+            
+            z-index: 3;   
+        }
 
         ul.post-categories {
             @include list-reset;
@@ -22,7 +35,6 @@
             li {
                 display: inline-block;
                 a {
-                    @include button;
                     @include button-primary;
                     min-width: 160px;
                 }
@@ -249,29 +261,72 @@
         
     }
     
-    .form-wrapper {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: rem-calc(30);
-        background: linear-gradient(270deg, #ED4399 0%, #F9B02D 100%);
-        box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1);
+    
+    .section-share-story {
         
-        .gform_wrapper {
-            margin-top: 0!important;
-            padding-top: 0!important;   
+        margin-bottom: -5px;
+     
+        .no-cssgrid & .grid {
+            
+            display: flex;
+            flex-flow: row wrap;
+            
+            .grid-item {
+                display: none;
+                
+                &:nth-child(-n+4){
+                    display: block;
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    .background {
+                        height: 272px;    
+                    }
+                }
+            }
         }
         
-        .gform_footer {
-            text-align: center;  
-            margin-bottom: 0!important;
-            padding-bottom: 0!important;  
+        $column-gap: 3px;
+        
+        .grid-item {
+            padding: 0 rem-calc($column-gap) 0 0; 
+            margin-bottom: $column-gap;
+            
+            .background {
+                height: 152px;
+                background-size: cover;
+                background-position: center;   
+            }
+            
+            &:nth-child(3),
+            &:nth-child(4) {
+                grid-column-start: span 2;
+                grid-row-start: span 2;  
+                
+                .background {
+                    height: 272px;    
+                }
+            }
+        }
+     
+        .cssgrid & .grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            grid-auto-flow: dense;
+            
+            .grid-item {                
+                &:nth-child(3),
+                &:nth-child(4) {
+                    grid-column-start: span 2;
+                    grid-row-start: span 2;  
+                }
+            }
         }
         
-        h4,
-        .gform_confirmation_message {
-            color: #fff;
-            text-align: center;   
-        }
+    }
+    
+    .section-footer-cta {
+        display: none;   
     }
     
 }

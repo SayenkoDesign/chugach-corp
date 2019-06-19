@@ -80,7 +80,10 @@ if( ! class_exists( 'Hero_Post' ) ) {
             
             $post_date = _s_get_posted_on( 'M d, Y' );
             
-            return sprintf( '<div class="row align-middle"><div class="column"><div class="hero-content">%s%s%s</div></div></div>', 
+            $media_inquiries = sprintf( '<a href="%s?topic=media" class="button white small">%s</a>', trailingslashit( get_permalink( 368 ) ), 'media inquiries' );
+            
+            return sprintf( '<div class="row align-middle"><div class="column">%s<div class="hero-content">%s%s%s</div></div></div>', 
+                           $media_inquiries,
                            get_the_category_list( '' ), 
                            $heading, 
                            $post_date );

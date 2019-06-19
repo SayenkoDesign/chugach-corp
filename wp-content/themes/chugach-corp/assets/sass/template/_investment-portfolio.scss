@@ -1,0 +1,93 @@
+// Operating Companies
+
+
+.template-portfolio-investment-portfolio {
+     
+    .section-hero {
+        .background-image:after {
+           background: linear-gradient(270deg, rgba(#64A70B, .8) 0%, rgba(#FFA300, .8) 100%);
+        }
+        
+        .hero-content h3 {
+	        color: #FFFFFF;
+        }
+    }
+    
+    .portfolio-pagination {
+        
+        padding-top: rem-calc(25);
+        padding-bottom: rem-calc(75);
+        
+        @include breakpoint(xxxlarge) {
+            padding-top: 0;
+        }
+        
+        .portfolio-menu {
+                        
+            div a {
+                display: inline-block;
+                position: relative;
+                min-height: 28px;
+                
+                color: #979797;
+                
+                &:hover {
+                    color: $lime;   
+                }
+                
+                &:before,
+                &:after {
+                   position: absolute;
+                   top: 50%;
+                   transform: translateY(-50%);
+                }
+            }
+            
+            div:first-child {
+                a {                    
+                    padding-left: rem-calc(35);                    
+                    &:before {
+                        @include link-arrow( #d7d5d6 );
+                        left: 0;
+                    }
+                    
+                    &:hover:before {
+                        @include link-arrow( $lime );
+                    }
+                }
+            }
+            
+            div:last-child {
+                text-align: right;
+                a {
+                    padding-right: rem-calc(35);      
+                    &:before {
+                        @include link-arrow( #d7d5d6, right );
+                        right: 0;
+                    }
+                    
+                    &:hover:before {
+                        @include link-arrow( $lime, right );
+                    }
+                }
+            }
+        }
+    }
+    
+    .section-introduction {
+        .wrap {
+            max-width: rem-calc($global-width * (8/12));
+            margin: 0 auto rem-calc(25);      
+        }
+        
+        @include breakpoint(medium) {
+            .icon {
+                display: inline-block;
+                margin-right: rem-calc(40);  
+                @include heading-border-bottom($lime, center ); 
+            }
+        }
+    }
+    
+}
+

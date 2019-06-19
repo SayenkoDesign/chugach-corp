@@ -67,7 +67,8 @@ gulp.task('styles', function () {
 		// Parse with PostCSS plugins.
 		.pipe(postcss([
 			autoprefixer({
-				browsers: 'last 2 versions'
+				browsers: 'last 2 versions',
+                grid: true
 			}),
 			mqpacker({
 				sort: true

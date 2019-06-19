@@ -3,6 +3,7 @@
 function _s_get_video_embed( $url ) {
     $youtube_id          = wds_check_for_youtube( $url );
 	$vimeo_id            = wds_check_for_vimeo( $url );
+    $video_embed_url     = '';
 	$video_thumbnail_url = '';
 	if ( $youtube_id ) {
 		$youtube_details     = wds_get_youtube_details( $youtube_id );
@@ -74,6 +75,9 @@ function wds_check_if_content_contains_video( $post_id, $post ) {
 	$youtube_id          = wds_check_for_youtube( $content );
 	$vimeo_id            = wds_check_for_vimeo( $content );
 	$video_thumbnail_url = '';
+    $youtube_details = '';
+    $vimeo_details = '';
+    
 	if ( $youtube_id ) {
 		$youtube_details     = wds_get_youtube_details( $youtube_id );
 		$video_thumbnail_url = $youtube_details['video_thumbnail_url'];

@@ -32,13 +32,10 @@ _s_get_template_part( 'template-parts/blog', 'post-hero' );
         </div>
     
     </div>
-    
-    <?php
-    _s_get_template_part( 'template-parts/blog', 'share-story' );
-    ?>
-    
+        
 </div>
 
-
 <?php
+_s_get_template_part( 'template-parts/blog', 'share-story' );
+    
 get_footer();

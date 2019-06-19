@@ -88,8 +88,9 @@ include_once( 'foundation/class-foundation-accordion.php' );
 	Post Types
 *****************************************/
     
-    include_once( 'post-types/cpt-people.php' );  
     include_once( 'post-types/cpt-history.php' ); 
+    include_once( 'post-types/cpt-people.php' ); 
+    include_once( 'post-types/cpt-region.php' ); 
     
 /****************************************
 	Widgets
