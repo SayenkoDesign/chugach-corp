@@ -77,6 +77,7 @@
 
 include_once( 'foundation/class-foundation.php' );
 include_once( 'foundation/class-foundation-accordion.php' );
+include_once( 'foundation/class-foundation-tabs.php' );
 
 /****************************************
 	Page Builder

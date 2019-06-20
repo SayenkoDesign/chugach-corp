@@ -37,6 +37,11 @@ class Foundation_Tabs extends Foundation {
 	 * @return	array
 	 */
     public function add_tab( $args = array() ) {
+        __doing_it_wrong( 'add_tab', 'This method has been deprecated in favor of add_item' );
+        $this->add_item( $args = array() );
+	}
+    
+    public function add_item( $args = array() ) {
                 
         if( !is_array( $args ) ) {
             wp_die( __( 'It is required to pass an array of arguments: title, content, with optional href, active and id', 'foundation' ) );

@@ -1,11 +1,11 @@
 // Operating Companies
 
 
-.template-portfolio-investment-portfolio {
+.template-portfolio-investment {
      
     .section-hero {
         .background-image:after {
-           background: linear-gradient(270deg, rgba(#64A70B, .8) 0%, rgba(#FFA300, .8) 100%);
+           background: linear-gradient(270deg, rgba(#64A70B, .8) 0%, rgba(#BF0D3E, .8) 100%);
         }
         
         .hero-content h3 {
@@ -81,12 +81,156 @@
         }
         
         @include breakpoint(medium) {
+            .shrink {
+                flex: 0 0 auto!important;   
+            }
+            
             .icon {
                 display: inline-block;
-                margin-right: rem-calc(40);  
+                margin-right: rem-calc(10);  
                 @include heading-border-bottom($lime, center ); 
             }
         }
+        
+        @include breakpoint(large) {
+            .icon {
+                margin-right: rem-calc(40);
+            }
+        }
+    }
+    
+    
+    .section-tabs {
+        
+        margin-bottom: rem-calc(75);
+     
+        .tabs-container {
+            display: flex;  
+            margin-top: rem-calc(75);
+        }
+        
+        .tabs {
+            @include list-reset;
+            flex: 0 0 rem-calc(254);
+            
+            a {
+                display: block;
+                padding: rem-calc(10 30); 
+                color: $dark-gray;
+                font-size: rem-calc(13);
+                letter-spacing: 1.1px;
+                line-height: 1.538461538;
+                text-shadow: 0 1px 0 0 rgba(255,255,255,0.5);
+                text-transform: uppercase;
+            }
+            
+            .is-active a {
+                background-color: $blue;
+                box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+                color: #fff;
+            }
+        }
+        
+        .tabs-content {
+            flex: 1 1 auto;
+            
+            p {
+                margin-bottom: rem-calc(15);   
+            }
+            
+            @include breakpoint(large) {
+                p:first-of-type {
+                    padding-top: rem-calc(30);    
+                }
+            }
+            
+            .image-wrapper {
+                position: relative;
+                margin-bottom: rem-calc(20);
+                @include breakpoint(large) {
+                    display: inline-block;
+                    float: right;
+                    margin-top: rem-calc(-30);
+                    margin-left: rem-calc(50);
+                    margin-bottom: rem-calc(15);
+                }
+                
+                &:before {
+                    display: block;
+                    position: absolute;
+                    z-index: -1; 
+                    content: '';
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: rem-calc(-30);
+                    height: 149px;
+                    width: 212px;
+                    border-radius: 2px;
+                    background-color: #D7D5D5;
+                }
+            }
+        }
+        
+        .tabs-panel {
+            border-radius: 2px;
+            box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+            padding: rem-calc(0 30 30);
+        } 
+        
+        
+        .accordion {
+            .accordion-title {
+                display: block;
+                padding: rem-calc(10 30); 
+                h4 {
+                    color: $dark-gray;
+                    font-size: rem-calc(16);
+                    letter-spacing: 1.1px;
+                    line-height: 1.538461538;
+                    text-shadow: 0 1px 0 0 rgba(255,255,255,0.5);
+                    text-transform: uppercase;   
+                }
+                
+                &:before {
+                    color: $blue;
+                }
+            }
+         
+            
+            .is-active .accordion-title {
+                background-color: $blue;
+                box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+                
+                h4 {
+                    color: #fff;   
+                }
+                
+                &:before {
+                    color: #fff;
+                }
+            }  
+            
+            .image-wrapper {
+                position: relative;
+                margin-bottom: rem-calc(20);
+                margin-left: rem-calc(30);
+                
+                &:before {
+                    display: block;
+                    position: absolute;
+                    z-index: -1; 
+                    content: '';
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: rem-calc(-30);
+                    height: 149px;
+                    width: 212px;
+                    border-radius: 2px;
+                    background-color: #D7D5D5;
+                }
+            } 
+        }
+        
     }
     
 }

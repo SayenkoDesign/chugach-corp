@@ -20,8 +20,12 @@ _s_get_template_part( 'template-parts/portfolio', 'hero' );
 	<main id="main" class="site-main" role="main">
 	<?php
         _s_get_template_part( 'template-parts/portfolio', 'menu' );
+        
+        _s_get_template_part( 'template-parts/portfolio', 'introduction' );
+        
+        _s_get_template_part( 'template-parts/portfolio', 'tabs' );
     
-        _s_get_template_part( 'template-parts/blog', 'stories' );
+        //_s_get_template_part( 'template-parts/blog', 'stories' );
 	?>
 	</main>
 

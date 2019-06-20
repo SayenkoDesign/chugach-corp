@@ -81,10 +81,20 @@
         }
         
         @include breakpoint(medium) {
+            .shrink {
+                flex: 0 0 auto!important;   
+            }
+            
             .icon {
                 display: inline-block;
-                margin-right: rem-calc(40);  
+                margin-right: rem-calc(10);  
                 @include heading-border-bottom($lime, center ); 
+            }
+        }
+        
+        @include breakpoint(large) {
+            .icon {
+                margin-right: rem-calc(40);
             }
         }
     }
