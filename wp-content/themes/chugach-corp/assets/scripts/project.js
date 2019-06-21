@@ -5178,8 +5178,8 @@ return /******/ (function(modules) { // webpackBootstrap
         
         var id = $(this).data('map');
         if($(id).css('opacity') == 0) {
-            $('.map').stop().removeClass('active').not(id).animate({'opacity':'0'},250);
-            $(id).stop().animate({'opacity':'1'},250);
+            $('.map').stop().removeClass('active').not(id).animate({'opacity':'0'},100);
+            $(id).stop().animate({'opacity':'1'},100);
         }
      
     });
@@ -5202,8 +5202,8 @@ return /******/ (function(modules) { // webpackBootstrap
             return;
         }
         
-        $('.map').stop().removeClass('active').animate({'opacity':'0'},250);
-        $('#map-0').stop().animate({'opacity':'1'},250);
+        $('.map').stop().removeClass('active').animate({'opacity':'0'},100);
+        $('#map-0').stop().animate({'opacity':'1'},100);
     });
 
 })(jQuery);
