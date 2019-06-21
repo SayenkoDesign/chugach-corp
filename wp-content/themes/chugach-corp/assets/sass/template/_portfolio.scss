@@ -382,13 +382,54 @@
     
     .section-business-lines-map {
         
+        .row {
+            position: relative;   
+        }
+        
         .legend {
+            
+            width: rem-calc(260);
+            background-color: $blue;
+            box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1);
+            padding: rem-calc(20 20);
+            
+            @include breakpoint(xxxlarge) {
+                position: absolute;
+                top: 35%;
+                left: 0;
+                z-index: 3;
+            }
+            
             ul {
                 @include list-reset;
             }
             
             li {
-                display: block;   
+                display: block;  
+                position: relative;
+                padding-left: rem-calc(24);
+                min-height: rem-calc(20);
+                margin: 0;
+                margin-bottom: rem-calc(15);
+                
+                &:last-child {
+                    margin-bottom: 0;   
+                }
+                
+                img {
+                    position: absolute;
+                    width: rem-calc(19);
+                    height: auto;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 0;    
+                }
+                
+                button {
+                    text-align: left;
+                    color: #fff;
+                    font-size: rem-calc(15);   
+                }
             }
         }
         

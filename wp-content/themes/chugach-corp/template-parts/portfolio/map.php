@@ -51,6 +51,7 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
             foreach( $rows as $key => $row ) {
                 $i = $key + 1;
                 $icon  = $row['icon'];
+                $icon = _s_get_acf_image( $icon );
                 $title = $row['title'];
                 $list[] = sprintf( '<li><button data-open="maps" data-content="map-content-%s" data-map="#map-%s">%s%s</button></li>', $i, $i, $icon, $title );
             }
