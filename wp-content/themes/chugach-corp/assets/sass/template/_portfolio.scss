@@ -417,13 +417,77 @@
                     
                 }
                 
-                &.parent {
-                    //opacity: 0;
-                    //visibility: hidden;
+                &.active {
+                    opacity: 1!important;
                 }
             }
             
         }
     }
     
+}
+
+
+// Reveal
+#maps {
+    background: $green; 
+    
+    .container {
+        padding: rem-calc(map-get($grid-column-gutter, small)*2);  
+        padding-top: rem-calc(40);  
+        
+        * {
+            color: #fff;   
+        }
+        
+        header {
+            margin-bottom: rem-calc($global-margin);   
+        }
+        
+        h2 {
+            font-family: $roboto;   
+            text-transform: uppercase;
+            margin-bottom: 0;  
+            font-size: rem-calc(36);
+            line-height: 48/36; 
+        }
+                
+        h3 {
+          font-family: $lato;  
+          font-style: normal;
+          font-size: rem-calc(16);
+          margin-top: rem-calc(5);
+          margin-bottom: 0;
+        }
+        
+        img {
+            margin-bottom: rem-calc($global-margin);   
+        }
+    }
+    
+    @include breakpoint(980) {
+        padding: 0;
+        top: 0!important;
+        left: auto!important;
+        right: 0;
+        max-width: rem-calc(500);
+        margin-right: 0;
+        margin-left: auto;
+        height: 100vh;
+        
+        .container {
+            padding: rem-calc(map-get($grid-column-gutter, small));  
+            padding-top: rem-calc(150);    
+        }
+        
+        .close-button {
+            position: absolute;
+            top: rem-calc(10)!important; 
+            left: rem-calc(map-get($grid-column-gutter, small)); 
+            font-size: 70px;
+            outline: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
 }

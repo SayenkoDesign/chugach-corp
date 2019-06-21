@@ -12,19 +12,38 @@
         
     //close card when click on cross
     $legend.on('hover','button', function() {
-      var id = $(this).data('map');
-      console.log(id);
-      //$('.map').removeClass('active');
-      //$(id).addClass('active');
+        
+        if($('body').hasClass('is-reveal-open')) {
+            return;
+        }
+        
+        var id = $(this).data('map');
         if($(id).css('opacity') == 0) {
-            $('.map').stop().not(id).animate({'opacity':'0'},250);
+            $('.map').stop().removeClass('active').not(id).animate({'opacity':'0'},250);
             $(id).stop().animate({'opacity':'1'},250);
         }
      
     });
     
+    $legend.on('click','button', function() {
+        $('.map').stop().removeClass('active')
+        var id = $(this).data('map');
+        if($(id).css('opacity') == 0) {
+            $('.map').stop().not(id).css({'opacity':'0'});
+            $(id).stop().css({'opacity':'1'});            
+        } 
+        
+        $(id).addClass('active');   
+     
+    });
+    
     $legend.mouseleave(function() {
-        $('.map').stop().animate({'opacity':'0'},250);
+        
+        if($('body').hasClass('is-reveal-open')) {
+            return;
+        }
+        
+        $('.map').stop().removeClass('active').animate({'opacity':'0'},250);
         $('#map-0').stop().animate({'opacity':'1'},250);
     });
 
