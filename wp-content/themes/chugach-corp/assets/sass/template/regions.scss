@@ -237,7 +237,7 @@
         }
     }
     
-    @include breakpoint(980) {
+    @include breakpoint(large) {
         padding: 0;
         top: 0!important;
         left: auto!important;
