@@ -1,1 +1,429 @@
 // Portfolio
+
+.template-business-lines {
+ 
+    .section-mission {
+        
+        padding-top: rem-calc(45);
+        
+        @include breakpoint(large) {
+            padding-top: 0;   
+        }
+     
+        .photo-grid-wrapper {
+            padding: rem-calc(15);
+            position: relative;
+            z-index: 2;
+            
+            @include breakpoint(large) {
+                margin-top: rem-calc(-200);
+            }
+            
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                z-index: -1;
+                height: 127px;
+                width: 196px;
+                position: absolute;
+            } 
+            
+            &:before {
+                background-color: $red;
+                top: 0;
+                left: 0;
+            }
+            
+            &:after {
+                background-color: $green;
+                right: 30px;
+                bottom: 0;
+                width: 244px;
+            }    
+        }
+
+        
+        
+        .photo-grid {  
+            padding-left: 30px;
+            margin: 0 -6px;          
+
+            > div {
+                float: left;
+                padding: 0 6px;
+                margin-bottom: 12px;
+                                
+                .background {
+                    background-size: cover;
+                    background-position: center;
+                    width: 100%;
+                    height: 252px;
+                    box-shadow: $box-shadow;
+                }
+                
+                &:first-child,
+                &:nth-child(2) {
+                    position: relative;
+                    left: -30px;   
+                }
+            }
+            
+            .width-60 {
+                width: 60%;   
+            }
+            
+            .width-40 {
+                width: 40%;
+            }
+        }
+        
+        
+        .numbers {
+            position: relative;
+            margin-bottom: rem-calc(20);
+            @include breakpoint(medium) {
+                display: flex;
+            }
+            
+            > div {    
+            
+                margin-bottom: rem-calc(15);            
+                
+                > span {
+                    display: block;  
+                    width: 100%; 
+                }
+                
+                .number {
+                    font-size: rem-calc(50);
+                    line-height: .8;
+                    letter-spacing: 1.1px;
+                    font-family: $roboto;
+                    font-weight: 900;
+                    
+                }
+                
+                .label {
+                    font-size: rem-calc(15);
+                    line-height: 1.6;
+                    font-style: normal;
+                    font-family: georgia;  
+                    text-transform: lowercase;
+                }
+            }
+            
+            .employees {
+                position: relative;
+                height: 134px;
+                padding-left: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                
+                &:before,
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: -1;
+                }
+                
+                &:before {
+                    display: block;
+                    width: 134px;
+                    height: 134px;
+                    background: $gold;
+                    border-radius: 50%;
+                    left: 0;
+                }
+                
+                &:after {
+                    width: 42px;
+                    height: 45px;
+                    background-size: 42px 45px;
+                    background-image: url(assets/images/business-lines/employees-icon.svg);
+                    left: calc(67px - 21px);
+                    
+                }
+            }
+            
+            .locations {
+                position: relative;
+                z-index: 2;
+                position: relative;
+                height: 134px;
+                padding-left: 55px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: rem-calc(50);
+                
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: -1;
+                }
+                
+                &:before {
+                    width: 40px;
+                    height: 51px;
+                    background-size: 40px auto;
+                    background-image: url(assets/images/business-lines/locations.svg);
+                    left: 0;
+                    
+                }
+            }
+        }
+        
+    }
+
+    .section-portfolio {
+        padding-top: rem-calc(75); 
+        position: relative;
+        margin-bottom: rem-calc(100);
+        
+        .wrap {
+            
+            margin: 0 auto;   
+            
+            @include breakpoint(small only) {
+                width: rem-calc(280);
+                max-width: 90%;
+            }
+            
+            @include breakpoint(large) {
+                max-width: rem-calc(240*3);
+            }
+            
+            @include breakpoint(xxlarge) {
+                max-width: rem-calc(240*3);
+            }
+            
+            @include breakpoint(xxxlarge) {
+                max-width: rem-calc(300*3);
+            }
+        }
+        
+        .grid .column {
+         
+            &:first-child {
+                .background:after {
+                    background-color: rgba(255,163,0,0.8);   
+                }
+            }
+            
+            &:nth-child(2) {
+                .background:after {
+                    background-color: rgba(4,106,56,0.8);
+                }
+            }
+            
+            &:last-child {
+                .background:after {
+                    background-color: rgba(191,13,62,0.8);
+                }
+            }
+            
+        }
+        
+        .grid .panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            
+            
+            
+            &:hover {
+                .background {
+                        &:after {
+                            // opacity: .8
+                        }
+                    }   
+            }
+            
+            
+            &:hover {
+                
+                .no-touchevents & {
+                
+                    z-index: 5;
+                    
+                    .background {
+                        transform: scale(1.1);  
+                        
+                        @include breakpoint(xxlarge) {
+                            transform: scale(1.5);
+                        }
+                    }
+                    
+                    .panel__content {   
+                        padding: rem-calc(15 5);                 
+                        span:after {
+                            background: $green;   
+                        }
+                        
+                        .play-video {
+                            opacity: 1;
+                            width: auto;
+                            height: auto;   
+                        }
+                    }
+                
+                }
+            }
+            
+            &:before {
+                content: "";
+                width: 1px;
+                margin-left: -1px;
+                float: left;
+                height: 0;
+                padding-top: 100%;   
+            }
+            
+            .background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+                transition: all .2s;
+               
+                border-radius: 50%;
+                overflow: hidden;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                }   
+            }
+            
+            &__content {
+                position: relative;
+                z-index: 2;  
+                text-align: center;
+                padding: rem-calc(15 10);
+                
+                a {
+                    display: block;   
+                }
+                
+                @include breakpoint(xlarge down) {
+                    .play-video {
+                        width: rem-calc(76)!important;
+                    }
+                    
+                    img {
+                        max-width: rem-calc(75);   
+                    }
+                }
+                
+                @include breakpoint(xxlarge) {
+                    .play-video {
+                        opacity: 0;
+                        width: 0;
+                        height: 0; 
+                        transition: all .2s;
+                    }
+                }
+                
+                h3 {
+                    color: #fff;
+                    font-family: $roboto;
+                    font-weight: 900; 
+                    text-transform: uppercase;
+                    font-style: normal;  
+                    line-height: 1.166666667;
+                    
+                    @include breakpoint(xxxlarge) {
+                        font-size: rem-calc(30);
+                    }
+                }
+                
+                h3,
+                img {
+                    margin-bottom: 0;   
+                }
+                
+                p {
+                    margin-bottom: 0;
+                    
+                    span {
+                        color: #fff;   
+                        position: relative;
+                        
+                        &:after {
+                            content: '';
+                            display: block;
+                            width: 45px;
+                            height: 2px;
+                            background: $lime;  
+                            margin: rem-calc(5) auto 0; 
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    
+    
+    .section-business-lines-map {
+        
+        .legend {
+            ul {
+                @include list-reset;
+            }
+            
+            li {
+                display: block;   
+            }
+        }
+        
+        .maps {
+            position: relative;
+            opacity: 0;
+            
+            .map {
+                                
+                &:not(.parent) {
+                    /*
+                    opacity: 0;
+                    visibility: hidden;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 100%;
+                    margin-left: -100%;
+                    float: left;
+                    */
+                    opacity: 0;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    
+                }
+                
+                &.parent {
+                    //opacity: 0;
+                    //visibility: hidden;
+                }
+            }
+            
+        }
+    }
+    
+}

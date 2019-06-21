@@ -19,7 +19,9 @@ _s_get_template_part( 'template-parts/global', 'hero' );
 
 	<main id="main" class="site-main" role="main">
 	<?php
-        _s_get_template_part( 'template-parts/shareholder', 'insights' );
+        _s_get_template_part( 'template-parts/portfolio', 'mission' );
+        _s_get_template_part( 'template-parts/portfolio', 'portfolio' );
+        _s_get_template_part( 'template-parts/portfolio', 'map' );
 	?>
 	</main>
 

@@ -105,7 +105,12 @@
         
         .wrap {
             
-            margin: 0 auto;   
+            margin: 0 auto; 
+            
+            @include breakpoint(small only) {
+                width: rem-calc(280);
+                max-width: 90%;
+            }  
             
             @include breakpoint(large) {
                 max-width: rem-calc(240*3);
@@ -136,26 +141,30 @@
             
             
             &:hover {
-                z-index: 5;
                 
-                .background {
-                    transform: scale(1.1);  
+                .no-touchevents & {
+                
+                    z-index: 5;
                     
-                    @include breakpoint(xxlarge) {
-                        transform: scale(1.5);
-                    }
-                }
-                
-                .panel__content {   
-                    padding: rem-calc(15 5);                 
-                    span:after {
-                        background: $green;   
+                    .background {
+                        transform: scale(1.1);  
+                        
+                        @include breakpoint(xxlarge) {
+                            transform: scale(1.5);
+                        }
                     }
                     
-                    .play-video {
-                        opacity: 1;
-                        width: auto;
-                        height: auto;   
+                    .panel__content {   
+                        padding: rem-calc(15 5);                 
+                        span:after {
+                            background: $green;   
+                        }
+                        
+                        .play-video {
+                            opacity: 1;
+                            width: auto;
+                            height: auto;   
+                        }
                     }
                 }
             }
@@ -236,7 +245,7 @@
                     }
                 }
                 
-                h2,
+                h3,
                 img {
                     margin-bottom: rem-calc(20);   
                 }
