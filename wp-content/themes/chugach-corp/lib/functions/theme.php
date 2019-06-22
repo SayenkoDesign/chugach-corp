@@ -1,6 +1,7 @@
 <?php
 
 
+
 // Add modals to footer
 function _s_footer() {
     _s_get_template_part( 'template-parts/modal', 'video' );   

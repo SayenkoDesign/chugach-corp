@@ -8,7 +8,7 @@ function _s_register_scripts() {
     
 	// Foundation
 	wp_register_script( 'foundation', trailingslashit( THEME_JS ) . 'foundation.min.js', array('jquery'), '', true );
-                
+                    
 	// Project
  	wp_register_script( 'project' , trailingslashit( THEME_JS ) . 'project.js',
 			array(
@@ -33,8 +33,14 @@ function _s_register_scripts() {
         ),
     ) );
     
+    // Light Gallery
+    wp_register_script( 
+            'lightgallery',             
+            '//cdn.jsdelivr.net/combine/npm/lightgallery,npm/lg-autoplay,npm/lg-fullscreen,npm/lg-hash,npm/lg-pager,npm/lg-thumbnail,npm/lg-video,npm/lg-zoom', array('jquery'), '', true );
     
-    // wp_register_script( 'aos-config', trailingslashit( THEME_JS ) . 'aos-config.js', false, '', true );
+    wp_register_script( 'lightgallery-config', trailingslashit( THEME_JS ) . 'lightgallery-config.js', array('jquery', 'lightgallery' ), '', true );    
+    
+    // Scroll Reveal config
     wp_register_script( 'scrollreveal-config', trailingslashit( THEME_JS ) . 'scrollreveal-config.js', false, '', true );    
 }
 

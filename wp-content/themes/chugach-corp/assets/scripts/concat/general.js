@@ -44,4 +44,21 @@
     });
     
     
+
+    $('.ul-expand').each(function () {
+        if($(this).find('li:visible').length) {
+            $(this).find('span a').show();
+        }
+    });
+    
+    $('.ul-expand').on('click','span a',function(e){
+        e.preventDefault();
+        var $children = $(this).prev('ul').children();
+        $(this).remove();  
+        $children.show();
+        return false;
+    });
+
+    
+    
 }(document, window, jQuery));

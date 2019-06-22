@@ -1,5 +1,12 @@
 <?php
 
+// index attachments
+/*
+add_filter( 'facetwp_indexer_query_args', function( $args ) {
+    $args['post_status'] = array( 'publish', 'inherit' );
+    return $args;
+});
+*/
 
 // Run the facet index on save_post
 
@@ -16,7 +23,7 @@ function _s_facet_index_post( $post_id, $post, $update ) {
   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
       return;
       
-  if( ! class_exists( 'FWP' ) ) {
+  if( ! class_exists( 'FacetWP' ) ) {
       return;
   }
 
