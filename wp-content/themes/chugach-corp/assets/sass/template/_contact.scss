@@ -33,6 +33,10 @@
     }
     
     .section-form {
+        
+        position: relative;
+        z-index: 3;
+        
         @include breakpoint(large) {
             .entry-content {
                 padding-right: rem-calc(map-get($grid-column-gutter, large)*2);     
