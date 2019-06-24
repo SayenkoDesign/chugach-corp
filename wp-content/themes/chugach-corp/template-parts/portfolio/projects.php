@@ -4,6 +4,8 @@
 if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
     class Portfolio_Projects_Section extends Element_Section {
                 
+        private $modals = [];
+        
         public function __construct() {
             parent::__construct();
                                     
@@ -40,7 +42,8 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
         
         // Add content
         public function render() {
-            return $this->get_grid();
+            
+            return $this->get_grid() . $this->get_modals();
         }
         
         
@@ -107,6 +110,8 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
         
         private function get_column( $row = [], $index = 0 ) {
             
+            $i = $index + 1;
+            
             $background = '';
             $video = '';
             $anchor_open = '';
@@ -121,35 +126,101 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
             $logo = $row['logo'];
             $logo = _s_get_acf_image( $logo, 'medium' );
             $heading = _s_format_string( $row['heading'], 'h3' );
-            $link = $row['link'];
-            
-            if( ! empty( $link ) ) {
-                $anchor_open = sprintf( '<a href="%s">', $link );
-                $anchor_close = '</a>';
+                        
+            $modal = $this->get_modal( $row['modal'], $i );
+                                    
+            if( ! empty( $modal ) ) {
+                $anchor_open = sprintf( '<button data-open="projects" data-project="project-%s">', $i );
+                $anchor_close = '</button>';
                 $button = sprintf( '<p><span>%s</span></p>', __( 'Learn More', '_s' ) );
             }
                         
-            if( $index == 1 ) {
+            if( $i == 2 ) {
                 $video = $this->get_fields( 'video' ); 
                 $video_url = _s_get_video_embed( $video );
-                $video = sprintf( '<button class="play-video" data-open="modal-video" data-src="%s">
-                %s<span class="screen-reader-text">Watch Video</span></button>', 
-                                $video_url, 
+                $video = sprintf( '<span class="play-video">
+                %s<span class="screen-reader-text">Watch Video</span></span>', 
                                 get_svg( 'play-hero' ) 
                         );
             }
             
             
-            return sprintf( '<div class="column column-block"><div class="panel">%s<div class="panel__content">%s%s%s%s%s%s</div></div></div>',
+            return sprintf( '<div class="column column-block"><div class="panel">%s%s%s<div class="panel__content">%s%s%s%s</div></div></div>',
                             $background,
-                            $video,
                             $anchor_open,
+                            $anchor_close,
+                            $video,
                             $logo,
                             $heading,
-                            $button,
-                            $anchor_close
+                            $button
+                            
                             
              );
+        }
+        
+        
+        private function get_modal( $row, $index = 0 ) {
+                        
+            if( empty( $row['heading'] ) || empty( $row['content'] ) ) {
+                return false;
+            }
+                                    
+            $heading = $row['heading'];
+            $heading  = _s_format_string( $heading, 'h2' );
+            $subheading = $row['subheading'];
+            $subheading  = _s_format_string( $subheading, 'h3' );
+            
+            $title = sprintf( '<header>%s%s</header>', $heading, $subheading );
+            $thumbnail = _s_get_acf_image( $row['photo'], 'medium' );
+            $text = apply_filters( 'the_content', $row['content'] );
+                 
+            $button = $row['button'];
+            if( ! empty( $button ) ) {
+                $button = sprintf( '<p><a href="%s" class="button orange">%s</a></p>', $button['url'], $button['title'] );
+            }
+            
+            $video = '';
+            
+            if( $index == 2 ) {
+                $video = $this->get_fields( 'video' ); 
+                $args = [];
+                if( ! empty( $video ) ) {
+                    $video = wp_oembed_get( $video, $args );
+                }
+                  
+            }
+            
+            return sprintf( '<div id="project-%s">%s%s%s<div class="entry-content">%s%s</div></div>', $index, $title, $video, $thumbnail, $text, $button );
+           
+        }
+        
+        private function get_modals() {
+            
+            $buttons = $this->get_fields( 'buttons' );
+            //return $locations;
+            
+            $rows = wp_list_pluck( $buttons, 'modal' );
+            
+            if( empty( $rows ) ) {
+                return false;
+            }
+            
+            $this->modals = [];
+            
+            $this->modals = array_map( function ( $row ) {
+                static $i;
+                $i++;
+                
+                return $this->get_modal( $row, $i );
+                
+            }, $rows );
+            
+            $reveal = '<div class="reveal" id="projects" data-reveal data-v-offset="100"><div class="container"></div>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                  </button></div>';
+            
+            return sprintf( '<div class="hide">%s</div>%s', join( '', $this->modals ), $reveal );
         }
         
     }

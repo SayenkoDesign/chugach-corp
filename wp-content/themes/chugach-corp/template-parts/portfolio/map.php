@@ -86,10 +86,9 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
         
         private function get_modals() {
             
-            $locations = $this->get_fields( 'locations' );
-            //return $locations;
+            $buttons = $this->get_fields( 'buttons' );
             
-            $rows = wp_list_pluck( $locations, 'modal' );
+            $rows = wp_list_pluck( $buttons, 'modal' );
             
             if( empty( $rows ) ) {
                 return false;

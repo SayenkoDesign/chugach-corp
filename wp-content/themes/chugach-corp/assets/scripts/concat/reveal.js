@@ -41,6 +41,24 @@
         $('.map').stop().removeClass('active').css({'opacity':'0'});
         $('#map-0').stop().css({'opacity':'1'});
     });
+    
+    
+    $(document).on('click', '.template-portfolio-land-resources button[data-project]', loadProject);
+    
+    function loadProject() {
+        var $this = $(this);
+        var $project = $('#' + $this.data('project') );
+        var $modal = $('#' + $this.data('open'));
+        
+        if( $project.size() ) {
+          $('.container', $modal ).html($project.html()); 
+        }
+    }
+
+    
+    $(document).on('closed.zf.reveal', '#projects', function () {
+        $(this).find('.container').empty();
+    });
         
     
 }(document, window, jQuery));

@@ -146,7 +146,8 @@
                 
                     z-index: 5;
                     
-                    .background {
+                    .background,
+                    button {
                         transform: scale(1.1);  
                         
                         @include breakpoint(xxlarge) {
@@ -176,6 +177,16 @@
                 float: left;
                 height: 0;
                 padding-top: 100%;   
+            }
+            
+            button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                z-index: 4;
             }
             
             .background {
@@ -229,6 +240,7 @@
                         width: 0;
                         height: 0; 
                         transition: all .2s;
+                        display: block;
                     }
                 }
                 
@@ -239,6 +251,7 @@
                     text-transform: uppercase;
                     font-style: normal;  
                     line-height: 1.166666667;
+                    margin-top: rem-calc(20); 
                     
                     @include breakpoint(xxxlarge) {
                         font-size: rem-calc(30);
@@ -377,3 +390,53 @@
     
 }
 
+// Reveal
+#projects {
+    
+    
+    .container {
+        
+        h2,
+        h3 {
+            color: #fff;   
+        }
+        
+        header {
+            background-color: $lime;
+            padding: rem-calc(map-get($grid-column-gutter, small)/2);  
+        }
+        
+        h2 {
+            font-family: $roboto;   
+            text-transform: uppercase;
+            margin-bottom: 0;  
+            font-size: rem-calc(36);
+            line-height: 48/36; 
+            color: #fff;
+        }
+                
+        h3 {
+          font-family: $lato;  
+          font-style: normal;
+          font-size: rem-calc(16);
+          margin-top: rem-calc(5);
+          margin-bottom: 0;
+        }
+        
+        .entry-content {
+            background: #fff;
+            padding: rem-calc(map-get($grid-column-gutter, small)/2);  
+        }
+    }
+    
+    
+    @include breakpoint(large) {
+        
+        padding-top: rem-calc(70);
+        
+        .close-button {
+            font-size: 70px;
+        }
+    }
+
+}
