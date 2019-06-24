@@ -47,7 +47,7 @@ if( ! class_exists( 'Blog_Media_Contact_Section' ) ) {
         public function render() {
                         
             $heading = $this->get_fields( 'heading' );
-            $heading = _s_format_string( $heading, 'h3' );
+            $heading = _s_format_string( $heading, 'h2' );
             
             if( empty( $heading ) ) {
                 return false;
@@ -57,7 +57,7 @@ if( ! class_exists( 'Blog_Media_Contact_Section' ) ) {
             $button = $this->get_fields( 'button' ) ? $this->get_fields( 'button' ) : 'Media Inquiries';
             $url = media_contact_url();
             
-            return sprintf( '<div class="row column text-center">%s<p><a href="%s" class="button blue">%s</a></p></div>', 
+            return sprintf( '<div class="row column text-center">%s<p><a href="%s" class="button orange">%s</a></p></div>', 
                             $heading, $url, $button );
             
         }

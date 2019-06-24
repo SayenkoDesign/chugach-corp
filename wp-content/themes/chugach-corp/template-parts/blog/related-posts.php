@@ -55,7 +55,7 @@ if( ! class_exists( 'Related_Posts' ) ) {
 	
             if ( $loop->have_posts() ) : 
                 while ( $loop->have_posts() ) : $loop->the_post(); 
-                    $posts[] = _s_get_template_part( 'template-parts', 'content-post-column', false, true );
+                    $posts[] = sprintf( '<div class="column">%s</div>', _s_get_template_part( 'template-parts', 'content-post-column', false, true ) );
                 endwhile;
             endif;
             
@@ -65,7 +65,7 @@ if( ! class_exists( 'Related_Posts' ) ) {
                 return false;
             }
             
-            return sprintf( '%s<div class="slick">%s</div>', $heading, join( '', $posts ) );            
+            return sprintf( '<header class="column row text-center">%s</header><div class="row slick">%s</div>', $heading, join( '', $posts ) );            
         }
         
         

@@ -5794,6 +5794,45 @@ return /******/ (function(modules) { // webpackBootstrap
         $( '.section-core-behaviors .slick' ).slick( 'slickGoTo', parseInt(slideIndex) );
     });
     
+    
+    
+    $( '<div class="column row slick-arrows"></div>' ).insertAfter( '.section-related-posts .slick' );
+    
+    $('.section-related-posts .slick').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      appendArrows: $('.section-related-posts .slick-arrows'),
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 980,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+    
 }(document, window, jQuery));
 (function (document, window, $) {
 

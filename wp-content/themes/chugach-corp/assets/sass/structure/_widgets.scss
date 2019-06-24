@@ -148,7 +148,7 @@ footer .social-icons {
 
 .share-icons {
     
-    $share-icon-size: 45;
+    /*$share-icon-size: 45;
 
 	margin: 0 auto 40px;
 	vertical-align: middle;
@@ -187,6 +187,53 @@ footer .social-icons {
         }
 	
 		
-	}
+	}*/
+    
+    $social-icon-size: 32;
+    
+    ul {
+        @include list-reset;
+        height: #{$social-icon-size}px;   
+    }
+      
+    li {
+       display: inline-block;
+       margin: 0!important;
+       padding: 0 0 0 10px;   
+       height: #{$social-icon-size}px;
+       
+       @include breakpoint(large) {
+           padding: 0 0 0 20px;  
+       }
+       
+       &:first-child {
+            padding-left: 0;   
+       }
+      
+    }
+    
+    a {
+        transition: $transition;
+        width: #{$social-icon-size}px;
+        height: #{$social-icon-size}px;
+        display: block;
+        border-radius: 50%;
+        border: 2px solid $green;
+        position: relative;
+        color: $green;
+        
+        &:hover {
+            background-color: $green;
+            color: $white;
+        }
+    }
+    
+    svg {
+        height: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);  
+    }    
 	
 }

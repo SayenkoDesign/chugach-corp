@@ -20,10 +20,8 @@ _s_get_template_part( 'template-parts/blog', 'post-hero' );
                     get_template_part( 'template-parts/content', 'post' );
                         
                 endwhile;
-                                
                
-               _s_get_template_part( 'template-parts/blog', 'related-posts' );
-
+               _s_get_template_part( 'template-parts/blog', 'media-contact' );            
                
                ?>
         
@@ -32,10 +30,13 @@ _s_get_template_part( 'template-parts/blog', 'post-hero' );
         </div>
     
     </div>
-        
+            
 </div>
 
 <?php
+
+_s_get_template_part( 'template-parts/blog', 'related-posts' );
+    
 _s_get_template_part( 'template-parts/blog', 'share-story' );
     
 get_footer();

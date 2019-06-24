@@ -54,6 +54,16 @@ no-js .slick-arrows {
 }
 
 
+.slick-track{
+    display: flex;
+
+    .slick-slide {
+        display: flex;
+        height: auto;
+    }
+}
+
+
 @mixin slick-arrow( $color: #999, $position: left ) {
     $color: str-replace(#{$color}, '#', '');  
     

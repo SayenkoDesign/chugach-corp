@@ -12,7 +12,7 @@ if( ! class_exists( 'Share_Story' ) ) {
             parent::__construct();
             
             $post_id = get_option('page_for_posts');
-            $fields = get_field( 'share_story', $post_id );            
+            $fields = get_field( 'share_stories', $post_id );            
             $this->set_fields( $fields );
             
             $settings = [];
@@ -45,8 +45,8 @@ if( ! class_exists( 'Share_Story' ) ) {
         // Add content
         public function render() {
             
-            $photos  = $this->get_fields( 'photos' );   
-            
+            $photos  = $this->get_fields( 'photos' );  
+                        
             if( empty( $photos ) ) {
                 return false;
             }
@@ -67,8 +67,9 @@ if( ! class_exists( 'Share_Story' ) ) {
             $description    = _s_format_string( $description, 'p' );
             
             $hashtag        = $this->get_fields( 'hashtag' );
+            $hashtag    = _s_format_string( $hashtag, 'h3' );
             
-            return sprintf( '<div class="row expanded collapse"><div class="column">%s</div><div class="column">%s</div></div>', 
+            return sprintf( '<div class="row expanded collapse"><div class="column">%s</div><div class="column"><div class="entry-content align-self-middle">%s%s%s</div></div></div>', 
                             $grid,
                             $heading, 
                             $description, 
