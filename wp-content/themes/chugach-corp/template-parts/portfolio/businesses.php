@@ -47,7 +47,7 @@ if( ! class_exists( 'Portfolio_Businesses_Section' ) ) {
             
             $description = $this->get_fields( 'description' );
                         
-            $heading = sprintf( '<div class="row column"><header>%s%s</header></div>', $heading, $description );
+            $heading = sprintf( '<div class="row column"><header class="header">%s%s</header></div>', $heading, $description );
             
             $grid = $this->get_grid();
                         
