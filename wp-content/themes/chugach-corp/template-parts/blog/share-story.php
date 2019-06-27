@@ -33,7 +33,7 @@ if( ! class_exists( 'Share_Story' ) ) {
     
             $this->add_render_attribute(
                 'wrapper', 'class', [
-                     $this->get_name() . '-share-story', 'show-for-large'
+                     $this->get_name() . '-share-story'
                 ]
             );            
         } 
@@ -69,11 +69,14 @@ if( ! class_exists( 'Share_Story' ) ) {
             $hashtag        = $this->get_fields( 'hashtag' );
             $hashtag    = _s_format_string( $hashtag, 'h3' );
             
-            return sprintf( '<div class="row expanded collapse"><div class="column">%s</div><div class="column"><div class="entry-content align-self-middle">%s%s%s</div></div></div>', 
+            $button = '<button class="button" data-open="share-your-chugach-story">Click Here</button>';
+            
+            return sprintf( '<div class="row expanded collapse"><div class="column show-for-large">%s</div><div class="column"><div class="entry-content align-self-middle">%s%s%s%s</div></div></div>', 
                             $grid,
                             $heading, 
                             $description, 
-                            $hashtag 
+                            $hashtag ,
+                            $button
                          );            
         }        
         

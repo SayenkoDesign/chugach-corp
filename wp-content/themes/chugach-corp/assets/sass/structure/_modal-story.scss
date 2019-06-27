@@ -1,0 +1,42 @@
+// Modal
+
+.modal-story {
+    
+    .wrap {
+        background-color: #fff;
+    }
+    
+    .modal-title,
+    .modal-body {
+        padding: rem-calc(15px 30px);
+    }
+    
+    @include breakpoint(large) {
+        
+        .modal-body {
+           // padding-left: 16px;   
+        }
+    }
+    
+        
+    .modal-title {
+        background-color: $lime;
+        
+        h2 {
+            color: #fff;
+            font-family: $lato;
+			margin-bottom: 0;
+		}
+		
+	}
+    
+    @include breakpoint(large) {
+        
+        padding-top: rem-calc(70);
+        
+        .close-button {
+            font-size: 70px;
+        }
+    }
+    
+}

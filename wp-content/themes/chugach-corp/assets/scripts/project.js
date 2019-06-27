@@ -5889,6 +5889,11 @@ return /******/ (function(modules) { // webpackBootstrap
             scrollTarget: target,
             beforeScroll: function() {
                 $('.site-header').addClass('nav-up');
+            },
+            afterScroll: function() {
+                if($(target).hasClass('type-people') ) {
+                    $(target).find('.header').trigger('click');
+                }
             }
             
         });

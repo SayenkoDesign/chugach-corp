@@ -13,7 +13,6 @@
 		<input type="search" class="search-field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" id="s" placeholder="<?php echo esc_attr_x( 'Search&hellip;', 'placeholder', '_s' ); ?>" />
 	
 		</label>
-        <input type="hidden" name="post_type[]" value="post" />
 		<button class="search-submit screen-reader-text">
 <span class=""><?php echo esc_attr_x( 'Search', 'submit button', '_s' ); ?></span></button>
 	</form>

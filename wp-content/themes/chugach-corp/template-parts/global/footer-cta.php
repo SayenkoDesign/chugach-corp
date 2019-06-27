@@ -6,14 +6,14 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
         
         public function __construct() {
             parent::__construct();
-            
-            $this->set_settings( 'delay', parent::$count * 400 ); 
-            
+                        
             $show_footer_cta = false;
+            
+            $fields = get_field( 'footer_cta', 'option' );
             
             // default to TRUE for the blog
             if( is_page() && ! is_front_page() ) {
-                $show_footer_cta = get_field( 'page_settings_call_to_action' );                
+                $show_footer_cta = get_field( 'page_settings_call_to_action' );             
             }
             else {
                 $show_footer_cta = true;
@@ -23,7 +23,9 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
                 return false;
             }
                         
-            $fields = get_field( 'footer_cta', 'option' );
+            if( is_page() ) {
+                $fields = wp_parse_args( get_field( 'footer_cta' ), $fields );
+            }
                                                 
             $this->set_fields( $fields );
             
@@ -44,15 +46,7 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
                      $this->get_name() . '-footer-cta'
                 ]
             ); 
-            
-            $this->add_render_attribute(
-                'wrapper', [
-                'data-aos' => 'fade-in', 
-                'data-aos-anchor-placement' => 'center-bottom',
-                //'data-aos-anchor' => '#site-footer'
-             ]
-            ); 
-            
+                        
             $background_image       = $this->get_fields( 'background_image' );
             $background_position_x  = strtolower( $this->get_fields( 'background_position_x' ) );
             $background_position_y  = strtolower( $this->get_fields( 'background_position_y' ) );
@@ -87,13 +81,6 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
             // Heading
             $header = new Element_Header( [ 'fields' => $fields ] ); // set fields from Constructor
             $header->set_settings( ['heading_size' => 'h3'] );
-            $header->add_render_attribute(
-                'wrapper', [
-                'data-aos' => 'fade-up', 
-                'data-aos-delay' => 800,
-                'data-aos-anchor' => '.section-footer-cta'
-             ]
-            ); 
             $header = $header->get_element();
             
             // Button

@@ -46,6 +46,7 @@
 	include_once( 'functions/template-tags.php' );
 
 	include_once( 'functions/acf.php' );
+    include_once( 'functions/acf-search.php' );
 
 	include_once( 'functions/fonts.php' );
 
@@ -92,6 +93,7 @@ include_once( 'foundation/class-foundation-tabs.php' );
     include_once( 'post-types/cpt-history.php' ); 
     include_once( 'post-types/cpt-people.php' ); 
     include_once( 'post-types/cpt-region.php' ); 
+    include_once( 'post-types/cpt-testimonial.php' ); 
     
 /****************************************
 	Widgets

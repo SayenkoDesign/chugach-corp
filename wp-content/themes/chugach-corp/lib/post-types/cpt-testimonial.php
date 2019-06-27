@@ -1,12 +1,12 @@
 <?php
  
 /**
- * Create new CPT - People
+ * Create new CPT - Testimonial
  */
  
-class CPT_People extends CPT_Core {
+class CPT_Testimonial extends CPT_Core {
 
-    const POST_TYPE = 'people';
+    const POST_TYPE = 'testimonial';
 	const TEXTDOMAIN = '_s';
 	
 	/**
@@ -20,8 +20,8 @@ class CPT_People extends CPT_Core {
         parent::__construct(
         
         	array(
-				__( 'Person', self::TEXTDOMAIN ), // Singular
-				__( 'People', self::TEXTDOMAIN ), // Plural
+				__( 'Testimonial', self::TEXTDOMAIN ), // Singular
+				__( 'Testimonials', self::TEXTDOMAIN ), // Plural
 				self::POST_TYPE // Registered name/slug
 			),
 			array( 
@@ -36,9 +36,8 @@ class CPT_People extends CPT_Core {
 				'show_in_menu'        => true,
 				'show_in_nav_menus'   => false,
 				'exclude_from_search' => false,
-				//'rewrite'             => array( 'slug' => 'teams' ),
-				'supports' => array( 'title', 'thumbnail', 'revisions' ),
-                'menu_icon' => 'dashicons-businessman'
+				'rewrite'             => false,
+				'supports' => array( 'title', 'editor', 'revisions' ),
 			)
 
         );
@@ -47,4 +46,4 @@ class CPT_People extends CPT_Core {
  
 }
 
-new CPT_People();
+new CPT_Testimonial();

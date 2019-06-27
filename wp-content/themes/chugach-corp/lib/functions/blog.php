@@ -138,18 +138,9 @@ function _s_remove_videos_from_blog_index($query) {
 
 add_action( 'pre_get_posts','_s_remove_videos_from_blog_index' );
 
-
-function _s_blog_template_redirect( $template ) {
-	if ( is_search() ) 
-		$template = get_query_template( 'home' );	
-	return $template;
-}
-add_filter( 'template_include', '_s_blog_template_redirect' );	
-
-
 function _s_add_blog_class( $classes ) {
   
-  if ( is_category() || is_author() || is_search() ) {
+  if ( is_category() || is_author() ) {
       $classes[] = 'blog';
   }
    return $classes;

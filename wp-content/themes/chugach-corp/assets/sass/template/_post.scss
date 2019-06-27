@@ -9,13 +9,14 @@
     .section-hero {
         
         .button {
-            position: absolute;
-            top: rem-calc(map-get($grid-column-gutter, large)*2); 
-            left: rem-calc(map-get($grid-column-gutter, large)*2); 
+            position: relative;
+            margin: rem-calc(map-get($grid-column-gutter, large)/2) auto 0; 
             
             @include breakpoint(large) {
+                position: absolute;
                 top: rem-calc(map-get($grid-column-gutter, large)*2); 
                 left: rem-calc(map-get($grid-column-gutter, large)*4); 
+                margin: 0;
             }
             
             z-index: 3;   
@@ -409,13 +410,23 @@
         }
         
         .column:last-child {
-            margin-top: $column-gap;
             background: linear-gradient(90deg, $lime 0%, $blue 100%); 
+            
+            @include breakpoint(large) {
+                margin-top: $column-gap;   
+            }
+            
             display: flex;
             
             .entry-content {
                 width: 100%;
                 text-align: center; 
+                position: relative;
+                padding: rem-calc($global-margin * 2) rem-calc($global-margin);
+                
+                button {
+                    margin-top: $global-margin;
+                }
                 
                 > * {
                     color: #fff;   

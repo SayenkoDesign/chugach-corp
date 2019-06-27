@@ -1,0 +1,96 @@
+// Search
+
+.search {
+     
+    .site-main {
+        padding: rem-calc(50 0);   
+        
+        @include breakpoint(large) {
+            padding: rem-calc(100 0);  
+        }
+    }
+    
+    .entry-title {
+        @include breakpoint(large) {
+            margin-bottom: 0;  
+        }
+    }
+    
+    .entry-post-type {
+        
+        @include breakpoint(large) {
+            margin-top: -5px;
+            margin-bottom: 10px;   
+        }
+                
+        span {
+            display: inline-block;
+            border-radius: rem-calc(4);
+            font-size: rem-calc(10);
+            padding: rem-calc(1 8);
+            color: #fff;
+            background-color: $gray;  
+            
+        }
+    }
+    
+    
+    article {
+        
+        margin-bottom: rem-calc(30);
+        
+        &:last-child {
+            margin-bottom: 0;   
+        }
+        
+        .posted-on {
+            color: #4A4A4A;
+            display: block;
+            font-family: $lato;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            line-height: 1.666666667;
+            margin-bottom: 10px;
+        }
+        
+        .search-result-description p:last-child {
+            margin-bottom: rem-calc(10);   
+        }
+        
+        &.type-job {
+            li {
+                font-family: $header-font-family;   
+            }
+            
+            ul {
+             
+                li {
+                    font-size: rem-calc(15);
+                    line-height: 1.2;
+                    @include clearfix;
+                    min-height: 18px;
+                    margin-bottom: rem-calc(15);
+                    
+                    &.address {
+                        padding-left: 1px;   
+                    }
+                    
+                    img {
+                        display: block;
+                        float: left;   
+                        margin-right: 5px;
+                        
+                        
+                    }
+                                            
+                    span {
+                        display: block;
+                        overflow: hidden;
+                        margin-left: 12px;   
+                    }
+                    
+                }  
+            }
+        }
+    }
+}
