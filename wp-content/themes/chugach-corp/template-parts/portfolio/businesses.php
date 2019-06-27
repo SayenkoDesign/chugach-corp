@@ -95,8 +95,8 @@ if( ! class_exists( 'Portfolio_Businesses_Section' ) ) {
 
             
             
-            $icon = _s_get_acf_image( $icon );                                
-            $icon = sprintf( '<div class="column column-block shrink"><span class="icon">%s</span></div>', $icon );  
+            //$icon = _s_get_acf_image( $icon );                                
+            //$icon = sprintf( '<div class="column column-block shrink"><span class="icon">%s</span></div>', $icon );  
             
             $heading    = _s_format_string( $row['heading'], 'h3' );
             $subheading = _s_format_string( $row['subheading'], 'h4' );  
@@ -109,11 +109,12 @@ if( ! class_exists( 'Portfolio_Businesses_Section' ) ) {
                 $link = sprintf( '<p><a href="%s" class="button">%s</a></p>', esc_url( $row['link'] ), __( 'Website', '_s' ) );
             }
                                                              
-            $photo = get_field( 'photo' );
+            $photo = $row['photo'];
             $right = '';
             $column_class = '';
             if( ! empty( $photo ) ) {
-                $right = sprintf( '<div class="column show-for-large text-right"><div class="photo">%s</div></div>', _s_get_acf_image( $photo, 'leadership' ) );
+                $right = sprintf( '<div class="column show-for-large text-right"><div class="photo">%s</div></div>', 
+                                  _s_get_acf_image( $photo, 'medium' ) );
                 $column_class = ' small-12 large-6';
             }
             

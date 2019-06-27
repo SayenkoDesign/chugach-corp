@@ -107,7 +107,7 @@
         }
         
         
-        header {
+        .container > .row > header {
             background-color: $blue;
             max-width: rem-calc(460);
             margin: 0 auto;

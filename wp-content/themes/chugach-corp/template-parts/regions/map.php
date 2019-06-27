@@ -60,9 +60,9 @@ if( ! class_exists( 'Regions_Map_Section' ) ) {
             $size = 'full';
             
             $image = wp_get_attachment_image( $map, $size, '', array( 'class' => 'location-map') );
-                        
-            $locations = '';
             
+            $box = '';          
+            $locations = '';
             $regions = '';
             
             if( $show_pins ) {
@@ -81,8 +81,8 @@ if( ! class_exists( 'Regions_Map_Section' ) ) {
                         
                         list($x, $y) = explode('/', $row['coordinates'] );   
                         
-                        $offsetx = $row['offset_x'] * 1;
-                        $offsety = $row['offset_y'] * 1;
+                        //$offsetx = $row['offset_x'] * 1;
+                        //$offsety = $row['offset_y'] * 1;
                         
                         // data-v-offset  data-h-offset
                         
