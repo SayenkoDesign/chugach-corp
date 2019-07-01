@@ -216,6 +216,110 @@
         margin-top: -5px;
     }
     
+    .project {
+            position: absolute;
+            top: 8%;
+            right: 0;
+            display: none;
+            
+            @include breakpoint(xxlarge) {
+                display: block;
+            }
+            
+            .panel {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;  
+                width: rem-calc(300);
+                
+                &:before {
+                    content: "";
+                    width: 1px;
+                    margin-left: -1px;
+                    float: left;
+                    height: 0;
+                    padding-top: 100%;   
+                }
+                
+                &:hover {
+                    .background {
+                            &:after {
+                                background-color: rgba(4,106,56,0.8);   
+                            }
+                        }   
+                }
+                
+                .background {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    margin-top: rem-calc(-10);
+                    right: -50%;
+                    width: 125%;
+                    height: 125%;
+                    background-size: cover;
+                    background-position: left center;
+                    box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+                    transition: all .2s;
+                   
+                    border-radius: 100%;
+                    overflow: hidden;
+                    
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: rgba(100,167,11,0.8); 
+                    }   
+                }
+                
+                &__content {
+                    display: inline-block;
+                    position: relative;  
+                    transform: translateX(50px);
+                    max-width: rem-calc(180);
+                    text-align: center;
+                    
+                    h3 {
+                        color: #FFFFFF;
+                        font-family: $roboto;
+                        font-size: rem-calc(30);
+                        font-weight: 900;
+                        line-height: 1.166666667;
+                        font-style: normal;
+                        text-transform: uppercase;
+                    }
+                    
+                    h3,
+                    p {
+                        color: #fff;   
+                    }
+                    
+                    p:last-of-type {
+                        margin-bottom: 5px;   
+                    }
+                }
+                
+                span {
+                    position: relative;
+                    height: 22px;
+                    
+                    &:before {
+                        content: '';
+                        @include link-arrow( #ffffff, 'right' ); 
+                        margin: 0 auto;
+                    }
+                      
+                }
+            }
+            
+              
+        }
+    
 }
 
 // Reveal

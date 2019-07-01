@@ -56,27 +56,27 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
             $description = '';
             $link = '';            
             
-            $region = get_field( 'region' );
+            $field = get_field( 'region' );
                         
-            if( ! empty( $region['photo'] ) ) {
-                $background = sprintf( '<div class="background" style="background-image: url(%s);"></div>', _s_get_acf_image( $region['photo'], 'large', true ) );
+            if( ! empty( $field['photo'] ) ) {
+                $background = sprintf( '<div class="background" style="background-image: url(%s);"></div>', _s_get_acf_image( $field['photo'], 'large', true ) );
             }
             
-            if( ! empty( $region['heading'] ) ) {
-                $heading = _s_format_string( $region['heading'], 'h3' );
+            if( ! empty( $field['heading'] ) ) {
+                $heading = _s_format_string( $field['heading'], 'h3' );
             }
             
-            if( ! empty( $region['description'] ) ) {
-                $description = $region['description'];
+            if( ! empty( $field['description'] ) ) {
+                $description = $field['description'];
             }
             
-            if( ! empty( $region['link'] ) ) {
+            if( ! empty( $field['link'] ) ) {
                 $anchor_open = sprintf( '<a href="%s">', $link );
                 $button = '<span></span>';
                 $anchor_close = '</a>';
             }
             
-            $region = sprintf( '<div class="region"><div class="panel">%s<div class="panel__content">%s%s%s%s%s</div></div></div>',
+            $field = sprintf( '<div class="region"><div class="panel">%s<div class="panel__content">%s%s%s%s%s</div></div></div>',
                                 $background,
                                 $anchor_open,
                                 $heading,
@@ -85,7 +85,7 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
                                 $anchor_close
             );
             
-            return sprintf( '</div></div></div></div>%s</%s>', $region, esc_html( $this->get_html_tag() ) );
+            return sprintf( '</div></div></div></div>%s</%s>', $field, esc_html( $this->get_html_tag() ) );
         }
         
         

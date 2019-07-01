@@ -40,6 +40,48 @@ if( ! class_exists( 'Regions_Map_Section' ) ) {
         }
         
         
+        public function after_render() {
+            
+            $anchor_open = '';
+            $anchor_close = '';
+            $background = '';
+            $heading = '';
+            $description = '';
+            $link = '';            
+            
+            $field = get_field( 'project' );
+                        
+            if( ! empty( $field['photo'] ) ) {
+                $background = sprintf( '<div class="background" style="background-image: url(%s);"></div>', _s_get_acf_image( $field['photo'], 'large', true ) );
+            }
+            
+            if( ! empty( $field['heading'] ) ) {
+                $heading = _s_format_string( $field['heading'], 'h3' );
+            }
+            
+            if( ! empty( $field['description'] ) ) {
+                $description = $field['description'];
+            }
+            
+            if( ! empty( $field['link'] ) ) {
+                $anchor_open = sprintf( '<a href="%s">', $link );
+                $button = '<span></span>';
+                $anchor_close = '</a>';
+            }
+            
+            $field = sprintf( '<div class="project"><div class="panel">%s<div class="panel__content">%s%s%s%s%s</div></div></div>',
+                                $background,
+                                $anchor_open,
+                                $heading,
+                                $description,
+                                $button,
+                                $anchor_close
+            );
+            
+            return sprintf( '</div></div></div></div>%s</%s>', $field, esc_html( $this->get_html_tag() ) );
+        }
+        
+        
         public function get_map_box() {
             
             $map         = $this->get_fields( 'map' );
