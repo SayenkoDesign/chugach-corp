@@ -32,6 +32,10 @@
     
   
     $(window).scroll(animateNumbers);
+    
+    $(window).on("load scroll",function(e){
+        animateNumbers();
+    });
     var viewed = false;
     
     function isScrolledIntoView(elem) {
@@ -50,12 +54,12 @@
           $('.number').each(function () {
           $(this).css('opacity', 1);
           $(this).prop('Counter',0).animate({
-              Counter: $(this).text()
+              Counter: $(this).text().replace(/,/g, '')
           }, {
               duration: 4000,
               easing: 'swing',
               step: function (now) {
-                  $(this).text(Math.ceil(now));
+                  $(this).text(Math.ceil(now).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
               }
           });
         });

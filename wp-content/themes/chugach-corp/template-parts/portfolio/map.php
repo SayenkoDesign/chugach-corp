@@ -86,9 +86,13 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
         
         private function get_modals() {
             
-            $buttons = $this->get_fields( 'buttons' );
+            $locations = $this->get_fields( 'locations' );
+                        
+            if( empty( $locations ) ) {
+                return false;
+            }
             
-            $rows = wp_list_pluck( $buttons, 'modal' );
+            $rows = wp_list_pluck( $locations, 'modal' );
             
             if( empty( $rows ) ) {
                 return false;
@@ -131,6 +135,7 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
             $reveal = '<div class="reveal" id="maps" data-reveal><div class="container"></div><button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button></div>';
+            
             
             return sprintf( '<div class="row column">%s%s</div>%s%s', 
                              $this->get_legend(),
