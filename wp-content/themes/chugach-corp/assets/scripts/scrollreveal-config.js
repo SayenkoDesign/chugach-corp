@@ -148,6 +148,26 @@
         origin: 'right',
 	    distance: '100%',
     });
+    
+    
+    // History
+    ScrollReveal().reveal('.section-timeline .decade', { 
+        delay: 500,
+        scale: 0.1,
+        viewFactor: 1
+    });  
+    
+    $('.section-timeline .row').children('article').each(function (index, element) {
+        //var id = $(element).attr('id'); 
+        console.log('#' + element.id);
+        ScrollReveal().reveal( '#' + element.id, { 
+            delay: 1000,
+            origin: index % 2 ? 'right' : 'left',
+            distance: '100%',
+            interval: 1000,
+            viewFactor: 0.5
+        });
+    });
 
     
     

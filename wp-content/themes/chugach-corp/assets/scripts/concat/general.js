@@ -34,11 +34,16 @@
     $(window).scroll(animateNumbers);
     
     $(window).on("load scroll",function(e){
-        animateNumbers();
+        animateNumbers(); 
     });
     var viewed = false;
     
     function isScrolledIntoView(elem) {
+        
+        if( ! $(elem).length ) {
+            return false;
+        }
+        
         var docViewTop = $(window).scrollTop();
         var docViewBottom = docViewTop + $(window).height();
     

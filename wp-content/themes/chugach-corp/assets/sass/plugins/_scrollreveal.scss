@@ -58,4 +58,17 @@ html.sr .home {
 }
 
 
-
+// About
+html.sr {
+    .section-timeline {
+        .decade,
+        article {
+            visibility: hidden;
+        }
+    }
+    
+    .fifty-fifty-block-section img {
+        //visibility: hidden;
+    }
+    
+}
