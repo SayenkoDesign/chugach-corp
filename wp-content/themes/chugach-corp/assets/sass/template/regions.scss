@@ -42,10 +42,11 @@
                 position: absolute;
                 display: block;
                 width: 100px;
-                transform: translate(2vw,.25vw);
+                transform: translate(1.5vw,.25vw);
                 white-space: nowrap;  
                 text-align: left;
                 font-size: 1vw;
+                color: $green;
             }
             
             img {
@@ -57,6 +58,11 @@
             &:hover img,
             &.hover img {
                transform: translateY(-8px);   
+            }
+            
+            &:hover .label,
+            &.hover .label {
+               color: $blue; 
             }
         }
         
