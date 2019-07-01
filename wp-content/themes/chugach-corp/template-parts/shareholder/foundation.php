@@ -73,7 +73,7 @@ if( ! class_exists( 'Shareholder_Foundation_Section' ) ) {
             // Years
             $years = $this->get_fields( 'years' );
             if( ! empty( $years['number'] ) && ! empty( $years['label'] ) ) {
-                $years = sprintf( '<div class="years"><span class="number">%s</span><span class="label">%s</span></div>',
+                $years = sprintf( '<div class="years"><span class="number animate">%s</span><span class="label">%s</span></div>',
                                   $years['number'],
                                   $years['label']
                                 );

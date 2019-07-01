@@ -168,6 +168,7 @@
         .numbers {
             text-align: center;
             position: relative;
+            z-index: 2;
             margin-bottom: -90px;
             
             > div {
@@ -193,6 +194,7 @@
                     letter-spacing: 1.1px;
                     font-family: $roboto;
                     font-weight: 900;
+                    opacity: 0;
                 }
                 
                 .label {
@@ -224,6 +226,17 @@
             
             @include breakpoint(large) {
                 padding: rem-calc(110 60 40);   
+                position: relative;
+                
+                &:before {
+                    @include three-lines-gray-alt;
+                    position: absolute;
+                    bottom: 0;
+                    left: 55px;   
+                    z-index: -1;
+                    transform: translateY(60%);
+                }
+                
             }
         }
         

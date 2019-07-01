@@ -10,7 +10,7 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
             $show_footer_cta = false;
             
             $fields = get_field( 'footer_cta', 'option' );
-            
+                        
             // default to TRUE for the blog
             if( is_page() && ! is_front_page() ) {
                 $show_footer_cta = get_field( 'page_settings_call_to_action' );             
@@ -24,7 +24,13 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
             }
                         
             if( is_page() ) {
-                $fields = wp_parse_args( get_field( 'footer_cta' ), $fields );
+                $page = get_field( 'footer_cta' );
+                if( ! empty( $page['heading'] ) ) {
+                    $fields['heading'] = $page['heading'];
+                }
+                if( ! empty( $page['buttons'] ) ) {
+                    $fields['buttons'] = $page['buttons'];
+                }
             }
                                                 
             $this->set_fields( $fields );
@@ -69,7 +75,7 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
         public function render() {
             
             $fields = $this->get_fields();
-                        
+                                    
             $row = new Element_Row(); 
             $row->add_render_attribute( 'wrapper', 'class', 'align-middle medium-unstack' );
                         
