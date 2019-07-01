@@ -38,6 +38,16 @@
             //transform: translate(-50%,-50%);
             cursor: pointer;
             
+            .label {
+                position: absolute;
+                display: block;
+                width: 100px;
+                transform: translate(2vw,.25vw);
+                white-space: nowrap;  
+                text-align: left;
+                font-size: 1vw;
+            }
+            
             img {
                 width: 100%;
                 transition-duration: 0.3s;
@@ -155,10 +165,12 @@
                         content: '';
                         position: absolute;
                         left: 0;
-                        top: 0;
+                        top: 5px;
                         width: 19px;
                         height: 28px;
-                        background-image: url(assets/images/regions/marker.svg);   
+                        background-image: url(assets/images/regions/marker.svg); 
+                        background-size: contain;  
+                        background-repeat: no-repeat;
                     } 
                 }
                 

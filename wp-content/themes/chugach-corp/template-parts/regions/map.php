@@ -94,6 +94,7 @@ if( ! class_exists( 'Regions_Map_Section' ) ) {
                         
                         $post_id = $row['region'];
                         $title = get_the_title( $post_id );
+                        $label = sprintf( '<span class="label">%s</span>', $title ); 
                         $title  = _s_format_string( $title, 'h2' );
                         $subtitle = get_field( 'subtitle', $post_id );
                         $subtitle  = _s_format_string( $subtitle, 'h3' );
@@ -108,9 +109,10 @@ if( ! class_exists( 'Regions_Map_Section' ) ) {
                                                                 
                         ++$i;
                         
-                        $icon = sprintf( '<img src="%sregions/marker.svg" />', trailingslashit( THEME_IMG ) );   
+                        $icon = sprintf( '<img src="%sregions/marker.svg" />', trailingslashit( THEME_IMG ) );  
+                        
                                                 
-                        $locations .= sprintf( '<button class="marker" id="marker-%s" data-open="regions" data-region="region-%s" style="%s">%s</button>', $i, $i, $xy, $icon );
+                        $locations .= sprintf( '<button class="marker" id="marker-%s" data-open="regions" data-region="region-%s" style="%s">%s%s</button>', $i, $i, $xy, $label, $icon );
                         $regions .= sprintf( '<div id="region-%s">%s%s%s%s</div>', $i, $title, $thumbnail, $text, $button );
             
                     endforeach;
