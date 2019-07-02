@@ -66,7 +66,7 @@
     
     include_once( 'functions/redirects.php' );
 
-    include_once( 'functions/rest.php' );
+    //include_once( 'functions/rest.php' );
     
     include_once( 'functions/aos.php' );
     

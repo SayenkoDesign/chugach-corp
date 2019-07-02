@@ -2,7 +2,6 @@
 if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
     class Blog_Rest_Posts_Section extends Element_Section {
         
-        private $api;
         private $is_slick = false;
         
         public function __construct() {
@@ -11,9 +10,7 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
             $post_id = is_home() ? get_option('page_for_posts') : '';
             $fields = get_field( 'stories', $post_id );
             $this->set_fields( $fields );
-            
-            $this->api = new Chugach_Rest_API_Posts;
-                                    
+                                                
             // Render the section
             if( empty( $this->render() ) ) {   
                 return;
@@ -68,7 +65,6 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
                         
             $featured_post = $this->get_fields( 'rss_featured_post' );
             $featured_post_id = $featured_post; 
-            $featured_post = $this->api->get_post( $featured_post );
             $featured_post = $this->get_post( $featured_post, true );
                         
             $posts = $this->get_posts( $featured_post_id );
@@ -95,20 +91,26 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
                 $args['exclude'] = $featured_post_id;    
             }
             
-            $posts = $this->api->get_posts( $args );   
-            
-            if( empty( $posts ) ) {
-                return false;
-            }
-            
+            // Use $loop, a custom variable we made up, so it doesn't overwrite anything
+            $loop = new WP_Query( $args );
+                    
             $out = '';
                         
             $formatted_posts = [];
             
-            foreach( $posts as $_post ) {                
-                $formatted_posts[] =  $this->get_post( $_post )   ;    
+            if ( $loop->have_posts() ) : 
+                 while ( $loop->have_posts() ) : $loop->the_post(); 
+                    $formatted_posts[] =  $this->get_post( $loop->the_post() ); 
+                endwhile;
+             endif;
+	 
+	        wp_reset_postdata();
+            
+            if( empty( $formatted_posts ) ) {
+                return false;
             }
             
+
             if( count( $formatted_posts ) > 2 ) {
                 
                 $slides = array_chunk( $formatted_posts, 2 );
@@ -126,12 +128,15 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
         }
         
         private function get_post( $_post, $featured = false ) {
+                        
+            $post_id = $_post->ID;
+            
             
             $h_tag = $featured ? 'h2' : 'h3';
             
-            $post_title = sprintf( '<%s class="post-title">%s</%s>', $h_tag, $_post->title->rendered, $h_tag );
-            $permalink = $_post->link;
-            $post_thumbnail = $this->api->get_post_thumbnail( $_post );
+            $post_title = sprintf( '<%s class="post-title">%s</%s>', $h_tag, get_the_title( $post_id ), $h_tag );
+            $permalink = get_permalink( $post_id );
+            $post_thumbnail = get_the_post_thumbnail_url( $_post, 'medium' );
             
             if( empty( $post_thumbnail ) ) {
                 $thumbnail = get_field( 'post_image_fallback', 'option' );
@@ -155,9 +160,9 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
                 $close = '</div>';
             }
             
-            return sprintf( '%s<article id="remote-post-id-%s"><a href="%s" %s>%s%s</a></article>%s%s', 
+            return sprintf( '%s<article id="post-id-%s"><a href="%s" %s>%s%s</a></article>%s%s', 
                             $open,
-                            $_post->id, 
+                            $post_id, 
                             $permalink, 
                             $background, 
                             $tag, 
@@ -169,9 +174,15 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
         
         
        private function get_links() {
-            $category_link = $this->get_fields( 'rss_category_link' ) ? $this->get_fields( 'rss_category_link' ) : CHUGACH_COMMUNITY_BLOG_URL;
-            $view_all = sprintf( '<a href="%s">View all Stories</a>', $category_link );
-            $share = sprintf( '<a href="%s">Share Your Story</a>', CHUGACH_COMMUNITY_BLOG_SHARE_STORY );
+            //$category_link = $this->get_fields( 'rss_category_link' ) ? $this->get_fields( 'rss_category_link' ) : CHUGACH_COMMUNITY_BLOG_URL;
+            $category_link = $this->get_fields( 'rss_category' );
+            $view_all = '';
+            if( ! empty( $category_link ) ) {
+                $category_link = get_term_link( $category_link );
+                $view_all = sprintf( '<a href="%s">View all Stories</a>', $category_link );
+            }
+            
+            $share = sprintf( '<a data-open="share-your-chugach-story">%s</a>', __( 'Share Your Story' ) );
             return sprintf( '<ul><li>%s</li><li>%s</li></ul>', $view_all, $share );
        }
         

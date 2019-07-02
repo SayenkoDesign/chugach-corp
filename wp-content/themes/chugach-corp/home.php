@@ -46,7 +46,7 @@ wp_reset_postdata();
     <div id="primary" class="content-area">
     
         <?php
-        if( ! is_paged() ) {
+        if( ! is_paged() && ! is_category() ) {
             _s_get_template_part( 'template-parts/blog', 'videos' );
         }
         ?>

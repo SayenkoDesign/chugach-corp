@@ -13,7 +13,15 @@
 	
 	<?php     
     $post_image = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-    if( !empty( $post_image ) ) {
+    
+    if( empty( $post_image ) ) {
+        $post_image = get_field( 'post_image_fallback', 'option' );
+        if( ! empty( $post_image ) ) {
+            $post_image = wp_get_attachment_image_src( $post_image, 'large' );
+        }   
+    }
+    
+    if( ! empty( $post_image ) ) {
         $post_image = sprintf( 'background-image: url(%s);', $post_image );
     }     
     
