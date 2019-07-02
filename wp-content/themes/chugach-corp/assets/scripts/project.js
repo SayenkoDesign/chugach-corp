@@ -6165,10 +6165,12 @@ return /******/ (function(modules) { // webpackBootstrap
     
     $('.ul-expand').on('click','span a',function(e){
         e.preventDefault();
-        var $children = $(this).prev('ul').children();
+        //var $children = $(this).prev('ul').children();
+        
+        //$children.css('display', 'inline');
+        //return false;
+        $(this).parents('div').find('ul').removeClass('short');
         $(this).remove();  
-        $children.show();
-        return false;
     });
 
     

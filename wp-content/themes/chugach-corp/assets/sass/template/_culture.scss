@@ -209,7 +209,7 @@
                     color: #4A4A4A;   
                 }
                 
-                li:nth-child(n+6) {
+                &.short li:nth-child(n+6) {
                     display:none;
                 }  
             }
