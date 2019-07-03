@@ -37,7 +37,11 @@ if( ! class_exists( 'Careers_Shareholders_Section' ) ) {
             );       
         } 
         
-       
+        
+        public function after_render() {
+            $shape = sprintf( '<div class="shape"><img src="%scareers/green-curve.png" /></div>', trailingslashit( THEME_IMG ) ); 
+            return sprintf( '</div></div></div>%s</%s>', $shape, esc_html( $this->get_html_tag() ) );
+        }
         
         // Add content
         public function render() {
@@ -57,7 +61,7 @@ if( ! class_exists( 'Careers_Shareholders_Section' ) ) {
             $classes = '';
             if( ! empty( $photos ) ) {
                 $classes = ' large-6 small-order-1 large-order-2';
-                $photos = sprintf( '<div class="small-12 large-6 small-order-2 large-order-1 column">%s</div>', $photos );
+                $photos = sprintf( '<div class="small-12 large-6 small-order-2 large-order-1 column column-block">%s</div>', $photos );
             }
             
             $buttons = $this->get_fields( 'buttons' );
@@ -77,7 +81,7 @@ if( ! class_exists( 'Careers_Shareholders_Section' ) ) {
             
             
             return sprintf( '%s<div class="row">%s
-                            <div class="small-12%s column"><div class="entry-content">%s%s</div></div></div>', 
+                            <div class="small-12%s column column-block"><div class="entry-content">%s%s</div></div></div>', 
                             $heading,
                             $photos,
                             $classes,

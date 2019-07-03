@@ -41,6 +41,11 @@ if( ! class_exists( 'Careers_Why_Section' ) ) {
                         
         }  
         
+        public function after_render() {
+            
+            $shape = sprintf( '<div class="shape"><img src="%scareers/red-curve.png" /></div>', trailingslashit( THEME_IMG ) ); 
+            return sprintf( '</div></div></div>%s</%s>', $shape, esc_html( $this->get_html_tag() ) );
+        }
         
         
         // Add content
@@ -87,7 +92,7 @@ if( ! class_exists( 'Careers_Why_Section' ) ) {
                                    );
                 }
                 
-                return sprintf( '<div class="row small-up-2 medium-up-3 align-center grid">%s</div>', 
+                return sprintf( '<div class="row small-up-1 medium-up-3 align-center grid">%s</div>', 
                             $grid_items
                           );   
             }

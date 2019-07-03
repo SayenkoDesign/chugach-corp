@@ -5,6 +5,15 @@
     
     .section-introduction {
         
+        padding-top: rem-calc(45);
+        
+        .wrap {
+            @include breakpoint(large) {
+                max-width: rem-calc(1200 * 10/12);
+                margin: 0 auto;
+            }  
+        }
+        
         .has-video {
             display: inline-block;
             position: relative;
@@ -22,7 +31,7 @@
         
         @include breakpoint(large) {
             .large-5 {
-                padding: 0 rem-calc(map-get($grid-column-gutter, large)*3);    
+                padding-right: rem-calc(map-get($grid-column-gutter, large)*3);    
             }
             
             .large-7 {
@@ -33,7 +42,7 @@
         .photo {
             position: relative;
             
-            padding: rem-calc(20 0);
+            padding: rem-calc(0 20 0 0);
             
             &:before {
                 display: block;
@@ -41,12 +50,12 @@
                 z-index: -1; 
                 content: '';
                 top: 50%;
-                left: 50%;
-                transform: translate(-50%,-50%);
-                height: 100%;
-                width: 80%;
+                right: 0;
+                transform: translateY(-50%);
+                height: 80%;
+                width: 100%;
                 border-radius: 2px;
-                background-color: #D7D5D5;
+                background-color: $red;
             }
         }
         
@@ -60,18 +69,25 @@
     .section-why {
         padding-top: rem-calc(75);
         
+        .wrap {
+            @include breakpoint(large) {
+                max-width: rem-calc(1200 * 10/12);
+                margin: 0 auto;
+            }  
+        }
+        
         header { 
     
             position: relative;
-            padding-left: rem-calc(60);
-            margin-bottom: rem-calc(45);
-            
+            padding-left: rem-calc(124);
+            margin-bottom: rem-calc(75);
+                        
             &:before {
                 content: '';
-                background-image: url(assets/images/culture/information.svg);
+                background-image: url(assets/images/careers/chugach.svg);
                 background-size: contain;
-                width: 47px;
-                height: 47px;
+                width: 113px;
+                height: 71px;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -88,39 +104,73 @@
             header {
                 display: flex;
                 justify-content: space-between;
-                flex-wrap: wrap;   
+                flex-wrap: wrap;  
+                align-items: center; 
                 
                 h3 {
                     flex: 0 0 60%;
                     max-width: rem-calc(600);
                     margin-left: 0;
                 }
+                
+                h2,
+                h3, {
+                    margin-top: 0;
+                    margin-bottom: 0;   
+                }
             }
         } 
         
         .grid {
             //margin: 0 auto;
-            //max-width: rem-calc(1200 * 10/12);   
+            //max-width: rem-calc(1200 * 10/12); 
+            
+            @include breakpoint(small only) {
+                margin: 0 auto;
+                max-width: rem-calc(280);
+            }
+            
+            img {
+                margin-bottom: rem-calc(40);   
+            }
+            
+            h3 {
+                font-style: normal;   
+                margin-bottom: rem-calc(10); 
+            }
+            
+            a {
+                @include fancy-link;   
+            }
         }
     }
     
     
     .section-shareholders {
         
-        padding-top: rem-calc(75);
+        .wrap {
+            background-color: #ECECEC;
+            padding-top: rem-calc(45); 
+            padding-bottom: rem-calc(75);    
+            
+            @include breakpoint(xlarge) {
+                padding-top: 0;
+                padding-bottom: rem-calc(45);    
+            }
+        }
         
         header { 
     
             position: relative;
-            padding-left: rem-calc(60);
+            padding-left: rem-calc(124);
             margin-bottom: rem-calc(45);
             
             &:before {
                 content: '';
-                background-image: url(assets/images/culture/information.svg);
+                background-image: url(assets/images/careers/chugach.svg);
                 background-size: contain;
-                width: 47px;
-                height: 47px;
+                width: 113px;
+                height: 71px;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -157,6 +207,7 @@
         .photo-grid-wrapper {
             padding: rem-calc(15);
             position: relative;
+            z-index: 2;
             
             &:before,
             &:after {
@@ -214,54 +265,89 @@
                 width: 40%;
             }
         }
+        
+        .entry-content {
+            h3 {
+                font-style: normal;
+                margin-bottom: rem-calc(10);   
+            }
+        }
     }
     
     .section-testimonials {
+        
+        .wrap {
+            padding-top: rem-calc(45);  
+            
+            @include breakpoint(xlarge) {
+                padding-top: 0;
+            } 
+        }
+        
+        header {
+            text-align: center;  
+            margin-bottom: rem-calc(40); 
+        }
      
         .testimonials {
-            max-width: rem-calc(600);
+            max-width: rem-calc(1000);
             margin: 0 auto;
-            padding: rem-calc(0 75);   
+            padding: rem-calc(0 75 75);   
             position: relative;
         
         }
+        
         
         .testimonial {
-            position: relative;
             
-            &:before {
-                content: '';
-                display: block;
-                width: 210px;
-                height: 48px;
-                background-image: url(assets/images/icons/quote-mark.svg);
-                margin: 0 auto rem-calc(35);
-                   
+            p {
+                font-family: $georgia;
+                font-size: 22px;
+                font-style: italic;
+                line-height: 36px;
+                text-align: center;
+                
+                &:last-of-type {
+                    margin-bottom: 0;   
+                }
+            }
+            
+            footer {
+                position: relative;
+                text-align: center;
+            
+                &:before {
+                    content: '';
+                    display: block;
+                    width: 124px;
+                    height: 81px;
+                    background-image: url(assets/images/careers/quote.svg);
+                    margin: 0 auto -20px;
+                       
+                }  
+                
+                h3 {
+                    color: $lime;   
+                }
+                
+                h5 {
+                    color: #666666;
+                    font-size: 17px;
+                    letter-spacing: 0.66px;
+                    line-height: 31px;
+                    text-align: center;
+                }
             }
         }
         
-        .testimonial-item-text {
-            text-align: center;
-            
-            p {
-                color: #FFFFFF;
-                font-size: rem-calc(18);
-                font-weight: 700;
-                letter-spacing: 0.7px;
-                line-height: 1.666666667;
-            }
-            
-            h4 {
-                color: $lime;
-            }
-        }
+        
                     
        .thumbnail {
             position: relative;
             overflow: hidden;
             width: 100px;
             height: 100px;
-            margin: 0 auto;
+            margin: 0 auto rem-calc(10);
             border-radius: 50%;
             box-shadow: $box-shadow;
             border: 4px solid $lime;
@@ -292,8 +378,8 @@
                 .slick-next,
                 .slick-prev {
                     position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);               
+                    top: 15%;
+                    //transform: translateY(-50%);               
                 }                
             }
         }
