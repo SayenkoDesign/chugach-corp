@@ -1,0 +1,302 @@
+// Careers
+
+.template-careers {
+    
+    
+    .section-introduction {
+        
+        .has-video {
+            display: inline-block;
+            position: relative;
+            
+            &:after {
+                content: '';
+                position: absolute;
+                top: rem-calc(20);
+                left: 0;
+                right: 0;
+                bottom: rem-calc(20);
+                background: linear-gradient(270deg, rgba(#64A70B, .8) 0%, rgba(#046A38, .8) 100%);
+            }
+        }
+        
+        @include breakpoint(large) {
+            .large-5 {
+                padding: 0 rem-calc(map-get($grid-column-gutter, large)*3);    
+            }
+            
+            .large-7 {
+                padding-top: rem-calc(30);   
+            }
+        }
+        
+        .photo {
+            position: relative;
+            
+            padding: rem-calc(20 0);
+            
+            &:before {
+                display: block;
+                position: absolute;
+                z-index: -1; 
+                content: '';
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                height: 100%;
+                width: 80%;
+                border-radius: 2px;
+                background-color: #D7D5D5;
+            }
+        }
+        
+        h3 {
+            font-style: normal;   
+            margin-bottom: rem-calc(10);
+        }
+    } 
+    
+    
+    .section-why {
+        padding-top: rem-calc(75);
+        
+        header { 
+    
+            position: relative;
+            padding-left: rem-calc(60);
+            margin-bottom: rem-calc(45);
+            
+            &:before {
+                content: '';
+                background-image: url(assets/images/culture/information.svg);
+                background-size: contain;
+                width: 47px;
+                height: 47px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        
+            h3 {
+                color: $gray;
+                margin-top: rem-calc(5);
+                margin-bottom: rem-calc($global-margin); 
+            }
+        }
+        
+        @include breakpoint(large) {
+            header {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;   
+                
+                h3 {
+                    flex: 0 0 60%;
+                    max-width: rem-calc(600);
+                    margin-left: 0;
+                }
+            }
+        } 
+        
+        .grid {
+            //margin: 0 auto;
+            //max-width: rem-calc(1200 * 10/12);   
+        }
+    }
+    
+    
+    .section-shareholders {
+        
+        padding-top: rem-calc(75);
+        
+        header { 
+    
+            position: relative;
+            padding-left: rem-calc(60);
+            margin-bottom: rem-calc(45);
+            
+            &:before {
+                content: '';
+                background-image: url(assets/images/culture/information.svg);
+                background-size: contain;
+                width: 47px;
+                height: 47px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        
+            h3 {
+                color: $gray;
+                margin-top: rem-calc(5);
+                margin-bottom: rem-calc($global-margin); 
+            }
+        }
+        
+        .button {
+            @include breakpoint(large) {
+                display: block;
+                max-width: 100%;   
+            }
+        }
+        
+        @include breakpoint(large) {
+            header {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;   
+                
+                h3 {
+                    flex: 0 0 60%;
+                    max-width: rem-calc(600);
+                    margin-left: 0;
+                }
+            }
+        }
+        
+        .photo-grid-wrapper {
+            padding: rem-calc(15);
+            position: relative;
+            
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                z-index: -1;
+                height: 127px;
+                width: 196px;
+                position: absolute;
+            } 
+            
+            &:before {
+                background-color: $red;
+                top: 0;
+                left: 0;
+            }
+            
+            &:after {
+                background-color: $green;
+                right: 30px;
+                bottom: 0;
+                width: 244px;
+            }    
+        }
+
+        .photo-grid {  
+            padding-left: 30px;
+            margin: 0 -6px;          
+
+            > div {
+                float: left;
+                padding: 0 6px;
+                margin-bottom: 12px;
+                                
+                .background {
+                    background-size: cover;
+                    background-position: center;
+                    width: 100%;
+                    height: 252px;
+                    box-shadow: $box-shadow;
+                }
+                
+                &:first-child,
+                &:nth-child(2) {
+                    position: relative;
+                    left: -30px;   
+                }
+            }
+            
+            .width-60 {
+                width: 60%;   
+            }
+            
+            .width-40 {
+                width: 40%;
+            }
+        }
+    }
+    
+    .section-testimonials {
+     
+        .testimonials {
+            max-width: rem-calc(600);
+            margin: 0 auto;
+            padding: rem-calc(0 75);   
+            position: relative;
+        
+        }
+        
+        .testimonial {
+            position: relative;
+            
+            &:before {
+                content: '';
+                display: block;
+                width: 210px;
+                height: 48px;
+                background-image: url(assets/images/icons/quote-mark.svg);
+                margin: 0 auto rem-calc(35);
+                   
+            }
+        }
+        
+        .testimonial-item-text {
+            text-align: center;
+            
+            p {
+                color: #FFFFFF;
+                font-size: rem-calc(18);
+                font-weight: 700;
+                letter-spacing: 0.7px;
+                line-height: 1.666666667;
+            }
+            
+            h4 {
+                color: $lime;
+            }
+        }
+                    
+       .thumbnail {
+            position: relative;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border-radius: 50%;
+            box-shadow: $box-shadow;
+            border: 4px solid $lime;
+            background-size: cover;
+            background-position: top;
+       }
+        
+        .slick-arrows {
+            
+            @include breakpoint(large down) {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .slick-next,
+            .slick-prev {
+                width: 43px;
+                height: 22px;   
+                
+                &:before,
+                &:after {
+                    width: 43px;
+                    height: 22px;   
+                }
+            }
+            
+            @include breakpoint(large) {            
+                .slick-next,
+                .slick-prev {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);               
+                }                
+            }
+        }
+        
+    }
+}

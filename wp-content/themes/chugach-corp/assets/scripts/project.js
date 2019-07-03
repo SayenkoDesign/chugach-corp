@@ -6661,6 +6661,17 @@ return /******/ (function(modules) { // webpackBootstrap
       ]
     });
     
+    $( '<div class="slick-arrows"></div>' ).insertAfter( '.section-testimonials .slick' );
+    $('.section-testimonials .slick').slick({
+      dots: false,
+      arrows: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      appendArrows: $('.section-testimonials .slick-arrows'),
+    });
+    
 }(document, window, jQuery));
 (function (document, window, $) {
 

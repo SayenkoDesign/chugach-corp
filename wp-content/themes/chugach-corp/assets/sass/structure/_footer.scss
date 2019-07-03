@@ -125,6 +125,74 @@
         justify-content: center;  
     }
     
+    form {
+        
+        width: 100%;
+        
+        @include breakpoint(small only) {
+            text-align: center!important;
+            .gform_footer .button {
+                width: 100%;  
+            }
+        }
+        
+        @include breakpoint(large) {
+            display: flex;   
+            flex-wrap: row wrap;
+            //justify-content: space-between;
+            align-items: center;
+            margin: rem-calc(0 -10)!important;
+            
+            > div {
+                width: auto!important;
+                flex: 0 auto;
+                margin: 0!important;
+                padding: rem-calc(0 10);
+            }
+            
+            ul.gform_fields {
+                margin-right: 0!important;   
+            }
+
+            
+            .gform_heading {
+                flex: 0 0 auto;
+                max-width: 100%;   
+                margin: 0;
+            }
+            
+            .gform_body {
+                flex: 0 0 40%;
+                max-width: 40%;    
+            }
+            
+            .gform_footer {
+                flex: 0 0 140px;
+                max-width: 140px;  
+                padding: rem-calc(0 10 0)!important; 
+            }
+            
+            .gfield {
+                margin: 0!important;
+                padding: 0!important;   
+            }
+
+        }
+        
+        span.gform_description {
+            width: 100%;   
+            margin: 0!important;
+        }
+        
+        .gform_footer {            
+            button {
+                min-width: 0;
+                max-width: 100%;
+                padding: rem-calc(6.5 20);   
+            }
+        }        
+    }
+    
 }
 
 

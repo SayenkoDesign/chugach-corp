@@ -123,6 +123,7 @@ function _s_widgets_init() {
  		'footer-1'          => esc_html__( 'Footer 1', '_s' ),
         'footer-2'          => esc_html__( 'Footer 2', '_s' ),
         'footer-3'          => esc_html__( 'Footer 3', '_s' ),
+        'footer-4'          => esc_html__( 'Footer 4', '_s' )
 	);  
 
 	// Loop through each sidebar and register.

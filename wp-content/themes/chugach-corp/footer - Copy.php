@@ -49,12 +49,6 @@
                 echo '</div>';
             }
             
-            if( is_active_sidebar( 'footer-4' ) ){
-                printf( '<div class="%s column column-block">', 'small-12 large-9 large-offset-3' );
-                dynamic_sidebar( 'footer-4' );
-                echo '</div>';
-            }
-            
             ?>            
             
         </div>   

@@ -1,13 +1,13 @@
 <?php
-// Shareholder - Insights
+// Careers - Shareholders
 
-if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
-    class Shareholder_Insights_Section extends Element_Section {
+if( ! class_exists( 'Careers_Shareholders_Section' ) ) {
+    class Careers_Shareholders_Section extends Element_Section {
                 
         public function __construct() {
             parent::__construct();
                                     
-            $fields = get_field( 'insights' );
+            $fields = get_field( 'shareholders' );
             $this->set_fields( $fields );
                         
             // Render the section
@@ -25,46 +25,31 @@ if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
                 
             $this->add_render_attribute(
                 'wrapper', 'class', [
-                     $this->get_name() . '-insights'
+                     $this->get_name() . '-shareholders'
                 ]
             ); 
             
             
             $this->add_render_attribute(
                 'wrapper', 'id', [
-                     $this->get_name() . '-insights'
+                     $this->get_name() . '-shareholders'
                 ]
-            ); 
-            
-            $this->add_render_attribute(
-                'wrapper', [
-                'data-aos' => 'fade-in',
-                'data-aos-anchor-placement' => 'top-center'
-             ]
-            ); 
-                        
+            );       
         } 
-        
         
        
         
         // Add content
         public function render() {
             
+            $heading    = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : 'Why';
+            $heading    = _s_format_string( $heading, 'h2' );
             
-            $heading = $this->get_fields( 'heading' );
-            $editor = $this->get_fields( 'editor' );
-            
-            
-            $data_attributes =  ['data-aos' => 'fade-left', 'data-aos-delay' => 800 ];                   
-            
-            $heading        = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : get_the_title();
-            $heading        = _s_format_string( $heading, 'h2', $data_attributes );
- 
-            $data_attributes = get_data_attributes( ['data-aos' => 'fade-up', 'data-aos-delay' => 1200 ] );
+            $heading = sprintf( '<div class="column row"><header>%s</header></div>', 
+                                $heading );
+
             $editor = ! empty( $this->get_fields( 'editor' ) ) ? 
-                                    sprintf( '<div class="entry-content" %s>%s</div>', 
-                                             $data_attributes,
+                                    sprintf( '<div class="entry-content">%s</div>', 
                                              _s_format_string( $this->get_fields( 'editor' ), 'p' )
                                               ) : '';
             
@@ -75,12 +60,29 @@ if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
                 $photos = sprintf( '<div class="small-12 large-6 small-order-2 large-order-1 column">%s</div>', $photos );
             }
             
-            return sprintf( '<div class="row">%s
+            $buttons = $this->get_fields( 'buttons' );
+            if( ! empty( $buttons ) ) {
+                $button_columns = '';
+                foreach( $buttons as $key => $button ) {
+                    $button = new Element_Button( [ 'fields' => $button ]  ); // set fields from Constructor
+                    $button->set_settings( ['raw' => true] );
+                    $button->add_render_attribute( 'anchor', 'class', 'button gold' );    
+                    $button_columns .= sprintf( '<div class="column column-block">%s</div>', $button->get_element() );
+                }
+                
+                if( ! empty( $button_columns ) ) {
+                    $buttons = sprintf( '<div class="row unstack-medium align-center">%s</div>', $button_columns );
+                }
+            }
+            
+            
+            return sprintf( '%s<div class="row">%s
                             <div class="small-12%s column"><div class="entry-content">%s%s</div></div></div>', 
+                            $heading,
                             $photos,
                             $classes,
-                            $heading,
-                            $editor
+                            $editor,
+                            $buttons
                          );
         }
         
@@ -125,4 +127,4 @@ if( ! class_exists( 'Shareholder_Insights_Section' ) ) {
     }
 }
    
-new Shareholder_Insights_Section;
+new Careers_Shareholders_Section;

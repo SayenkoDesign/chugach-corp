@@ -62,27 +62,33 @@ if( ! class_exists( 'Careers_Testimonials_Section' ) ) {
                 return false;
             }
             
-            // split testimonials into 2's
-            $columns = array_chunk( $testimonials, 2 );
-                        
-            $rows = array_map( array( $this, 'wrap_columns' ), $columns );
+            $heading    = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : 'Testimonials';
+            $heading    = _s_format_string( $heading, 'h2' );
                                        
-            return sprintf( '<div class="row align-middle"><div class="column"><header><h2><span>Reviews</span></h2></header><div class="slick">%s</div></div></div>', 
-                            join( '', $rows ) );
+            return sprintf( '<div class="column row align-middle"><header>%s</header><div class="testimonials"><div class="slick">%s</div></div></div></div>', 
+                            $heading,
+                            join( '', $testimonials )
+                            );
         }
         
         private function get_testimonials() {
             
             $slides = [];
             
-            $stars = sprintf('<div class="stars"><img src="%sservice/stars.png" alt="5 stars" /></div>', trailingslashit( THEME_IMG ) ); 
-            
+            $post_ids = $this->get_fields( 'posts' );
+                                                
             // arguments, adjust as needed
             $args = array(
                 'post_type'      => 'testimonial',
                 'posts_per_page' => 100,
                 'post_status'    => 'publish'
             );
+            
+            if( ! empty( $post_ids ) ) {
+                $args['orderby'] = 'post__in';
+                $args['post__in'] = $post_ids;
+                $args['posts_per_page'] = count( $post_ids );
+            }
         
             // Use $loop, a custom variable we made up, so it doesn't overwrite anything
             $loop = new WP_Query( $args );
@@ -93,27 +99,35 @@ if( ! class_exists( 'Careers_Testimonials_Section' ) ) {
             
                  while ( $loop->have_posts() ) : $loop->the_post(); 
         
-                    $cite =  _s_format_string( get_the_title(), 'h3' );
-                                                    
-                    $blockquote = sprintf( '<blockquote>%s%s%s</blockquote>', 
-                                           $stars, apply_filters( 'pb_the_content', get_the_content() ), $cite );
+                    $title =  _s_format_string( get_the_title(), 'h3' );
+                    $position = get_field( 'position' );
+                    if( ! empty( $position ) ) {
+                        $position = _s_format_string( $position, 'h5' );
+                        
+                    }
                     
-                    $slides[] = sprintf( '<div class="column">%s</div>', $blockquote );
-        
+                    
+                    
+                    $thumbnail = '';
+                    $photo = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
+                    if( ! empty( $photo ) ) {
+                        $thumbnail = sprintf( '<div class="thumbnail" style="background-image: url(%s);"></div>', $photo );
+                    }
+                    
+                    $title = sprintf( '<footer>%s%s%s</footer>', $thumbnail, $title, $position  );
+                                                    
+                    $slides[] = sprintf( '<div class="testimonial">%s%s</div>', 
+                                           apply_filters( 'pb_the_content', get_the_content() ), 
+                                           $title
+                                           );
+                            
                 endwhile;
             endif;
             wp_reset_postdata();  
             
             return $slides; 
         }
-        
-        
-        private function wrap_columns( $columns ) {
-            if( ! empty( $columns ) ) {
-                return sprintf( '<div class="slide"><div class="row large-unstack align-middle">%s</div></div>', join( '', $columns ) );
-            }
-        }
-      
+              
     }
 }
    

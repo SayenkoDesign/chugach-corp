@@ -1,13 +1,13 @@
 <?php
-// Culture - Information
+// Careers - Why
 
-if( ! class_exists( 'Culture_Information_Section' ) ) {
-    class Culture_Information_Section extends Element_Section {
+if( ! class_exists( 'Careers_Why_Section' ) ) {
+    class Careers_Why_Section extends Element_Section {
         
         public function __construct() {
             parent::__construct();
                                     
-            $fields = get_field( 'information' );
+            $fields = get_field( 'mission' );
             $this->set_fields( $fields );
                                     
             // Render the section
@@ -28,13 +28,13 @@ if( ! class_exists( 'Culture_Information_Section' ) ) {
     
             $this->add_render_attribute(
                 'wrapper', 'class', [
-                     $this->get_name() . '-information',
+                     $this->get_name() . '-why',
                 ]
             ); 
             
             $this->add_render_attribute(
                 'wrapper', 'id', [
-                     $this->get_name() . '-information',
+                     $this->get_name() . '-why',
                 ],
                 true
             ); 
@@ -45,10 +45,8 @@ if( ! class_exists( 'Culture_Information_Section' ) ) {
         
         // Add content
         public function render() {
-            
-            $fields = $this->get_fields();  
-                                                                
-            $heading    = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : 'Information';
+                                                                            
+            $heading    = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : 'Why';
             $heading    = _s_format_string( $heading, 'h2' );
             
             $subheading = empty( $this->get_fields( 'subheading' ) ) ? '' : sprintf( '%s', _s_format_string( $this->get_fields( 'subheading' ), 'h3' ) );
@@ -56,71 +54,45 @@ if( ! class_exists( 'Culture_Information_Section' ) ) {
             $heading = sprintf( '<div class="column row"><header>%s%s</header></div>', 
                                 $heading, $subheading );
             
-            $columns = [];                    
+            $grid = $this->grid();
             
-            $photo = $this->get_fields( 'photo' );
-            if( ! empty( $photo ) ) {
-                
-                $columns[] = sprintf( '<div class="column column-block small-12 large-3"><div class="photo">%s</div></div>',  
-                                  _s_get_acf_image( $photo ) );
-            }
-            
-            $listen = $this->get_listen();
-            if( ! empty( $listen) ) {
-                $columns[] = sprintf( '<div class="column column-block small-12 large-5"><h3>%s</h3>%s</div>',  
-                                      __( 'Listen', '_s' ),
-                                      $listen 
-                                      );
-            }
-            
-            $read = $this->get_read();
-            if( ! empty( $read) ) {
-                $columns[] = sprintf( '<div class="column column-block small-12 large-4"><h3>%s</h3>%s</div>',  
-                                      __( 'Read', '_s' ),
-                                      $read 
-                                      );
-            }
-            
-            return sprintf( '%s<div class="row information">%s</div>', $heading, join( '', $columns ) );
+            return sprintf( '%s%s', $heading, $grid );
             
         }
         
-        private function get_listen() {
-            $rows = $this->get_fields( 'listen' ); 
-            if( empty( $rows ) ) {
-                return false;
-            }
-            $out = '';
+
+        private function grid() {
             
-            $args = [ 'width' => '1000', 'height' => '150' ];
+            $rows = $this->get_fields( 'grid' );
             
-            foreach( $rows as $row ) {
-                $out .= wp_oembed_get( $row['soundcloud'], $args );               
-            }
+            $grid_items = '';
             
-            return $out;
-        }
-        
-        
-        private function get_read() {
-            $rows = $this->get_fields( 'read' ); 
-            if( empty( $rows ) ) {
-                return false;
-            }
-            
-            $list = [];
-            
-            foreach( $rows as $row ) {
-                $link = $row['link'];
-                if( ! empty( $link['url'] ) && ! empty( $link['title'] ) ) {
-                    $list[] = sprintf( '<a href="%s">%s</a>', $link['url'], $link['title'] );
+            if( ! empty( $rows ) ) {
+                                
+                foreach( $rows as $row ) {     
+                    
+                    $icon = $row['icon'];
+                    $icon = sprintf( '<div class="icon">%s</div>', _s_get_acf_image( $icon, 'icon-large' ) );
+                    $heading = _s_format_string( $row['heading'], 'h3' ); 
+                    $description = $row['description'];  
+                    $button = new Element_Button( [ 'fields' => ['button' => $row['button'] ] ]  );
+                    $button = $button->get_element();
+                   
+                    $grid_items .= sprintf( '<div class="column column-block"><div class="grid-item">%s%s%s%s</div></div>', 
+                                     $icon, 
+                                     $heading,
+                                     $description,
+                                     $button 
+                                   
+                                   );
                 }
+                
+                return sprintf( '<div class="row small-up-2 medium-up-3 align-center grid">%s</div>', 
+                            $grid_items
+                          );   
             }
-            
-            return sprintf( '<div class="ul-expand">%s<span><a>[+] expand section</a></span></div>', ul( $list, [ 'class' => 'no-bullet' ] ) );
         }
-        
     }
 }
    
-new Culture_Information_Section;
+new Careers_Why_Section;
