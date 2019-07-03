@@ -105,9 +105,7 @@ if( ! class_exists( 'Hero_Section' ) ) {
          */
         public function after_render() {
             
-            $data_attributes = get_data_attributes( ['data-aos' => 'zoom-in', 'data-aos-delay' => 1800 ] );
-            $scroll = sprintf( '<span class="scroll-next" %s>%s</span>', $data_attributes, get_svg( 'arrow-down' ) );
-                    
+            $scroll = sprintf( '<span class="scroll-next">%s</span>', get_svg( 'arrow-down' ) );
             $shape = sprintf( '%s<div class="shape"><img src="%sglobal/hero-bottom.png" /></div>', $scroll, trailingslashit( THEME_IMG ) );
             
             $photos = $this->get_fields( 'photos' );
@@ -119,8 +117,9 @@ if( ! class_exists( 'Hero_Section' ) ) {
                 }
                 
                 if( ! empty( $gallery ) ) {
-                    $data_attributes = get_data_attributes( ['data-aos' => 'zoom-in', 'data-aos-delay' => 1400 ] );
-                    $gallery = sprintf( '<div class="column row row-2 show-for-xxlarge"><div class="photos" %s>%s</div></div>', $data_attributes, $gallery );
+                    $gallery = sprintf( '<div class="column row row-2 show-for-xxlarge"><div class="photos">%s</div></div>', 
+                                        $gallery 
+                                        );
                 }
             }
                 
@@ -133,11 +132,8 @@ if( ! class_exists( 'Hero_Section' ) ) {
             
             $fields = $this->get_fields();
             
-            $data_attributes =  ['data-aos' => 'fade-up', 'data-aos-delay' => 200 ];
-            $heading = empty( $fields['heading'] ) ? '' : _s_format_string( $fields['heading'], 'h1', $data_attributes );
-            
-            $data_attributes = ['data-aos' => 'zoom-in', 'data-aos-delay' => 600 ];
-            $subheading = empty( $fields['subheading'] ) ? '' : _s_format_string( $fields['subheading'], 'h3', $data_attributes );
+            $heading = empty( $fields['heading'] ) ? '' : _s_format_string( $fields['heading'], 'h1' );
+            $subheading = empty( $fields['subheading'] ) ? '' : _s_format_string( $fields['subheading'], 'h3' );
              
             $video = empty( $fields['video'] ) ? '' : $fields['video']; 
                                                
@@ -150,10 +146,8 @@ if( ! class_exists( 'Hero_Section' ) ) {
             if( !empty( $video ) ) {
                 $video_url = _s_get_video_embed( $video );
                 $classes = ' has-video';
-                $data_attributes = get_data_attributes( ['data-aos' => 'zoom-in', 'data-aos-delay' => 1000 ] );
-                $video = sprintf( '<div class="hero-buttons"><button class="play-video" data-open="modal-video" data-src="%s" %s>%s<span class="screen-reader-text">Watch Video</span></button></div>', 
+                $video = sprintf( '<div class="hero-buttons"><button class="play-video" data-open="modal-video" data-src="%s">%s<span class="screen-reader-text">Watch Video</span></button></div>', 
                                 $video_url, 
-                                $data_attributes,
                                 get_svg( 'play-hero' ) 
                         );
             }

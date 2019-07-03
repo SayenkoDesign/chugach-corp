@@ -93,7 +93,13 @@
                     color: #fff; 
                 }
                 
+                h1 {
+                    margin-bottom: rem-calc(10);   
+                }
                 
+                h1:after {
+                    display: none;   
+                }
             }
             
             &.has-video header {
@@ -109,7 +115,7 @@
                 
                 @include breakpoint(large) {
                     position:: absolute;
-                    top: 0;
+                    top: rem-calc(40);
                     left: 0;   
                     z-index: 5;
                     margin-top: 0;
@@ -162,7 +168,7 @@
             }
             
             @include breakpoint(xxlarge) {
-                bottom: 13.5%;
+                bottom: 11.5%;
             }
             
             svg {
@@ -584,6 +590,24 @@
             max-width: 450px;
             top: 3%;
             right: 0;
+        }
+    }
+    
+    
+    .section-footer-cta {
+        .wrap > .row {
+            position: relative;
+            
+            @include breakpoint(large) {
+                &:before {
+                    @include five-lines-gray;
+                    position: absolute;
+                    top: 0;
+                    transform: translateY(-80%);
+                    left: 0;
+                    z-index: 9;        
+                }   
+            }   
         }
     }
     
