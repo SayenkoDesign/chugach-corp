@@ -67,8 +67,48 @@ html.sr {
         }
     }
     
-    .fifty-fifty-block-section img {
-        //visibility: hidden;
+}
+
+html.sr body:not(.home) .hero-content {
+    visibility: hidden;
+}
+
+
+// Multi Purpose
+html.sr .page-template-page-builder {
+
+    .section-block .column {
+        visibility: hidden;
+    }
+
+    .section-block img {
+        visibility: hidden;
     }
     
+}
+
+
+// Who We Are
+
+html.sr {
+    
+    .page-template-who-we-are .site-main .section,
+    .section-mission header,
+    .section-mission h3 {
+        visibility: hidden;
+    }
+
+    .section-vision .column {
+        visibility: hidden;
+    }
+
+    .section-vision img {
+        visibility: hidden;
+    }
+    
+    .section-core-behaviors header,
+    .section-core-behaviors h3,
+    .section-core-behaviors .grid .column {
+        visibility: hidden;
+    }
 }

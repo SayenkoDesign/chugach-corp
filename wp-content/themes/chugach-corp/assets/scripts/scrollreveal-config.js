@@ -65,29 +65,29 @@
     
     // Mission
     
-    ScrollReveal().reveal('.section-mission', { 
+    ScrollReveal().reveal('.home .section-mission', { 
         delay: 400,
     });
     
-    ScrollReveal().reveal('.section-mission h1', { 
+    ScrollReveal().reveal('.home .section-mission h1', { 
         delay: 400,
         origin: 'left',
 	    distance: '100%',
     });
         
-    ScrollReveal().reveal('.section-mission h3', { 
+    ScrollReveal().reveal('.home .section-mission h3', { 
         delay: 800,
         origin: 'left',
 	    distance: '100%',
     });
     
-    ScrollReveal().reveal('.section-mission .mission-content__image', { 
+    ScrollReveal().reveal('.home .section-mission .mission-content__image', { 
         delay: 800,
         origin: 'right',
 	    distance: '100%',
     });
     
-    ScrollReveal().reveal('.section-mission h2', { 
+    ScrollReveal().reveal('.home .section-mission h2', { 
         delay: 800,
         origin: 'right',
 	    distance: '100%',
@@ -99,13 +99,13 @@
 	    distance: '100%',
     });
         
-    ScrollReveal().reveal('.section-mission .mission-content__navigation.show-for-large img', { 
+    ScrollReveal().reveal('.home .section-mission .mission-content__navigation.show-for-large img', { 
         delay: 800,
         origin: 'left',
 	    distance: '100%',
     });
     
-    ScrollReveal().reveal('.section-mission .links', { 
+    ScrollReveal().reveal('.home .section-mission .links', { 
         delay: 800,
         origin: 'bottom',
 	    distance: '100%',
@@ -113,44 +113,46 @@
     
     // Odd
     
-    ScrollReveal().reveal('.section-mission-1 h1', { 
+    ScrollReveal().reveal('.home .section-mission-1 h1', { 
         delay: 400,
         origin: 'right',
 	    distance: '100%',
     });
         
-    ScrollReveal().reveal('.section-mission-1 h3', { 
+    ScrollReveal().reveal('.home .section-mission-1 h3', { 
         delay: 800,
         origin: 'right',
 	    distance: '100%',
     });
     
-    ScrollReveal().reveal('.section-mission-1 .mission-content__image', { 
+    ScrollReveal().reveal('.home .section-mission-1 .mission-content__image', { 
         delay: 800,
         origin: 'left',
 	    distance: '100%',
     });
     
-    ScrollReveal().reveal('.section-mission-1 h2', { 
+    ScrollReveal().reveal('.home .section-mission-1 h2', { 
         delay: 800,
         origin: 'left',
 	    distance: '100%',
     });
     
-    ScrollReveal().reveal('.section-mission-1 .divider', { 
+    ScrollReveal().reveal('.home .section-mission-1 .divider', { 
         delay: 800,
         origin: 'right',
 	    distance: '100%',
     });
         
-    ScrollReveal().reveal('.section-mission-1 .mission-content__navigation.show-for-large img', { 
+    ScrollReveal().reveal('.home .section-mission-1 .mission-content__navigation.show-for-large img', { 
         delay: 800,
         origin: 'right',
 	    distance: '100%',
     });
     
     
-    // History
+    /*
+        HISTORY
+    */
     ScrollReveal().reveal('.section-timeline .decade', { 
         delay: 500,
         scale: 0.1,
@@ -171,8 +173,17 @@
 
     
     
-    // Global
+    /*
+        GLOBAL
+    */ 
     
+    // Mission
+    ScrollReveal().reveal('body:not(.home) .section-hero .hero-content', { 
+        delay: 500,
+        origin: 'bottom',
+	    distance: '50%',
+    });  
+     
     // Footer CTA
     
     ScrollReveal().reveal('.section-footer-cta', { 
@@ -196,6 +207,95 @@
         origin: 'right',
 	    distance: '100%',
     });
+    
+    
+    /*
+        MULTI PURPOSE
+    */
+    
+    ScrollReveal().reveal('.section-block .column', { 
+        delay: 500,
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    ScrollReveal().reveal('.section-block img', { 
+        delay: 500,
+        origin: 'bottom',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    
+    /*
+        WHO WE ARE
+    */
+    
+    // Mission
+    ScrollReveal().reveal('.page-template-who-we-are .site-main .section', { 
+        delay: 1000,
+        interval: 500
+    });
+    
+    // Mission
+    ScrollReveal().reveal('.section-mission header', { 
+        delay: 1000,
+        origin: 'left',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    ScrollReveal().reveal('.section-mission h3', { 
+        delay: 1000,
+        origin: 'right',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 0.5
+    });
+
+    // Vision    
+    ScrollReveal().reveal('.section-vision .column', { 
+        delay: 1500,
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    ScrollReveal().reveal('.section-vision img', { 
+        delay: 1500,
+        origin: 'bottom',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    
+    // Core Behaviors
+    ScrollReveal().reveal('.section-core-behaviors header', { 
+        delay: 1000,
+        origin: 'left',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    ScrollReveal().reveal('.section-core-behaviors h3', { 
+        delay: 1000,
+        origin: 'right',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 0.5
+    });
+    
+    ScrollReveal().reveal('.section-core-behaviors .grid .column', { 
+        delay: 1000,
+        origin: 'bottom',
+	    distance: '50%',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    
     
 }(document, window, jQuery));
 
