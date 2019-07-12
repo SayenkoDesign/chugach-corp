@@ -43,8 +43,23 @@
 					thumbnail:true,
 					download: false
 				});
+                
+                $('#light-gallery').imagesLoaded()
+                .always( function( instance ) {
+                    console.log('all images loaded');
+                })
+                .done( function( instance ) {
+                    $('#light-gallery').removeClass('lg-loading');
+                })
+                .fail( function() {
+                    console.log('all images loaded, at least one is broken');
+                })
+                .progress( function( instance, image ) {
+                    var result = image.isLoaded ? 'loaded' : 'broken';
+                    console.log( 'image is ' + result + ' for ' + image.img.src );
+                });
 
-				$('#light-gallery').removeClass('lg-loading');
+				
 				$('[name="gallery_cat"]').removeClass('lg-category-loading');
 			}
 		});
@@ -87,8 +102,22 @@
 					thumbnail:true,
 					download: false
 				});
+                
+                $('#light-gallery').imagesLoaded()
+                .always( function( instance ) {
+                    console.log('all images loaded');
+                })
+                .done( function( instance ) {
+                    $('#light-gallery').removeClass('lg-loading');
+                })
+                .fail( function() {
+                    console.log('all images loaded, at least one is broken');
+                })
+                .progress( function( instance, image ) {
+                    var result = image.isLoaded ? 'loaded' : 'broken';
+                    console.log( 'image is ' + result + ' for ' + image.img.src );
+                });
 
-				$('#light-gallery').removeClass('lg-loading');
 				$('.gallery-pagination').removeClass('lg-pagination-loading');
 			}
 		});

@@ -109,8 +109,26 @@
         #light-gallery {
          
              &.lg-loading {
+                 
+                 min-height: rem-calc(200);
+                 position: relative;
+                 
+                 &:before {
+                    content: '';
+                    display: block;
+                    width: 64px;
+                    height: 64px; 
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    background-image: url(assets/images/culture/loading.gif);   
+                    background-repeat: no-repeat;
+                    background-size: 64px;
+                 }
+                 
                  .column {
-                    opacity: 0;   
+                    display: none; 
                  }
              }
             
