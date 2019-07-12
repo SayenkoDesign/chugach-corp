@@ -12,6 +12,15 @@
  * @package _s
  */
 
+add_action( 'wp_enqueue_scripts', function () {
+        wp_enqueue_script( 'lightgallery' );
+        wp_enqueue_script( 'lightgallery-config' );
+}, 10 );
+
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style( 'lightgallery-css', '//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/css/lightgallery.min.css' );
+ }, 15 );
+ 
 get_header(); ?>
 
 <?php

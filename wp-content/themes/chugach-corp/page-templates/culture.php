@@ -16,13 +16,6 @@ add_action( 'wp_enqueue_scripts', function () {
 }, 10 );
 
 add_action( 'wp_enqueue_scripts', function () {
-
-	$version = defined( 'THEME_VERSION' ) && THEME_VERSION ? THEME_VERSION : '1.0';
-	$handle  = defined( 'THEME_NAME' ) && THEME_NAME ? sanitize_title_with_dashes( THEME_NAME ) : 'theme';
-
-	//$stylesheet = SCRIPT_DEBUG === true ? 'style.css' : 'style.min.css';
-	$stylesheet = 'style.css';
-
 	wp_enqueue_style( 'lightgallery-css', '//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/css/lightgallery.min.css' );
  }, 15 );
 

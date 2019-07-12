@@ -95,7 +95,10 @@ if( ! class_exists( 'Culture_Information_Section' ) ) {
             $args = [ 'width' => '1000', 'height' => '150' ];
             
             foreach( $rows as $row ) {
-                $out .= wp_oembed_get( $row['soundcloud'], $args );               
+                $soundcloud = $row['soundcloud'];
+                $soundcloud = str_replace( 'src', 'data-src', $soundcloud );
+                $soundcloud = str_replace( '<iframe', '<iframe class="lazy"', $soundcloud );  
+                $out .= $soundcloud;             
             }
             
             return $out;

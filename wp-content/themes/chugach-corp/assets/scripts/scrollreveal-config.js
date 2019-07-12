@@ -297,5 +297,27 @@
     });
     
     
+    
+    /*
+       Leadership
+    */
+    
+    ScrollReveal().reveal('.section-leadership header', { 
+        delay: 1000,
+        origin: 'bottom',
+	    distance: '50%',
+        interval: 1000,
+        viewFactor: 1
+    });
+    
+    ScrollReveal().reveal('.section-leadership .grid article', { 
+        delay: 1000,
+        origin: 'bottom',
+	    distance: 0,
+        interval: 250,
+        viewFactor: 0.5
+    });
+    
+    
 }(document, window, jQuery));
 

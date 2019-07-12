@@ -45,6 +45,8 @@
 
 	include_once( 'functions/template-tags.php' );
 
+    include_once( 'functions/acf-fields.php' );
+
 	include_once( 'functions/acf.php' );
     include_once( 'functions/acf-search.php' );
 
@@ -71,6 +73,8 @@
     include_once( 'functions/aos.php' );
     
     include_once( 'functions/queries.php' );
+    
+    include_once( 'functions/gallery.php' );
     
 /****************************************
 	include_onces (Foundation)

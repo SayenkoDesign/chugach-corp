@@ -36,7 +36,11 @@
         
         .wrap .row {
             padding-bottom: 8.8888889%;  
-            min-height: 30vw;    
+            min-height: 40vw;  
+            
+            @include breakpoint(large) {
+                min-height: 30vw;
+            }
             
         }
         

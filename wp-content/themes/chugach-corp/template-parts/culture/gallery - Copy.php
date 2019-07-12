@@ -50,11 +50,36 @@ if( ! class_exists( 'Culture_Gallery_Section' ) ) {
             $heading    = 'Gallery';
             $heading    = sprintf( '<div class="column row"><header>%s</header></div>', 
                                        _s_format_string( $heading, 'h2' ) );
+            $rows = $this->get_fields();  
+            if( empty( $rows ) ) {
+                return false;
+            }
             
-            $gallery = do_shortcode( '[light-gallery limit="12"]');
+            $gallery = [];
+            
+            foreach( $rows as $row ) {
+                $thumbnail = _s_get_acf_image( $row['id'], 'medium' );
+                $background = _s_get_acf_image( $row['id'], 'medium', true );
+                $large = _s_get_acf_image( $row['id'], 'large', true );
+                $caption = $row['caption'];
+                if( $caption ) {
+                    $caption  = sprintf( ' data-sub-html="%s"', esc_attr( $caption ) );
+                }
+                
+                if( $large ) {
+                    $background = sprintf( '<div class="thumbnail" style="background-image: url(%s);"></div>', $background );
+                    $gallery[] = sprintf( '<div class="column column-block" data-src="%s"%s>%s%s</div>', 
+                                        $large,
+                                        $caption,
+                                        $background,
+                                        $thumbnail
+                    );
+                }
+                
+            }
                         
-            return sprintf( '%s%s', 
-                                $heading, $gallery );
+            return sprintf( '%s<div id="light-gallery" class="row small-up-2 medium-up-3 large-up-4">%s</div>', 
+                                $heading, join( '', $gallery ) );
             
         }
         

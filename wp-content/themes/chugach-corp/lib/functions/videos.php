@@ -171,9 +171,19 @@ function wds_check_for_vimeo( $content ) {
  * @param string $youtube_id Youtube video ID.
  * @return array Video data.
  */
-function wds_get_youtube_details( $youtube_id ) {
+function wds_get_youtube_details( $youtube_id, $data = false ) {
 	$video = array();
 	$video_thumbnail_url_string = 'http://img.youtube.com/vi/%s/%s';
+    
+    
+    if( ! $data ) {
+        $video['video_thumbnail_url'] = '';
+        $video['video_url']           = '';
+        $video['video_embed_url']     = 'https://www.youtube.com/embed/' . $youtube_id;
+        return $video;
+    }
+    
+    
 
 	$video_check                      = wp_remote_head( 'https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $youtube_id );
 	if ( 200 === wp_remote_retrieve_response_code( $video_check ) ) {
@@ -212,8 +222,15 @@ function wds_get_youtube_details( $youtube_id ) {
  * @param string $vimeo_id Vimeo video ID.
  * @return array Video information.
  */
-function wds_get_vimeo_details( $vimeo_id ) {
+function wds_get_vimeo_details( $vimeo_id, $data = false ) {
 	$video = array();
+    
+    if( ! $data ) {
+        $video['video_thumbnail_url'] = '';
+        $video['video_url']           = '';
+        $video['video_embed_url']     = 'https://player.vimeo.com/video/' . $vimeo_id;
+        return $video;
+    }
 
 	// @todo Get remote checking matching with wds_get_youtube_details.
 	$vimeo_data = wp_remote_get( 'http://www.vimeo.com/api/v2/video/' . intval( $vimeo_id ) . '.php' );

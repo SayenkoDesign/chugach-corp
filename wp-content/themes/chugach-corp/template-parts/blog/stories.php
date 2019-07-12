@@ -82,7 +82,13 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
 
         private function get_posts( $featured_post_id = false ) {
             $cat = $this->get_fields( 'rss_category' );
+            
+            if( empty( $cat ) ) {
+                return false;
+            }
+                        
             $args = [];
+            
             if( ! empty( $cat ) ) {
                 $args['cat'] = $cat;
             }
@@ -100,7 +106,7 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
             
             if ( $loop->have_posts() ) : 
                  while ( $loop->have_posts() ) : $loop->the_post(); 
-                    $formatted_posts[] =  $this->get_post( $loop->the_post() ); 
+                     $formatted_posts[] =  $this->get_post( get_the_ID() ); 
                 endwhile;
              endif;
 	 
@@ -127,16 +133,17 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
             return sprintf( '<div class="small-12 large-4 columns posts">%s</div>', $out );
         }
         
-        private function get_post( $_post, $featured = false ) {
-                        
-            $post_id = $_post->ID;
+        private function get_post( $post_id, $featured = false ) {            
             
+            if( ! absint( $post_id ) ) {
+                return false;
+            }
             
             $h_tag = $featured ? 'h2' : 'h3';
             
             $post_title = sprintf( '<%s class="post-title">%s</%s>', $h_tag, get_the_title( $post_id ), $h_tag );
             $permalink = get_permalink( $post_id );
-            $post_thumbnail = get_the_post_thumbnail_url( $_post, 'medium' );
+            $post_thumbnail = get_the_post_thumbnail_url( $post_id, 'medium' );
             
             if( empty( $post_thumbnail ) ) {
                 $thumbnail = get_field( 'post_image_fallback', 'option' );

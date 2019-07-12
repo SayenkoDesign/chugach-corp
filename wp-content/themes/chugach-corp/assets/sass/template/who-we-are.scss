@@ -296,7 +296,11 @@
             
             .slide-content {
                 margin: 0 auto;
-                max-width: rem-calc(600);   
+                max-width: 80%;   
+                
+                @include breakpoint(medium) {
+                    max-width: rem-calc(600);   
+                }
                 
                 text-align: center;
                 
