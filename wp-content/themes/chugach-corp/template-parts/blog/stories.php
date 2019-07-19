@@ -138,7 +138,7 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
             if( ! absint( $post_id ) ) {
                 return false;
             }
-            
+                        
             $h_tag = $featured ? 'h2' : 'h3';
             
             $post_title = sprintf( '<%s class="post-title">%s</%s>', $h_tag, get_the_title( $post_id ), $h_tag );
