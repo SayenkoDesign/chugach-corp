@@ -7377,9 +7377,10 @@ return /******/ (function(modules) { // webpackBootstrap
         $.smoothScroll({
             scrollTarget: target,
             beforeScroll: function() {
-                $('.site-header').addClass('nav-up');
+                $('.site-header').removeClass('fixed shrink nav-down');
             },
             afterScroll: function() {
+                $('.site-header').removeClass('fixed shrink nav-down');
                 if($(target).hasClass('type-people') ) {
                     $(target).find('.header').trigger('click');
                 }
