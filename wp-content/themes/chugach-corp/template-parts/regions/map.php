@@ -64,7 +64,7 @@ if( ! class_exists( 'Regions_Map_Section' ) ) {
             }
             
             if( ! empty( $field['link'] ) ) {
-                $anchor_open = sprintf( '<a href="%s">', $link );
+                $anchor_open = sprintf( '<a href="%s">', $field['link'] );
                 $button = '<span></span>';
                 $anchor_close = '</a>';
             }
