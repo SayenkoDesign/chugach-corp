@@ -180,12 +180,16 @@ if( ! class_exists( 'Leadership_People_Section' ) ) {
             $fields = [ 'articles', 'bio' ];
             
             $fa = new Foundation_Accordion( array('data' => array( 'data-accordion' => 'true',  'data-multi-expand' => 'false', 'data-allow-all-closed' => 'true' ) ) );
+            
+            $i = 0;
                 
             foreach( $fields as $key => $field ) {
                 $heading = call_user_func_array( array( $this, $field ), array( 'heading' ) );
                 $content = call_user_func_array( array( $this, $field ), array( 'content' ) );
                 if( ! empty( $heading ) && ! empty( $content ) ) {
-                    $fa->add_item( $heading, $content, ( ! $key ? true : '' ) );
+                    $active = ( ! $i ? true : false );
+                    $fa->add_item( $heading, $content, $active );
+                    $i++;
                 }
                 
             }
