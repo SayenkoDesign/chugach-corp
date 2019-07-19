@@ -71,7 +71,7 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
             }
             
             if( ! empty( $field['link'] ) ) {
-                $anchor_open = sprintf( '<a href="%s">', $link );
+                $anchor_open = sprintf( '<a href="%s">', $field['link'] );
                 $button = '<span></span>';
                 $anchor_close = '</a>';
             }
@@ -137,11 +137,14 @@ if( ! class_exists( 'Portfolio_Projects_Section' ) ) {
                         
             if( $i == 2 ) {
                 $video = $this->get_fields( 'video' ); 
-                $video_url = _s_get_video_embed( $video );
-                $video = sprintf( '<span class="play-video">
-                %s<span class="screen-reader-text">Watch Video</span></span>', 
-                                get_svg( 'play-hero' ) 
+                if( ! empty( $video ) ) {
+                    $video_url = _s_get_video_embed( $video );
+                    $video = sprintf( '<span class="play-video">
+                    %s<span class="screen-reader-text">Watch Video</span></span>', 
+                                    get_svg( 'play-hero' ) 
                         );
+                }
+                
             }
             
             
