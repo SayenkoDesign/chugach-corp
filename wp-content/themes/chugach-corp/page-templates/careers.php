@@ -19,6 +19,7 @@ _s_get_template_part( 'template-parts/global', 'hero' );
 
 	<main id="main" class="site-main" role="main">
 	<?php
+        echo do_shortcode( '[chugach_careers]' );
         _s_get_template_part( 'template-parts/careers', 'introduction' );
         _s_get_template_part( 'template-parts/careers', 'why' );
         _s_get_template_part( 'template-parts/careers', 'shareholders' );

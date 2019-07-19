@@ -60,6 +60,8 @@ if( ! class_exists( 'Culture_Introduction_Section' ) ) {
                 $classes = ' small-12 large-7';
             }
             
+            $button = '';
+            
             if( ! empty( $this->get_fields('button') ) ) {
             
                 $button_args = $this->get_fields( 'button' );

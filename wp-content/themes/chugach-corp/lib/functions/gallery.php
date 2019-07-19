@@ -74,16 +74,19 @@ function light_gallery_shortcode( $atts ) {
 			<?php endforeach; ?>
 		</div>
 
-		<?php echo lg_pagination(array(
-			'base' => get_permalink( $atts['page_id'] ) . '%#%' . '/',
-			'format' => '?page=%#%',
-			'current' => $page,
-			'total' => $pages,
-			'type'	=> 'list', 
-			'prev_text' => '<span>Previous</span>',
-			'next_text' => '<span>Next</span>'
-		));
-   	endif;
+        <div class='gallery-pagination'>
+    		<?php echo lg_pagination(array(
+    			'base' => get_permalink( $atts['page_id'] ) . '%#%' . '/',
+    			'format' => '?page=%#%',
+    			'current' => $page,
+    			'total' => $pages,
+    			'type'	=> 'list', 
+    			'prev_text' => '<span>Previous</span>',
+    			'next_text' => '<span>Next</span>'
+    		)); ?>
+		</div>
+		
+   	<?php endif;
 	return ob_get_clean();
 }
 add_shortcode( 'light-gallery', 'light_gallery_shortcode' );
@@ -180,7 +183,7 @@ function lg_category_chooser( $categories = array(), $current = '' ){
 		}
 		$output .= '</select>';
 	}
-	return sprintf( '<div class="column row text-right">%s</div>', $output );
+	return $output;
 }
 
 /* Rewrite of paginate_links function */
@@ -265,9 +268,9 @@ function lg_pagination( $args = '' ) {
 		 *
 		 * @param string $link The paginated link URL.
 		 */
-		$page_links[] = '<li class="nav-previous"><a class="prev page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '" data-href="' . admin_url( 'admin-ajax.php' ) . '" data-page="' .number_format_i18n(  $current - 1 ) . '">' . $args['prev_text'] . '</a></li>';
+		$page_links[] = '<li class="nav-prev"><a class="prev page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '" data-href="' . admin_url( 'admin-ajax.php' ) . '" data-page="' .number_format_i18n(  $current - 1 ) . '">' . $args['prev_text'] . '</a></li>';
     else :
-        $page_links[] = '<li class="nav-previous"><a class="disable"><span>Previous</span></a></li>';
+    $page_links[] = '<li class="nav-previous"><a class="disable"><span>Previous</span></a></li>';
 	endif;
 	for ( $n = 1; $n <= $total; $n++ ) :
 		if ( $n == $current ) :
@@ -299,12 +302,13 @@ function lg_pagination( $args = '' ) {
 		$link .= $args['add_fragment'];
 		/** This filter is documented in wp-includes/general-template.php */
 		$page_links[] = '<li class="nav-next"><a class="next page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '" data-href="' . admin_url( 'admin-ajax.php' ) . '" data-page="' .number_format_i18n(  $current + 1 ) . '">' . $args['next_text'] . '</a></li>';
+	
     else :
         $page_links[] = '<li class="nav-next"><a class="disable"><span>Next</span></a></li>';
-	endif;
+    endif;
 	
-	$r .= "<div class='column row'><div class='gallery-pagination'><ul class='nav-links'>";
+	$r .= "<ul class='nav-links'>";
 	$r .= join( "\n\t", $page_links );
-	$r .= "</ul></div></div>";
+	$r .= "</ul>";
 	return $r;
 }
