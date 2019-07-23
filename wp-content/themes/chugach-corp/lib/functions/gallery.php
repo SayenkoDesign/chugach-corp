@@ -54,7 +54,7 @@ function light_gallery_shortcode( $atts ) {
 	ob_start();
 
 	if( $images ) : ?>
-		<?php echo lg_category_chooser( $categories, $atts['page_id'] ); ?>
+		<div class="column row text-right"><?php echo lg_category_chooser( $categories, $atts['page_id'] ); ?></div>
 
 		<div id="light-gallery" class="row small-up-2 medium-up-3 large-up-4" data-page-id="<?php echo $atts['page_id']; ?>" data-limit="<?php echo $atts['limit']; ?>">
 			<?php foreach( $images as $image ) : 
@@ -268,7 +268,7 @@ function lg_pagination( $args = '' ) {
 		 *
 		 * @param string $link The paginated link URL.
 		 */
-		$page_links[] = '<li class="nav-prev"><a class="prev page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '" data-href="' . admin_url( 'admin-ajax.php' ) . '" data-page="' .number_format_i18n(  $current - 1 ) . '">' . $args['prev_text'] . '</a></li>';
+		$page_links[] = '<li class="nav-previous"><a class="prev page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '" data-href="' . admin_url( 'admin-ajax.php' ) . '" data-page="' .number_format_i18n(  $current - 1 ) . '">' . $args['prev_text'] . '</a></li>';
     else :
     $page_links[] = '<li class="nav-previous"><a class="disable"><span>Previous</span></a></li>';
 	endif;

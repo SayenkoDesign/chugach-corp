@@ -38,7 +38,7 @@
 				$('[name="gallery_cat"]').html( category.html() );
 				
 				if( pagination.length ){
-				    $('.gallery-pagination').html( pagination.html() );
+				    $('.gallery-pagination').html( pagination );
 				}else{
 				    $('.gallery-pagination').empty();
 				}
@@ -102,7 +102,7 @@
 				$('[name="gallery_cat"]').html( category.html() );
 				
 				if( pagination.length ){
-				    $('.gallery-pagination').html( pagination.html() );
+				    $('.gallery-pagination').html( pagination );
 				}else{
 				    $('.gallery-pagination').empty();
 				}
