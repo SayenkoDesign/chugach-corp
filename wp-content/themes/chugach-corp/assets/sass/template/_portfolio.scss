@@ -185,7 +185,7 @@
     .section-portfolio {
         padding-top: rem-calc(75); 
         position: relative;
-        margin-bottom: rem-calc(100);
+        margin-bottom: rem-calc(75);
         
         .wrap {
             
@@ -395,9 +395,13 @@
             background-color: $blue;
             box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1);
             padding: rem-calc(20 20);
-            margin: 0 auto rem-calc(75);
+            margin: 0 auto;
             
-            @include breakpoint(xxxlarge) {
+            @include breakpoint(large) {
+                margin: 0 auto rem-calc(-75);
+            }
+            
+            @include breakpoint(xxlarge) {
                 position: absolute;
                 top: 35%;
                 left: 0;

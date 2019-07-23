@@ -42,6 +42,8 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
             
             $rows = wp_list_pluck( $locations, 'legend' );
             
+            $modals = wp_list_pluck( $locations, 'modal' );
+            
             if( empty( $rows ) ) {
                 return false;
             }
@@ -53,7 +55,13 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
                 $icon  = $row['icon'];
                 $icon = _s_get_acf_image( $icon );
                 $title = $row['title'];
-                $list[] = sprintf( '<li><button data-open="maps" data-content="map-content-%s" data-map="#map-%s">%s%s</button></li>', $i, $i, $icon, $title );
+                
+                if( empty( $modals[$key]['heading'] ) ) {
+                    $list[] = sprintf( '<li><button data-map="#map-%s">%s%s</button></li>', $i, $icon, $title );
+                } else {
+                    $list[] = sprintf( '<li><button data-open="maps" data-content="map-content-%s" data-map="#map-%s">%s%s</button></li>', $i, $i, $icon, $title );
+                }
+                
             }
             
             if( ! empty( $list ) ) {
@@ -108,6 +116,10 @@ if( ! class_exists( 'Portfolio_Map_Section' ) ) {
                 $heading  = _s_format_string( $heading, 'h2' );
                 $subheading = $row['subheading'];
                 $subheading  = _s_format_string( $subheading, 'h3' );
+                
+                if( empty( $heading ) ) {
+                    return false;
+                }
                 
                 $title = sprintf( '<header>%s%s</header>', $heading, $subheading );
                 $thumbnail = _s_get_acf_image( $row['photo'], 'medium' );
