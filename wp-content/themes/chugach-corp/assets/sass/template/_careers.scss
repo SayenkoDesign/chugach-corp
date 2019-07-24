@@ -191,9 +191,8 @@
                 }
                 
                 @include breakpoint(medium only) {
-                    &:nth-child(6n+4), // 4,5,6  10,11,12 16,17,18
-                    &:nth-child(6n+5), 
-                    &:nth-child(6n+6) { 
+                    &:nth-child(4n+3), // 4,5,6  10,11,12 16,17,18
+                    &:nth-child(4n+4){ 
                         a {
                             background-color: #046A38;   
                         }
@@ -201,10 +200,10 @@
                 }
                 
                 @include breakpoint(large) {
-                    &:nth-child(8n+6),
+                    &:nth-child(8n+5),
+                    &:nth-child(8n+6), 
                     &:nth-child(8n+7), 
-                    &:nth-child(8n+8), 
-                    &:nth-child(8n+9) { 
+                    &:nth-child(8n+8) { 
                         a {
                             background-color: #046A38;   
                         }
