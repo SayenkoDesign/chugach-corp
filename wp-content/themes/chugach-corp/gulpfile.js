@@ -218,7 +218,7 @@ gulp.task( 'concat', () =>
 			'presets': [
 				[ 'env', {
 					'targets': {
-						'browsers': [ 'last 2 versions' ]
+						'browsers': [ 'last 2 versions', 'ie >= 10' ]
 					}
 				} ]
 			]
@@ -256,7 +256,7 @@ gulp.task( 'uglify', [ 'concat' ], () =>
 			'presets': [
 				[ 'env', {
 					'targets': {
-						'browsers': [ 'last 2 versions' ]
+						'browsers': [ 'last 2 versions', 'ie >= 10' ]
 					}
 				} ]
 			]
