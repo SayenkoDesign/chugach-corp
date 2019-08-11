@@ -18,6 +18,7 @@ var args         = require('yargs').argv,
 	notify       = require('gulp-notify'),
 	plumber      = require('gulp-plumber'),
 	postcss      = require('gulp-postcss'),
+    //postcssImageSetFunction = require('postcss-image-set-function'),
 	rename       = require('gulp-rename'),
 	replace      = require('gulp-replace'),
 	sass         = require('gulp-sass'),
@@ -31,7 +32,7 @@ var args         = require('yargs').argv,
 // Set assets paths.
 var paths = {
 	all:        ['./**/*', '!./node_modules/', '!./node_modules/**', '!./screenshot.png', '!./assets/images/**'],
-	concat:     ['assets/scripts/vendor/*.js','assets/scripts/concat/*.js'],
+	concat_scripts:     ['assets/scripts/vendor/*.js','assets/scripts/concat/*.js'],
 	images:     ['assets/images/*', '!assets/images/*.svg'],
 	php:        ['./*.php', './**/*.php', './**/**/*.php'],
 	scripts:    [ 'assets/scripts/*.js', '!assets/scripts/*.min.js', '!assets/scripts/*config.js', '!assets/scripts/customizer.js' ],
@@ -67,12 +68,13 @@ gulp.task('styles', function () {
 		// Parse with PostCSS plugins.
 		.pipe(postcss([
 			autoprefixer({
-				browsers: 'last 2 versions',
+				browsers: 'last 3 versions',
                 grid: true
 			}),
 			mqpacker({
 				sort: true
 			}),
+            postcssImageSetFunction({oninvalid: 'warning'}),
 			focus(),
 		]))
 
@@ -105,32 +107,6 @@ gulp.task('styles', function () {
 
 });
 
-/**
- * Concat javascript files.
- *
- * https://www.npmjs.com/package/gulp-uglify
- */
-gulp.task('concat', function () {
-
-	gulp.src(paths.concat)
-
-		// Notify on error.
-		.pipe(plumber({
-			errorHandler: notify.onError("Error: <%= error.message %>")
-		}))
-
-		// Concatenate scripts.
-		.pipe(concat('project.js'))
-
-		// Output the processed js to this directory.
-		.pipe(gulp.dest('assets/scripts'))
-
-		// Inject changes via browsersync.
-		.pipe(browsersync.reload({
-			stream: true
-		}));
-
-} );
 
 
 gulp.task('foundation', function () {
@@ -220,50 +196,77 @@ gulp.task('foundation', function () {
 
 
 /**
- * Minify javascript files.
+ * Concatenate and transform JavaScript.
  *
- * https://www.npmjs.com/package/gulp-uglify
+ * https://www.npmjs.com/package/gulp-concat
+ * https://github.com/babel/gulp-babel
+ * https://www.npmjs.com/package/gulp-sourcemaps
  */
-gulp.task('scripts', ['concat'], function () {
+gulp.task( 'concat', () =>
+	gulp.src( paths.concat_scripts )
 
-	gulp.src(paths.scripts)
-
-		// Notify on error.
+		// Deal with errors.
 		.pipe(plumber({
-			errorHandler: notify.onError("Scripts Error: <%= error.message %>")
+			errorHandler: notify.onError("Error: <%= error.message %>")
 		}))
 
-		// Source maps init.
-		.pipe(sourcemaps.init())
+		// Start a sourcemap.
+		.pipe( sourcemaps.init() )
 
-		// Cache files to avoid processing files that haven't changed.
-		.pipe(cache('scripts'))
+		// Convert ES6+ to ES2015.
+		.pipe( babel( {
+			'presets': [
+				[ 'env', {
+					'targets': {
+						'browsers': [ 'last 2 versions' ]
+					}
+				} ]
+			]
+		} ) )
 
-		// Add .min suffix.
-		.pipe(rename({
-			suffix: '.min'
-		}))
+		// Concatenate partials into a single script.
+		.pipe( concat( 'project.js' ) )
 
-		// Minify.
-		.pipe(uglify())
+		// Append the sourcemap to project.js.
+		.pipe( sourcemaps.write() )
 
-		// Write source map.
-		.pipe(sourcemaps.write('./', {
-			includeContent: false,
-		}))
+		.pipe( replace( '    ', '\t' ) )
 
-		// Output the processed js to this directory.
-		.pipe(gulp.dest('assets/scripts'))
-
-		// Inject changes via browsersync.
+		// Save project.js
+		.pipe( gulp.dest( 'assets/scripts' ) )
 		.pipe(browsersync.reload({
 			stream: true
 		}))
+		.pipe( replace( '    ', '\t' ) )
+);
 
-		// Notify on successful compile.
-		.pipe(notify("Minified: <%= file.relative %>"));
+/**
+  * Minify compiled JavaScript.
+  *
+  * https://www.npmjs.com/package/gulp-uglify
+  */
+gulp.task( 'uglify', [ 'concat' ], () =>
+	gulp.src( paths.scripts )
+		.pipe(plumber({
+			errorHandler: notify.onError("Error: <%= error.message %>")
+		}))
+        
+		.pipe( rename( {'suffix': '.min'} ) )
+		.pipe( babel( {
+			'presets': [
+				[ 'env', {
+					'targets': {
+						'browsers': [ 'last 2 versions' ]
+					}
+				} ]
+			]
+		} ) )
+		.pipe( uglify( {
+			'mangle': false
+		} ) )
+		.pipe( gulp.dest( 'assets/scripts' ) )
+);
 
-});
 
 /**
  * Optimize images.
@@ -362,12 +365,15 @@ gulp.task('watch', function () {
 
 	// Run tasks when files change.
 	gulp.watch(paths.styles, ['styles']);
-    gulp.watch(paths.concat, ['scripts']);
-	gulp.watch(paths.scripts, ['scripts']);
+    gulp.watch(paths.concat_scripts, ['scripts']);
+    // gulp.watch(paths.scripts, ['scripts']);
 	gulp.watch(paths.images, ['images']);
 	gulp.watch(paths.php).on('change', browsersync.reload);
 
 });
+
+
+gulp.task( 'scripts', [ 'uglify' ] );
 
 /**
  * Create default task.
