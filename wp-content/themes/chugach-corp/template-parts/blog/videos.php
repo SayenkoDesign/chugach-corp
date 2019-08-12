@@ -7,6 +7,9 @@ if( ! class_exists( 'Blog_Videos_Section' ) ) {
         public function __construct() {
             parent::__construct();
             
+            $fields = get_field( 'videos', get_option('page_for_posts') );
+            $this->set_fields( $fields );
+            
             // Render the section
             if( empty( $this->render() ) ) {   
                 return;
@@ -55,45 +58,32 @@ if( ! class_exists( 'Blog_Videos_Section' ) ) {
         
         private function videos() {
             
-            $cat = BlOG_VIDEO_CAT;           
+            $post_ids = $this->get_fields( 'posts' );
+                                    
+            if( empty( $post_ids ) ) {
+                return false;
+            }
             
             $args = array(
                 'post_type' => 'post',
-                'posts_per_page' => 20,
+                'order' => 'ASC',
+                'orderby' => 'post__in',
+                'post__in' => $post_ids,
+                'posts_per_page' => count( $post_ids ),
+                'no_found_rows' => true,
+                'update_post_meta_cache' => false,
+                'update_post_term_cache' => false,
+                'fields' => 'ids'
             );
-            
-
-            $tax_query[] = array(
-                'taxonomy'         => 'category',
-                'terms'            =>  [$cat],
-                'field'            => 'term_id',   
-                'operator'         => 'IN',
-                'include_children' => false,
-            );
-            
-            $args['tax_query'] = $tax_query;
             
             $loop = new WP_Query( $args );
             
-            $found_posts = $loop->found_posts;
-            
-            /*
-            Count videos
-            
-            < 4 show in grid
-            
-            < 8 show grid of two and the sidebar of more videos
-            
-            8++ show slider
-            
-            */
+            $found_posts = count( $post_ids );
             
             $classes = '';
             
             if( $found_posts < 4 ) {
                 $classes = ' small-up-1 medium-up-3';
-            } elseif( $found_posts < 8 ) {
-                
             } else {
                 $this->is_slick = true;
             }
@@ -143,7 +133,7 @@ if( ! class_exists( 'Blog_Videos_Section' ) ) {
                         
             $videos = join( '', $videos );
                         
-            if( $this->is_slick ) {
+            if( $this->is_slick ) {                
                 $videos = sprintf( '<div class="column medium-8"><div class="slick">%s</div></div>', $videos );
             }
                         
