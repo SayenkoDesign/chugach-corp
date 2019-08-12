@@ -177,7 +177,7 @@ if( ! class_exists( 'Leadership_People_Section' ) ) {
         
         private function accordion() {
             
-            $fields = [ 'articles', 'bio' ];
+            $fields = [ 'bio', 'articles' ];
             
             $fa = new Foundation_Accordion( array('data' => array( 'data-accordion' => 'true',  'data-multi-expand' => 'false', 'data-allow-all-closed' => 'true' ) ) );
             
