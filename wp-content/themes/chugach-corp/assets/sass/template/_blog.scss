@@ -209,6 +209,14 @@
 
 .section-videos {
     
+    opacity: 0;
+    visibility: hidden;
+    
+    &.images-loaded {
+        opacity: 1;
+        visibility: visible;
+    }
+    
     margin-top: rem-calc(20);
     
     .slick {

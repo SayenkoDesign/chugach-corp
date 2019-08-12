@@ -2,6 +2,14 @@
 
 .section-stories {
     
+    opacity: 0;
+    visibility: hidden;
+    
+    &.images-loaded {
+        opacity: 1;
+        visibility: visible;
+    }
+    
     margin-bottom: rem-calc(55);
     
     header { 

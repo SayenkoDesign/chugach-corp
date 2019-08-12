@@ -626,6 +626,14 @@
     
     .section-testimonials {
         
+        opacity: 0;
+        visibility: hidden;
+        
+        &.images-loaded {
+            opacity: 1;
+            visibility: visible;
+        }
+        
         .wrap {
             padding-top: rem-calc(45);  
             

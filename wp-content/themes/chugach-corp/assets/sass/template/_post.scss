@@ -265,6 +265,14 @@
     
     .section-related-posts {
         
+        opacity: 0;
+        visibility: hidden;
+        
+        &.images-loaded {
+            opacity: 1;
+            visibility: visible;
+        }
+        
         padding-bottom: rem-calc(55);
         
         .slick {
