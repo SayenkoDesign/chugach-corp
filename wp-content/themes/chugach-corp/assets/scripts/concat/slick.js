@@ -37,7 +37,7 @@
     }
     
     let $section_stories = $('.section-stories');
-    if ( $('.slick', $section_videos).length ) {
+    if ( $('.slick', $section_stories).length ) {
                 
         $('.section-stories').imagesLoaded({background: 'a'})
         

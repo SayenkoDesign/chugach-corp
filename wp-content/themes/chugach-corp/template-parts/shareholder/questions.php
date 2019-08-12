@@ -11,7 +11,9 @@ if( ! class_exists( 'Shareholder_Questions_Section' ) ) {
             $this->set_fields( $fields );
                         
             // Render the section
-            $this->render();
+            if( empty( $this->render() ) ) {
+                return false;
+            }
             
             // print the section
             $this->print_element();        
