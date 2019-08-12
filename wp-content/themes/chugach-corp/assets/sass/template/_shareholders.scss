@@ -31,6 +31,7 @@
         .background-image {
             position: relative;
             padding-bottom: rem-calc(40);
+            background-size: cover;
             
             &:after {
                 content: '';

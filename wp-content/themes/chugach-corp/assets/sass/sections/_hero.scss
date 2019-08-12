@@ -42,7 +42,7 @@
                 min-height: 30vw;
             }
             
-            &after{
+            &:after{
                 content:'';
                 min-height:inherit;
                 font-size:0;
