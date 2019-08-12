@@ -17,20 +17,11 @@ add_action('init', '_s_unregister_post_tags');
 
 add_filter( 'the_category', function( $the_list ) {  
 
-    if( is_admin() ) {
-        return $the_list;
-    }
-  
-    $dom = new DOMDocument();
-    $dom->loadHTML( $the_list );
-    foreach( $dom->getElementsByTagName('a') as $a ) {
-        $span = $dom->createElement( 'span' );
-        $span->nodeValue = $a->nodeValue;
-        $a->nodeValue = '';
-        $a->appendChild( $span );
-    }
+    $temp = $the_list;
+    $temp = str_replace( '<li>', '<li><span>', $temp );
+    $temp = str_replace( '</li>', '</span></li>', $temp );
     
-    return $dom->saveHtml();
+    return $temp;
 });
 
 

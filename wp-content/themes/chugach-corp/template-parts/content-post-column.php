@@ -17,7 +17,7 @@
     if( empty( $post_image ) ) {
         $post_image = get_field( 'post_image_fallback', 'option' );
         if( ! empty( $post_image ) ) {
-            $post_image = wp_get_attachment_image_src( $post_image, 'large' );
+            $post_image = _s_get_acf_image( $post_image, 'large' );
         }   
     }
     
