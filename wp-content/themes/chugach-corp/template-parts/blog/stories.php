@@ -6,8 +6,17 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
         
         public function __construct() {
             parent::__construct();
+                        
+            if( is_home() ) {
+                $post_id = get_option('page_for_posts');
+            } else if( is_category() ) {
+                
+                $post_id = get_queried_object();
+                
+            } else {
+                $post_id = '';
+            }
             
-            $post_id = is_home() ? get_option('page_for_posts') : '';
             $fields = get_field( 'stories', $post_id );
             $this->set_fields( $fields );
                                                 

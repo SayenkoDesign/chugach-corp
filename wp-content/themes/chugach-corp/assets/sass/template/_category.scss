@@ -1,0 +1,23 @@
+// Category
+
+body.category {
+    
+    .section-hero-category {
+        .hero-content {
+            text-align: center;   
+            
+            .thumbnail {
+                margin: 0 auto rem-calc(24);
+                max-width: 350px;
+            }
+            
+            .media-buttons {
+                max-width: rem-calc(400);
+                margin: rem-calc(40) auto 0;   
+                text-align: center!important;
+                display: inline-flex;
+                align-items: center;
+            }
+        }
+    }
+}
