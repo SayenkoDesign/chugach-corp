@@ -284,8 +284,10 @@
         }
         
         .mission-content h1, .mission-content h3 {
-            width: 85%;
-            word-break: break-word;
+            @include breakpoint(large) {
+                width: 85%;
+                word-break: break-word;
+            }
         }
         
         .mission-content h1 {

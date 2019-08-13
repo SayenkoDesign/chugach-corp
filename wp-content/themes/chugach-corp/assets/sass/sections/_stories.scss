@@ -96,13 +96,19 @@
         }
         
         .post-title {
-            position: absolute;  
-            bottom: 0;
-            left: 0; 
+            position: relative;  
+            
             color: #fff;
             font-family: $lato;
             line-height: 1.2;
             font-style: normal;
+            
+            @include breakpoint(large) {
+                bottom: 0;
+                left: 0; 
+                position: absolute;
+
+            }
         }
     }
 

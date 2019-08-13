@@ -81,7 +81,8 @@ if( ! class_exists( 'Careers_Testimonials_Section' ) ) {
             $args = array(
                 'post_type'      => 'testimonial',
                 'posts_per_page' => 100,
-                'post_status'    => 'publish'
+                'post_status'    => 'publish',
+                'orderby' => 'random'
             );
             
             if( ! empty( $post_ids ) ) {
@@ -123,7 +124,9 @@ if( ! class_exists( 'Careers_Testimonials_Section' ) ) {
                             
                 endwhile;
             endif;
-            wp_reset_postdata();  
+            wp_reset_postdata(); 
+            
+            shuffle( $slides ); 
             
             return $slides; 
         }

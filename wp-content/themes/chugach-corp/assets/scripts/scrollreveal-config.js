@@ -5,7 +5,7 @@
     
     // https://scrollrevealjs.org/api/defaults.html
     
-    ScrollReveal({ mobile: false });
+    ScrollReveal({ mobile: true });
     
         
     /*

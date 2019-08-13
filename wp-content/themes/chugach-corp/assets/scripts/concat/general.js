@@ -17,7 +17,7 @@
     
     // Toggle menu
     
-    $('li.menu-item-has-children > a').on('click',function(e){
+    $('li.menu-item-has-children > a[href^="#"]').on('click',function(e){
         
         var $toggle = $(this).parent().find('.sub-menu-toggle');
         
