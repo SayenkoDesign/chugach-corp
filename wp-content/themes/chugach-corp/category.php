@@ -60,6 +60,7 @@ wp_reset_postdata();
         _s_get_template_part( 'template-parts/blog', 'stories' );
         
         _s_get_template_part( 'template-parts/blog', 'media-contact' );
+        
         ?>
     
     </div>
@@ -68,4 +69,6 @@ wp_reset_postdata();
     
 
 <?php
+_s_get_template_part( 'template-parts/blog', 'share-story' );
+
 get_footer();
