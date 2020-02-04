@@ -85,7 +85,7 @@
 let $section_related_posts = $('.section-related-posts');
     if ( $('.slick', $section_related_posts).length ) {
                 
-        $( '<div class="slick-arrows"></div>' ).insertAfter( '.section-related-posts .slick' );
+        //$( '<div class="slick-arrows"></div>' ).insertAfter( '.section-related-posts .slick' );
         
         $('.section-related-posts').imagesLoaded( {background: '.post-hero'})
         
