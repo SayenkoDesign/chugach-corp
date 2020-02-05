@@ -60,6 +60,28 @@
     }
     
     
+    let $singlePostSlider = $('.single-post .slider');
+    if ( $('.slick', $singlePostSlider).length ) {
+                
+        $singlePostSlider.imagesLoaded({background: true})
+        
+        .done( function( instance ) {
+        
+            $('.slick', $singlePostSlider).slick({
+              dots: false,
+              infinite: true,
+              speed: 300,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              appendArrows: $('.slick-arrows', $singlePostSlider)
+            });
+                
+            $singlePostSlider.addClass('images-loaded');
+        
+         });
+    }
+    
+    
     $( '<div class="slick-arrows"></div>' ).insertAfter( '.section-core-behaviors .slick' );
     
     $('.section-core-behaviors .slick').slick({

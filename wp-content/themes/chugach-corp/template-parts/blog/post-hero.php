@@ -90,14 +90,34 @@ if( ! class_exists( 'Hero_Post' ) ) {
             $heading        = $this->get_fields( 'heading' ) ? $this->get_fields( 'heading' ) : get_the_title();
             $heading        = _s_format_string( $heading, 'h1' );
             
-            $post_date = _s_get_posted_on( 'M d, Y' );
+            $author   = _s_format_string( get_field( 'author' ), 'strong' );
+            $position = _s_format_string( get_field( 'position' ), 'strong' );
+            $company  = _s_format_string( get_field( 'company' ), 'p' );
+            
+            $byline = '';
+            
+            if( $author ) {
+                
+                if( $position ) {
+                    $position = ' ,' . $position;
+                }
+                
+                $byline = sprintf( '<div class="author"><p>%s%s</p>%s</div>', 
+                          $author,
+                          $position,
+                          $company
+                          );
+            }
+            
+            $post_date = _s_get_posted_on( 'M d, Y' );          
             
             $media_inquiries = sprintf( '<a href="%s?topic=media" class="button white small">%s</a>', trailingslashit( get_permalink( 368 ) ), 'media inquiries' );
             
-            return sprintf( '<div class="row align-middle"><div class="column">%s<div class="hero-content">%s%s%s</div></div></div>', 
+            return sprintf( '<div class="row align-middle"><div class="column">%s<div class="hero-content">%s%s%s%s</div></div></div>', 
                            $media_inquiries,
                            get_the_category_list( '' ), 
                            $heading, 
+                           $byline,
                            $post_date );
         }
     }
