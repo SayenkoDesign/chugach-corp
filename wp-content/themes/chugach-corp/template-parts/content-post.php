@@ -20,13 +20,13 @@
         foreach( $rows as $key => $row ) {  
             $size = wp_is_mobile() ? 'large' : 'hero';
             $image = $row['ID'];  
-            $image = _s_get_acf_image( $image, $size, true ); 
+            $image = _s_get_acf_image( $image, $size ); 
             $style = sprintf( ' style="background-image: url(%s);"', $image  );   
                                                                                                                              
             $slides .= sprintf( '<div class="slide">
-                                    <div class="background"%s></div>
+                                    %s
                                 </div>', 
-                            $style
+                            $image
                          );
         }
                 

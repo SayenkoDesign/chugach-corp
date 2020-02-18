@@ -78,6 +78,14 @@
           clear: both;
         }
         
+        .slick-track, .slick-track .slick-slide {
+            align-items: flex-start;
+        }
+        
+        img {
+            margin: 0 auto;   
+        }
+                
         .slick-arrows {
             display: flex;
             justify-content: space-between;
