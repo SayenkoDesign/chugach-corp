@@ -120,7 +120,15 @@ if( ! class_exists( 'Culture_Information_Section' ) ) {
                 }
             }
             
-            return sprintf( '<div class="ul-expand">%s<span><a>[+] expand section</a></span></div>', ul( $list, [ 'class' => 'no-bullet short' ] ) );
+            $classes[] = 'no-bullet';
+            $span = '';
+            
+            if( count( $list ) > 6 ) {
+                $classes[] = 'short';
+                $span = '<span><a>[+] expand section</a></span>';
+            }
+            
+            return sprintf( '<div class="ul-expand">%s%s</div>', ul( $list, [ 'class' => join( ' ', $classes ) ] ), $span );
         }
         
     }

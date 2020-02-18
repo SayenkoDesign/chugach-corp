@@ -15,7 +15,7 @@
         text-align: center;
         
         .map-wrapper {
-            display: inline-block;
+            display: block;
             position: relative;
             margin: 0 auto; 
         }
@@ -26,7 +26,8 @@
         
         img {
             display: block;
-            margin: 0 auto;   
+            margin: 0 auto;  
+            height: auto; 
         }
         
         .marker {
@@ -378,6 +379,7 @@
             position: absolute;
             top: rem-calc(10)!important; 
             left: rem-calc(map-get($grid-column-gutter, small)); 
+            right: auto;
             font-size: 70px;
             outline: none;
             color: #fff;
