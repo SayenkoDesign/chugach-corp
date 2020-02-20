@@ -20,9 +20,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="<?php echo THEME_FAVICONS;?>/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="<?php echo THEME_FAVICONS;?>/favicon-16x16.png">
 <link rel="manifest" href="<?php echo THEME_FAVICONS;?>/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2B70AA">
-<meta name="msapplication-TileColor" content="#2B70AA">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#046a38">
+<meta name="msapplication-TileColor" content="#046a38">
 <meta name="theme-color" content="#ffffff">
+
 <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 <?php wp_head(); ?>
 </head>
