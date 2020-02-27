@@ -8,6 +8,12 @@
         
         ul {
             @include bullets();  
+            
+            $no-color: rgba(0,0,0,0);
+            
+            li:before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 36 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='#{$primary}' d='M24 23.314l-1.149-1.15 10.182-10.181L22.869 1.818 24 .686 35.314 12 24 23.314z'/%3E%3Cpath stroke='#{$primary}' stroke-linecap='square' stroke-width='1.6' d='M1 12h32'/%3E%3C/g%3E%3C/svg%3E");
+            }
         }
      
         .photo {
