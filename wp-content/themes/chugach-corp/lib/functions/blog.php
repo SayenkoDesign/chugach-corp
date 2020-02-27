@@ -1,5 +1,13 @@
 <?php
 
+function _s_mailchimp_footer() {
+    if( is_home() || is_category( 'community' ) || has_category( 'community' ) ) {
+        echo get_field( 'mailchimp_stories', 'option' );
+    }
+}
+add_action( 'wp_footer', '_s_mailchimp_footer' );
+
+
 function media_contact_url( $topic = 'media' ) {
 
     $contact = trailingslashit( get_permalink( 368 ) );
