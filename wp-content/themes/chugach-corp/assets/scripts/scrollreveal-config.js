@@ -185,28 +185,33 @@
     });  
      
     // Footer CTA
-    
+    /*
     ScrollReveal().reveal('.section-footer-cta', { 
         delay: 400,
+        viewFactor: 0.1
     });
     
     ScrollReveal().reveal('.section-footer-cta h3', { 
         delay: 800,
         origin: 'bottom',
 	    distance: '100%',
+        viewFactor: 0.1
     });
     
     ScrollReveal().reveal('.section-footer-cta .unstack-medium  .column:first-child', { 
         delay: 1200,
         origin: 'left',
 	    distance: '100%',
+        viewFactor: 0.1
     });
     
     ScrollReveal().reveal('.section-footer-cta .unstack-medium  .column:last-child', { 
         delay: 1200,
         origin: 'right',
 	    distance: '100%',
+        viewFactor: 0.1
     });
+    */
     
     
     /*
