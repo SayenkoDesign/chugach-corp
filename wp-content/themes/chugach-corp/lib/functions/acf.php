@@ -248,7 +248,7 @@ function acf_load_rss_featured_post_field_choices( $field ) {
     
 }
 
-add_filter('acf/load_field/name=rss_featured_post', 'acf_load_rss_featured_post_field_choices');
+// add_filter('acf/load_field/name=rss_featured_post', 'acf_load_rss_featured_post_field_choices');
 
 
 
@@ -273,7 +273,7 @@ function acf_load_rss_categories_field_choices( $field ) {
     
 }
 
-add_filter('acf/load_field/name=rss_category', 'acf_load_rss_categories_field_choices');
+//add_filter('acf/load_field/name=rss_category', 'acf_load_rss_categories_field_choices');
 
 
 
@@ -341,7 +341,7 @@ function _acf_reset_rss_data_featured()  {
     
 }
 
-add_action( 'load-post.php', '_acf_reset_rss_data_featured' );
+// add_action( 'load-post.php', '_acf_reset_rss_data_featured' );
 
 
 
@@ -371,9 +371,7 @@ function _acf_reset_rss_data_categories()  {
     
 }
 
-add_action( 'load-post.php', '_acf_reset_rss_data_categories' );
-
-https://community.chugach.com/wp-json/wp/v2/categories
+// add_action( 'load-post.php', '_acf_reset_rss_data_categories' );
 
 
 function _s_disable_rss_category_link_field($field) {
@@ -382,7 +380,7 @@ function _s_disable_rss_category_link_field($field) {
 	return $field;
 }
 
-add_filter('acf/load_field/key=field_5c8c059fb9d35', '_s_disable_rss_category_link_field');
+// add_filter('acf/load_field/key=field_5c8c059fb9d35', '_s_disable_rss_category_link_field');
 
 
 function _s_update_rss_categories_link( $post_id ) {
@@ -411,4 +409,4 @@ function _s_update_rss_categories_link( $post_id ) {
     update_field('field_5c8c059fb9d35', $url );   
 }
 
-add_filter('acf/save_post', '_s_update_rss_categories_link', 20);
+// add_filter('acf/save_post', '_s_update_rss_categories_link', 20);
