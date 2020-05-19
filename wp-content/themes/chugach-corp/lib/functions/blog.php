@@ -135,7 +135,7 @@ function _s_remove_videos_from_blog_index($query) {
     return $query;
 }
 
-add_action( 'pre_get_posts','_s_remove_videos_from_blog_index' );
+// add_action( 'pre_get_posts','_s_remove_videos_from_blog_index' );
 
 function _s_add_blog_class( $classes ) {
   
