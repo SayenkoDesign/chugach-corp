@@ -103,9 +103,9 @@ if( ! class_exists( 'Blog_Rest_Posts_Section' ) ) {
             }
             
             if( $featured_post_id ) {
-                $args['exclude'] = $featured_post_id;    
+                $args['post__not_in'] = [$featured_post_id];    
             }
-            
+                        
             // Use $loop, a custom variable we made up, so it doesn't overwrite anything
             $loop = new WP_Query( $args );
                     
