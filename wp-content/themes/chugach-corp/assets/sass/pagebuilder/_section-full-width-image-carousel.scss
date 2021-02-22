@@ -1,0 +1,94 @@
+// Page Builder
+
+.pagebuilder-section-full-width-image-carousel {
+
+    .row-outer {
+        padding: 0 1.25rem;
+        margin-top: 2rem;
+    }
+
+    @media screen and (min-width: map-get($breakpoints,large)) {
+        .row-outer {
+            position: absolute;
+            // top: 0;
+            top: 4.5rem;
+            left: 2.5rem;
+            @media screen and (min-width: #{map-get($breakpoints,xxlarge) + 20px}) {
+                left: 0;
+            }
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .section-heading {
+            color: white;
+            z-index: 1;
+            position: relative;
+            &::after {
+                position: absolute;
+                content: "";
+                // $space: 1.25rem;
+                $space-y: 1rem;
+                $space-x: 1.25rem;
+                width: calc(100% + #{$space-x*2});
+                height: calc(100% + #{$space-y*2});
+                top: #{$space-y*-1};
+                left: #{$space-x*-1};
+                z-index: -1;
+                border-radius: 0.5rem;
+                background-color: rgba(black,0.5);
+            }
+        }
+    }
+
+    .slick {
+        img {
+            width: 100%;
+        }
+    }
+    .slick-slide > div {
+        display: flex;
+    }
+    .section-heading {
+
+    }
+
+    .element-image {
+        padding-bottom: 42.5%;
+    }
+
+    .slick-navigation-container {
+
+    }
+    .slick-arrows {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        display: flex;
+        background-color: white;
+        z-index: 1;
+    }
+    .slick-arrow {
+        padding: 4rem;
+        position: relative;
+        &::before {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+    }
+    @media screen and (max-width: map-get($breakpoints,large)) {
+        .slick-navigation-container {
+            transform: translateY(50%);
+        }
+        .slick-arrows {
+            bottom: 0;
+            padding: 0.5rem 0.75rem;
+        }
+        .slick-arrow {
+            padding: 1.25rem;
+        }
+    }
+}

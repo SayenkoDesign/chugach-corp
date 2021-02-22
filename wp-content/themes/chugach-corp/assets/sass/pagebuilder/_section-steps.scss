@@ -1,0 +1,123 @@
+// Page Builder
+
+.template-pagebuilder {
+    .pagebuilder-section-steps {
+        $counter_size: 5.6875rem;
+        $arrow_size: 1.9375rem;
+        .slick-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .section-heading {
+            text-align: center;
+            width: 100%;
+        }
+        .slick-slider {
+            position: relative;
+            &::before,
+            &::after {
+                position: absolute;
+                content: "";
+                background-color: blue;
+                height: $counter_size;
+                width: 5rem;
+                top: 0;
+
+
+            }
+            &::before {
+                left: 0;
+                background: linear-gradient(to left, rgba(#fff,0), rgba(#fff,1));
+            }
+            &::after {
+                right: 0;
+                background: linear-gradient(to right, rgba(#fff,0), rgba(#fff,1));
+            }
+            @media screen and (max-width: 750px) {
+                &::before,
+                &::after {
+                    width: 7.5rem;
+                }
+                &::before {
+                    background: linear-gradient(to left, rgba(#fff,0) 0%, rgba(#fff,1) 60%, rgba(#fff,1) 100%);
+                }
+                &::after {
+                    background: linear-gradient(to right, rgba(#fff,0) 0%, rgba(#fff,1) 60%, rgba(#fff,1) 100%);
+                }
+            }
+        }
+        .slick-list {
+            // not sure why I needed this…
+            // z-index: -1;
+        }
+        .slick-arrows {
+            position: absolute;
+            top: #{$counter_size/2};
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            @media screen and (max-width: 750px) {
+                padding: 0 1.25rem;
+            }
+        }
+        .step-counter-outer {
+            position: relative;
+        }
+        .step-counter {
+            width: $counter_size;
+            height: $counter_size;
+            border-radius: 50%;
+            background-color: $lime;
+            box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            margin: 0 auto;
+            margin-bottom: 3.5rem;
+            font-size: 1.125rem;
+        }
+
+        .step-heading {
+
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+        .step-text {
+            margin-bottom: 1rem;
+            *:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .step-link {
+            display: block;
+            margin-bottom: 0;
+            &:not(:last-child) {
+                margin-bottom: 0.25rem;
+            }
+            &::after {
+                content: " \02192";
+            }
+        }
+        .slick-slide:not(:last-child) .step-counter::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            right: -50%;
+            height: 2px;
+            top: calc(50% - 1px);
+            background-color: #979797;
+            z-index: -1;
+        }
+        .step-content {
+            padding: 0 1.5rem;
+            @media screen and (max-width: 750px) {
+                padding: 0 #{1.25rem + $arrow_size};
+            }
+        }
+    }
+}

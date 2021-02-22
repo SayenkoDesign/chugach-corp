@@ -1,0 +1,124 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+
+	Width
+
+* * * * * * * * * * * * * * * * * * * * * * * * /
+
+/*
+	Sets columns like Bootstrap
+	Allows media queries
+	allows
+		1-12 columns of a 12-column grid
+		if between 0 and 1 treats as percentage
+		basic fractions written out
+*/
+
+@mixin equal-width-calc($cols:1,$space:null) {
+
+	$width: (1 / $cols);
+	$width: percentage($width);
+	$width: floor($width * 1000) / 1000;
+
+	// if has space
+	@if $cols > 1 and $space {
+		$col-space: ((($cols - 1) * space($space)) / $cols);
+		$col-space: floor($col-space * 10000) / 10000;
+
+		$width: calc(#{$width} - #{$col-space});
+	}
+
+	// set the values
+	flex: 0 0 #{$width};
+	max-width: #{$width};
+}
+
+// set top/right margins to maintain space
+@mixin equal-width-margins($cols: 1, $right: false, $top: false) {
+
+	// needs one to do anything
+	@if $top or $right {
+
+		$i: $cols;
+
+		// both top and right (cols and rows)
+		@if $top and $right {
+
+			&:nth-child(1n) {
+				margin: 0;
+				@include marg($right,right);
+				@include marg($top,top);
+			}
+
+			&:last-child,
+			&:nth-child(#{$i}n) {
+				@include marg(0,right);
+			}
+
+			@for $ii from 1 to $i + 1 {
+				&:nth-child(#{$ii}), {
+					@include marg(0,top);
+				}
+			}
+		}
+
+		// just top (1 col)
+		@else if $top {
+
+			&:nth-child(1n) {
+				margin: 0;
+				@include marg($top,top);
+			}
+
+			@for $ii from 1 to $i + 1 {
+				&:nth-child(#{$ii}), {
+					@include marg(0,top);
+				}
+			}
+		}
+
+		// just right (1 row)
+		@else if $right {
+
+			&:nth-child(1n) {
+				margin: 0;
+				@include marg($right,right);
+			}
+
+			&:last-child,
+			&:nth-child(#{$i}n) {
+				@include marg(0,right);
+			}
+		}
+	}
+}
+
+// general cols
+@mixin cols($cols: 1, $space: false, $both-margins: false) {
+
+	@include equal-width-calc($cols,$space);
+
+
+	@if $cols == 1 {
+		// if only one col, put in just top space
+		@include equal-width-margins($cols,false,$space);
+	}
+	@else {
+		@if $both-margins {
+			// if multiple cols and rows; both spaces
+			@include equal-width-margins($cols,$space,$space);
+		}
+		@else {
+			// if just multiple cols with space between
+			@include equal-width-margins($cols,$space);
+		}
+	}
+}
+
+// include media query
+@mixin media-cols($media: base, $cols: 1, $space: false, $both-margins: false) {
+
+	@include media($media) {
+
+		@include cols($cols,$space,$both-margins);
+	}
+}

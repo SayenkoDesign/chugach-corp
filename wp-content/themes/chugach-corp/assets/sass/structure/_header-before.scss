@@ -1,6 +1,11 @@
 // Header Before
 
+$menu-split: 75rem;
+
 .header-before {
     position: relative;
     z-index: 100;
+    @media screen and (max-width: $menu-split) {
+        // display: none;
+    }
 }

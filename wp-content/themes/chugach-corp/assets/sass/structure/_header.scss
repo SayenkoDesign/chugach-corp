@@ -181,6 +181,9 @@ Header
     .menu-toggle {
         position: absolute;
         top: calc(44px - 17px);
+        @include breakpoint(xlarge) {
+            top: 20px;
+        }
         right: rem-calc(map-get($grid-column-gutter, small)/2 );  
         z-index: 999;
         

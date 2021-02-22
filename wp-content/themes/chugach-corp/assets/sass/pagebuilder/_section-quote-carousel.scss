@@ -1,0 +1,132 @@
+// Page Builder
+
+.template-pagebuilder {
+
+
+    .section-testimonials {
+
+        opacity: 0;
+        visibility: hidden;
+
+        &.images-loaded {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .wrap {
+            padding-top: rem-calc(45);
+
+            @include breakpoint(xlarge) {
+                padding-top: 0;
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: rem-calc(40);
+        }
+
+        .testimonials {
+            max-width: rem-calc(1000);
+            margin: 0 auto;
+            @include breakpoint(medium) {
+                padding: rem-calc(0 75 75);
+            }
+            position: relative;
+
+        }
+
+
+        .testimonial {
+
+            p {
+                font-family: $georgia;
+                font-size: 22px;
+                font-style: italic;
+                line-height: 36px;
+                text-align: center;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+
+            footer {
+                position: relative;
+                text-align: center;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    width: 124px;
+                    height: 81px;
+                    background-image: url(assets/images/careers/quote.svg);
+                    margin: 0 auto -20px;
+
+                }
+
+                h3 {
+                    color: $lime;
+                }
+
+                h5 {
+                    color: #666666;
+                    font-size: 17px;
+                    letter-spacing: 0.66px;
+                    line-height: 31px;
+                    text-align: center;
+                }
+            }
+        }
+
+
+
+        .thumbnail {
+            position: relative;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto rem-calc(10);
+            border-radius: 50%;
+            box-shadow: $box-shadow;
+            border: 4px solid $lime;
+            background-size: cover;
+            background-position: top;
+        }
+
+        .slick + .slick-arrows {
+            display: none;
+        }
+
+        .slick-arrows {
+
+            @include breakpoint(large down) {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .slick-next,
+            .slick-prev {
+                width: 43px;
+                height: 22px;
+
+                &:before,
+                &:after {
+                    width: 43px;
+                    height: 22px;
+                }
+            }
+
+            @include breakpoint(large) {
+                .slick-next,
+                .slick-prev {
+                    position: absolute;
+                    top: 15%;
+                    //transform: translateY(-50%);
+                }
+            }
+        }
+
+    }
+
+}

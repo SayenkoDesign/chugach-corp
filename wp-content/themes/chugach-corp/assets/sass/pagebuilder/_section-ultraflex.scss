@@ -1,0 +1,225 @@
+// Page Builder
+
+.pagebuilder-section-ultraflex {
+
+    // display: flex;
+    // justify-content: center;
+
+    > .row {
+        @media screen and (max-width: map-get($breakpoints,xxlarge)) and (min-width: map-get($breakpoints,medium)) {
+            padding: 0 1.25rem;
+        }
+    }
+    &:not(.red-boxed) > .row {
+        @media screen and (max-width: #{map-get($breakpoints,xxlarge) + 20px}) and (min-width: map-get($breakpoints,medium)) {
+            padding: 0 1.25rem;
+        }
+    }
+
+    .row-inner {
+        width: 100%;
+    }
+
+    .column-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        padding: 0;
+        width: 100%;
+    }
+
+    .column:only-child {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .column:not(:first-child) {
+        padding-top: 2rem;
+        @include breakpoint(large) {
+            padding-top: 0;
+        }
+    }
+
+    .element-button {
+        &:not(:first-child) {
+            margin-top: 2rem;
+        }
+    }
+
+    &.elements-content-image.content-left .column-container,
+    &.elements-content-resources.content-right .column-container,
+    &.resources-content-image .column-container {
+        flex-direction: row-reverse;
+    }
+
+
+    .element-image {
+        padding-bottom: 59.0747331%;
+    }
+
+
+    .image-wrapper {
+        position: relative;
+    }
+    .element-image {
+        position: relative;
+    }
+    .has-overlay .element-image::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: linear-gradient(270deg,rgba(66,152,181,.7),rgba(83,159,97,.8) 50%,rgba(100,167,11,.8));
+        // z-index: 999;
+    }
+
+    .play-video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    $space: 2.625rem;
+
+    @include breakpoint(large) {
+        .row-inner {
+            margin-left: #{$space/(-2)};
+            margin-right: #{$space/(-2)};
+        }
+        &.red-boxed .row-inner {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .column {
+            padding-left: #{$space/2};
+            padding-right: #{$space/2};
+        }
+    }
+
+
+    &.red-boxed {
+        .element-heading,
+        .element-wysiwyg *,
+        .element-button.link {
+            color: white;
+        }
+        .element-button.link::after {
+            background-color: white;
+        }
+        .element-wysiwyg a {
+            text-decoration: underline;
+        }
+        li::before {
+            filter: brightness(10);
+        }
+
+        @include breakpoint(large) {
+            .column-container {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .column {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            &.content-left .media-area .column-inner {
+                padding-left: 1.3125rem;
+            }
+            &.content-right .media-area .column-inner {
+                padding-right: 1.3125rem;
+            }
+        }
+
+
+        .row {
+            background-color: $red;
+        }
+        @include breakpoint(xxlarge) {
+
+            .content-area .column-inner {
+                padding: 3.375rem 5rem 3.375rem 2.3125rem;
+            }
+            // &.content-left .content-area .column-inner {
+                // padding: 3.375rem 2.3125rem 3.375rem 5rem;
+            // }
+        }
+        .media-area .column-inner,
+        .media-area .image-wrapper,
+        .media-area .element-image {
+            height: 100%;
+        }
+        // img {
+        //     position: aboslute;
+        //     width: 100%;
+        //     height: 100%;
+        //     object-fit: cover;
+        // }
+        // medium breakpoint
+        @media screen and (max-width: 640px) {
+            // margin-top: 0;
+        }
+        @media screen and (max-width: map-get($breakpoints,xxlarge)) {
+            > .row {
+                padding: 0;
+            }
+            .content-area .column-inner {
+                padding: 1.25rem 1.25rem 3rem;
+            }
+            .media-area {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.pagebuilder-section-ultraflex.elements-content {
+    &.w-narrow {
+        text-align: center;
+    }
+}
+
+.pagebuilder-section-ultraflex.elements-content-image,
+.pagebuilder-section-ultraflex.elements-content-resources {
+
+
+}
+
+.pagebuilder-section-ultraflex.elements-content-image {
+
+}
+
+.pagebuilder-section-ultraflex.elements-content-resources {
+
+}
+
+.pagebuilder-section-ultraflex.elements-content-image-resources {
+    .element-image {
+        padding-bottom: 129.9242424%;
+    }
+}
+
+
+.resources-accordion {
+    .accordion-item {
+        .accordion-title {
+            padding: 0;
+        }
+    }
+    .accordion-content {
+        padding: 0;
+    }
+
+    @media screen and (min-width: 550px) {
+        .accordion-title {
+            pointer-events: none;
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,97 @@
+// Page Builder
+
+
+.template-pagebuilder {
+
+    .pagebuilder-section {
+        &.bg-light {
+            background-color: $light-gray;
+        }
+    }
+
+    #content > .pagebuilder-section {
+        // display: none;
+    }
+
+
+    /**
+     * Section Stacking
+     */
+    $sectionspace: 5rem;
+    $rowspace: 2rem;
+    .pagebuilder-section {
+        margin-top: $sectionspace;
+        margin-top: var(--sectionspace, $sectionspace);
+        &:last-child {
+            margin-bottom: $sectionspace;
+            margin-bottom: var(--sectionspace, $sectionspace);
+        }
+        /* Row */
+        .row + .row {
+            margin-top: $rowspace;
+            margin-top: var(--rowspace, $rowspace);
+        }
+    }
+
+
+    /**
+     * .no-space to remove top margin
+     * - Also with bg but maybe dicey
+     */
+    .pagebuilder-section[class*="bg-"] + .pagebuilder-section[class*="bg-"] {
+        margin-top: 0;
+    }
+    // .pagebuilder-section:not([class*="bg-"]) + .pagebuilder-section:not([class*="bg-"]) {
+    //     margin-top: 7rem;
+    // }
+    /**
+     * Remove double padding if same background color
+     */
+    .pagebuilder-section.bg-light + .pagebuilder-section.bg-light {
+        padding-top: 0;
+    }
+
+    /**
+     * Add padding if you include a background
+     */
+
+    /* stylelint-disable declaration-block-no-duplicate-properties */
+    .pagebuilder-section[class*="bg-"]:not(.bg-img) {
+        padding-top: $sectionspace;
+        padding-top: var(--sectionspace, $sectionspace);
+        padding-bottom: $sectionspace;
+        padding-bottom: var(--sectionspace, $sectionspace);
+    }
+
+}
+
+
+
+
+.pagebuilder-section {
+    &.w-normal > .row {
+        max-width: 50rem;
+    }
+    &.w-narrow > .row {
+        max-width: 37.5rem;
+    }
+}
+
+
+
+
+/**
+ * Probably want to minify/inline the following rules:
+ */
+.background-image-fallback {
+    // !important to counteract the inline display: none; for old browsers
+    display: block !important;
+}
+@supports (object-fit: cover) {
+    .background-image-fallback {
+        // !important to counteract the counteracting for new browsers that support @supports
+        display: none !important;
+        // must also counteract the background-image to prevent downloading extra images
+        background-image: none !important;
+    }
+}

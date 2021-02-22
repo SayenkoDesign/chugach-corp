@@ -1,0 +1,16 @@
+/* ===============================
+@hover Mixin
+
+	Only does hover states if primary input device hovers
+
+	WARNING: can't be nested within another media query
+=============================== */
+
+@mixin hover() {
+
+	@media (hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
+}

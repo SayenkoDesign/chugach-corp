@@ -1,0 +1,253 @@
+// Page Builder
+
+
+/**
+ * Image Library Slider
+ */
+.pagebuilder-section-image-library {
+
+    .element-image {
+        // force aspect ratio
+        padding-bottom: 53.0965392%;
+    }
+
+    .row.section-heading {
+        align-items: center;
+        @media screen and (max-width: #{map-get($breakpoints,xxlarge) + 20px}) {
+            padding: 0 1.25rem;
+        }
+        .section-heading-image {
+            margin-right: 0.625rem;
+            @media screen and (max-width: map-get($breakpoints,medium)) {
+                display: none;
+            }
+        }
+        .element-heading {
+            margin: 0;
+        }
+    }
+
+    .slick {
+        width: calc(300vw - #{1.25rem * 2 * 3});
+        margin-left: calc(-100vw + #{1.25rem * 2 * 1.5});
+
+        $max-width: 75rem; // matches standard content width
+        @media screen and (min-width: 72rem) {
+            width: #{$max-width * 3};
+            margin-left: calc(#{$max-width * (-3/2)} + 50vw);
+        }
+        img {
+            width: 100%;
+        }
+    }
+    .slick-slide img {
+        transition: all 0.3s $bez-std 0.3s;
+    }
+    .slick-slide:not(.slick-center) img {
+        // transform: scale(0.94);
+        transform: scale(0.9) translateX(2.5%);
+        opacity: 0.8;
+        transition: all 0.3s $bez-std 0s;
+    }
+    .slick-center + .slick-slide:not(.slick-center) img {
+        transform: scale(0.9) translateX(-2.5%);
+    }
+
+    .slick-arrows {
+        justify-content: flex-end;
+        margin-top: 2.25rem;
+
+        @media screen and (max-width: map-get($breakpoints,xxlarge)) {
+            padding: 0 1.25rem;
+        }
+    }
+    .slick-arrow:not(:last-child) {
+        margin-right: 2.25rem;
+    }
+
+    @media screen and (max-width: map-get($breakpoints,medium)) {
+
+        .slick-arrows {
+            margin-top: 0.75rem;
+        }
+        .slick-arrow:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+
+    .image-container {
+        position: relative;
+        overflow: hidden;
+    }
+    .image-content-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-end;
+        z-index: 9;
+    }
+    .image-content-container-inner {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+        &::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: calc(100% + 4rem);
+            top: -4rem;
+            left: 0;
+            background: linear-gradient(180deg, rgba(black,0) 0%, rgba(black,0.75) 100%);
+            z-index: -1;
+        }
+        @media screen and (max-width: map-get($breakpoints,medium)) {
+            align-items: flex-end;
+        }
+    }
+    .image-content {
+        $image-content-icon-size: 2.875rem;
+        $image-content-icon-margin-right: 0.75rem;
+        margin-right: 2rem;
+        padding: 1rem;
+        padding-top: 4rem;
+        transition: all 0.3s $bez-std;
+        @media screen and (max-width: map-get($breakpoints,medium)) {
+            margin-right: 0;
+            padding: 0.75rem;
+            padding-right: 0.25rem;
+        }
+        color: white;
+        p:last-child {
+            margin-bottom: 0;
+        }
+        .image-title-row {
+            display: flex;
+            align-items: center;
+        }
+        .image-content-icon-container {
+
+            width: $image-content-icon-size;
+            height: $image-content-icon-size;
+            padding: .625rem;
+            border: 2px solid $lime;
+            border-radius: 50%;
+            background-color: $black;
+            margin-right: $image-content-icon-margin-right;
+            @media screen and (max-width: map-get($breakpoints,medium)) {
+                display: none;
+            }
+        }
+        .image-content-icon {
+
+        }
+        .image-title,
+        .image-caption {
+            color: white;
+            font-style: normal;
+        }
+        .image-title {
+            @media screen and (max-width: map-get($breakpoints,medium)) {
+                font-size: 18px;
+            }
+        }
+        .image-caption {
+            opacity: 0;
+            transition: all 0.3s $bez-std;
+            padding-left: #{$image-content-icon-size + $image-content-icon-margin-right};
+            @media screen and (max-width: map-get($breakpoints,medium)) {
+                padding-left: 0;
+                font-size: 14px;
+            }
+        }
+        &:hover {
+            padding-top: 1rem;
+            .image-caption {
+                margin-bottom: 0 !important;
+                opacity: 1;
+            }
+        }
+    }
+    .image-modal-link {
+        $size: 4.5rem;
+        padding: 1rem;
+        width: $size;
+        height: $size;
+        flex-shrink: 0;
+        margin-left: auto;
+        align-self: flex-end;
+    }
+    .image-modal-link-image {
+        $size: 2.4375rem;
+        width: $size;
+        height: $size;
+    }
+    @media screen and (max-width: map-get($breakpoints,medium)) {
+        padding-left: 0;
+        font-size: 14px;
+        .image-modal-link {
+            $size: 3.5rem;
+            // padding: 1rem;
+            width: $size;
+            height: $size;
+        }
+        .image-modal-link-image {
+            $size: 2rem;
+            width: $size;
+            height: $size;
+        }
+    }
+}
+
+
+/**
+ * Interactions
+ */
+.pagebuilder-section-image-library {
+
+    .slick-slide {
+        img,
+        .background-image-container {
+            transition: all 0.3s $bez-std 0.3s;
+        }
+        .image-content-container {
+            opacity: 0;
+            transform: translateY(1rem);
+            transition: all 0.15s $bez-std 0s;
+        }
+        .image-content-container-inner::after {
+            transform: translateY(2rem);
+            transition: all 0.15s $bez-std 0s;
+        }
+    }
+    .slick-slide:not(.slick-center) {
+        img,
+        .background-image-container {
+            // transform: scale(0.94);
+            transform: scale(0.9) translateX(2.5%);
+            opacity: 0.8;
+            transition: all 0.3s $bez-std 0s;
+        }
+    }
+    .slick-slide.slick-center {
+        .image-content-container {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s $bez-std 0.6s;
+        }
+        .image-content-container-inner::after {
+            transform: translateY(0);
+            transition: all 0.3s $bez-std 0.45s;
+        }
+    }
+    // images to the right of center
+    .slick-center + .slick-slide:not(.slick-center) {
+        img,
+        .background-image-container {
+            transform: scale(0.9) translateX(-2.5%);
+        }
+    }
+}

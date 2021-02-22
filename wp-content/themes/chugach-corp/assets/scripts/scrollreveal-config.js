@@ -323,6 +323,259 @@
         viewFactor: 0.5
     });
     
+    /**
+     * Pagebuilder
+     * -------------------- */
+
+    /**
+     * Pagebuilder
+     * ======================================== */
+
+    /**
+     * Ultraflex
+     * -------------------- */
+
+    /**
+     * Content only
+     */
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content .content-area', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Content & Image
+     */
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image.content-left:not(.red-boxed) .content-area', {
+        delay: 300,
+        origin: 'left',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image.content-left:not(.red-boxed) .media-area', {
+        delay: 600,
+        origin: 'right',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image.content-right:not(.red-boxed) .content-area', {
+        delay: 300,
+        origin: 'right',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image.content-right:not(.red-boxed) .media-area', {
+        delay: 600,
+        origin: 'left',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    /* red boxed */
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image.red-boxed .content-area', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '6rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Content & Resources
+     */
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-resources.content-left .content-area', {
+        delay: 300,
+        origin: 'left',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-resources.content-left .resources', {
+        delay: 600,
+        origin: 'right',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-resources.content-right .content-area', {
+        delay: 600,
+        origin: 'left',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-resources.content-right .resources', {
+        delay: 300,
+        origin: 'right',
+        distance: '10rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Content, Image, And Resources
+     */
+    /* resources / content / image */
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image-resources.resources-content-image .resources', {
+        delay: 300,
+        origin: 'left',
+        distance: '8rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image-resources.resources-content-image .content-area', {
+        delay: 600,
+        origin: 'left',
+        distance: '8rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image-resources.resources-content-image .media-area', {
+        delay: 900,
+        origin: 'left',
+        distance: '8rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /* image / content / resources */
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image-resources.image-content-resources .media-area', {
+        delay: 300,
+        origin: 'left',
+        distance: '8rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image-resources.image-content-resources .content-area', {
+        delay: 600,
+        origin: 'left',
+        distance: '8rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-ultraflex.elements-content-image-resources.image-content-resources .resources', {
+        delay: 900,
+        origin: 'left',
+        distance: '8rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+
+    /**
+     * Rotating Image Carousel
+     * -------------------- */
+    ScrollReveal().reveal('.pagebuilder-section-full-width-image-carousel .section-heading', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Quote Carousel
+     * -------------------- */
+    ScrollReveal().reveal('.pagebuilder-section.section-testimonials .inner', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Document Library
+     * -------------------- */
+    ScrollReveal().reveal('.pagebuilder-section-document-library .documents-column', {
+        delay: 300,
+        origin: 'left',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-document-library .resources', {
+        delay: 600,
+        origin: 'right',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Frequently Asked Questions
+     * -------------------- */
+    ScrollReveal().reveal('.pagebuilder-section-frequently-asked-questions .section-heading', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-frequently-asked-questions .faq-filters', {
+        delay: 450,
+        origin: 'bottom',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-frequently-asked-questions .faq', {
+        delay: 600,
+        origin: 'bottom',
+        distance: '1rem',
+        interval: 100,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Media Columns
+     * -------------------- */
+    ScrollReveal().reveal('.pagebuilder-section-media-columns .section-heading', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '2rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-media-columns .media-item', {
+        delay: 450,
+        origin: 'bottom',
+        distance: '2rem',
+        interval: 150,
+        viewFactor: 0.5
+    });
+
+    /**
+     * Steps
+     * -------------------- */
+    ScrollReveal().reveal('.pagebuilder-section-steps .section-heading', {
+        delay: 300,
+        origin: 'bottom',
+        distance: '2rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-steps .slick', {
+        delay: 450,
+        origin: 'bottom',
+        distance: '4rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+    ScrollReveal().reveal('.pagebuilder-section-steps .step-content', {
+        delay: 600,
+        origin: 'bottom',
+        distance: '2rem',
+        interval: 250,
+        viewFactor: 0.5
+    });
+
     
 }(document, window, jQuery));
 

@@ -1,0 +1,213 @@
+/* ===============================
+CSS Grid Layout Mixin
+=============================== */
+
+// main grid setup
+$grid-space-wide   : #{space(8)};
+$grid-space-normal : #{space(10)};
+$grid-space-narrow : #{space(9)};
+$grid-space-overlap: #{space(9)};
+$grid-space-content: 1fr;
+
+// basic grid structure
+$main-grid:(
+    edge,
+    $grid-space-wide,
+    wide,
+    $grid-space-normal,
+    normal,
+    $grid-space-narrow,
+    narrow,
+    $grid-space-content,
+    );
+
+
+
+//
+// make the properly formatted list
+//
+@function make-main-grid-list($main-grid: $main-grid) {
+
+    // add center after
+    $main-grid: append($main-grid, center);
+
+    // mirror it
+    @for $i from (length($main-grid) - 1) through 1 {
+        $main-grid: append($main-grid, nth($main-grid, $i));
+    }
+
+    // adjust the text of the labels
+    @for $i from 1 through length($main-grid) {
+
+        // only do to odd
+        @if ($i / 2) != ceil($i / 2) {
+            $string: nth($main-grid, $i);
+
+            // set what to append
+            $append: null;
+            @if $i < (length($main-grid) / 2) {
+                $append: -left;
+            }
+            @if $i > ceil(length($main-grid)/ 2) {
+                $append: -right;
+            }
+
+            // append text
+            @if($append) {
+                $main-grid: set-nth(
+                    $main-grid,
+                    $i,
+                    str-insert($string, $append, str-length($string) + 1)
+                );
+            }
+        }
+    }
+    @return $main-grid;
+}
+
+
+
+//
+// splice and string a list
+//
+@function main-grid-splice-string($grid-columns, $start: null, $end: null) {
+
+    $grid-columns-string: ();
+
+    // set default endpoints
+    $start_index: 1;
+    $end_index: length($grid-columns);
+
+    // set start index if given
+    @if $start != null {
+        $start: '[#{$start}]';
+        $start_index: index($grid-columns, $start);
+
+        // set end index if given
+        @if $end != null {
+            $end: '[#{$end}]';
+            $end_index: index($grid-columns, $end);
+        }
+    }
+
+    // make a string from $start_index through $end_index
+    @for $i from $start_index through $end_index {
+        $grid-columns-string: append(
+            $grid-columns-string,
+            nth($grid-columns, $i)
+            );
+    }
+    // output the string
+    @return $grid-columns-string;
+}
+
+
+
+//
+// grid-start and grid-end
+//
+// allows shorthand for common grid sections
+@function grid-start($start: null, $end: null) {
+
+    @if $end == null {
+
+        // basic & left side
+        @if $start == full or $start == full-left {
+            $start: edge-left;
+        }
+        @else if $start == wide or $start == wide-left {
+            $start: wide-left;
+        }
+        @else if $start == normal or $start == normal-left {
+            $start: normal-left;
+        }
+        @else if $start == narrow or $start == narrow-left {
+            $start: narrow-left;
+        }
+
+        // right side
+        @else if $start == full-right
+            or $start == wide-right
+            or $start == normal-right
+            or $start == narrow-right {
+
+            $start: center;
+        }
+    }
+    @return $start;
+}
+
+// end
+@function grid-end($start: null, $end: null) {
+
+    @if $end == null {
+
+        // basic & right side
+        @if $start == full or $start == full-right {
+            $end: edge-right;
+        }
+        @else if $start == wide or $start == wide-right {
+            $end: wide-right;
+        }
+        @else if $start == normal or $start == normal-right {
+            $end: normal-right;
+        }
+        @else if $start == narrow or $start == narrow-right {
+            $end: narrow-right;
+        }
+
+        // left side
+        @else if $start == full-left
+            or $start == wide-left
+            or $start == normal-left
+            or $start == narrow-left {
+
+            $end: center;
+        }
+    }
+}
+
+
+
+//
+// the actual mixins
+//
+
+//
+// make the full grid
+//
+@mixin main-grid($start: null, $end: null) {
+
+    // make the grid (list)
+    $grid-columns: make-main-grid-list();
+
+    $start-pos: grid-start($start, $end);
+    $end-pos: grid-end($start, $end);
+
+    $grid-columns: main-grid-splice-string($grid-columns, $start-pos, $end-pos);
+
+    // output code
+    display: grid;
+    grid-template-columns: $grid-columns;
+}
+
+
+//
+// set an element in the grid
+//
+@mixin grid($start: null, $end: null) {
+
+    $start-pos: grid-start($start, $end);
+    $end-pos: grid-end($start, $end);
+
+    // output code
+    grid-column-start: $start-pos;
+    grid-column-end: $end-pos;
+}
+
+@mixin grid-place($x1, $x2, $y1, $y2) {
+    grid-row-start: $y1;
+    grid-row-end: $y2;
+    grid-column-start: $x1;
+    grid-column-end: $x2;
+}

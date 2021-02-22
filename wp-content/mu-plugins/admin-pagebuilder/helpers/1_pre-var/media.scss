@@ -1,0 +1,74 @@
+/* ===============================
+@media Queries Mixin
+=============================== */
+
+// breakpoints
+$grid-breakpoints: (
+	base: 0px,
+	sm  : 576px,
+	md  : 768px,
+	lg  : 1024px,
+	xl  : 1600px,
+	xxl : 1920px,
+	xxxl: 2200px,
+);
+
+@mixin media( $breakpoint , $direction: null ) {
+
+	@if $breakpoint == base {
+		@content;
+	}
+
+	@else {
+
+		// if given standard grid breakpoint
+		@if map-has-key($grid-breakpoints, $breakpoint) {
+
+			@if $direction == down {
+
+				@media screen and (max-width: map-get($grid-breakpoints, $breakpoint) - 1px) { @content; }
+			}
+			@else if $direction == only {
+
+				$index: index(map-keys($grid-breakpoints), $breakpoint);
+				$length: length(map-keys($grid-breakpoints));
+
+				@if $index < $length {
+
+					$nextbreakpoint: nth(map-values($grid-breakpoints), $index + 1);
+					@media screen and (min-width: map-get($grid-breakpoints, $breakpoint)) and (max-width: $nextbreakpoint - 1px) { @content; }
+				}
+				@else {
+
+					@media screen and (min-width: map-get($grid-breakpoints, $breakpoint)) { @content; }
+				}
+			}
+
+			@else {
+
+				@media screen and (min-width: map-get($grid-breakpoints, $breakpoint)) { @content; }
+			}
+		}
+
+		// if given custom value(s)
+		@else {
+
+			@if $direction == null {
+
+				@media screen and (min-width: $breakpoint) { @content; }
+			}
+
+			@else if $direction == down {
+
+				@media screen and (max-width: $breakpoint) { @content; }
+			}
+
+			@else {
+				@if $direction {
+
+					@media screen and (min-width: $breakpoint) and (max-width: $direction) { @content; }
+				}
+			}
+		}
+	}
+}

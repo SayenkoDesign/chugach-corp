@@ -46,6 +46,7 @@
 	include_once( 'functions/template-tags.php' );
 
     include_once( 'functions/acf-fields.php' );
+    include_once( 'functions/acf-wysiwyg.php' );
 
 	include_once( 'functions/acf.php' );
     include_once( 'functions/acf-search.php' );
@@ -98,6 +99,12 @@ include_once( 'foundation/class-foundation-tabs.php' );
     include_once( 'post-types/cpt-people.php' ); 
     include_once( 'post-types/cpt-region.php' ); 
     include_once( 'post-types/cpt-testimonial.php' ); 
+    include_once( 'post-types/cpt-faq.php' );
+
+/****************************************
+    Taxonomies
+*****************************************/
+    include_once( 'taxonomies/faq-category.php' );
     
 /****************************************
 	Widgets

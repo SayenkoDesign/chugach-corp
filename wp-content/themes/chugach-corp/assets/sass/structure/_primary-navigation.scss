@@ -1,5 +1,7 @@
 // Primary Navigation
 
+$menu-split: 75rem;
+
 .nav-primary {
 	display: none;
     width: 100%;
@@ -67,7 +69,7 @@
     }
 }
 
-@include breakpoint(xlarge) {
+@media screen and (min-width: $menu-split) {
     
     .nav-primary {
 		display: block;
@@ -300,7 +302,7 @@
 
 .menu .mobile-link {
     
-	@include breakpoint(xlarge) {
+	@media screen and (min-width: $menu-split) {
 		display: none!important;
 	}
 }

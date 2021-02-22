@@ -1,0 +1,30 @@
+/* ===============================
+Google Material Design Bezier Curves
+=============================== */
+
+$bez-std  : cubic-bezier(0.4, 0, 0.2, 1);
+$bez-decel: cubic-bezier(0, 0, 0.2, 1);
+$bez-accel: cubic-bezier(0.4, 0, 1, 1);
+$bez-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+
+
+@function bez($strength: 3, $style: 'std') {
+
+	$ease-in: (0.1 + ($strength * 0.1));
+	$ease-out: 1 - (0.5 + ($strength * 0.1));
+
+	$ease-in: decimal-round($ease-in, 2);
+	$ease-in: decimal-round($ease-out, 2);
+
+	@if($style == 'accel') {
+		$ease-out: 0;
+	}
+	@else if($style == 'decel') {
+		$ease-in: 0;
+	}
+	@else {}
+
+	@return cubic-bezier($ease-in, 0, $ease-out, 1);
+}
+
+

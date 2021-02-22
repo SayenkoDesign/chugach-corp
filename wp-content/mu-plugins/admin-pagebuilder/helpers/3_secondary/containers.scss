@@ -1,0 +1,129 @@
+//
+// max width mixin
+//
+
+@function width-space($space: null) {
+
+	@if $space != null {
+
+		@return calc(100vw - #{map-get($spacers, $space) * 2});
+	}
+}
+
+@mixin generate-width($breakpoint, $max-width) {
+
+	@include media($breakpoint) {
+
+		@if unitless($max-width) == true {
+			max-width: width-space($max-width);
+		}
+		@else {
+			max-width: $max-width;
+		}
+	}
+}
+
+@mixin max-width($width, $media: null) {
+
+	// no media query - generate all
+	@if $media == null {
+
+		@if $width == narrow {
+
+			@each $breakpoint, $max-width in $max-widths-narrow {
+				@include generate-width($breakpoint, $max-width);
+			}
+		}
+
+		@else if $width == normal {
+
+			@each $breakpoint, $max-width in $max-widths-normal {
+				@include generate-width($breakpoint, $max-width);
+			}
+		}
+
+		@else if $width == wide {
+
+			@each $breakpoint, $max-width in $max-widths-wide {
+				@include generate-width($breakpoint, $max-width);
+			}
+		}
+	}
+
+	// has media query - only generate one breakpoint
+	@else {
+
+		@if $width == narrow {
+			@include generate-width($media, map-get($max-widths-narrow,$media));
+		}
+		@else if $width == normal {
+			@include generate-width($media, map-get($max-widths-normal,$media));
+		}
+		@else if $width == wide {
+			@include generate-width($media, map-get($max-widths-wide,$media));
+		}
+	}
+}
+
+
+
+//
+// for half-split layouts
+//
+
+@function half-width-space($space:null) {
+	@if $space != null {
+		@return calc(50vw - #{map-get($spacers, $space)});
+	}
+}
+
+@mixin generate-half-width($breakpoint, $max-width) {
+
+	@include media($breakpoint) {
+
+		@if unitless($max-width) == true {
+			max-width: half-width-space($max-width);
+		}
+		@else {
+			max-width: #{$max-width / 2 };
+		}
+	}
+}
+
+
+@mixin half-max-width($width, $media: null) {
+
+	// no media query - generate all
+	@if $media == null {
+
+		@if $width == narrow {
+			@each $breakpoint, $max-width in $max-widths-narrow {
+				@include generate-half-width($breakpoint, $max-width);
+			}
+		}
+		@else if $width == normal {
+			@each $breakpoint, $max-width in $max-widths-normal {
+				@include generate-half-width($breakpoint, $max-width);
+			}
+		}
+		@else if $width == wide {
+			@each $breakpoint, $max-width in $max-widths-wide {
+				@include generate-half-width($breakpoint, $max-width);
+			}
+		}
+	}
+
+	// has media query - only generate one breakpoint
+	@else {
+
+		@if $width == narrow {
+			@include generate-half-width($media, map-get($max-widths-narrow,$media));
+		}
+		@else if $width == normal {
+			@include generate-half-width($media, map-get($max-widths-normal,$media));
+		}
+		@else if $width == wide {
+			@include generate-half-width($media, map-get($max-widths-wide,$media));
+		}
+	}
+}

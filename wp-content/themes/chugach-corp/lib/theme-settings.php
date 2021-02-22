@@ -27,3 +27,4 @@ add_image_size( 'leadership', 420, 999 );
 add_image_size( 'icon-small', 100, 999 );
 add_image_size( 'icon-medium', 160, 999 );
 add_image_size( 'icon-large', 200, 999 );
+add_image_size( 'lqip', 40, 0, false );

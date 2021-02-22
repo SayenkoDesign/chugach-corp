@@ -1,0 +1,20 @@
+// Page Builder
+
+.template-pagebuilder {
+
+    .section-footer-cta {
+
+        position: relative;
+
+        &:after {
+            @include five-lines-gray;
+            position: absolute;
+            left: calc((100vw - 75rem)/2);
+            top: -125px;
+            z-index: 1;
+            transition-delay: 1.4s;
+            transition-duration: .4s;
+            transition-property: opacity;
+        }
+    }
+}

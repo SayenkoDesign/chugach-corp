@@ -1,0 +1,5 @@
+// url-encodes a base64 svg string
+
+@function inline-svg($string) {
+	@return url('data:image/svg+xml;utf8,#{url-encode($string)}');
+}

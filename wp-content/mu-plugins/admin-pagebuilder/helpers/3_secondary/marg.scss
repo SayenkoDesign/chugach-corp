@@ -1,0 +1,54 @@
+@mixin marg($scale, $area: all) {
+
+	$neg: false;
+	@if $scale < 0 {
+		$neg: true;
+		$scale: $scale * -1;
+	}
+
+	$margin: map-get($spacers, $scale);
+	$margin: floor($margin * 1000) / 1000;
+
+	@if $neg {
+		$margin: $margin * -1;
+	}
+
+	@if $area == all {
+		margin: $margin;
+	}
+
+	@if $area == top {
+		margin-top: $margin;
+	}
+
+	@if $area == right {
+		margin-right: $margin;
+	}
+
+	@if $area == bottom {
+		margin-bottom: $margin;
+	}
+
+	@if $area == left {
+		margin-left: $margin;
+	}
+
+	@if $area == width or $area == x {
+		margin-left: $margin;
+		margin-right: $margin;
+	}
+
+	@if $area == height or $area == y {
+		margin-top: $margin;
+		margin-bottom: $margin;
+	}
+}
+
+// media query
+@mixin media-marg($media, $scale, $area: all) {
+
+	@include media($media) {
+
+		@include marg($scale,$area);
+	}
+}

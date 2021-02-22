@@ -25,7 +25,7 @@ add_filter('tiny_mce_before_init', 'tiny_mce_remove_unused_formats' );
 function _s_remove_page_template( $pages_templates ) {
     
     // List of templates that can be used more than once
-    $excludes = [ 'page-templates/page-builder.php', 'page-templates/redirect.php' ];
+    $excludes = [ 'page-templates/page-builder.php', 'page-templates/pagebuilder.php', 'page-templates/redirect.php' ];
     
     
     // Don't touch anyhting below
@@ -48,7 +48,7 @@ function _s_remove_page_template( $pages_templates ) {
             
     if( ! empty( $excludes ) ) {
         foreach( $excludes as $exclude ) {
-            unset( $templates[$exclude] );
+            $templates = array_diff($templates,array($exclude));
         }
     }
     

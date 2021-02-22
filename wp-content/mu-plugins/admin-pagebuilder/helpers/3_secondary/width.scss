@@ -1,0 +1,128 @@
+/* * * * * * * * * * * * * * * * * * * * * * * *
+
+	Width
+
+* * * * * * * * * * * * * * * * * * * * * * * * /
+
+/*
+	Sets columns like Bootstrap
+	Allows media queries
+	allows
+		1-12 columns of a 12-column grid
+		if between 0 and 1 treats as percentage
+		basic fractions written out
+*/
+
+// setting the values
+@mixin flex-width-set($width) {
+	flex: 0 0 $width;
+	max-width: $width;
+}
+
+@mixin width($size, $space: null, $cols-total: null) {
+
+	$width: null;
+
+	@if($space == null) {
+
+		@if type-of($size) == 'number' {
+			@if($size < 1) {
+				$width: $size;
+			}
+			@else {
+				$width: ($size / 12);
+			}
+			$width: percentage($width);
+			$width: round(($width * 1000) - 1) / 1000;
+		}
+
+		@else {
+			$width: map-get($fractions, $size);
+			$width: percentage($width);
+			$width: round(($width * 1000) - 1) / 1000;
+		}
+	}
+
+	@else {
+
+		@if($cols-total == null) {
+
+			@if type-of($size) == number {
+
+				@if($size < 1) {
+					$width: $size;
+				}
+				@else {
+					$width: ($size / 12);
+				}
+
+				$col-space: space($space);
+
+				$width: percentage($width);
+				$width: round(($width * 1000) - 1) / 1000;
+				$col-space: floor($col-space * 10000) / 10000;
+				$width: calc(#{$width} - #{$col-space});
+			}
+
+			@else {
+				$width: map-get($fractions, $size);
+
+				$col-space: space($space);
+
+				$width: percentage($width);
+				$width: round(($width * 1000) - 1) / 1000;
+				$col-space: floor($col-space * 10000) / 10000;
+				$width: calc(#{$width} - #{$col-space});
+			}
+		}
+
+		@else {
+
+			@if type-of($size) == number {
+
+				@if($size < 1) {
+					$width: $size;
+				}
+				@else {
+					$width: ($size / 12);
+				}
+
+				$gutters: ($cols-total - 1);
+				$total-space: (space($space) * $gutters);
+				$col-space: ($width * $total-space);
+
+				$width: percentage($width);
+				$width: round(($width * 1000) - 1) / 1000;
+				$col-space: floor($col-space * 10000) / 10000;
+				$width: calc(#{$width} - #{$col-space});
+			}
+
+			@else {
+				$width: map-get($fractions, $size);
+
+				$gutters: ($cols-total - 1);
+				$total-space: (space($space) * $gutters);
+				$col-space: ($width * $total-space);
+
+				$width: percentage($width);
+				$width: round(($width * 1000) - 1) / 1000;
+				$col-space: floor($col-space * 10000) / 10000;
+				$width: calc(#{$width} - #{$col-space});
+			}
+		}
+	}
+
+	// actually do the thing
+	@include flex-width-set($width);
+}
+
+// media query based
+@mixin media-width($media, $size, $space: null, $cols-total: null) {
+
+	@include media($media) {
+
+		@include width($size,$space,$cols-total);
+	}
+}
+
+

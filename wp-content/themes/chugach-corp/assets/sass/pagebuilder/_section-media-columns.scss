@@ -1,0 +1,45 @@
+// Page Builder
+
+.template-pagebuilder {
+
+    .pagebuilder-section-media-columns {
+
+        > .row {
+            display: block;
+            padding: 0 1.25rem;
+        }
+        .image-container {
+            position: relative;
+            button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .columns-container {
+            // display: flex;
+            // flex-wrap: wrap;
+            margin-top: -2.875rem;
+        }
+        .column {
+            padding-top: 2.875rem;
+        }
+        &.under-three .column {
+            flex-grow: 1;
+            max-width: unset;
+        }
+        .element-image {
+            padding-bottom: 50.4901408%;
+            margin-bottom: 0.5rem;
+        }
+        .image-title {
+            font-family: $lato;
+            font-size: 1.375rem;
+            font-style: normal;
+            line-height: 1.636363636;
+            color: #454C54;
+        }
+    }
+}

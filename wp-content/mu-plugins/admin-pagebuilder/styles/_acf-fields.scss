@@ -1,0 +1,289 @@
+/**
+ * ACF Fields
+ * ======================================== */
+
+.acf-field[data-name="pagebuilder_sections"] {
+
+    /**
+     * Gallery
+     * -------------------- */
+    .acf-gallery {
+    	height: auto !important;
+    	min-height: 250px;
+    }
+
+
+    /*
+     * WYSIWYG
+     * Shortened
+     */
+    /**
+     * WYSIWYG
+     * -------------------- */
+    .acf-field-wysiwyg {
+        /* Shorteing */
+        &.xx-short,
+        &.height-75 {
+            iframe,
+            textarea {
+                height: 75px !important;
+                min-height: 75px;
+            }
+        }
+        &.x-short,
+        &.height-100 {
+            iframe,
+            textarea {
+                height: 100px !important;
+                min-height: 100px;
+            }
+        }
+        &.height-125 {
+            iframe,
+            textarea {
+                height: 125px !important;
+                min-height: 125px;
+            }
+        }
+        &.short,
+        &.height-150 {
+            iframe,
+            textarea {
+                height: 150px !important;
+                min-height: 150px;
+            }
+        }
+        &.height-175 {
+            iframe,
+            textarea {
+                height: 175px !important;
+                min-height: 175px;
+            }
+        }
+        &.medium,
+        &.height-200 {
+            iframe,
+            textarea {
+                height: 200px !important;
+                min-height: 200px;
+            }
+        }
+        &.height-225 {
+            iframe,
+            textarea {
+                height: 225px !important;
+                min-height: 225px;
+            }
+        }
+        &.medium-large,
+        &.height-250 {
+            iframe,
+            textarea {
+                height: 250px !important;
+                min-height: 250px;
+            }
+        }
+
+        /* hide all the buttons */
+        &.hide-buttons {
+            .acf-label {
+                position: absolute;
+            }
+            .wp-media-buttons {
+                display: none;
+            }
+        }
+    }
+
+    /**
+     * Images
+     * -------------------- */
+    .acf-field-image {
+        /* Set max width */
+    	max-width: 25rem;
+    }
+
+    /*
+     * Messages
+     * Always full width
+     * .big for large message styling
+     */
+    /**
+     * Messages
+     * -------------------- */
+    .acf-field.acf-field-message {
+        /* Always full-width */
+    	width: 100%;
+    	.acf-label,
+    	label {
+    		margin: 0;
+    	}
+        /* .big for large message styling */
+    	&.big {
+    	    padding-bottom: 0 !important;
+    	    background-color: white;
+    	    margin-bottom: -6px !important;
+    	    label {
+    	        font-size: 1.25rem;
+    	        border-bottom: 2px solid black;
+    	        margin-bottom: -1px;
+    	    }
+    	}
+        /* .divider for invisible line break */
+        &.divider {
+            width: 100%;
+            height: 0;
+            padding: 0;
+            border: none;
+            * {
+                display: none;
+            }
+        }
+    }
+
+    /**
+     * Groups
+     *   .group-nostyle to condense/remove borders
+     * -------------------- */
+    .acf-field-group.group-nostyle {
+        .acf-label {
+            margin-bottom: 4px;
+        }
+        .acf-fields {
+            border: none;
+            margin-left: -2px;
+            margin-right: -2px;
+            .acf-label {
+                margin-bottom: 2px;
+            }
+            .acf-field {
+                border: 0;
+                padding: 4px 2px 0;
+                // padding-top: 5px;
+            }
+        }
+    }
+
+    /*
+     * Checkboxes
+     * .button-style for button group style
+     */
+    /**
+     * Checkboxes
+     * -------------------- */
+    body:not(.post-type-acf-field-group) .acf-field-checkbox {
+
+    	.acf-checkbox-list {
+    		display: flex;
+    	}
+
+    	.acf-checkbox-list li {
+
+    		margin-right: 0 !important;
+
+    		label {
+
+    			padding: 5px 10px;
+    			border: #ccc solid 1px;
+    			z-index: 1;
+    			margin: 0 0 0 -1px;
+    			flex: 1;
+    			text-align: center;
+    			white-space: nowrap;
+
+    			&.selected {
+    				border-color: #2b9af3;
+    				background: #309cf3;
+    				color: #fff;
+    				z-index: 2;
+    			}
+    			&:hover {
+    				border-color: #999999;
+    				// z-index: 2;
+    			}
+    			&.selected:hover { background: #48a8f4; }
+    		}
+
+    		&:hover { z-index: 2; }
+
+    		&:first-child label { border-radius: 3px 0 0 3px; }
+    		&:last-child label { border-radius: 0 3px 3px 0; }
+
+    		input { display: none; }
+    	}
+    }
+
+    /**
+     * Button Group
+     * -------------------- */
+    .acf-field-button-group {
+
+        /* .vertical runs vertical */
+        &.vertical {
+            .acf-button-group {
+                flex-direction: column;
+                label {
+                    border-radius: 0;
+                }
+            }
+        }
+        /* .forced is just for displaying things - not user editable */
+        &.forced {
+            .acf-button-group {
+                pointer-events: none;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    /**
+     * Links
+     * -------------------- */
+    .acf-input .link-wrap {
+        /* force max-width with scroll overflow */
+    	max-width: 25rem;
+    	overflow: scroll;
+    	.link-url {
+    		white-space: nowrap;
+    	}
+    }
+
+    /*
+     * Google Map
+     * Simplified
+     */
+    /**
+     * Google Map
+     * -------------------- */
+    .acf-google-map {
+
+        /* Simplify things */
+    	.gm-style {
+    		.gmnoprint:last-child,
+    		.gm-fullscreen-control,
+    		.gm-svpc {
+    			display: none;
+    		}
+    	}
+    }
+
+    /**
+     * Tabs
+     * -------------------- */
+    .acf-fields.inside.-sidebar {
+        /* Align items within tabs to top (for options) */
+    	align-content: flex-start;
+    }
+
+    /**
+     * Repeater
+     * -------------------- */
+    .acf-field-repeater {
+        /* .condensed for lots of repeater subfields */
+        &.condensed {
+            .acf-field {
+                padding: 8px 8px 6px;
+            }
+        }
+    }
+}

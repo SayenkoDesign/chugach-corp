@@ -1,10 +1,12 @@
 // Mobile Navigation
 
+$menu-split: 75rem;
+
 .menu-toggle,
 .sub-menu-toggle {
 	display: block;
     
-    @include breakpoint(xlarge) {
+    @media screen and (min-width: $menu-split) {
         display: none;
     }
 }

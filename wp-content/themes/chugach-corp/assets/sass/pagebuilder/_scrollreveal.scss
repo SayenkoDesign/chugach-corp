@@ -1,0 +1,55 @@
+// Page Builder Scrollreveal
+
+/* extend for combining everything */
+%scrollreveal-hide {
+    visibility: hidden;
+}
+
+html.sr {
+
+    .pagebuilder-section-ultraflex:not(.red-boxed) {
+        .content-area,
+        .media-area,
+        .resources {
+            @extend %scrollreveal-hide;
+        }
+    }
+    .pagebuilder-section-ultraflex.red-boxed {
+        .content-area {
+            @extend %scrollreveal-hide;
+        }
+    }
+    .pagebuilder-section-full-width-image-carousel .section-heading {
+        @extend %scrollreveal-hide;
+    }
+
+    .section-testimonials.pagebuilder-section .inner {
+        @extend %scrollreveal-hide;
+    }
+    .pagebuilder-section-document-library {
+        .documents-column,
+        .resources {
+            @extend %scrollreveal-hide;
+        }
+    }
+    .pagebuilder-section-frequently-asked-questions {
+        .section-heading,
+        .faq-filters,
+        .faq {
+            @extend %scrollreveal-hide;
+        }
+    }
+    .pagebuilder-section-media-columns {
+        .section-heading,
+        .media-item {
+            @extend %scrollreveal-hide;
+        }
+    }
+    .pagebuilder-section-steps {
+        .section-heading,
+        .slick,
+        .step-content {
+            @extend %scrollreveal-hide;
+        }
+    }
+}

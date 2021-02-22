@@ -1,0 +1,239 @@
+// Page Builder
+
+.pagebuilder-section-document-library {
+    $space: 0.5rem;
+
+    > .row {
+        justify-content: center;
+    }
+    .resources {
+        margin-left: auto;
+    }
+    .documents {
+        margin-left: #{$space * -0.5};
+        margin-right: #{$space * -0.5};
+
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .document {
+        padding: #{$space * 0.5};
+        @include breakpoint(medium) {
+            width: 50%;
+        }
+    }
+    .document-text {
+        color: white;
+        font-family: $lato;
+        font-style: normal;
+    }
+    .document-category {
+        margin-bottom: 1.25rem;
+        font-size: 1.125rem;
+    }
+    .document-title {
+        margin-bottom: 3.25rem;
+        font-size: 1.5rem;
+    }
+    .document-blurb {
+        margin-bottom: 3rem;
+    }
+    .document-link-text-wrapper {
+        display: flex;
+        align-items: center;
+    }
+    .document-link-text {
+        font-size: 1.125rem;
+        position: relative;
+        margin-bottom: 0;
+        margin-right: 0.5em;
+    }
+
+    .arrow {
+        position: relative;
+        display: inline-block;
+        width: 1.25rem;
+        right: 0;
+        top: calc(50% - 1px);
+        height: 2px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .arrow,
+    .document-link .arrow::before,
+    .document-link .arrow::after {
+        background-color: white;
+    }
+
+    .document-link .arrow::before,
+    .document-link .arrow::after {
+        position: absolute;
+        content: "";
+    }
+
+    /* The arrows */
+    .document-link .arrow::before,
+    .document-link .arrow::after {
+        width: 10px;
+        right: -2px;
+        top: calc(50% - 1px);
+        height: 2px;
+        background-color: white;
+        transform-origin: right;
+        transition: transform 0.2s ease-in-out;
+    }
+    .document-link .arrow::before {
+        transform: rotate(315deg) translateY(-1px);
+    }
+    .document-link .arrow::after {
+        transform: rotate(45deg) translateY(1px);
+    }
+    .document-inner {
+        padding: 5rem 2.125rem;
+        border-radius: 0.5rem;
+        display: block;
+        position: relative;
+        height: 100%;
+    }
+    .pseudo-anchor {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        border-radius: 0.5rem;
+        transition: transform 0.2s $bez-std;
+    }
+    .document-inner::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        transition: transform 0.2s $bez-std;
+        border-radius: 0.5rem;
+    }
+    .pseudo-anchor::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        transition: transform 0.2s $bez-std;
+    }
+    .document-inner::before {
+        background-color: $red;
+        z-index: -2;
+    }
+    .pseudo-anchor::after {
+        transform: skew(115deg) translateX(25%);
+        transform-origin: bottom;
+        background-color: $blue;
+        z-index: -1;
+    }
+    .document-inner:focus,
+    .document-inner:hover {
+        /* Move the arrow on hover */
+        .arrow {
+            transform: translateX(2px);
+            width: 1.5rem;
+        }
+        .pseudo-anchor::after {
+            transform: skew(115deg) translateX(10%);
+        }
+        @include breakpoint(medium) {
+
+            &::before,
+            .pseudo-anchor {
+                transform: scale(1.03);
+            }
+        }
+    }
+    .document:nth-child(2n) {
+        .document-inner::before {
+            background-color: $blue;
+        }
+        .pseudo-anchor::after {
+            background-color: $red;
+        }
+    }
+    @include breakpoint(medium) {
+        .document:nth-child(n) {
+            .document-inner::before {
+                background-color: $red;
+            }
+            .pseudo-anchor::after {
+                background-color: $blue;
+            }
+        }
+        .document:nth-child(4n-2),
+        .document:nth-child(4n-1) {
+            .document-inner::before {
+                background-color: $blue;
+            }
+            .pseudo-anchor::after {
+                background-color: $red;
+            }
+        }
+        .document:nth-child(1) {
+            .document-inner::before,
+            .pseudo-anchor {
+                transform-origin: bottom right;
+            }
+        }
+        .document:nth-child(2) {
+            .document-inner::before,
+            .pseudo-anchor {
+                transform-origin: bottom left;
+            }
+        }
+        .document:nth-child(3) {
+            .document-inner::before,
+            .pseudo-anchor {
+                transform-origin: top right;
+            }
+        }
+        .document:nth-child(4) {
+            .document-inner::before,
+            .pseudo-anchor {
+                transform-origin: top left;
+            }
+        }
+    }
+
+    &.more-than-four {
+        .document-inner:focus,
+        .document-inner:hover {
+            /* Move the arrow on hover */
+            .arrow {
+                transform: translateX(2px);
+                width: 1.5rem;
+            }
+            .pseudo-anchor::after {
+                transform: skew(115deg) translateX(10%);
+            }
+            @include breakpoint(medium) {
+
+                &::before,
+                .pseudo-anchor {
+                    transform: scaleX(1.03);
+                }
+            }
+        }
+        .document:nth-child(2n-1) {
+            .document-inner::before,
+            .pseudo-anchor {
+                transform-origin: bottom right;
+            }
+        }
+        .document:nth-child(2n) {
+            .document-inner::before,
+            .pseudo-anchor {
+                transform-origin: bottom left;
+            }
+        }
+    }
+}
