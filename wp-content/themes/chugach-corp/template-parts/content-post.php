@@ -22,11 +22,18 @@
             $image = $row['ID'];  
             $image = _s_get_acf_image( $image, $size ); 
             $style = sprintf( ' style="background-image: url(%s);"', $image  );   
+                        
+            $caption = '';
+            
+            if( ! empty( wp_get_attachment_caption( $row['ID'] ) ) ) {
+                $caption = sprintf( '<div class="slick-caption"><p>%s</p></div>', wp_get_attachment_caption( $row['ID'] ) );
+            }
                                                                                                                              
             $slides .= sprintf( '<div class="slide">
                                     %s
+                                    %s
                                 </div>', 
-                            $image
+                            $image, $caption
                          );
         }
                 
@@ -36,6 +43,13 @@
                                 $slides, 
                                 $arrows 
                       );
+                      
+        echo '<style>
+        .slick-caption {
+            padding: 10px 0;
+            text-align: center;    
+        }
+        </style>';
     }
     
     $intro = get_field( 'introduction' );

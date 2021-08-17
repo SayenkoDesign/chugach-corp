@@ -322,7 +322,7 @@
         interval: 250,
         viewFactor: 0.5
     });
-    
+
     /**
      * Pagebuilder
      * -------------------- */
@@ -576,6 +576,6 @@
         viewFactor: 0.5
     });
 
-    
+
 }(document, window, jQuery));
 

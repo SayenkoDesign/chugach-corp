@@ -5,7 +5,7 @@ $menu-split: 75rem;
 .menu-toggle,
 .sub-menu-toggle {
 	display: block;
-    
+
     @media screen and (min-width: $menu-split) {
         display: none;
     }

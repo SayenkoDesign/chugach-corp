@@ -8,19 +8,19 @@ Header
 
     @include breakpoint(xlarge) {
         top: 32px;
-    }      
+    }
  }
- 
+
  @include breakpoint(xlarge) {
     .sticky-header {
-        height: 70px;   
+        height: 70px;
     }
  }
 
 .site-header {
-        
+
     @include breakpoint(xlarge) {
-                        
+
         &.fixed {
             position: fixed!important;
             top: 0;
@@ -29,110 +29,110 @@ Header
             width: 100%;
             z-index: 99;
             .wrap {
-                position: relative;                
-                @include breakpoint(xlarge) {                
+                position: relative;
+                @include breakpoint(xlarge) {
                     background: linear-gradient(270deg, rgba(#ED4399,.8) 0%, rgba(#F9B02D, .9) 100%);
                     background: $white;
                     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
-                } 
-                
+                }
+
             }
-            
+
             .nav-primary {
                 .menu .menu-item:not(.button) a {
                     color: $dark-gray!important;
-                    
+
                     &:after {
-                        background-color: $dark-gray;   
+                        background-color: $dark-gray;
                     }
                 }
 
             }
-            
+
             .site-title img {
-                max-height: none; 
+                max-height: none;
                 //transition: all .1s ease .1s;
             }
-            
-            
+
+
             &.shrink {
-                
+
                 .site-title {
                     img {
                        transform-origin: center left;
                        transform: scale(.7);
-                       width: auto;   
+                       width: auto;
                     }
                 }
             }
-            
+
             &.nav-up {
-                transform: translateY(-400%);   
+                transform: translateY(-400%);
             }
-            
+
             &.nav-down {
-                transform: translateY(0);  
-                transition: transform .1s ease 0s; 
+                transform: translateY(0);
+                transition: transform .1s ease 0s;
             }
-                
+
         }
-        
-        
-    
+
+
+
     }
 }
 
 
 .site-header {
-    
+
     width: 100%;
     z-index: 99;
     position: relative;
-    
+
     @include breakpoint(xlarge) {
         .fixed-menu & {
             position: absolute;
         }
     }
-                
+
     .wrap {
-        
+
         background-color: #fff;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
-        
+
         @include breakpoint(xlarge) {
-            
+
             .fixed-menu & {
-                background-color: transparent; 
+                background-color: transparent;
                 box-shadow: none;
             }
         }
-        
+
         .site-branding {
-            
+
         }
-        
+
         .search-button-mobile {
             position: absolute;
-            top: calc(44px - 15px); 
-            left: rem-calc(map-get($grid-column-gutter, small)/2 );  
+            top: calc(44px - 15px);
+            left: rem-calc(map-get($grid-column-gutter, small)/2 );
             z-index: 999;
-            
+
             @include breakpoint(large) {
-                left: rem-calc(map-get($grid-column-gutter, large)/2 );  
+                left: rem-calc(map-get($grid-column-gutter, large)/2 );
             }
-            
+
             img {
-                height: 30px;   
+                height: 30px;
                 width: auto;
             }
         }
-     
+
         .site-title {
-            
+
             padding: rem-calc(25 50);
             text-align: center;
-            
+
             @include breakpoint(xlarge) {
                 background-color: $lime;
                 display: flex;
@@ -142,17 +142,17 @@ Header
                 text-align: left;
                 height: 70px;
                 padding: rem-calc(0 25 0 0);
-                
+
                 &:before {
                    content: '';
                    width: 50vw;
                    top: 0;
-                   right: 100%; 
+                   right: 100%;
                    position: absolute;
                    height: 100%;
                    background: $lime;
                 }
-                
+
                 &:after {
                     content: '';
                     position: absolute;
@@ -163,43 +163,43 @@ Header
                     left: 0;
                     background: $lime;
                     transform-origin: bottom left;
-                    transform: skew(-12deg, 0deg);   
+                    transform: skew(-12deg, 0deg);
                 }
             }
-                                    
+
             a {
                 display: inline-block;
                 position: relative;
                 z-index: 2;
             }
-            
+
         }
 
     }
 
-    
+
     .menu-toggle {
         position: absolute;
         top: calc(44px - 17px);
         @include breakpoint(xlarge) {
             top: 20px;
         }
-        right: rem-calc(map-get($grid-column-gutter, small)/2 );  
+        right: rem-calc(map-get($grid-column-gutter, small)/2 );
         z-index: 999;
-        
+
         @include breakpoint(large) {
-            right: rem-calc(map-get($grid-column-gutter, large)/2 );  
+            right: rem-calc(map-get($grid-column-gutter, large)/2 );
         }
     }
-    
+
     .shrink {
         @include breakpoint(xlarge) {
-            flex: 0 0 auto!important;     
+            flex: 0 0 auto!important;
         }
     }
-    
+
     &:not(.fixed) .secondary-menu-button {
-        display: none;   
+        display: none;
     }
-                
+
 }

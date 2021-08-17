@@ -26,8 +26,8 @@ function _s_remove_page_template( $pages_templates ) {
     
     // List of templates that can be used more than once
     $excludes = [ 'page-templates/page-builder.php', 'page-templates/pagebuilder.php', 'page-templates/redirect.php' ];
-    
-    
+
+
     // Don't touch anyhting below
     
     

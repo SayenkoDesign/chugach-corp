@@ -149,23 +149,23 @@ let $section_related_posts = $('.section-related-posts');
                 // settings: "unslick"
                 // instead of a settings object
               ]
-            });   
-                
+            });
+
             $section_related_posts.addClass('images-loaded');
-        
+
          });
     }
-    
-    
+
+
     let $section_testimonials = $('.section-testimonials');
     if ( $('.slick', $section_testimonials).length ) {
-                
+
         $( '<div class="slick-arrows"></div>' ).insertAfter( '.section-testimonials .slick' );
-        
+
         $('.section-testimonials').imagesLoaded()
-        
+
         .done( function( instance ) {
-    
+
             $( '<div class="slick-arrows"></div>' ).insertAfter( '.section-testimonials .slick' );
             $('.section-testimonials .slick').slick({
               dots: false,
@@ -176,10 +176,11 @@ let $section_related_posts = $('.section-related-posts');
               slidesToScroll: 1,
               appendArrows: $('.section-testimonials .slick-arrows'),
             });
-                
+
             $section_testimonials.addClass('images-loaded');
-        
+
          });
     }
-    
+
+
 }(document, window, jQuery));

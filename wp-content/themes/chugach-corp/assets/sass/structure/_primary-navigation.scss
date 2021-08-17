@@ -6,27 +6,27 @@ $menu-split: 75rem;
 	display: none;
     width: 100%;
     background-color: $green;
-    
+
     @include breakpoint(large down) {
         padding: 0;
     }
-    
+
     .menu > .menu-item > a {
-        //text-transform: uppercase;   
+        //text-transform: uppercase;
     }
 
-    .menu-item {  
+    .menu-item {
         border-top: 1px solid $white;
         display: block;
         list-style-type: none;
         width: 100%;
         position: relative;
         z-index: 2;
-        
+
         &:first-child {
-            border: none;   
+            border: none;
         }
-        
+
         &:hover,
         &.current-menu-item,
         &.current_page_parent,
@@ -34,13 +34,13 @@ $menu-split: 75rem;
         &.current-menu-ancestor,
         &.current-menu-parent,
         &.current-category-ancestor {
-    
+
             > a {
                 color: $white;
             }
-        } 
+        }
 
-    
+
         a {
             color: $white;
             font-family: $lato;
@@ -49,28 +49,28 @@ $menu-split: 75rem;
             margin: 0;
             padding: 20px 50px 20px 15px;
             display: block;
-            
-                        
+
+
         }
 
     }
-    
+
     .sub-menu {
         @include list-reset;
         background-color: $lime;
-        
+
         ul {
-            @include list-reset;   
+            @include list-reset;
         }
-        
+
         li img {
-            display: none;   
+            display: none;
         }
     }
 }
 
 @media screen and (min-width: $menu-split) {
-    
+
     .nav-primary {
 		display: block;
 		width: 100%;
@@ -78,20 +78,20 @@ $menu-split: 75rem;
         position: relative;
         text-align: right;
         padding: rem-calc(10 0);
-                
+
         .menu .menu-item:focus {
             position: static;
         }
-                
+
         .menu-toggle,
         .sub-menu-toggle {
             display: none;
             visibility: hidden;
         }
-         
+
 		.sub-menu {
 			width: auto;
-			display: block;            
+			display: block;
 		}
 	}
 
@@ -100,23 +100,23 @@ $menu-split: 75rem;
 		background: transparent;
         display: flex;
         justify-content: flex-end;
-        
-        
+
+
 		.menu-item {
 			background: transparent;
 			border: none;
 			width: auto;
 			padding: rem-calc(0 10);
-            
+
             @include breakpoint(xxlarge) {
                 padding: rem-calc(0 20);
             }
-            
+
  			a {
 				color: $dark-gray;
                 text-transform: none;
 				position: relative;
-				display: inline-block; 
+				display: inline-block;
 				font-size: rem-calc(15);
                 line-height: 1.266666667;
                 font-weight: 400;
@@ -129,14 +129,14 @@ $menu-split: 75rem;
  			padding: rem-calc(8 30);
  			text-align: left;
             position: relative;
-            
+
 			> a {
 				color: $dark-gray;
                 font-size: rem-calc(16);
                 line-height: 1.75;
-                padding: 0!important;                
+                padding: 0!important;
  			}
-            
+
             &.current-menu-item,
 			&.current_page_parent,
 			&.current-page-ancestor,
@@ -147,26 +147,26 @@ $menu-split: 75rem;
 					background: transparent;
                     color: $lime;
  				}
-                
+
 			}
 
 			&:hover,
 			&:focus,
 			&:active {
-                
+
 				> a {
 					background: transparent;
-                    color: $lime; 
+                    color: $lime;
 				}
 
 			}
-            
+
             a:focus {
-                color: $lime; 
-            }            
+                color: $lime;
+            }
  		}
-                
-        
+
+
         .menu-item .sub-menu {
             @include list-reset;
             position: absolute;
@@ -180,7 +180,7 @@ $menu-split: 75rem;
             z-index: -2;
             background-color: $white;
             box-shadow: 1px 1px 6px 0 #979797;
-            
+
             .menu-item {
 				border: none;
 				display: block;
@@ -193,23 +193,23 @@ $menu-split: 75rem;
                     padding: 0;
                     font-size: rem-calc(15);
                     display: inline-block;
-                    
+
                     color: $dark-gray;
-                    
+
                     &:hover {
-                        color: $lime;   
+                        color: $lime;
                     }
 				}
-                
+
                 &:hover {
-                    a {                        
+                    a {
                         &:after {
-                            width: 100%;   
+                            width: 100%;
                         }
 					}
                 }
 			}
-            
+
             .menu-item-has-children {
                 position: relative;
                 .sub-menu {
@@ -217,23 +217,23 @@ $menu-split: 75rem;
                     width: rem-calc(330);
                     top: 0;
                     right: 100%;
-                    
+
                     .menu-item {
-                        padding: rem-calc(20 15);   
-                        
+                        padding: rem-calc(20 15);
+
                         h5 {
-                            margin-bottom: rem-calc(20); 
+                            margin-bottom: rem-calc(20);
                             text-transform: uppercase;
                         }
-                    }                    
+                    }
                 }
             }
-            
+
 			.sub-menu {
 
 			}
         }
-        
+
         //.menu-item > a:focus ~ ul.sub-menu,
         .menu-item.focus > ul.sub-menu,
         .menu-item:hover > ul.sub-menu {
@@ -243,54 +243,54 @@ $menu-split: 75rem;
         }
 
 	}
-    
-    
-    
+
+
+
     .fixed-menu {
-            
+
         .nav-primary .menu {
-           
+
             > li.menu-item:not(.button) {
-                
+
                 > a {
                     color: $white;
                     &:after {
-                        background-color: $white;   
+                        background-color: $white;
                     }
                 }
-                
+
                 &.current-menu-item,
                 &.current_page_parent,
                 &.current-page-ancestor,
                 &.current-menu-ancestor,
                 &.current-category-ancestor {
-    
+
                     > a {
                         color: $white;
                     }
-                    
+
                 }
-    
+
                 &:hover,
                 &:focus,
                 &:active {
-                    
+
                     > a {
-                        color: $white; 
+                        color: $white;
                     }
-    
+
                 }
-                
+
                 a:focus {
-                    color: $white; 
+                    color: $white;
                 }
-                                
+
             }
-                                
+
         }
-           
+
     }
-       
+
 }
 
 
@@ -301,7 +301,7 @@ $menu-split: 75rem;
 }
 
 .menu .mobile-link {
-    
+
 	@media screen and (min-width: $menu-split) {
 		display: none!important;
 	}
@@ -312,7 +312,7 @@ $menu-split: 75rem;
     width: 34px;
     span {
         display: block;
-        font-size: 12px;  
-        margin-top: 5px; 
+        font-size: 12px;
+        margin-top: 5px;
     }
 }

@@ -21,6 +21,7 @@ maps/
 .LSOverride
 todo.txt
 db.php
+ultipro/
 
 # wordpress specific
 wp-config.php
