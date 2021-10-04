@@ -49,7 +49,7 @@
     include_once( 'functions/acf-wysiwyg.php' );
 
 	include_once( 'functions/acf.php' );
-    include_once( 'functions/acf-search.php' );
+    // include_once( 'functions/acf-search.php' );
 
 	include_once( 'functions/fonts.php' );
 
@@ -69,7 +69,9 @@
     
     include_once( 'functions/redirects.php' );
 
-    //include_once( 'functions/rest.php' );
+    include_once( 'functions/jobs.php' );
+
+    include_once( 'functions/wp-all-import.php' );
     
     include_once( 'functions/aos.php' );
     
@@ -100,6 +102,7 @@ include_once( 'foundation/class-foundation-tabs.php' );
     include_once( 'post-types/cpt-region.php' );
     include_once( 'post-types/cpt-testimonial.php' );
     include_once( 'post-types/cpt-faq.php' );
+    include_once( 'post-types/cpt-job.php' );
 
 /****************************************
     Taxonomies

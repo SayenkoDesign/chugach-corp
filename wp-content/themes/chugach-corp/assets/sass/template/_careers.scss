@@ -1,17 +1,72 @@
 // Careers
 
-.template-careers {
+.template-careers-v2 {
+
+    .results-wrapper { 
+        display: none; 
+        margin-bottom: 100px;
+    }
+    .results-wrapper.visible { 
+        display: block; 
+    }
+
     
+    .facetwp-type-pager {
+        text-align: center;
+    }
+
+    .facetwp-load-more {
+        //display: block;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: rem-calc(13);
+        line-height: 1;
+        padding: rem-calc(9 10);
+        color: $lime;
+        border: 2px solid #59A441;
+        border-radius: 4px;
+        margin: 40px auto 40px!important;
+        width: 280px;
+        //box-shadow: inset 0 2px 0 0 #FFFFFF, 0 1px 2px 0 rgba(0,0,0,0.2);
+        
+        &:hover {
+            border-color: $lime;
+            color: $lime;
+                
+        }
+    }
+
+    .facetwp-icon {
+        display: none!important;
+    }
+
+}
+
+.template-careers {
+
+    .results-count {
+        display: none;   
+    }
+
+    .message {
+        background-color: $light-gray;
+        padding: 30px;
+        border: 1px solid $green;
+        text-align: center;
+    }
+
+    .message + .results-wrapper {
+        margin-top: 50px;
+    }
+   
     .careers-section {
         position: relative;
         z-index: 3;
         margin-top: -5vw;
         
-        .results-count {
-            display: none;   
-        }
         
-        form {
+        form, 
+        .facet-form {
             
             margin-bottom: rem-calc(50);
             
@@ -47,7 +102,8 @@
                 font-size: rem-calc(14);
             } 
             
-            input[type="submit"] {
+            input[type="submit"],
+            .facetwp-search-button {
                 text-transform: uppercase;
                 cursor: pointer;
                 font-size: rem-calc(13);
@@ -63,7 +119,8 @@
                 }
             }
             
-            input[type="button"] {
+            input[type="button"],
+            .facetwp-reset {
                 text-transform: uppercase;
                 cursor: pointer;
                 font-size: rem-calc(13);
@@ -83,7 +140,8 @@
         }
         
      
-        form {
+        form,
+        .facet-form {
             width: 100%;
             display: flex;  
             flex-flow: row wrap;
@@ -221,6 +279,81 @@
           } @else {
             margin-left: 2.5px;
           }
+        }
+
+        .facetwp-pager {
+            @include list-reset;
+            display: flex;
+            justify-content: center;
+            margin: rem-calc(45 0);
+            position: relative;
+            padding: rem-calc(0 62);
+
+
+            .prev,
+            .next {
+                position: absolute;
+                
+                span {
+                    @include screen-reader-text;   
+                }
+                
+                
+                display: block;
+                width: rem-calc( $nav-arrow-width );
+                height: rem-calc( $nav-arrow-height );  
+                            
+                &:before,
+                &:after {
+                    content: '';
+                    display: block;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    height: $nav-arrow-height; 
+                    background-size: auto $nav-arrow-height;
+                }
+                
+                &.disable {
+                    cursor: default; 
+                    opacity: 0;  
+                }
+                
+            }
+                            
+            .prev {
+                
+                left: 0; 
+                
+                &:before {
+                    content: '';
+                    @include nav-arrow( $nav-arrow-color );
+                }
+                
+                
+                &:not(.disable):hover:before {
+                    @include nav-arrow( $nav-arrow-color-hover );
+                }   
+                
+            }
+            
+            .next {                    
+                
+                right: 0; 
+                
+                &:before,
+                &:after {
+                    background-position: right center;
+                }
+                
+                &:before {
+                    content: '';
+                    @include nav-arrow( $nav-arrow-color, right );
+                    
+                } 
+            }
+
+
         }
         
         .jobsPagination {
