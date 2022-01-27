@@ -54,7 +54,7 @@
     }
 
     // for each <a>-element that contains a "/" and a "#"
-    $('a[href*="/"][href*=#]').each(function(){
+    $('a[href*="/"][href*="#"]').each(function(){
         // if the pathname of the href references the same page
         if (this.pathname.replace(/^\//,'') === location.pathname.replace(/^\//,'') && this.hostname === location.hostname) {
             // only keep the hash, i.e. do not keep the pathname
@@ -64,7 +64,7 @@
 
     // select all href-elements that start with #
     // including the ones that were stripped by their pathname just above
-    $('body').on('click', 'a[href^=#]:not([href=#])', scrollnow );
+    $('body').on('click', 'a[href^="#"]:not([href="#"])', scrollnow );
 
 }(document, window, jQuery));
 
