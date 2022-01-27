@@ -1,1 +1,1 @@
-<div class="message">This is a message go here: <a href="https://careers-chugach.icims.com/" target="_blank">View Job Board</a></div>
+<div class="message">Chugach Government Solutions has a new job board located <a href="https://careers-chugach.icims.com/" target="_blank">here</a>.</div>

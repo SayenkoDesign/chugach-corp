@@ -14,13 +14,24 @@ add_action('wp_footer', function () {
     <script>
     (function($) {
 
+      var count = 0;
+
       $(function() {
           if ('undefined' !== typeof FWP) {
               FWP.auto_refresh = false;
           }
       });
 
+
       $(document).on('facetwp-loaded', function() {
+
+
+        if ( Object.keys(FWP_HTTP.get).length ) {
+          console.log('test');
+          $('.results-wrapper').addClass('visible');
+          $('.section-container').addClass('hide');
+        }
+        
         if (FWP.loaded && FWP.is_reset == false ) {
           $('.results-wrapper').addClass('visible');
           $('.section-container').addClass('hide');
@@ -29,7 +40,7 @@ add_action('wp_footer', function () {
             $('.facetwp-facet-load_more').remove();
         }
 
-        
+        FWP.auto_refresh = false;
 
       });
 
@@ -86,6 +97,9 @@ _s_get_template_part('template-parts/global', 'hero');
         $args = [
             'post_type' => 'job',
             'posts_per_page' => 12,
+            'meta_key' => 'posted_date',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC',
             'facetwp' => true, // we added this
         ];
         $loop = new WP_Query($args);

@@ -47,7 +47,12 @@ wp_reset_postdata();
     
         <?php
         if( ! is_paged() && ! is_category() ) {
-            _s_get_template_part( 'template-parts/blog', 'videos' );
+            if( ! empty( array_filter( get_field( 'featured_posts', get_option('page_for_posts') ) ) ) ) {
+                _s_get_template_part( 'template-parts/blog', 'featured' );
+            } else {
+                _s_get_template_part( 'template-parts/blog', 'videos' );
+            }
+            
         }
         ?>
     

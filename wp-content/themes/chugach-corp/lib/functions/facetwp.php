@@ -119,3 +119,26 @@ add_filter('facetwp_facet_html', function ($output, $params) {
     }
     return $output;
   }, 10, 2);
+
+
+
+  add_filter( 'facetwp_sort_options', function( $options, $params ) {
+    $options['date_desc'] = [
+        'label' => __( 'Date (Newest)', 'fwp' ),
+        'query_args' => [
+            'meta_key' => 'posted_date',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC',
+        ]
+    ];
+
+    $options['date_asc'] = [
+        'label' => __( 'Date (Oldest)', 'fwp' ),
+        'query_args' => [
+            'meta_key' => 'posted_date',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
+        ]
+    ];
+    return $options;
+}, 10, 2 );
