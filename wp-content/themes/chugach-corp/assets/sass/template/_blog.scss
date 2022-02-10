@@ -313,3 +313,106 @@
         margin-bottom: rem-calc($global-margin);   
     }
 }
+
+
+.blog .section-featured {
+    margin-top: rem-calc(30);
+
+    header {
+
+        .view-all {
+            display: block;
+            margin-bottom: rem-calc($global-margin);  
+
+            a {
+                font-weight: 700;
+            }
+        }
+
+        @include breakpoint(large) {
+            display: flex;
+            justify-content: space-between;
+
+            .view-all {
+                align-self: flex-end;
+                margin-bottom: rem-calc($global-margin);  
+            }
+        }
+    }
+    
+    h2 {
+        margin-bottom: rem-calc($global-margin);   
+    }
+
+    article {
+        h3 {
+            font-family: $lato;
+            font-style: normal; 
+        }
+    }
+
+    .video-post {
+                        
+        .background {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            padding-top: 56.25%; 
+            margin-bottom: rem-calc(20);  
+        }
+        
+        .play-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);   
+        }
+    }
+
+    @include breakpoint(large) {
+        .large-7,
+        .large-8 {
+            padding-left: 40px;
+        }
+    }
+
+    article:not(.video-post) {
+
+        .thumbnail {
+            display: block;
+            position: relative;
+            z-index: 2;
+            padding: rem-calc(15);
+            margin-bottom: rem-calc(20); 
+            
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                z-index: -1;
+                height: 140px;
+                width: 270px;
+                position: absolute;
+            } 
+            
+            &:before {
+                background-color: $red;
+                top: 0;
+                left: 0;
+            }
+            
+            &:after {
+                background-color: $green;
+                right: 0;
+                bottom: 0;
+            }
+        }
+                        
+        .background {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            padding-top: 56.25%;             
+        }
+    }
+}

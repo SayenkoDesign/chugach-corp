@@ -15,6 +15,14 @@ function fwp_import_posts( $import_id ) {
 }
 add_action( 'pmxi_after_xml_import', 'fwp_import_posts' );
 
+function wpae_continue_cron( $export_id, $exportObj ) {
+    if ( function_exists( 'FWP' ) ) {
+        FWP()->indexer->index();
+    }
+} 
+add_action( 'pmxe_after_iteration', 'wpae_continue_cron', 10, 2 );
+
+
 // [job_city({locations[1]})]
 
 function job_city( $location ) {
