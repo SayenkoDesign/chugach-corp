@@ -28,6 +28,10 @@
 <?php wp_head(); ?>
 </head>
 
+<?php
+$notification_bar = _s_get_template_part( 'template-parts/global', 'notification-bar', [], true );
+?>
+
 <body <?php body_class(); ?>>
 
     <?php
@@ -67,6 +71,12 @@
         <li><a href="#content" class="screen-reader-shortcut"><?php esc_html_e( 'Skip to content', '_s' ); ?></a></li>
         <li><a href="#footer" class="screen-reader-shortcut"><?php esc_html_e( 'Skip to footer', '_s' ); ?></a></li>
     </ul>
+
+    <?php
+    //if( ! is_user_logged_in() ) {
+        echo $notification_bar;
+   // }
+    ?>
     
     <div class="header-before show-for-xlarge">
         <div class="row">

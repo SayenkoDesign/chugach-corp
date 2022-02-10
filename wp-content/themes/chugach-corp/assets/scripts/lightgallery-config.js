@@ -51,7 +51,7 @@
                 
                 $('#light-gallery').imagesLoaded()
                 .always( function( instance ) {
-                    console.log('all images loaded');
+                    //console.log('all images loaded');
                 })
                 .done( function( instance ) {
                     $('#light-gallery').removeClass('lg-loading');

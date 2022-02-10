@@ -89,14 +89,56 @@ function my_facetwp_pager_html( $output, $params ) {
 add_filter( 'facetwp_pager_html', 'my_facetwp_pager_html', 10, 2 );
 
 
-add_filter( 'facetwp_sort_options', function( $options, $params ) {
-    $options['default']['label'] = 'Order';
-    return $options;
+// Add to functions.php
+// Replace FIRST, MIDDLE, LAST with the actual field names
+// https://gist.github.com/mgibbs189/0161e2f7cce5587020e7
+function fwp_combine_sources( $params, $class ) {
+    if ( 'job_location' == $params['facet_name'] ) {
+        $job_location = get_field( 'city', $params['post_id'] ) . ', ' . get_field( 'state_code', $params['post_id'] ) . ', ' . get_field( 'country', $params['post_id'] );
+        $params['facet_value'] = sanitize_title( $job_location ); // URL-safe string
+        $params['facet_display_value'] = $job_location;
+        // error_log( $params['post_id'] . ' ' . get_field( 'city', $params['post_id'] ) );
+    }
+    return $params;
+}
+add_filter( 'facetwp_index_row', 'fwp_combine_sources', 10, 2 );
+
+
+// https://gist.github.com/mgibbs189/9705b96626cbc7893a49f643c26699aa
+/* add_filter( 'facetwp_facet_filter_posts', function( $result, $params ) {
+    if ( 'job_sort' == $params['facet']['name'] ) {
+        return 'continue'; // prevent this facet from being processed
+    }
+    return $result;
 }, 10, 2 );
+ */
+
+add_filter('facetwp_facet_html', function ($output, $params) {
+    if ('dropdown' == $params['facet']['type']) {
+      $output = preg_replace("/( \([0-9]+\))/m", '', $output);
+    }
+    return $output;
+  }, 10, 2);
 
 
-add_filter( 'facetwp_sort_options', function( $options, $params ) {
-    unset( $options['title_asc'] );
-    unset( $options['title_desc'] );
+
+  add_filter( 'facetwp_sort_options', function( $options, $params ) {
+    $options['date_desc'] = [
+        'label' => __( 'Date (Newest)', 'fwp' ),
+        'query_args' => [
+            'meta_key' => 'posted_date',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC',
+        ]
+    ];
+
+    $options['date_asc'] = [
+        'label' => __( 'Date (Oldest)', 'fwp' ),
+        'query_args' => [
+            'meta_key' => 'posted_date',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC',
+        ]
+    ];
     return $options;
 }, 10, 2 );

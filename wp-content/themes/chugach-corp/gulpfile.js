@@ -1,6 +1,6 @@
 //process.env.DISABLE_NOTIFIER = true; // Uncomment to disable all Gulp notifications.
 
-var proxy = 'https://chugachcorp.vanwp.ca';
+var proxy = 'https://chugach.local';
 
 // Require our dependencies.
 var args         = require('yargs').argv,

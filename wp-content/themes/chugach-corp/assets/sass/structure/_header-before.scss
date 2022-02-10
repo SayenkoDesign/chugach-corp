@@ -3,6 +3,7 @@
 $menu-split: 75rem;
 
 .header-before {
+    background-color: #fff;
     position: relative;
     z-index: 100;
     @media screen and (max-width: $menu-split) {

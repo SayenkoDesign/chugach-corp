@@ -41,6 +41,14 @@ if( function_exists('acf_add_options_sub_page') ) {
  		'redirect' 	=> false,
         'autoload' => true,
 	));
+
+    acf_add_options_sub_page(array(
+		'page_title' 	=> 'Notifications',
+		'menu_title' 	=> 'Notifications',
+        'menu_slug' 	=> 'theme-settings-notifications',
+        'parent' 		=> 'theme-settings',
+		'capability' => 'edit_posts'
+	));  
         
     acf_add_options_sub_page(array(
 		'page_title' 	=> 'Footer CTA',
